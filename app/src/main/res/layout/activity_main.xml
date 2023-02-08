@@ -8,78 +8,48 @@
     android:orientation="vertical"
     >
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/userProfile"
-        android:layout_width="@dimen/_35sdp"
-        android:layout_height="@dimen/_35sdp"
-        android:layout_gravity="end"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_6sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:paddingBottom="@dimen/_2sdp"
-        android:src="@drawable/story"
-        app:civ_border_color="@color/c1"
-        app:civ_border_width="@dimen/_1sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userProfile"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_gravity="end"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_2sdp"
+            android:src="@drawable/story"
+            app:civ_border_color="@color/c1"
+            app:civ_border_width="@dimen/_1sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/notification"
-        android:layout_width="@dimen/_35sdp"
-        android:layout_height="@dimen/_35sdp"
-        android:layout_marginTop="@dimen/_6sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:src="@drawable/notification"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@drawable/notification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        app:layout_constraintTop_toBottomOf="@id/userProfile"
-        android:id="@+id/frame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <FrameLayout
+            android:id="@+id/frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/userProfile"
+
+            >
 
 
-
-            <ScrollView
-                android:id="@+id/scrollView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_45sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:isScrollContainer="false"
-
-                    android:orientation="vertical">
-
-
-                </LinearLayout>
-
-            </ScrollView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </FrameLayout>
+        </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/meowBottomNavigation"

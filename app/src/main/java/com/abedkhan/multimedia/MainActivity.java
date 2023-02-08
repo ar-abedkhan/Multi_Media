@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.abedkhan.multimedia.Fragment.AddPostFragment;
 import com.abedkhan.multimedia.Fragment.AllCetagoryStoryFragment;
+import com.abedkhan.multimedia.Fragment.HomeFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
 import com.abedkhan.multimedia.Fragment.ShoppingFragment;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -38,7 +39,7 @@ MeowBottomNavigation meowBottomNavigation;
 //
 ////
         meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.home3));
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.search));
+//        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.search));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.add1));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.story));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(5,R.drawable.shop3));
@@ -55,15 +56,12 @@ MeowBottomNavigation meowBottomNavigation;
 
                 switch (model.getId()){
                     case 1:
-                        new MainActivity();
-//                        Intent intent=new Intent(MainActivity.this,MainActivity.class);
-//                        startActivity(intent);
+                        replace(new HomeFragment());
                         break;
 
-                    case 2:
-                        replace(new SearchFragment());
-
-                        break;
+//                    case 2:
+//                        replace(new SearchFragment());
+//                        break;
 
                     case 3:
                         replace(new AddPostFragment());
@@ -140,11 +138,8 @@ MeowBottomNavigation meowBottomNavigation;
     private void replace(Fragment fragment) {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
         fragmentTransaction.replace(R.id.frame,fragment);
         fragmentTransaction.commit();
-
-
 
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override

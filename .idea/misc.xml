@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/MultiMedia/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.212" />
+        <entry key="..\:/MultiMedia/app/src/main/res/drawable/toolbak.xml" value="0.212" />
         <entry key="..\:/MultiMedia/app/src/main/res/layout/activity_main.xml" value="0.23645833333333333" />
         <entry key="..\:/MultiMedia/app/src/main/res/layout/all_storys_cetagory.xml" value="0.23645833333333333" />
+        <entry key="..\:/MultiMedia/app/src/main/res/layout/fragment_add_post.xml" value="0.23645833333333333" />
         <entry key="..\:/MultiMedia/app/src/main/res/layout/fragment_all_cetagory_story.xml" value="0.22239583333333332" />
         <entry key="..\:/MultiMedia/app/src/main/res/layout/fragment_home.xml" value="0.22239583333333332" />
         <entry key="..\:/MultiMedia/app/src/main/res/layout/fragment_post_ui.xml" value="0.23645833333333333" />
+        <entry key="..\:/MultiMedia/app/src/main/res/layout/fragment_read_story.xml" value="0.23645833333333333" />
         <entry key="..\:/MultiMedia/app/src/main/res/layout/fragment_search.xml" value="0.22239583333333332" />
         <entry key="..\:/MultiMedia/app/src/main/res/layout/read_post_ui_design.xml" value="0.23645833333333333" />
       </map>

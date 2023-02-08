@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/c2"
+    tools:context=".Fragment.ReadStoryFragment">
+
+
+
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_200sdp"
+android:fitsSystemWindows="true"
+    android:id="@+id/appbar"
+    >
+<com.google.android.material.appbar.CollapsingToolbarLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+    app:title="Story Name"
+    app:contentScrim="@color/c2"
+    android:background="@color/c2"
+    android:id="@+id/collapsingToolbar"
+    >
+
+
+<ImageView
+    android:layout_width="@dimen/_200sdp"
+    android:layout_height="@dimen/_150sdp"
+    android:scaleType="center"
+    android:layout_gravity="center|end"
+    android:src="@drawable/ic_launcher_foreground"
+    app:layout_collapseMode="parallax"
+/>
+
+
+<androidx.appcompat.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_50sdp"
+android:id="@+id/toolbar"
+   />
+
+
+
+</com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+
+</com.google.android.material.appbar.AppBarLayout>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/storyback"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/writerProfileImg"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_38sdp"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_2sdp"
+                    app:civ_border_color="@color/c2"
+                    app:civ_border_width="@dimen/_1sdp"
+                    android:src="@drawable/person1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            android:text="Abed khan"
+            app:layout_constraintStart_toEndOf="@id/writerProfileImg"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:id="@+id/writerName"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:text="Devoloper"
+            app:layout_constraintStart_toEndOf="@id/writerProfileImg"
+            app:layout_constraintTop_toBottomOf="@id/writerName"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:id="@+id/writerProfession"
+            />
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp"
+            android:text="@string/story"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/writerProfileImg"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:id="@+id/mainStory"
+            />
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/shop3"
+    android:baselineAlignBottom="false"
+    android:clickable="true"
+    app:fabSize="normal"
+    app:layout_anchor="@id/appbar"
+    app:layout_anchorGravity="end|bottom"
+    android:backgroundTint="@color/c1"
+    android:layout_marginEnd="@dimen/_10sdp"
+    />
+
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

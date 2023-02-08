@@ -11,45 +11,81 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/c3">
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <!--        <de.hdodenhof.circleimageview.CircleImageView-->
+        <!--            android:id="@+id/userProfile"-->
+        <!--            android:layout_width="@dimen/_35sdp"-->
+        <!--            android:layout_height="@dimen/_35sdp"-->
+        <!--            android:layout_gravity="end"-->
+        <!--            android:layout_marginStart="@dimen/_10sdp"-->
+        <!--            android:layout_marginTop="@dimen/_6sdp"-->
+        <!--            android:layout_marginEnd="@dimen/_10sdp"-->
+        <!--            android:paddingBottom="@dimen/_2sdp"-->
+        <!--            android:src="@drawable/shop3"-->
+
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/tool"
+            >
+
+
+
+
+        <ImageView
             android:id="@+id/userProfile"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_gravity="end"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginTop="@dimen/_6sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_2sdp"
-            android:src="@drawable/story"
-            app:civ_border_color="@color/c1"
-            app:civ_border_width="@dimen/_1sdp"
+            android:src="@drawable/person1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/notification"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:id="@+id/shopping"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:src="@drawable/notification"
+            android:src="@drawable/shop3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/search_bar"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:src="@drawable/search"
+            app:layout_constraintEnd_toStartOf="@id/shopping"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <FrameLayout
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/userProfile"
-
-            >
+            app:layout_constraintTop_toBottomOf="@id/tool">
 
 
         </FrameLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/meowBottomNavigation"

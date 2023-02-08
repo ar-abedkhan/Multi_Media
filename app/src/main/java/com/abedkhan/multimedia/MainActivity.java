@@ -3,6 +3,7 @@ package com.abedkhan.multimedia;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +15,15 @@ import com.abedkhan.multimedia.Fragment.AllCetagoryStoryFragment;
 import com.abedkhan.multimedia.Fragment.HomeFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
 import com.abedkhan.multimedia.Fragment.ShoppingFragment;
+import com.abedkhan.multimedia.databinding.ActivityMainBinding;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
+    ActivityMainBinding binding;
+
 MeowBottomNavigation meowBottomNavigation;
     private Fragment fragment;
 
@@ -27,7 +31,8 @@ MeowBottomNavigation meowBottomNavigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
 
 
@@ -39,10 +44,10 @@ MeowBottomNavigation meowBottomNavigation;
 //
 ////
         meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.home3));
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.search));
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.add1));
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.story));
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(5,R.drawable.shop3));
+        meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.add1));
+        meowBottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.notification));
+//        meowBottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.story));
+//        meowBottomNavigation.add(new MeowBottomNavigation.Model(5,R.drawable.shop3));
         meowBottomNavigation.show(1,true);
 
 
@@ -59,24 +64,24 @@ MeowBottomNavigation meowBottomNavigation;
                         replace(new HomeFragment());
                         break;
 
-//                    case 2:
-//                        replace(new SearchFragment());
-//                        break;
+                    case 2:
+                        replace(new SearchFragment());
+                        break;
 
                     case 3:
                         replace(new AddPostFragment());
 
                         break;
 
-                    case 4:
-                        replace(new AllCetagoryStoryFragment());
-
-                        break;
-
-                    case 5:
-                        replace(new ShoppingFragment());
-
-                        break;
+//                    case 4:
+//                        replace(new AllCetagoryStoryFragment());
+//
+//                        break;
+//
+//                    case 5:
+//                        replace(new ShoppingFragment());
+//
+//                        break;
                 }
 
                 return null;
@@ -128,7 +133,9 @@ MeowBottomNavigation meowBottomNavigation;
 //            }
 //        });
 
-
+binding.shopping.setOnClickListener(view -> {
+    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ShoppingFragment()).commit();
+});
 
 
 

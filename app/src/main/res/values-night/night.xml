@@ -3,7 +3,10 @@
 
 
 
-
+    <color name="black_text">#FFFFFFFF</color>
+    <color name="toolback">#FFFFFFFF</color>
+    <color name="white_background">#FF000000</color>
+    <color name="view_color">#B0EDD6D6</color>
 
 
 

@@ -144,10 +144,10 @@ android:id="@+id/toolbar"
     android:src="@drawable/shop3"
     android:baselineAlignBottom="false"
     android:clickable="true"
-    app:fabSize="normal"
+    app:rippleColor="@color/c1"
     app:layout_anchor="@id/appbar"
     app:layout_anchorGravity="end|bottom"
-    android:backgroundTint="@color/c1"
+    android:backgroundTint="@color/c2"
     android:layout_marginEnd="@dimen/_10sdp"
     />
 

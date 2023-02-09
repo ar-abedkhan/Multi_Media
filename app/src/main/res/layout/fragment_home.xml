@@ -1,154 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/c2"
+    android:background="@color/white_background"
     tools:context=".Fragment.ReadStoryFragment">
 
 
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:fitsSystemWindows="true"
-        android:id="@+id/appbar"
-        >
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:contentScrim="@color/c2"
-            android:background="@color/c2"
-            android:id="@+id/collapsingToolbar"
-            >
-
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/cetagoryTabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabIndicatorAnimationMode="linear"
-                app:tabMode="scrollable"
-
-                android:background="@color/c2"
-                app:tabBackground="@drawable/toolbak"
-                app:tabIndicatorColor="@color/c2"
-                app:tabSelectedTextColor="@color/c2"
-                app:tabTextColor="@color/black"
-
-                />
-
-
-
-
-
-
-
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        >
-
-
-<!--        main content-->
-
-
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-
-
-    <TextView
+    <com.google.android.material.tabs.TabLayout
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/cetagoryTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"
-        android:text="@string/story"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/writerProfileImg"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
-        />
+        app:tabIndicatorAnimationMode="linear"
+        app:tabMode="scrollable"
+        android:layout_margin="@dimen/_3sdp"
+        android:background="@android:color/transparent"
+        app:tabBackground="@drawable/toolbak"
+        app:tabSelectedTextColor="@color/c1"
+        app:tabTextColor="@color/black"
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"
-        android:text="@string/story"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/writerProfileImg"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
-        />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"
-        android:text="@string/story"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/writerProfileImg"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
-        />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"
-        android:text="@string/story"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/writerProfileImg"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
-        android:id="@+id/mainStory"
         />
 
 
 
-
-
-
-
-
-
-
-
-
-</LinearLayout>
-
-
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/cetagoryViewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cetagoryTabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 
@@ -161,8 +46,4 @@
 
 
 
-
-
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.abedkhan.multimedia.Fragment.AddPostFragment;
 import com.abedkhan.multimedia.Fragment.AllCetagoryStoryFragment;
 import com.abedkhan.multimedia.Fragment.HomeFragment;
+import com.abedkhan.multimedia.Fragment.NotificationFragment;
+import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
 import com.abedkhan.multimedia.Fragment.ShoppingFragment;
 import com.abedkhan.multimedia.databinding.ActivityMainBinding;
@@ -35,19 +37,13 @@ MeowBottomNavigation meowBottomNavigation;
         setContentView(binding.getRoot());
 
 
-
         meowBottomNavigation=findViewById(R.id.meowBottomNavigation);
 
 
-
-//meowBottomNavigation.setCount(1,"10");
-//
-////
         meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.home3));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.add1));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.notification));
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.story));
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(5,R.drawable.shop3));
+
         meowBottomNavigation.show(1,true);
 
 
@@ -65,73 +61,30 @@ MeowBottomNavigation meowBottomNavigation;
                         break;
 
                     case 2:
-                        replace(new SearchFragment());
+                        replace(new AddPostFragment());
                         break;
 
                     case 3:
-                        replace(new AddPostFragment());
+                        replace(new NotificationFragment());
 
                         break;
-
-//                    case 4:
-//                        replace(new AllCetagoryStoryFragment());
-//
-//                        break;
-//
-//                    case 5:
-//                        replace(new ShoppingFragment());
-//
-//                        break;
                 }
 
                 return null;
             }
         });
 
-//        meowBottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-//            @Override
-//            public Unit invoke(MeowBottomNavigation.Model model) {
-//
-//                switch (model.getId()){
-//
-//                    case 1:
-//
-//                        break;
-//                }
-//
-//                return null;
-//            }
-//        });
-//
-//        meowBottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-//            @Override
-//            public Unit invoke(MeowBottomNavigation.Model model) {
-//
-//                switch (model.getId()){
-//
-//                    case 2:
-//
-//                        break;
-//                }
-//
-//                return null;
-//            }
-//        });
-//
-//        meowBottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-//            @Override
-//            public Unit invoke(MeowBottomNavigation.Model model) {
-//
-//                switch (model.getId()){
-//
-//                    case 3:
-//
-//                        break;
-//                }
-//
-//                return null;
-//            }
-//        });
+
+
+binding.userProfile.setOnClickListener(view -> {
+    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+});
+
+
+binding.searchBar.setOnClickListener(view -> {
+    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
+});
+
 
 binding.shopping.setOnClickListener(view -> {
     getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ShoppingFragment()).commit();

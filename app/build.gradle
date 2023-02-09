@@ -40,6 +40,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
+//country code picker
+    implementation 'com.hbb20:ccp:2.7.0'
+
+
     //meowButon navigation:::::::::::::::::::::::::
 
     implementation 'com.etebarian:meow-bottom-navigation:1.2.0'

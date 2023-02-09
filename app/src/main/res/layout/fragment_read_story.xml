@@ -9,10 +9,16 @@
     tools:context=".Fragment.ReadStoryFragment">
 
 
+<!--    -->
+<!--    zeshan vai ata hocche story porar j page oita -->
+<!--    mane post ba recycler theke j page ta open hobe oita.........-->
+<!--    -->
+<!--    -->
+
 
 <com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_200sdp"
+    android:layout_height="@dimen/_160sdp"
 android:fitsSystemWindows="true"
     android:id="@+id/appbar"
     >
@@ -40,7 +46,7 @@ android:fitsSystemWindows="true"
 
 <androidx.appcompat.widget.Toolbar
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_50sdp"
+    android:layout_height="@dimen/_45sdp"
 android:id="@+id/toolbar"
    />
 
@@ -55,7 +61,6 @@ android:id="@+id/toolbar"
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/storyback"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
 >
 
@@ -63,6 +68,9 @@ android:id="@+id/toolbar"
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/storyback"
+
         >
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -120,7 +128,7 @@ android:id="@+id/toolbar"
             android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/writerProfileImg"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_15sdp"
             android:id="@+id/mainStory"

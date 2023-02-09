@@ -11,7 +11,7 @@ import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
 
 public class CetagoryFragmentAdapter extends FragmentPagerAdapter {
-    String [] cetagoryName ={"All Post","Popular Post","All Category"};
+    String [] cetagoryName ={"All","Category","Popular Post","Popular Writer"};
 
     public CetagoryFragmentAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);

@@ -1,4 +1,4 @@
-package com.abedkhan.multimedia;
+package com.abedkhan.multimedia.Activities;
 
 
 import android.content.Intent;
@@ -8,18 +8,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.abedkhan.multimedia.Activityes.ShoppingMainActivity;
 import com.abedkhan.multimedia.Fragment.AddPostFragment;
-import com.abedkhan.multimedia.Fragment.AllCetagoryStoryFragment;
 import com.abedkhan.multimedia.Fragment.HomeFragment;
 import com.abedkhan.multimedia.Fragment.NotificationFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
+import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.ActivityMainBinding;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
+
+/*
+* This application is created by "Abed", "Osama" and "Ahsan"
+* @AbedKhan
+* @OsamaBinHashim
+* @AhsanHabib
+* */
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -35,8 +41,8 @@ MeowBottomNavigation meowBottomNavigation;
         setContentView(binding.getRoot());
 
 
+//        --Bottom menu meow button
         meowBottomNavigation=findViewById(R.id.meowBottomNavigation);
-
 
         meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.home3));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.add1));
@@ -45,7 +51,7 @@ MeowBottomNavigation meowBottomNavigation;
         meowBottomNavigation.show(1,true);
 
 
-        replace(new AllCetagoryStoryFragment());
+        replace(new HomeFragment());
 
 
         meowBottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
@@ -74,23 +80,26 @@ MeowBottomNavigation meowBottomNavigation;
 
 
 
+//        user profile clicked
 binding.userProfile.setOnClickListener(view -> {
-    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+    Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+    intent.putExtra("isProfileCLicked", true);
+    startActivity(intent);
+//    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
 });
 
 
 binding.searchBar.setOnClickListener(view -> {
-    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
+    Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+    intent.putExtra("isSearchClicked", true);
+    startActivity(intent);
+//    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
 });
 
 
 binding.shopping.setOnClickListener(view -> {
-    startActivity(new Intent(getApplicationContext(),ShoppingMainActivity.class));
+    startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
 });
-
-
-
-
 
     }
     private void replace(Fragment fragment) {

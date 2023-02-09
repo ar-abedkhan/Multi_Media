@@ -3,11 +3,14 @@
 
 
 
-    <color name="black_text">#FFFFFFFF</color>
+    <color name="black_text">#FFFFFF</color>
     <color name="toolback">#FFFFFFFF</color>
     <color name="white_background">#FF000000</color>
     <color name="view_color">#B0EDD6D6</color>
+    <color name="view_color_background">#1E000000</color>
 
+    <color name="bottomMenu_icon_Back">#FFFFFF</color>
+    <color name="bottommenu_background">#1D1D1D</color>
 
 
 

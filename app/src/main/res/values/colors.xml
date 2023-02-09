@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
 
+
     <color name="c2">#9DC4FD</color>
     <color name="c1">#E91E63</color>
     <color name="c3">#BDF9F5</color>
@@ -17,7 +18,9 @@
     <color name="toolback">#FF000000</color>
     <color name="white_background">#FFFFFFFF</color>
     <color name="view_color">#1E000000</color>
-
+    <color name="bottomMenu_icon_Back">#1E000000</color>
+    <color name="view_color_background">#FAFAFA</color>
+    <color name="bottommenu_background">#F5F5F5</color>
 
 
 </resources>

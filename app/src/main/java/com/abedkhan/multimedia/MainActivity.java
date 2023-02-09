@@ -3,20 +3,18 @@ package com.abedkhan.multimedia;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.abedkhan.multimedia.Activityes.ShoppingMainActivity;
 import com.abedkhan.multimedia.Fragment.AddPostFragment;
 import com.abedkhan.multimedia.Fragment.AllCetagoryStoryFragment;
 import com.abedkhan.multimedia.Fragment.HomeFragment;
 import com.abedkhan.multimedia.Fragment.NotificationFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
-import com.abedkhan.multimedia.Fragment.ShoppingFragment;
 import com.abedkhan.multimedia.databinding.ActivityMainBinding;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
@@ -87,7 +85,7 @@ binding.searchBar.setOnClickListener(view -> {
 
 
 binding.shopping.setOnClickListener(view -> {
-    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ShoppingFragment()).commit();
+    startActivity(new Intent(getApplicationContext(),ShoppingMainActivity.class));
 });
 
 

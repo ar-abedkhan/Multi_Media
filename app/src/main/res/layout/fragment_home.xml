@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white_background"
+    android:background="@color/view_color_background"
+
     tools:context=".Fragment.ReadStoryFragment">
 
 
@@ -13,16 +14,16 @@
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/cetagoryTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabIndicatorAnimationMode="linear"
+        android:layout_height="@dimen/_35sdp"
+        app:tabIndicatorAnimationMode="elastic"
         app:tabIndicator="@color/toolback"
         app:tabMode="scrollable"
         android:scrollbarStyle="outsideInset"
         android:layout_margin="@dimen/_3sdp"
-        android:background="@color/white_background"
+        android:background="@color/view_color_background"
         app:tabBackground="@drawable/toolbak"
         app:tabSelectedTextColor="@color/c1"
-        app:tabTextColor="@color/black"
+        app:tabTextColor="@color/black_text"
 
         />
 

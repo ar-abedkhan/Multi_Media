@@ -6,26 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
+    android:background="@color/view_color_background"
     >
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tool"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:background="@color/white_background"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/bottommenu_background"
             app:layout_constraintTop_toTopOf="parent">
 
 
             <ImageView
                 android:id="@+id/userProfile"
-                android:layout_width="@dimen/_28sdp"
-                android:layout_height="@dimen/_28sdp"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_6sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+               app:layout_constraintBottom_toBottomOf="parent"
                 android:src="@drawable/ic_baseline_person_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/appName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:fontFamily="@font/abril_fatface"
+                android:text="Multi Media"
+                android:textAlignment="center"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold"
+                android:textColor="@color/c1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/search_bar"
+                app:layout_constraintStart_toEndOf="@id/userProfile"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
 
             <ImageView
                 android:id="@+id/shopping"
@@ -33,7 +54,7 @@
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:src="@drawable/shop3"
+                android:src="@drawable/shopping"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,9 +63,9 @@
                 android:id="@+id/search_bar"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:src="@drawable/search"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/shopping"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,22 +90,24 @@
         </FrameLayout>
 
 
+
+
+
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/meowBottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_60sdp"
         android:layout_alignParentBottom="true"
+        android:paddingBottom="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:mbn_backgroundBottomColor="@color/toolback"
-        app:mbn_circleColor="@color/toolback"
+        app:mbn_backgroundBottomColor="@color/bottommenu_background"
+        app:mbn_circleColor="@color/bottomMenu_icon_Back"
         app:mbn_countBackgroundColor="#ff6f00"
         app:mbn_countTextColor="#FFFFFF"
-        app:mbn_defaultIconColor="@color/white_background"
-        android:paddingBottom="@dimen/_5sdp"
+        app:mbn_defaultIconColor="@color/black_text"
         app:mbn_rippleColor="@color/c2"
-        app:mbn_selectedIconColor="@color/white_background"
+        app:mbn_selectedIconColor="@color/black"
         app:mbn_shadowColor="@color/view_color"
-        tools:ignore="MissingClass"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

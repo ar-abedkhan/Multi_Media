@@ -23,7 +23,7 @@
                 android:layout_height="@dimen/_28sdp"
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                android:src="@drawable/person1"
+                android:src="@drawable/ic_baseline_person_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,6 +80,7 @@
         app:mbn_countBackgroundColor="#ff6f00"
         app:mbn_countTextColor="#FFFFFF"
         app:mbn_defaultIconColor="@color/white_background"
+        android:paddingBottom="@dimen/_5sdp"
         app:mbn_rippleColor="@color/c2"
         app:mbn_selectedIconColor="@color/white_background"
         app:mbn_shadowColor="@color/view_color"

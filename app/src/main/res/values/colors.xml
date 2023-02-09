@@ -22,5 +22,6 @@
     <color name="view_color_background">#FAFAFA</color>
     <color name="bottommenu_background">#F5F5F5</color>
 
+    <color name="grayBg">#6D80888C</color>
 
 </resources>

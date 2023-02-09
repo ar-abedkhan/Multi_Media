@@ -12,8 +12,6 @@
     <color name="bottomMenu_icon_Back">#FFFFFF</color>
     <color name="bottommenu_background">#1D1D1D</color>
 
-
-
-
+    <color name="grayBg">#A180888C</color>
 
 </resources>

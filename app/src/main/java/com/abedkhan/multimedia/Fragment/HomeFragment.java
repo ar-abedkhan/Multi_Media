@@ -22,13 +22,10 @@ public class HomeFragment extends Fragment {
 FragmentHomeBinding binding;
 FragmentManager fragmentManager;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 binding=FragmentHomeBinding.inflate(getLayoutInflater(),container,false);
-        Log.i("TAG", "Home fragment-- ");
 
         fragmentManager=getChildFragmentManager();
         CetagoryFragmentAdapter cetagoryAdapter = new CetagoryFragmentAdapter(fragmentManager,100);

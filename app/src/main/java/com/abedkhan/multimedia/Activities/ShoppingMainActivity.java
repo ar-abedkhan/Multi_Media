@@ -17,7 +17,6 @@ ActivityShoppingMainBinding binding;
         super.onCreate(savedInstanceState);
         binding = ActivityShoppingMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Log.i("TAG", "Shopping Main activity ");
 
 
 

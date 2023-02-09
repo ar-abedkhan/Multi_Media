@@ -1,22 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.SearchFragment">
 
-    <TextView
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:src="@drawable/back_arrow"
+        android:layout_margin="@dimen/_6sdp"
+
+        app:layout_constraintTop_toTopOf="@id/search_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/search_container"/>
+
+<!--    <AutoCompleteTextView-->
+<!--        android:id="@+id/searchBox"-->
+<!--        android:layout_width="@dimen/_260sdp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="@color/black_text"-->
+<!--        android:hint="Search here"-->
+<!--        android:textSize="@dimen/_16sdp"-->
+<!--        android:maxLines="1"-->
+<!--        android:textColorHint="@color/black_text"-->
+<!--        android:backgroundTint="@color/toolback"-->
+
+<!--        android:imeOptions="actionSearch"-->
+
+<!--        android:layout_marginTop="@dimen/_6sdp"-->
+<!--        android:layout_marginStart="@dimen/_10sdp"-->
+<!--        android:layout_marginEnd="@dimen/_10sdp"-->
+<!--        android:layout_marginBottom="@dimen/_15sdp"-->
+
+<!--        android:paddingStart="@dimen/_6sdp"-->
+<!--        android:drawableStart="@drawable/search"-->
+
+<!--        app:layout_constraintStart_toEndOf="@id/backBtn"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        />-->
+
+
+    <LinearLayout
+        android:id="@+id/search_container"
+        android:layout_width="@dimen/_270sdp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"
-        android:text="search fragment"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_15sdp"
-        />
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_6sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/backBtn">
+
+        <AutoCompleteTextView
+            android:id="@+id/searchBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black_text"
+            android:hint="Search here"
+            android:textSize="@dimen/_16sdp"
+            android:maxLines="1"
+            android:textColorHint="@color/black_text"
+            android:backgroundTint="@color/toolback"
+            android:paddingStart="@dimen/_6sdp" />
+
+
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_26sdp"
+            android:padding="@dimen/_4sdp"
+
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:background="@drawable/curcle_bg"
+            android:src="@drawable/search" />
+
+    </LinearLayout>
 
 
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

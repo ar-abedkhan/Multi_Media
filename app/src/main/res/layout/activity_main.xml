@@ -87,6 +87,18 @@
             app:layout_constraintTop_toBottomOf="@id/tool">
 
 
+
+            <Button
+                android:id="@+id/signup_login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:elevation="@dimen/_3ssp"
+                android:fontFamily="@font/abril_fatface"
+                android:text="Logein"
+                android:textColor="@color/black"
+                android:transitionName="transition_login_btn" />
+
         </FrameLayout>
 
 

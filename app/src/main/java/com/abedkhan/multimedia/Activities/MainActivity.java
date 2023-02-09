@@ -102,6 +102,28 @@ binding.shopping.setOnClickListener(view -> {
     startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
 });
 
+
+
+
+
+binding.signupLoginButton.setOnClickListener(view -> {
+    Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+    intent.putExtra("reg", true);
+    startActivity(intent);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
     private void replace(Fragment fragment) {
 

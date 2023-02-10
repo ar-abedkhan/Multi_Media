@@ -15,32 +15,13 @@ public class ProfileFragment extends Fragment {
 
     public ProfileFragment() {
     }
-FragmentProfileBinding binding;
 
-
-
-
+    FragmentProfileBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-binding=FragmentProfileBinding.inflate(getLayoutInflater(),container,false);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        binding=FragmentProfileBinding.inflate(getLayoutInflater(),container,false);
+        //
 
         return binding.getRoot();
     }

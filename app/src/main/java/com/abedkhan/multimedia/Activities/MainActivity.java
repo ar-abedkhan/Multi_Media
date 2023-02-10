@@ -81,36 +81,32 @@ MeowBottomNavigation meowBottomNavigation;
 
 
 
-//        user profile clicked
-binding.userProfile.setOnClickListener(view -> {
-    Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-    intent.putExtra("isProfileCLicked", true);
-    startActivity(intent);
-//    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
-});
+    //        user profile clicked
+    binding.userProfile.setOnClickListener(view -> {
+        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+        intent.putExtra("isProfileCLicked", true);
+        startActivity(intent);
+    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+    });
 
 
-binding.searchBar.setOnClickListener(view -> {
-    Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-    intent.putExtra("isSearchClicked", true);
-    startActivity(intent);
-//    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
-});
+    binding.searchBar.setOnClickListener(view -> {
+        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+        intent.putExtra("isSearchClicked", true);
+        startActivity(intent);
+    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
+    });
 
 
-binding.shopping.setOnClickListener(view -> {
-    startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
-});
+    binding.shopping.setOnClickListener(view -> {
+        startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
+    });
 
-
-
-
-
-binding.signupLoginButton.setOnClickListener(view -> {
-    Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-    intent.putExtra("reg", true);
-    startActivity(intent);
-});
+    binding.signupLoginButton.setOnClickListener(view -> {
+        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+        intent.putExtra("reg", true);
+        startActivity(intent);
+    });
 
 
 

@@ -69,6 +69,7 @@
             android:layout_marginEnd="@dimen/_8sdp"
             android:includeFontPadding="false"
             android:text="Story title name"
+            android:fontFamily="@font/poppins"
             android:textAlignment="viewStart"
             android:textColor="@color/black_text"
             android:textSize="@dimen/_18sdp"
@@ -88,17 +89,17 @@
             />
 
 
-
-
         <TextView
             android:id="@+id/main_story"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:maxLines="5"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:maxLines="4"
+            android:ellipsize="end"
+
             android:text="Multi MediaMulti MediaMulti MediaMulti MediaMulti MediaMui MediaMulti MediaMulti MediaMui MediaMulti MediaMulti MediaMui MediaMulti MediaMulti MediaMulti MediaMulti MediaMulti MediaMulti Media"
             android:textAlignment="viewStart"
             android:textColor="@color/black_text"
@@ -113,6 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="Read more"
+            android:fontFamily="@font/poppins"
             android:textAlignment="center"
             android:textColor="@color/black_text"
             android:textSize="@dimen/_12sdp"
@@ -229,23 +231,27 @@
             android:paddingTop="@dimen/_3sdp"
             android:paddingBottom="@dimen/_3sdp"
             >
-            <ImageView
-                android:paddingTop="@dimen/_2sdp"
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:src="@drawable/share"
-                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingStart="@dimen/_3sdp"
+                android:paddingEnd="@dimen/_3sdp"
                 android:gravity="center"
                 android:textSize="@dimen/_12sdp"
                 android:text="Share"
+                android:textStyle="bold"
                 android:textColor="@color/black_text"
                 android:id="@+id/postShear"
                 />
+
+            <ImageView
+                android:paddingTop="@dimen/_2sdp"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/share_icon"
+                android:rotation="-20"
+                />
+<!--            android:src="@drawable/share"-->
 
 
         </LinearLayout>

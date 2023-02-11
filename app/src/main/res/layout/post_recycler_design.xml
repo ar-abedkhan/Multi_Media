@@ -252,6 +252,7 @@
                 android:rotation="-20"
                 />
 <!--            android:src="@drawable/share"-->
+<!--            TODO: SHARE image ekta extra ache, oita delete korte hobe-->
 
 
         </LinearLayout>

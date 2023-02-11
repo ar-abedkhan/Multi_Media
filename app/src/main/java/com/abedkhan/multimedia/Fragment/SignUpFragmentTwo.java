@@ -33,7 +33,7 @@ public class SignUpFragmentTwo extends Fragment {
         email = getArguments().getString("Signup_Email");
         gender = getArguments().getString("Signup_Gender");
 
-        Log.i("TAG", "Signup two:-> "+fullName+"\nUserName: "+userName+"\nEmail: "+email+"\nGender:"+ gender);
+//        Log.i("TAG", "Signup two:-> "+fullName+"\nUserName: "+userName+"\nEmail: "+email+"\nGender:"+ gender);
 
 //        Back Button handling
         binding.backBtn.setOnClickListener(view -> {

@@ -1,7 +1,10 @@
 package com.abedkhan.multimedia.Fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,6 +16,18 @@ import android.widget.Toast;
 
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentSignUpTwoBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpFragmentTwo extends Fragment {
 
@@ -24,10 +39,18 @@ public class SignUpFragmentTwo extends Fragment {
     FragmentSignUpTwoBinding binding;
     String fullName, userName, email, gender, dob, password;
     long idCreationTimeMillis;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpTwoBinding.inflate(getLayoutInflater(), container, false);
+
+//        Firebase settings
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
 //        getting data from the fragment
         fullName = getArguments().getString("Signup_FullName");
@@ -76,14 +99,81 @@ public class SignUpFragmentTwo extends Fragment {
         return binding.getRoot();
     }
 
-    private void saveDataToOnlineStorage() {
-        Log.i("TAG", "Saving data to firebase! ");
-    }
-
     private String getDOBFromView() {
         int date = binding.agePicker.getDayOfMonth();
         int month = binding.agePicker.getMonth()+1;
         int year = binding.agePicker.getYear();
         return  date+"/"+month+"/"+year;
+    }
+
+//    Saving data to the firebase
+    private void saveDataToOnlineStorage() {
+//        databaseReference.child("User")
+
+        binding.registerBtn.setVisibility(View.GONE);
+        binding.progressbar.setVisibility(View.VISIBLE);
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+//                saving data to the realtime database
+                Map<String, Object> userMap = new HashMap<>();
+                userMap.put("userID", firebaseUser.getUid());
+                userMap.put("password", password);
+                userMap.put("profileImgUrl", "");
+                userMap.put("fullName", fullName);
+                userMap.put("userName", userName);
+                userMap.put("email", email);
+                userMap.put("gender", gender);
+                userMap.put("dateOfBirth", dob);
+                userMap.put("idCreationTimeMillis", idCreationTimeMillis);
+                userMap.put("userBio", "");
+                userMap.put("profession", "");
+                userMap.put("livingCountry", "");
+                userMap.put("livingCity", "");
+
+                databaseReference.child("User").child(firebaseUser.getUid()).setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(getContext(), "Data saved successfully❤", Toast.LENGTH_LONG).show();
+
+                            //                            TODO: Go to login fragment...
+                        }
+                        else {
+                            showAlert("Error", task.getException().getLocalizedMessage());
+                        }
+                        binding.registerBtn.setVisibility(View.VISIBLE);
+                        binding.progressbar.setVisibility(View.GONE);
+
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        showAlert("Failed", e.getLocalizedMessage());
+                        binding.registerBtn.setVisibility(View.VISIBLE);
+                        binding.progressbar.setVisibility(View.GONE);
+                    }
+                });
+    }
+
+//    Alert
+    private void showAlert(String title, String msg) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(title);
+        builder.setMessage(msg);
+        builder.setIcon(R.drawable.warning_icon);
+        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

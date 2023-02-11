@@ -100,7 +100,8 @@
                 android:layout_height="@dimen/_1sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginBottom="@dimen/_12sdp"
-                android:background="@color/black_text" />
+                android:background="@color/black_text"
+                android:backgroundTint="@color/black_text"/>
 
 
             <!--            For password-->
@@ -202,6 +203,18 @@
             android:textSize="@dimen/_20sdp"
             android:textAllCaps="false"
             android:transitionName="transition_next_btn" />
+
+<!--        Progressbar-->
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:padding="@dimen/_2sdp"
+            android:background="@drawable/edit_text_bg_login"
+            android:backgroundTint="@color/black_text"/>
 
 
         <androidx.appcompat.widget.AppCompatButton

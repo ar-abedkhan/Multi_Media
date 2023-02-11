@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "903032511191",
+    "project_id": "social-ecommerce-8c4c7",
+    "storage_bucket": "social-ecommerce-8c4c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903032511191:android:d4751b8ff160889c93ee92",
+        "android_client_info": {
+          "package_name": "com.abedkhan.multimedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903032511191-cntkq485ii9c6qjvv8uu0qk2lgv3e8qq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkS0NUjhzGeHiAE0tNkPSUhcxnXbJB6PY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903032511191-cntkq485ii9c6qjvv8uu0qk2lgv3e8qq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

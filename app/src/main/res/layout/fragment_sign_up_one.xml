@@ -298,7 +298,7 @@
                     android:text="Female"
                     android:textSize="@dimen/_13sdp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
 
 
                 <RadioButton
@@ -309,7 +309,7 @@
                     android:text="Other"
                     android:textSize="@dimen/_13sdp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
             </RadioGroup>
 
                         </LinearLayout>

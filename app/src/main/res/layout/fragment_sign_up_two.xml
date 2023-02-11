@@ -33,7 +33,7 @@
 
 
         <ImageView
-            android:id="@+id/signup_back_button"
+            android:id="@+id/backBtn"
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:padding="@dimen/_3ssp"
@@ -78,60 +78,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose Gender"
-                android:fontFamily="@font/poppins"
-                android:textColor="@color/black_text"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold"/>
-
-
-            <RadioGroup
-                android:id="@+id/radio_group"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:orientation="horizontal">
-
-
-                <RadioButton
-                    android:id="@+id/male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Male"
-                    android:textColor="@color/black_text"/>
-
-
-                <RadioButton
-                    android:id="@+id/female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_7sdp"
-                    android:text="Female"
-                    android:textColor="@color/black_text"/>
-
-
-                <RadioButton
-                    android:id="@+id/others"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_7sdp"
-                    android:text="Other"
-                    android:textColor="@color/black_text"/>
-            </RadioGroup>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_12sdp"
-                android:background="@color/black_text" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Select Your Age"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/black_text"
@@ -147,6 +93,95 @@
                android:datePickerMode="spinner"
                 android:spinnersShown="true"
                 android:calendarTextColor="@color/black_text"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:background="@color/black_text" />
+
+
+            <!--            For password-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_6sdp"
+                app:cardElevation="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp">
+                <com.google.android.material.textfield.TextInputLayout
+
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/black_text"
+                    app:boxStrokeColor="@color/black_text"
+                    app:boxStrokeWidthFocused="@dimen/_1sdp"
+                    app:endIconTint="@color/black_text"
+                    app:hintTextColor="@color/black_text"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/black_text"
+                    app:startIconDrawable="@drawable/ic_baseline_security_24"
+                    app:startIconTint="@color/black_text"
+
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/signup_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:inputType="textPassword"
+                        android:textColor="@color/black_text"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:hint="Enter Password"
+
+                        android:textSize="@dimen/_15sdp"
+                        android:paddingStart="@dimen/_4sdp"
+                        android:paddingEnd="@dimen/_4sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_8sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+            <!--            For re-entering password-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_6sdp"
+                app:cardElevation="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/black_text"
+                    app:boxStrokeColor="@color/black_text"
+                    app:boxStrokeWidthFocused="@dimen/_1sdp"
+                    app:endIconTint="@color/black_text"
+                    app:hintTextColor="@color/black_text"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/black_text"
+                    app:startIconDrawable="@drawable/ic_baseline_security_24"
+                    app:startIconTint="@color/black_text"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/signup_re_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPassword"
+                        android:textColor="@color/black_text"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:hint="Re-Enter Password"
+
+                        android:textSize="@dimen/_15sdp"
+                        android:paddingStart="@dimen/_4sdp"
+                        android:paddingEnd="@dimen/_4sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_8sdp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
 
 
         </LinearLayout>

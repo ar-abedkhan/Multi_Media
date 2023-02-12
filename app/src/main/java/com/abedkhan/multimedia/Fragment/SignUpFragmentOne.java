@@ -74,6 +74,26 @@ public class SignUpFragmentOne extends Fragment {
             }
         });
 
+//        Handling signup back button
+        binding.signupBackButton.setOnClickListener(view -> {
+            Fragment fragment = new LoginFragment();
+
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerFrame, fragment);
+            transaction.commit();
+        });
+
+//        Handling Login option selection
+        binding.signupLoginButton.setOnClickListener(view -> {
+            Fragment fragment = new LoginFragment();
+
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerFrame, fragment);
+            transaction.commit();
+        });
+
         return binding.getRoot();
     }
 }

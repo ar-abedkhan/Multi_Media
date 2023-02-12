@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.abedkhan.multimedia.Fragment.LoginFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
 import com.abedkhan.multimedia.Fragment.SignUpFragmentOne;
@@ -23,15 +25,26 @@ public class ContainerActivity extends AppCompatActivity {
         binding = ActivityContainerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        intent = getIntent();
+        try {
+            intent = getIntent();
+            /*
+            * This try catch checks if this activity has opened for the first time or not
+            * if "try" does not work, that means the application has been opened for the first time
+            * --for the first timers catch block will lead the users to the login page
+            * */
+            Log.i("TAG", "Inside Try");
+            if (intent.getBooleanExtra("isProfileCLicked", false)){
+                replace(new ProfileFragment());
+            } else if (intent.getBooleanExtra("isSearchClicked",false)) {
+                replace(new SearchFragment());
+            }else {
+                replace(new LoginFragment());
+            }
 
-        if (intent.getBooleanExtra("isProfileCLicked", false)){
-            replace(new ProfileFragment());
-        } else if (intent.getBooleanExtra("isSearchClicked",false)) {
-            replace(new SearchFragment());
-        }else if (intent.getBooleanExtra("reg",false)){
-            replace(new SignUpFragmentOne());
+        }catch (Exception e){
+            replace(new LoginFragment());
         }
+
 
     }
 

@@ -102,11 +102,11 @@ MeowBottomNavigation meowBottomNavigation;
         startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
     });
 
-    binding.signupLoginButton.setOnClickListener(view -> {
-        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-        intent.putExtra("reg", true);
-        startActivity(intent);
-    });
+//    binding.signupLoginButton.setOnClickListener(view -> {
+//        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+//        intent.putExtra("log", true);
+//        startActivity(intent);
+//    });
 
 
 

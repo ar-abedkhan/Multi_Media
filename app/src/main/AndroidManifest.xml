@@ -16,13 +16,13 @@
         android:theme="@style/Theme.MultiMedia"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.ContainerActivity"
+            android:name=".Activities.MainActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.ShoppingMainActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.ContainerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

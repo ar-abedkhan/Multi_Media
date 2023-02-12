@@ -84,6 +84,7 @@ public class SignUpFragmentTwo extends Fragment {
             }
         });
 
+
 //        Back Button handling
         binding.backBtn.setOnClickListener(view -> {
             //            --going to the signup page two
@@ -93,6 +94,17 @@ public class SignUpFragmentTwo extends Fragment {
                     .beginTransaction()
                     .replace(R.id.containerFrame, fragment);
             transaction.addToBackStack(null);
+            transaction.commit();
+        });
+
+
+//        Handling Login option selection
+        binding.signupLoginButton.setOnClickListener(view -> {
+            Fragment fragment = new LoginFragment();
+
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerFrame, fragment);
             transaction.commit();
         });
 

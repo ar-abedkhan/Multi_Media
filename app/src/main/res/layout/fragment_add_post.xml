@@ -5,9 +5,17 @@
     android:layout_height="match_parent"
     android:transitionName="transition_signup"
     android:background="@color/bottommenu_background">
-<!--    android:layout_margin="@dimen/_7sdp"-->
-<!--    app:cardCornerRadius="@dimen/_8sdp"-->
-<!--    android:elevation="@dimen/_8sdp"-->
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menuContainer"
         android:layout_width="match_parent"
@@ -311,13 +319,13 @@
                     android:textStyle="bold"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_15sdp"
-                    android:text="#horro, #thriller, #sci-fi"
+                    android:text=""
                     />
             </androidx.cardview.widget.CardView>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"/>
+                android:layout_height="@dimen/_130sdp"/>
 
         </LinearLayout>
     </ScrollView>

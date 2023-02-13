@@ -3,6 +3,7 @@ package com.abedkhan.multimedia.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -52,7 +53,7 @@ MeowBottomNavigation meowBottomNavigation;
         meowBottomNavigation.show(1,true);
 
 
-        replace(new HomeFragment());
+        replace(new HomeFragment(), false);
 
 
         meowBottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
@@ -62,15 +63,18 @@ MeowBottomNavigation meowBottomNavigation;
 
                 switch (model.getId()){
                     case 1:
-                        replace(new HomeFragment());
+                        replace(new HomeFragment(), false);
+//                        isToolActive = false;
                         break;
 
                     case 2:
-                        replace(new AddPostFragment());
+                        replace(new AddPostFragment(), true);
+//                        isToolActive = true;
                         break;
 
                     case 3:
-                        replace(new NotificationFragment());
+                        replace(new NotificationFragment(), false);
+//                        isToolActive = false;
 
                         break;
                 }
@@ -109,19 +113,14 @@ MeowBottomNavigation meowBottomNavigation;
 //    });
 
 
-
-
-
-
-
-
-
-
-
-
-
     }
-    private void replace(Fragment fragment) {
+    private void replace(Fragment fragment, boolean isToolActive) {
+        if (isToolActive){
+            binding.tool.setVisibility(View.GONE);
+        }
+        else {
+            binding.tool.setVisibility(View.VISIBLE);
+        }
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);

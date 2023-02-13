@@ -42,8 +42,29 @@
             app:layout_constraintStart_toEndOf="@id/profileImg"
             app:layout_constraintTop_toTopOf="parent"
 
+            />
+        <TextView
+            android:id="@+id/followTheWriter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/pattaya"
+            android:text="Follow"
+            android:textAlignment="center"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
             />
+
+
+
+
+
 
         <TextView
             android:id="@+id/postTime"

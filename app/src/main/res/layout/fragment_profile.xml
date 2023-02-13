@@ -7,7 +7,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#379DC4FD"
     android:paddingTop="@dimen/_10sdp"
-    tools:context=".Fragment.SearchFragment">
+    tools:context=".Fragment.SearchFragment"
+    >
 
 
     <ScrollView
@@ -232,7 +233,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:inputType="textMultiLine"
-                    android:text=" I Am Abed khan. A devoloper of this A devoloper of this A devoloper of this apps..nothing special but "
+                    android:text=" 👋 Hi, I’m @ar-abedkhan \n 👀I’m interested in Software devolopment\n🌱  I’m currently learning Andriod with Java"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_12sdp"
                     />
@@ -733,4 +734,82 @@
     </ScrollView>
 
 
+
+
+
+
+<!--    <com.github.clans.fab.FloatingActionButton-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:layout_marginRight="8dp"-->
+<!--        android:src="@drawable/add"-->
+<!--        app:fab_colorNormal="@color/c1"-->
+<!--        app:fab_colorPressed="@color/c2"-->
+<!--        app:rippleColor="@color/black_text"-->
+<!--        />-->
+
+
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        app:menu_fab_size="normal"
+        app:menu_showShadow="true"
+        app:menu_shadowColor="#66000000"
+        app:menu_shadowRadius="@dimen/_2sdp"
+       app:menu_shadowXOffset="@dimen/_1sdp"
+        app:menu_shadowYOffset="@dimen/_2sdp"
+        app:menu_colorNormal="@color/c1"
+        app:menu_colorPressed="@color/c2"
+        app:menu_colorRipple="@color/view_color"
+       app:menu_animationDelayPerItem="50"
+        app:menu_icon="@drawable/fab_add"
+        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+
+        >
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add"
+            app:fab_size="mini"
+            app:fab_label="settings"
+            />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item2"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:src="@drawable/add"
+            app:fab_size="mini"
+            app:fab_label="message"
+            />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

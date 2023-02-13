@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.abedkhan.multimedia.R;
+import com.abedkhan.multimedia.databinding.FragmentAddPostBinding;
 
 public class AddPostFragment extends Fragment {
     public AddPostFragment() {
@@ -16,16 +17,14 @@ public class AddPostFragment extends Fragment {
     }
 
 
-
-
-
-
+    FragmentAddPostBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding = FragmentAddPostBinding.inflate(getLayoutInflater(), container, false);
 
 
 
-        return inflater.inflate(R.layout.fragment_add_post, container, false);
+        return binding.getRoot();
     }
 }

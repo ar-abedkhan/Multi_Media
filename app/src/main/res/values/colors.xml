@@ -11,11 +11,13 @@
     <color name="th_white">#FFFFFFFF</color>
 
 
-
+<!--Theme color is c1, c2-->
     <color name="c2">#9DC4FD</color>
     <color name="c1">#E91E63</color>
     <color name="c3">#BDF9F5</color>
     <color name="c4">#90a4ae</color>
+    <color name="c5">#9AA0A8</color>
+
     <color name="black_text">#FF000000</color>
     <color name="toolback">#FF000000</color>
     <color name="white_background">#FFFFFFFF</color>

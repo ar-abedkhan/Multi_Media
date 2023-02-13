@@ -123,5 +123,11 @@
         app:mbn_selectedIconColor="@color/black"
         app:mbn_shadowColor="@color/view_color"
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/bottommenu_background"
+        android:backgroundTint="@color/bottommenu_background"
+        app:layout_constraintTop_toBottomOf="@id/meowBottomNavigation"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

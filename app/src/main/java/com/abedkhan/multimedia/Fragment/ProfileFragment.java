@@ -13,7 +13,6 @@ import com.abedkhan.multimedia.Activities.MainActivity;
 import com.abedkhan.multimedia.Activities.ShoppingMainActivity;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentProfileBinding;
-import com.github.clans.fab.FloatingActionButton;
 
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {
@@ -27,7 +26,6 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 //        binding=FragmentProfileBinding.inflate(getLayoutInflater(),container,false);
-        FloatingActionButton floatingActionButton;
 //
 //floatingActionButton=container.findViewById(R.id.menu_item);
 //

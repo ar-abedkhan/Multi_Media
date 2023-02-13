@@ -1,54 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.profileEditFragment">
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        app:menu_fab_size="normal"
-        app:menu_showShadow="true"
-        app:menu_shadowColor="#66000000"
-        app:menu_shadowRadius="@dimen/_2sdp"
-        app:menu_shadowXOffset="@dimen/_1sdp"
-        app:menu_shadowYOffset="@dimen/_2sdp"
-        app:menu_colorNormal="@color/c1"
-        app:menu_colorPressed="@color/c2"
-        app:menu_colorRipple="@color/view_color"
-        app:menu_animationDelayPerItem="50"
-        app:menu_icon="@drawable/fab_add"
-        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
-        >
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
-            app:fab_size="mini"
-            app:fab_label="settings"
-            />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item2"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:src="@drawable/add"
-            app:fab_size="mini"
-            app:fab_label="message"
-            />
-
-    </com.github.clans.fab.FloatingActionMenu>
-
-
-</LinearLayout>
+</FrameLayout>

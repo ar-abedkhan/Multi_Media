@@ -118,7 +118,7 @@ public class HomeSubContainerFragment extends Fragment {
                     Log.i("TAG", "Category: inside snapshot2");
 
                     Map<Object, Object> category = (Map<Object, Object>) dataSnapshot.getValue();
-//                    TODO: line 120 e error bolche...
+//                    TODO: line 120 e error bolche... ei line er porer log gula show o hocche nah
                     Log.i("TAG", "Category: getting data from snapshot");
 
                     int size = (int) category.get("categorySize");

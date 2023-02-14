@@ -47,6 +47,7 @@ dependencies {
 //country code picker
     implementation 'com.hbb20:ccp:2.7.0'
 
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
 
     //meowButon navigation:::::::::::::::::::::::::
 
@@ -66,5 +67,6 @@ dependencies {
 //for showing image in recycler....
     implementation 'com.github.bumptech.glide:glide:4.14.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.1'
+//    compile 'com.github.clans:fab:1.6.4'
 
 }

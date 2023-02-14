@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.abedkhan.multimedia.Fragment.LoginFragment;
+import com.abedkhan.multimedia.Fragment.MessageFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
 import com.abedkhan.multimedia.Fragment.SignUpFragmentOne;
+import com.abedkhan.multimedia.Fragment.profileEditFragment;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.ActivityContainerBinding;
 
@@ -35,8 +37,15 @@ public class ContainerActivity extends AppCompatActivity {
             Log.i("TAG", "Inside Try");
             if (intent.getBooleanExtra("isProfileCLicked", false)){
                 replace(new ProfileFragment());
+
             } else if (intent.getBooleanExtra("isSearchClicked",false)) {
                 replace(new SearchFragment());
+
+            }else if (intent.getBooleanExtra("isSettingsClicked",false)) {
+                replace(new profileEditFragment());
+
+            }else if (intent.getBooleanExtra("isMessageClicked",false)){
+                replace(new MessageFragment());
             }else {
                 replace(new LoginFragment());
             }

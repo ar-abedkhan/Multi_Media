@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#379DC4FD"
+    android:background="@color/sky_lite"
     android:paddingTop="@dimen/_10sdp"
     tools:context=".Fragment.SearchFragment"
     >
@@ -67,6 +67,7 @@
 
 
 
+
                 <TextView
                     android:id="@+id/UserProfileName"
                     android:layout_width="@dimen/_160sdp"
@@ -85,51 +86,191 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
 
-                <TextView
-                    android:id="@+id/joined"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_120sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:fontFamily="@font/poppins"
-                    android:includeFontPadding="false"
-                    android:inputType="textMultiLine"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:text="Joined"
-                    android:textColor="@color/black_text"
-                    android:textSize="@dimen/_12sdp"
+                    android:orientation="vertical"
+                    android:id="@+id/layout"
+                    app:layout_constraintTop_toBottomOf="@id/UserProfileName"
                     app:layout_constraintStart_toEndOf="@id/profileimgcard"
-                    app:layout_constraintTop_toBottomOf="@id/UserProfileName" />
-
-
-                <TextView
-                    android:id="@+id/joineddate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_120sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:fontFamily="@font/poppins"
-                    android:includeFontPadding="false"
-                    android:inputType="textMultiLine"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:text="8 february 2022"
-                    android:textColor="@color/black_text"
-                    android:textSize="@dimen/_12sdp"
-                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
-                    app:layout_constraintTop_toBottomOf="@id/joined" />
+                    >
 
 
 
+<!--ata follow card follow na korle ata show hobe-->
+
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/followTheWriter"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardElevation="@dimen/_10sdp"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                        app:layout_constraintTop_toBottomOf="@id/UserProfileName"                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:background="@color/sky_lite"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:src="@drawable/person_add"
+                                android:textSize="@dimen/_15sdp"
+                                android:textStyle="bold"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                                app:layout_constraintTop_toBottomOf="@id/UserProfileName"
+                                />
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_medium"
+                                android:includeFontPadding="false"
+                                android:text="Follow"
+                                android:textAlignment="center"
+                                android:textColor="@color/purple_700"
+                                android:textSize="@dimen/_15sdp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                                app:layout_constraintTop_toBottomOf="@id/UserProfileName"
+                                />
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+
+<!--this is followed card....user fowwow korle ata show hobe-->
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/youAreFollowingTheWriter"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:cardElevation="@dimen/_10sdp"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                        app:layout_constraintTop_toBottomOf="@id/UserProfileName"                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:background="@color/view_color"
+                            >
+
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/pattaya"
+                                android:textAlignment="center"
+                                android:src="@drawable/ic_baseline_person_24"
+                                android:textSize="@dimen/_15sdp"
+                                android:textStyle="bold"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                                app:layout_constraintTop_toBottomOf="@id/UserProfileName"
+                                />
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Following"
+                                android:includeFontPadding="false"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_15sdp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                                app:layout_constraintTop_toBottomOf="@id/UserProfileName"
+                                />
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/joined"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_120sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:inputType="textMultiLine"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:text="Joined"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                        app:layout_constraintTop_toBottomOf="@id/followTheWriter" />
+
+
+                    <TextView
+                        android:id="@+id/joineddate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_120sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:inputType="textMultiLine"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:text="8 february 2022"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                        app:layout_constraintTop_toBottomOf="@id/joined" />
+
+
+
+
+
+
+                </LinearLayout>
+
+
+
+<!--ata social media connect korar option ekhane sob gula social media icon deya ase-->
 
                <LinearLayout
                    android:gravity="center"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:orientation="horizontal"
-                   app:layout_constraintTop_toBottomOf="@id/joineddate"
                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
-                   app:layout_constraintBottom_toBottomOf="@id/profileimgcard"
+                   app:layout_constraintBottom_toBottomOf="parent"
                    app:layout_constraintEnd_toEndOf="parent"
+                   android:layout_marginBottom="@dimen/_10sdp"
                    >
 
 
@@ -137,7 +278,6 @@
                        android:id="@+id/facebookId"
                        android:layout_width="@dimen/_22sdp"
                        android:layout_height="@dimen/_22sdp"
-                       android:layout_marginStart="@dimen/_8sdp"
                        android:src="@drawable/facebook"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintStart_toStartOf="parent"
@@ -375,7 +515,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Books Buy"
+                            android:text="Saved Post"
                             android:textSize="@dimen/_15sdp"
                             android:textAlignment="center"
                             android:textColor="@color/black_text"
@@ -429,7 +569,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Uploded Story"
+                            android:text="Followers"
                             android:textSize="@dimen/_15sdp"
                             android:textAlignment="center"
                             android:textStyle="bold"
@@ -469,7 +609,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Books Published"
+                            android:text="Following"
                             android:textSize="@dimen/_15sdp"
                             android:textAlignment="center"
                             android:textStyle="bold"
@@ -531,36 +671,36 @@
             </LinearLayout>
 
 
+            <TextView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailsLayout"
+                android:id="@+id/abouttxt"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_15sdp"
+                android:text="About"
+                android:textColor="@color/black_text"
+                android:textSize="@dimen/_20sdp"
 
+                />
 
 
 
             <LinearLayout
-                android:id="@id/about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsLayout"
+                app:layout_constraintTop_toBottomOf="@id/abouttxt"
                 android:orientation="vertical"
                 >
 
-                <TextView
-                    android:id="@+id/about"
-                    android:layout_width="@dimen/_160sdp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:includeFontPadding="false"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingTop="@dimen/_15sdp"
-                    android:text="About"
-                    android:textColor="@color/black_text"
-                    android:textSize="@dimen/_20sdp"
 
-                    />
 
 
                 <LinearLayout
-                    app:layout_constraintTop_toBottomOf="@id/about"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -596,7 +736,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    app:layout_constraintTop_toBottomOf="@id/about"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -634,7 +773,6 @@
 
 
                 <LinearLayout
-                    app:layout_constraintTop_toBottomOf="@id/about"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -675,7 +813,6 @@
 
 
                 <LinearLayout
-                    app:layout_constraintTop_toBottomOf="@id/about"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -738,24 +875,6 @@
 
 
 
-<!--    <com.github.clans.fab.FloatingActionButton-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:id="@+id/fab"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:layout_marginBottom="8dp"-->
-<!--        android:layout_marginRight="8dp"-->
-<!--        android:src="@drawable/add"-->
-<!--        app:fab_colorNormal="@color/c1"-->
-<!--        app:fab_colorPressed="@color/c2"-->
-<!--        app:rippleColor="@color/black_text"-->
-<!--        />-->
-
-
-
-
 <!--    <com.github.clans.fab.FloatingActionMenu-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
@@ -767,7 +886,7 @@
 <!--        android:layout_marginRight="10dp"-->
 <!--        android:layout_marginBottom="10dp"-->
 <!--        android:layout_marginLeft="10dp"-->
-<!--        app:menu_fab_size="normal"-->
+<!--        fab:menu_fab_size="normal"-->
 <!--        app:menu_showShadow="true"-->
 <!--        app:menu_shadowColor="#66000000"-->
 <!--        app:menu_shadowRadius="@dimen/_2sdp"-->
@@ -777,7 +896,7 @@
 <!--        app:menu_colorPressed="@color/c2"-->
 <!--        app:menu_colorRipple="@color/view_color"-->
 <!--       app:menu_animationDelayPerItem="50"-->
-<!--        app:menu_icon="@drawable/fab_add"-->
+<!--        app:menu_icon="@drawable/add"-->
 <!--        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"-->
 <!--        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"-->
 
@@ -805,9 +924,62 @@
 
 
 
+<com.getbase.floatingactionbutton.FloatingActionsMenu
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_margin="@dimen/_13sdp"
+    app:fab_expandDirection="up"
+    app:fab_labelsPosition="left"
+    app:fab_addButtonColorNormal="@color/c1"
+    app:fab_addButtonColorPressed="@color/c2"
+    android:animateLayoutChanges="true"
+    >
+
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_colorDisabled="@color/white"
+        app:fab_size="mini"
+        app:fab_icon="@drawable/comment"
+        android:id="@+id/message"
+        app:fab_colorNormal="@color/c1"
+        app:fab_colorPressed="@color/c2"
+        app:fab_title="Message Me"
+        />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_colorDisabled="@color/white"
+        app:fab_size="mini"
+            app:fab_colorNormal="@color/c1"
+            app:fab_colorPressed="@color/c2"
+        app:fab_icon="@drawable/ic_baseline_settings_24"
+        android:id="@+id/settings"
+        app:fab_title="Settings"
+        />
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_colorDisabled="@color/white"
+        app:fab_size="mini"
+        app:fab_icon="@drawable/write"
+            app:fab_colorNormal="@color/c1"
+            app:fab_colorPressed="@color/c2"
+        android:id="@+id/addPost"
+        app:fab_title="Add Post"
+        />
 
 
 
+
+
+</com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

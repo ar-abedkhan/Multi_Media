@@ -29,5 +29,6 @@
     <color name="grayBg">#6D80888C</color>
 
     <color name="cWhite">#FFFFFFFF</color>
+    <color name="sky_lite">#379DC4FD</color>
 
 </resources>

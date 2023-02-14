@@ -42,6 +42,7 @@ MeowBottomNavigation meowBottomNavigation;
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent intent1 =getIntent();
 
 //        --Bottom menu meow button
         meowBottomNavigation=findViewById(R.id.meowBottomNavigation);
@@ -51,6 +52,7 @@ MeowBottomNavigation meowBottomNavigation;
         meowBottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.notification));
 
         meowBottomNavigation.show(1,true);
+
 
 
         replace(new HomeFragment(), false);
@@ -105,6 +107,11 @@ MeowBottomNavigation meowBottomNavigation;
     binding.shopping.setOnClickListener(view -> {
         startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
     });
+
+        if (intent1.getBooleanExtra("isAddClicked", false)){
+            replace(new AddPostFragment(),false);
+
+        }
 
 //    binding.signupLoginButton.setOnClickListener(view -> {
 //        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);

@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.abedkhan.multimedia.Fragment.AddPostFragment;
 import com.abedkhan.multimedia.Fragment.NotificationFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
+
+//TODO: vai ekhane theke cetagory tolbar kj kore.....niche swich case e fragment set korsi demo egula...
 
 public class CetagoryFragmentAdapter extends FragmentPagerAdapter {
     String [] cetagoryName ={"All","Category","Popular Post","Popular Writer"};
@@ -28,6 +31,8 @@ public class CetagoryFragmentAdapter extends FragmentPagerAdapter {
                 return new NotificationFragment();
             case 2:
                 return new ReadStoryFragment();
+            case 3:
+                return new AddPostFragment();
 
         }
         return null;

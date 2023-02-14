@@ -27,6 +27,10 @@ FragmentManager fragmentManager;
                              Bundle savedInstanceState) {
 binding=FragmentHomeBinding.inflate(getLayoutInflater(),container,false);
 
+
+
+//TODO: vai home page er toolbar cetagory ekhane set kora hoise...
+
         fragmentManager=getChildFragmentManager();
         CetagoryFragmentAdapter cetagoryAdapter = new CetagoryFragmentAdapter(fragmentManager,100);
         binding.cetagoryViewpager.setAdapter(cetagoryAdapter);

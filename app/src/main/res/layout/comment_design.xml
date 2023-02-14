@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_5sdp"
+    android:layout_margin="@dimen/_3sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/comment_ProfileImg"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_gravity="end"
+            app:civ_border_color="@color/c1"
+            app:civ_border_width="@dimen/_1sdp"
+            android:src="@drawable/ic_baseline_person_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:background="@drawable/comment_back"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintStart_toEndOf="@id/comment_ProfileImg"
+        app:layout_constraintTop_toBottomOf="@id/comment_ProfileImg"
+        >
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/c1"
+            android:textSize="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:text="Abed khan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/comment_profileName"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:text="9h"
+            android:textStyle="normal"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/commentTime"
+            />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            android:text="Abed khan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment_profileName"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:paddingEnd="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:id="@+id/main_comment"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

@@ -249,7 +249,6 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:orientation="horizontal"
             android:paddingTop="@dimen/_3sdp"
-            android:paddingBottom="@dimen/_3sdp"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -257,16 +256,16 @@
                 android:layout_gravity="center"
                 android:paddingEnd="@dimen/_3sdp"
                 android:gravity="center"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_13sdp"
                 android:text="Share"
                 android:textStyle="bold"
+                android:layout_marginEnd="@dimen/_3sdp"
                 android:textColor="@color/black_text"
                 android:id="@+id/postShear"
                 />
 
             <ImageView
-                android:paddingTop="@dimen/_2sdp"
-                android:layout_width="@dimen/_18sdp"
+                android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/share_icon"
                 android:rotation="-20"

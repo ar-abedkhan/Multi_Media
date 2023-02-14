@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.abedkhan.multimedia.Fragment.AddPostFragment;
+import com.abedkhan.multimedia.Fragment.ChattingFragment;
 import com.abedkhan.multimedia.Fragment.HomeFragment;
 import com.abedkhan.multimedia.Fragment.NotificationFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;

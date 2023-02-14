@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_6sdp"
+    android:paddingBottom="@dimen/_3sdp"
+    android:background="@color/white_background"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:paddingTop="@dimen/_6sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/travel1"
+            app:civ_border_width="@dimen/_1sdp"
+            app:civ_border_color="@color/white"
+            android:id="@+id/chatUserimgTV"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chatUsernameTV"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="start"
+            android:textColor="@color/c1"
+            app:layout_constraintStart_toEndOf="@id/chatUserimgTV"
+            android:text="Abed khan"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:textSize="@dimen/_18sdp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chattimeTv"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"
+            android:paddingStart="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black_text"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:text="10:22 PM"
+            android:fontFamily="@font/muli_semibold"
+            android:paddingEnd="@dimen/_8sdp"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/chatDateTv"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/chattimeTv"-->
+<!--            android:gravity="start"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="10/12/22"-->
+<!--            android:fontFamily="serif"-->
+<!--            android:maxLines="1"-->
+<!--            android:layout_marginTop="@dimen/_6sdp"-->
+<!--            android:paddingStart="@dimen/_5sdp"-->
+<!--            android:paddingEnd="@dimen/_8sdp"-->
+<!--            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"-->
+<!--            />-->
+
+
+        <TextView
+            android:id="@+id/lastMessageTV"
+            android:layout_width="@dimen/_185sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:fontFamily="serif"
+            android:maxLines="1"
+            android:textColor="@color/black_text"
+            android:includeFontPadding="false"
+            android:text="Last message"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/chatUserimgTV"
+            app:layout_constraintTop_toBottomOf="@id/chatUsernameTV"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

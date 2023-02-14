@@ -695,6 +695,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/abouttxt"
                 android:orientation="vertical"
+                android:paddingBottom="@dimen/_50sdp"
                 >
 
 
@@ -716,7 +717,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Works at "
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_text"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:textSize="16dp"
@@ -726,7 +727,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Andriod app devolover"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_text"
+                        android:fontFamily="@font/poppins_medium"
+                        android:includeFontPadding="false"
                         android:textStyle="bold"
                         android:layout_gravity="center"
                         android:gravity="center"
@@ -735,40 +738,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    >
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_baseline_school_24"
-                        android:layout_margin="5dp"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Went to "
-                        android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textSize="16dp"
-                        />
-                    <TextView
-                        android:id="@+id/userStudy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="FPI"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textSize="16dp"
-                        />
-
-                </LinearLayout>
 
 
 
@@ -781,14 +750,14 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/home3"
+                        android:src="@drawable/country"
                         android:layout_margin="5dp"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="From "
-                        android:textColor="@color/black"
+                        android:text="Country "
+                        android:textColor="@color/black_text"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:textSize="16dp"
@@ -797,8 +766,8 @@
                         android:id="@+id/userFrom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chitagong"
-                        android:textColor="@color/black"
+                        android:text="Bangladesh"
+                        android:textColor="@color/black_text"
                         android:textStyle="bold"
                         android:layout_gravity="center"
                         android:gravity="center"
@@ -828,7 +797,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Live in "
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_text"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:textSize="16dp"
@@ -838,14 +807,143 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Feni"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_text"
                         android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium"
+                        android:includeFontPadding="false"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:textSize="16dp"
                         />
 
                 </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    >
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_transgender_24"
+                        android:layout_margin="5dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender "
+                        android:textColor="@color/black_text"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/userGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="Male"
+                        android:textColor="@color/black_text"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    >
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_person_24"
+                        android:layout_margin="5dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User Name "
+                        android:textColor="@color/black_text"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="abed7484"
+                        android:textColor="@color/black_text"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    >
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_baseline_email_24"
+                        android:layout_margin="5dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User Male "
+                        android:textColor="@color/black_text"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="16dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/userMail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="dss@gmail.com"
+                        android:textColor="@color/black_text"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+
+
+
+
+
 
 
 

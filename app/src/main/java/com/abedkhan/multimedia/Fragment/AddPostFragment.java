@@ -158,7 +158,7 @@ public class AddPostFragment extends Fragment {
         mainText = binding.mainText.getText().toString().trim();
 
         postID = databaseReference.push().getKey();
-        Log.i("TAG", "saveOrPublish1: "+ postID);
+//        Log.i("TAG", "saveOrPublish1: "+ postID);
 
         if (postImgUri != null){
             storageReference.child(postID).putFile(postImgUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {

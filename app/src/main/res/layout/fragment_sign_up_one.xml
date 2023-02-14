@@ -113,15 +113,16 @@
                     android:hint="Enter Full Name"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:fontFamily="@font/poppins"
+                    android:fontFamily="@font/poppins_medium"
                     android:includeFontPadding="false"
+                    android:drawablePadding="@dimen/_4sdp"
 
                     android:paddingStart="@dimen/_4sdp"
                     android:paddingTop="@dimen/_8sdp"
                     android:paddingEnd="@dimen/_4sdp"
                     android:paddingBottom="@dimen/_8sdp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
+                    android:textColor="@color/black_text"
+                    android:textColorHint="@color/black_text"
                     android:textSize="@dimen/_15sdp" />
 
             </androidx.cardview.widget.CardView>
@@ -133,25 +134,27 @@
                 app:cardCornerRadius="@dimen/_6sdp"
                 app:cardElevation="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp">
-            <EditText
-                android:id="@+id/signup_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:background="@drawable/edit_text_bg_login"
-                android:hint="Enter username"
-                android:textColorHint="@color/black"
-                android:drawableStart="@drawable/ic_baseline_person_24"
-                android:maxLines="1"
-                android:fontFamily="@font/poppins"
-                android:includeFontPadding="false"
 
-                android:textSize="@dimen/_15sdp"
-                android:paddingStart="@dimen/_4sdp"
-                android:paddingEnd="@dimen/_4sdp"
-                android:paddingTop="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_8sdp"/>
+                <EditText
+                    android:id="@+id/signup_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_bg_login"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="Enter username"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_4sdp"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:drawablePadding="@dimen/_4sdp"
+
+                    android:paddingEnd="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    android:textColor="@color/black_text"
+                    android:textColorHint="@color/black_text"
+                    android:textSize="@dimen/_15sdp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -168,13 +171,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/black"
+                android:textColor="@color/black_text"
                 android:background="@drawable/edit_text_bg_login"
                 android:hint="Enter email"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/black_text"
                 android:drawableStart="@drawable/ic_baseline_email_24"
                 android:maxLines="1"
-                android:fontFamily="@font/poppins"
+                android:drawablePadding="@dimen/_4sdp"
+                android:fontFamily="@font/poppins_medium"
                 android:includeFontPadding="false"
 
 

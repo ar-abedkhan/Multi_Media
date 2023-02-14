@@ -177,11 +177,12 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:background="#00000000"
             android:textSize="@dimen/_14sdp"
+
             android:fontFamily="@font/poppins"
             android:textStyle="bold"
             android:onClick="callLoginFromSignUp"
             android:text="Create a new  Account"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             android:transitionName="transition_login_btn" />
 
 

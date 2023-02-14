@@ -976,6 +976,19 @@
             />
 
 
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorDisabled="@color/white"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_baseline_logout_24"
+            app:fab_colorNormal="@color/c1"
+            app:fab_colorPressed="@color/c2"
+            android:id="@+id/logeOutBtn"
+            app:fab_title="Loge Out"
+            />
+
+
 
 
 

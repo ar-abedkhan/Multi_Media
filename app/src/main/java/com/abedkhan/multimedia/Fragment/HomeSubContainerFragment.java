@@ -56,11 +56,11 @@ public class HomeSubContainerFragment extends Fragment {
 
         if (pagePosition== 0){
 //            here we will setup the home page
-//            getPostDataFromCloud("");
+            getPostDataFromCloud("");
         }
         else if (pagePosition== 1) {
 //            category setting
-//            getPostDataFromCloud("horror");
+            getPostDataFromCloud("test");
         }
         else if (pagePosition== 2) {
 //            popular post settings
@@ -90,13 +90,13 @@ public class HomeSubContainerFragment extends Fragment {
                     postList.add(model);
                     if (categoryName.equals("")) {
 
-                        Log.i("TAG", "getting data in home--: ");
+//                        Log.i("TAG", "getting data in home--: ");
 //                        TODO: setting data to the view
                     }
                     else {
                         getDataByCategory(categoryName, num, postList);
                         num++;
-                        Log.i("TAG", "getting data in category ");
+//                        Log.i("TAG", "getting data in category ");
                     }
                 }
             }
@@ -108,29 +108,52 @@ public class HomeSubContainerFragment extends Fragment {
     }
 
     private void getDataByCategory(String categoryName, int postNumber, List<PostModel> postList) {
-        Log.i("TAG", "Post title (in category): "+ postList.get(postNumber).getTitle());
+//        Log.i("TAG", "Post title (in category): "+ postList.get(postNumber).getTitle());
         List<PostModel> postModelList = new ArrayList<>();
         databaseReference.child("Category").child(postList.get(postNumber).getPostID()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.i("TAG", "Category: inside snapshot");
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Log.i("TAG", "Category: inside snapshot2");
+//                    Log.i("TAG", "Category: inside snapshot2");
 
-                    Map<Object, Object> category = (Map<Object, Object>) dataSnapshot.getValue();
-//                    TODO: line 120 e error bolche... ei line er porer log gula show o hocche nah
-                    Log.i("TAG", "Category: getting data from snapshot");
+                    /*
+                    * Here, categoryValue only returning the value of the map
+                    * Even though we don't need the if statement, I am using it in case it may be helpful in the future
+                    * */
+                    Object categoryValue = dataSnapshot.getValue();
+                    if (categoryValue instanceof Map) {
+                        Map<Object, Object> category = (Map<Object, Object>) categoryValue;
 
-                    int size = (int) category.get("categorySize");
-                    for (int n = 1; n<= size; n++) {
-                        String catName = (String) category.get(String.valueOf(n));
+//                        Log.i("TAG", "Category: getting data from snapshot");
+
+    //                    int size = (int) category.get("categorySize");
+    //                    for (int n = 1; n<= size; n++) {
+    //                        String catName = (String) category.get(String.valueOf(n));
+    //                        if (catName.equals(categoryName)){
+    //                            postModelList.add(postList.get(postNumber));
+    //                        }
+    //                        Log.i("TAG", "Category: "+ postModelList.get(postNumber).getPostID());
+    //                    }
+
+                        String catName = (String) category.get(categoryName);
                         if (catName.equals(categoryName)){
                             postModelList.add(postList.get(postNumber));
                         }
                         Log.i("TAG", "Category: "+ postModelList.get(postNumber).getPostID());
+
+                        Log.i("TAG", "Category: "+ postModelList.get(0).getTitle());
                     }
 
-                    Log.i("TAG", "Category: "+ postModelList.get(postNumber).getTitle());
+                    else {
+//                        Log.i("TAG", "data snapshot else value: "+ categoryValue);
+
+                        if (categoryValue.equals(categoryName)){
+                            postModelList.add(postList.get(postNumber));
+                            Log.i("TAG", "Category===: "+ postModelList.get(0).getPostID());
+
+                        }
+                    }
+
                 }
             }
 

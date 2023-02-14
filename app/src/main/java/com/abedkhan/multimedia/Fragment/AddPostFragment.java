@@ -229,6 +229,7 @@ public class AddPostFragment extends Fragment {
                     catMap.put("categorySize", categoryList.size());
                     for (String category:categoryList) {
                         catMap.put(String.valueOf(num), category);
+//                        catMap.put(category, category);
                         num++;
                     }
                 }

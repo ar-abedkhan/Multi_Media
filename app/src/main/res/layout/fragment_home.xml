@@ -8,8 +8,6 @@
 
     tools:context=".Fragment.ReadStoryFragment">
 
-
-
     <com.google.android.material.tabs.TabLayout
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/cetagoryTabLayout"
@@ -24,10 +22,7 @@
         app:tabBackground="@drawable/toolbak"
         app:tabSelectedTextColor="@color/c1"
         app:tabTextColor="@color/black_text"
-
         />
-
-
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/cetagoryViewpager"
@@ -37,16 +32,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cetagoryTabLayout"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-
-
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

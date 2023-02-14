@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/_8sdp"
-           >
+            >
 
 
 
@@ -97,7 +97,7 @@
 
 
 
-<!--ata follow card follow na korle ata show hobe-->
+                    <!--ata follow card follow na korle ata show hobe-->
 
 
 
@@ -159,7 +159,7 @@
 
 
 
-<!--this is followed card....user fowwow korle ata show hobe-->
+                    <!--this is followed card....user fowwow korle ata show hobe-->
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -260,86 +260,86 @@
 
 
 
-<!--ata social media connect korar option ekhane sob gula social media icon deya ase-->
+                <!--ata social media connect korar option ekhane sob gula social media icon deya ase-->
 
-               <LinearLayout
-                   android:gravity="center"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:orientation="horizontal"
-                   app:layout_constraintStart_toEndOf="@id/profileimgcard"
-                   app:layout_constraintBottom_toBottomOf="parent"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   android:layout_marginBottom="@dimen/_10sdp"
-                   >
-
-
-                   <de.hdodenhof.circleimageview.CircleImageView
-                       android:id="@+id/facebookId"
-                       android:layout_width="@dimen/_22sdp"
-                       android:layout_height="@dimen/_22sdp"
-                       android:src="@drawable/facebook"
-                       app:layout_constraintTop_toTopOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       />
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    >
 
 
-
-
-                   <de.hdodenhof.circleimageview.CircleImageView
-                       android:id="@+id/instagramId"
-                       android:layout_width="@dimen/_22sdp"
-                       android:layout_height="@dimen/_22sdp"
-                       android:layout_marginStart="@dimen/_8sdp"
-                       android:src="@drawable/instagram"
-                       app:layout_constraintTop_toTopOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/facebookId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:src="@drawable/facebook"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
 
 
-                   <de.hdodenhof.circleimageview.CircleImageView
-                       android:id="@+id/tweeterId"
-                       android:layout_width="@dimen/_22sdp"
-                       android:layout_height="@dimen/_22sdp"
-                       android:layout_marginStart="@dimen/_8sdp"
-                       android:src="@drawable/twitter"
-                       app:layout_constraintTop_toTopOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/instagramId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/instagram"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
 
 
-                   <de.hdodenhof.circleimageview.CircleImageView
-                       android:id="@+id/linkedInId"
-                       android:layout_width="@dimen/_22sdp"
-                       android:layout_height="@dimen/_22sdp"
-                       android:layout_marginStart="@dimen/_8sdp"
-                       android:src="@drawable/linkedin"
-                       app:layout_constraintTop_toTopOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/tweeterId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/twitter"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
 
 
-                   <de.hdodenhof.circleimageview.CircleImageView
-                       android:id="@+id/whatsappId"
-                       android:layout_width="@dimen/_22sdp"
-                       android:layout_height="@dimen/_22sdp"
-                       android:layout_marginStart="@dimen/_8sdp"
-                       android:src="@drawable/whatsapp"
-                       app:layout_constraintTop_toTopOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/linkedInId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/linkedin"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/whatsappId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/whatsapp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
 
 
 
-               </LinearLayout>
+                </LinearLayout>
 
 
 
@@ -875,113 +875,112 @@
 
 
 
-<!--    <com.github.clans.fab.FloatingActionMenu-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:id="@+id/menu"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_marginRight="10dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        fab:menu_fab_size="normal"-->
-<!--        app:menu_showShadow="true"-->
-<!--        app:menu_shadowColor="#66000000"-->
-<!--        app:menu_shadowRadius="@dimen/_2sdp"-->
-<!--       app:menu_shadowXOffset="@dimen/_1sdp"-->
-<!--        app:menu_shadowYOffset="@dimen/_2sdp"-->
-<!--        app:menu_colorNormal="@color/c1"-->
-<!--        app:menu_colorPressed="@color/c2"-->
-<!--        app:menu_colorRipple="@color/view_color"-->
-<!--       app:menu_animationDelayPerItem="50"-->
-<!--        app:menu_icon="@drawable/add"-->
-<!--        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"-->
-<!--        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"-->
+    <!--    <com.github.clans.fab.FloatingActionMenu-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:id="@+id/menu"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_alignParentRight="true"-->
+    <!--        android:layout_marginRight="10dp"-->
+    <!--        android:layout_marginBottom="10dp"-->
+    <!--        android:layout_marginLeft="10dp"-->
+    <!--        fab:menu_fab_size="normal"-->
+    <!--        app:menu_showShadow="true"-->
+    <!--        app:menu_shadowColor="#66000000"-->
+    <!--        app:menu_shadowRadius="@dimen/_2sdp"-->
+    <!--       app:menu_shadowXOffset="@dimen/_1sdp"-->
+    <!--        app:menu_shadowYOffset="@dimen/_2sdp"-->
+    <!--        app:menu_colorNormal="@color/c1"-->
+    <!--        app:menu_colorPressed="@color/c2"-->
+    <!--        app:menu_colorRipple="@color/view_color"-->
+    <!--       app:menu_animationDelayPerItem="50"-->
+    <!--        app:menu_icon="@drawable/add"-->
+    <!--        app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"-->
+    <!--        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"-->
 
-<!--        >-->
+    <!--        >-->
 
-<!--        <com.github.clans.fab.FloatingActionButton-->
-<!--            android:id="@+id/menu_item"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/add"-->
-<!--            app:fab_size="mini"-->
-<!--            app:fab_label="settings"-->
-<!--            />-->
-<!--        <com.github.clans.fab.FloatingActionButton-->
-<!--            android:id="@+id/menu_item2"-->
-<!--            android:layout_width="@dimen/_35sdp"-->
-<!--            android:layout_height="@dimen/_35sdp"-->
-<!--            android:src="@drawable/add"-->
-<!--            app:fab_size="mini"-->
-<!--            app:fab_label="message"-->
-<!--            />-->
+    <!--        <com.github.clans.fab.FloatingActionButton-->
+    <!--            android:id="@+id/menu_item"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:src="@drawable/add"-->
+    <!--            app:fab_size="mini"-->
+    <!--            app:fab_label="settings"-->
+    <!--            />-->
+    <!--        <com.github.clans.fab.FloatingActionButton-->
+    <!--            android:id="@+id/menu_item2"-->
+    <!--            android:layout_width="@dimen/_35sdp"-->
+    <!--            android:layout_height="@dimen/_35sdp"-->
+    <!--            android:src="@drawable/add"-->
+    <!--            app:fab_size="mini"-->
+    <!--            app:fab_label="message"-->
+    <!--            />-->
 
-<!--    </com.github.clans.fab.FloatingActionMenu>-->
-
-
+    <!--    </com.github.clans.fab.FloatingActionMenu>-->
 
 
-<com.getbase.floatingactionbutton.FloatingActionsMenu
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_margin="@dimen/_13sdp"
-    app:fab_expandDirection="up"
-    app:fab_labelsPosition="left"
-    app:fab_addButtonColorNormal="@color/c1"
-    app:fab_addButtonColorPressed="@color/c2"
-    android:animateLayoutChanges="true"
-    >
 
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fab_colorDisabled="@color/white"
-        app:fab_size="mini"
-        app:fab_icon="@drawable/comment"
-        android:id="@+id/message"
-        app:fab_colorNormal="@color/c1"
-        app:fab_colorPressed="@color/c2"
-        app:fab_title="Message Me"
-        />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:fab_colorDisabled="@color/white"
-        app:fab_size="mini"
-            app:fab_colorNormal="@color/c1"
-            app:fab_colorPressed="@color/c2"
-        app:fab_icon="@drawable/ic_baseline_settings_24"
-        android:id="@+id/settings"
-        app:fab_title="Settings"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/_13sdp"
+        app:fab_expandDirection="up"
+        app:fab_labelsPosition="left"
+        app:fab_addButtonColorNormal="@color/c1"
+        app:fab_addButtonColorPressed="@color/c2"
+        android:animateLayoutChanges="true"
+        >
 
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:fab_colorDisabled="@color/white"
-        app:fab_size="mini"
-        app:fab_icon="@drawable/write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorDisabled="@color/white"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/comment"
+            android:id="@+id/message"
             app:fab_colorNormal="@color/c1"
             app:fab_colorPressed="@color/c2"
-        android:id="@+id/addPost"
-        app:fab_title="Add Post"
-        />
+            app:fab_title="Message Me"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorDisabled="@color/white"
+            app:fab_size="mini"
+            app:fab_colorNormal="@color/c1"
+            app:fab_colorPressed="@color/c2"
+            app:fab_icon="@drawable/ic_baseline_settings_24"
+            android:id="@+id/settings"
+            app:fab_title="Settings"
+            />
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorDisabled="@color/white"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/write"
+            app:fab_colorNormal="@color/c1"
+            app:fab_colorPressed="@color/c2"
+            android:id="@+id/addPost"
+            app:fab_title="Add Post"
+            />
 
 
 
 
 
-</com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
 

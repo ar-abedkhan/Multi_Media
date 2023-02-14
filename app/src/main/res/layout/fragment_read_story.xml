@@ -375,7 +375,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/messagelayout"
             android:background="@color/c2"
-            android:padding="@dimen/_8sdp"
+            android:padding="@dimen/_4sdp"
             >
 
             <EditText
@@ -388,10 +388,10 @@
                 android:paddingTop="@dimen/_8sdp"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_8sdp"
-                android:textColorHint="@color/white_background"
+                android:textColorHint="@color/black_text"
                 android:paddingEnd="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
-                android:background="@color/view_color"
+                android:background="@drawable/toolbak"
                 android:layout_marginStart="@dimen/_8sdp"
                 app:layout_constraintEnd_toStartOf="@id/messagesendbtn"
                 android:inputType="textMultiLine"

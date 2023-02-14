@@ -1,6 +1,7 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,23 +34,32 @@ public class CetagoryFragmentAdapter extends FragmentPagerAdapter {
             case 0:
                 fragment =  new HomeSubContainerFragment();
                 args.putInt("position", 0);
+                Log.i("tag", "position 0: "+0);
                 break;
             case 1:
                 fragment =  new HomeSubContainerFragment();
                 args.putInt("position", 1);
+                Log.i("tag", "position 1: "+1);
+
                 break;
             case 2:
                 fragment =  new HomeSubContainerFragment();
                 args.putInt("position", 2);
+                Log.i("tag", "position 2: "+2);
+
                 break;
             case 3:
                 fragment =  new HomeSubContainerFragment();
                 args.putInt("position", 3);
+                Log.i("tag", "position 3: "+3);
+
                 break;
 
             case 4:
                 fragment =  new HomeSubContainerFragment();
                 args.putInt("position", 4);
+                Log.i("tag", "position 4: "+4);
+
                 break;
         }
 //        fragment =  new HomeSubContainerFragment();

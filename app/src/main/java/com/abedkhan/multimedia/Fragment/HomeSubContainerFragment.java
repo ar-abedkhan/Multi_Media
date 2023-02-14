@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.abedkhan.multimedia.R;
+import com.abedkhan.multimedia.databinding.FragmentHomeSubContainerBinding;
 
 public class HomeSubContainerFragment extends Fragment {
 
@@ -17,15 +18,25 @@ public class HomeSubContainerFragment extends Fragment {
         // Required empty public constructor
     }
 
+    FragmentHomeSubContainerBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        binding=FragmentHomeSubContainerBinding.inflate(getLayoutInflater(),container,false);
 
         if (getArguments() != null) {
             int position = getArguments().getInt("position");
             Log.i("TAG", "Position(Home sub container): "+position);
-        }
 
-        return inflater.inflate(R.layout.fragment_home_sub_container, container, false);
+
+            String p=String.valueOf(position);
+
+            binding.text.setText(p);
+
+
+
+        }
+        return binding.getRoot();
     }
 }

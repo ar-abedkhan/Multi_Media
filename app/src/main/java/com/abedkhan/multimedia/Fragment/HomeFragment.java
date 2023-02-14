@@ -39,6 +39,10 @@ binding=FragmentHomeBinding.inflate(getLayoutInflater(),container,false);
 
 
 
+
+
+
+
 return binding.getRoot();
     }
 }

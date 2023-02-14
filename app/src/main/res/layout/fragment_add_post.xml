@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +11,7 @@
         android:id="@+id/progressbar"
         android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_45sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +34,7 @@
             android:layout_height="@dimen/_30sdp"
             android:src="@drawable/back_arrow"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
@@ -40,12 +42,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create a Post"
-            android:textSize="@dimen/_20sdp"
-            android:textColor="@color/black_text"
-            android:fontFamily="@font/pacifico"
+            android:textSize="@dimen/_22sdp"
+            android:textColor="@color/c1"
+            android:fontFamily="@font/pattaya"
             android:includeFontPadding="false"
             android:layout_marginStart="@dimen/_4sdp"
             app:layout_constraintStart_toEndOf="@id/backBtn"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <LinearLayout
@@ -65,7 +68,8 @@
             android:layout_height="wrap_content"
             android:text="Save"
             android:textColor="@color/black_text"
-            android:fontFamily="@font/pacifico"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/poppins_medium"
             android:padding="@dimen/_4sdp"
             android:textSize="@dimen/_18sdp"
             android:layout_marginEnd="@dimen/_8sdp"
@@ -78,9 +82,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Publish"
+            android:includeFontPadding="false"
             android:textColor="@color/black_text"
             android:background="@drawable/scqure_back"
-            android:fontFamily="@font/pacifico"
+            android:fontFamily="@font/poppins_medium"
             android:padding="@dimen/_4sdp"
             android:textSize="@dimen/_18sdp"
             android:textAllCaps="false"
@@ -93,7 +98,7 @@
         android:id="@+id/horizontal_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
-        android:background="@color/black_text"
+        android:background="@color/view_color"
         android:backgroundTint="@color/black_text"
 
         android:layout_marginBottom="@dimen/_50sdp"
@@ -117,8 +122,10 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_3sdp"
 
-                android:padding="@dimen/_6sdp"
-                android:hint="Enter title"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:paddingTop="@dimen/_6sdp"
+                android:hint="Enter Story title"
                 android:fontFamily="@font/poppins"
                 android:textColorHint="@color/black_text"
                 android:background="@drawable/edit_text_bg_login"
@@ -148,7 +155,6 @@
                 android:layout_marginEnd="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_6sdp"
-
                 android:drawableStart="@drawable/add_img_icon"
 
                 android:paddingStart="@dimen/_6sdp"
@@ -162,13 +168,13 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/postImgCon"
                 android:visibility="gone"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_marginStart="@dimen/_6sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_3sdp"
-
+               android:padding="@dimen/_3sdp"
                 android:layout_gravity="center"
                 app:cardCornerRadius="@dimen/_8sdp"
                 android:elevation="@dimen/_8sdp">
@@ -176,7 +182,6 @@
                 android:id="@+id/postImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:src="@drawable/lightning_tree"
 
                 />
@@ -187,6 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:padding="@dimen/_6sdp"
                 android:textColorHint="@color/black_text"
@@ -196,7 +202,7 @@
                 android:inputType="textMultiLine"
                 android:minLines="8"
                 android:gravity="start|top"
-                android:hint="Your text"
+                android:hint="Write your story..."
 
                 android:scrollbars="vertical"
 
@@ -238,45 +244,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
+                android:paddingTop="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                >
 
             <AutoCompleteTextView
                 android:id="@+id/category"
-                android:layout_width="@dimen/_180sdp"
+                android:layout_width="@dimen/_200sdp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_1sdp"
                 android:layout_marginBottom="@dimen/_3sdp"
 
-                android:padding="@dimen/_6sdp"
-                android:hint="Category"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:hint="Write Category Name"
                 android:fontFamily="@font/poppins"
                 android:textColorHint="@color/black_text"
                 android:background="@drawable/edit_text_bg_login"
                 android:backgroundTint="#39656363"
 
                 android:textColor="@color/black_text"
-                android:textSize="@dimen/_16sdp"/>
+                android:textSize="@dimen/_16sdp"
+                />
 
                 <TextView
                     android:id="@+id/addCategoryBtn"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_1sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_3sdp"
                     android:textAllCaps="false"
                     android:textAlignment="center"
-
-                    android:padding="@dimen/_6sdp"
+                    android:paddingStart="@dimen/_6sdp"
+                    android:paddingEnd="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
                     android:fontFamily="@font/poppins"
                     android:background="@drawable/edit_text_bg_login"
-                    android:backgroundTint="@color/black_text"
-
                     android:text="Add"
                     android:textStyle="bold"
-                    android:textColor="@color/cWhite"
+                    android:textColor="@color/black_text"
                     android:textSize="@dimen/_16sdp"/>
             </LinearLayout>
 

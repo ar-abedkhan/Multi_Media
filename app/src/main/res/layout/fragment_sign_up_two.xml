@@ -169,6 +169,8 @@
                             android:textColor="@color/black_text"
                             android:textSize="@dimen/_15sdp" />
                     </com.google.android.material.textfield.TextInputLayout>
+
+
                 </androidx.cardview.widget.CardView>
                 <!--            For re-entering password-->
                 <androidx.cardview.widget.CardView

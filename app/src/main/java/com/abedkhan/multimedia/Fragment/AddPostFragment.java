@@ -215,6 +215,8 @@ public class AddPostFragment extends Fragment {
         postMap.put("postImgUrl", postImgUrl);
         postMap.put("allOperation", allOperation);
         postMap.put("postTimeMillis", postTimeMillis);
+        postMap.put("postLike", 0);
+        postMap.put("postComment", 0);
 
 //        saving the main data to firebase (without category list)
         databaseReference.child("Post").child(postID).setValue(postMap).addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -3,14 +3,11 @@ package com.abedkhan.multimedia.Model;
 public class PostReactModel {
     String postID; //postID will be used for the post React id
     String reactorName, reactorUserID;
-    int reactNumber, totalReact;
 
-    public PostReactModel(String postID, String reactorName, String reactorUserID, int reactNumber, int totalReact) {
+    public PostReactModel(String postID, String reactorName, String reactorUserID) {
         this.postID = postID;
         this.reactorName = reactorName;
         this.reactorUserID = reactorUserID;
-        this.reactNumber = reactNumber;
-        this.totalReact = totalReact;
     }
 
     public PostReactModel() {
@@ -40,19 +37,4 @@ public class PostReactModel {
         this.reactorUserID = reactorUserID;
     }
 
-    public int getReactNumber() {
-        return reactNumber;
-    }
-
-    public void setReactNumber(int reactNumber) {
-        this.reactNumber = reactNumber;
-    }
-
-    public int getTotalReact() {
-        return totalReact;
-    }
-
-    public void setTotalReact(int totalReact) {
-        this.totalReact = totalReact;
-    }
 }

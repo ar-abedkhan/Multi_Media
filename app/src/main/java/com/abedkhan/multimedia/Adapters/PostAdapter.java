@@ -48,6 +48,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
         holder.postTitle.setText(model.getTitle());
         holder.mainStory.setText(model.getMainText());
+        holder.reactCount.setText(""+model.getPostLike());
+        holder.commentCount.setText(String.valueOf(model.getPostComment()));
+
 
         if (!model.getPostImgUrl().equals("")){
             Glide.with(context).load(model.getPostImgUrl()).placeholder(R.drawable.lightning_tree).into(holder.postImg);

@@ -1,11 +1,11 @@
 package com.abedkhan.multimedia.Model;
 
 public class PostModel {
-    String postID, title, mainText, postImgUrl, draftOrPublished, ownerID, postLike, postComment;
+    String postID, title, mainText, postImgUrl, draftOrPublished, ownerID;
+    int postLike, postComment;
     long postTimeMillis;
 
-
-    public PostModel(String postID, String title, String mainText, String postImgUrl, String draftOrPublished, String ownerID, String postLike, String postComment, long postTimeMillis) {
+    public PostModel(String postID, String title, String mainText, String postImgUrl, String draftOrPublished, String ownerID, int postLike, int postComment, long postTimeMillis) {
         this.postID = postID;
         this.title = title;
         this.mainText = mainText;
@@ -15,6 +15,9 @@ public class PostModel {
         this.postLike = postLike;
         this.postComment = postComment;
         this.postTimeMillis = postTimeMillis;
+    }
+
+    public PostModel() {
     }
 
     public String getPostID() {
@@ -65,19 +68,19 @@ public class PostModel {
         this.ownerID = ownerID;
     }
 
-    public String getPostLike() {
+    public int getPostLike() {
         return postLike;
     }
 
-    public void setPostLike(String postLike) {
+    public void setPostLike(int postLike) {
         this.postLike = postLike;
     }
 
-    public String getPostComment() {
+    public int getPostComment() {
         return postComment;
     }
 
-    public void setPostComment(String postComment) {
+    public void setPostComment(int postComment) {
         this.postComment = postComment;
     }
 

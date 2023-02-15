@@ -41,7 +41,7 @@ public class ContainerActivity extends AppCompatActivity {
             } else if (intent.getBooleanExtra("isSearchClicked",false)) {
                 replace(new SearchFragment());
 
-            }else if (intent.getBooleanExtra("isSettingsClicked",false)) {
+            }else if (intent.getBooleanExtra("settingsClicked",false)) {
                 replace(new profileEditFragment());
 
             }else if (intent.getBooleanExtra("isMessageClicked",false)){

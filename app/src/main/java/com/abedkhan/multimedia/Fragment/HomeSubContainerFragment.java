@@ -49,6 +49,7 @@ public class HomeSubContainerFragment extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        binding.progressbar.setVisibility(View.VISIBLE);
 
         if (getArguments() != null) {
             pagePosition = getArguments().getInt("position");
@@ -117,6 +118,8 @@ public class HomeSubContainerFragment extends Fragment {
 //                        Log.i("TAG", "getting data in category ");
                     }
                 }
+                binding.progressbar.setVisibility(View.GONE);
+
             }
 
             @Override

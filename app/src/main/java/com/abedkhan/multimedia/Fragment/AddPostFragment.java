@@ -89,13 +89,24 @@ public class AddPostFragment extends Fragment {
         });
 
 //        Handling category save button
-        binding.addCategoryBtn.setOnClickListener(view -> {
-            category = binding.category.getText().toString();
-            categoryList.add(category);
 
-            binding.addedCategoryViewer.append(category+", ");
-            binding.category.setText("");
-        });
+
+            binding.addCategoryBtn.setOnClickListener(view -> {
+                if (!binding.category.equals("")){
+
+                    category = binding.category.getText().toString();
+                    categoryList.add(category);
+
+                    binding.addedCategoryViewer.append(category+", ");
+                    binding.category.setText("");
+
+                }else {
+                    binding.category.setError("Category filed required");
+                }
+
+            });
+
+
 
 //        Handling save button
         binding.saveBtn.setOnClickListener(view -> {

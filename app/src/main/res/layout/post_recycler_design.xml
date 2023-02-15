@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/scqure_back"
-    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginTop="@dimen/_8sdp"
     app:cardCornerRadius="@dimen/_8sdp"
     android:elevation="@dimen/_8sdp"
     android:layout_height="wrap_content">
@@ -103,9 +103,11 @@
 
 
         <ImageView
-            android:layout_margin="@dimen/_4ssp"
+            android:layout_marginTop="@dimen/_4ssp"
+            android:layout_marginBottom="@dimen/_4ssp"
             android:id="@+id/postImg"
             android:layout_width="match_parent"
+            app:layout_constraintHeight_max="@dimen/_300sdp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/postStoryTitle"
             />

@@ -81,7 +81,7 @@
                     android:paddingTop="@dimen/_10sdp"
                     android:text="Abed khan"
                     android:textColor="@color/black_text"
-                    android:textSize="@dimen/_25sdp"
+                    android:textSize="@dimen/_22sdp"
                     app:layout_constraintStart_toEndOf="@id/profileimgcard"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -214,6 +214,14 @@
 
                     </androidx.cardview.widget.CardView>
 
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    >
+
                     <TextView
                         android:id="@+id/joined"
                         android:layout_width="wrap_content"
@@ -224,11 +232,12 @@
                         android:includeFontPadding="false"
                         android:inputType="textMultiLine"
                         android:paddingTop="@dimen/_5sdp"
-                        android:text="Joined"
+                        android:text="Joined "
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12sdp"
-                        app:layout_constraintStart_toEndOf="@id/profileimgcard"
-                        app:layout_constraintTop_toBottomOf="@id/followTheWriter" />
+                      app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
                     <TextView
@@ -236,7 +245,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_120sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
                         android:fontFamily="@font/poppins"
                         android:includeFontPadding="false"
                         android:inputType="textMultiLine"
@@ -244,9 +252,11 @@
                         android:text="8 february 2022"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_12sdp"
-                        app:layout_constraintStart_toEndOf="@id/profileimgcard"
-                        app:layout_constraintTop_toBottomOf="@id/joined" />
+                        app:layout_constraintStart_toEndOf="@id/joined"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
@@ -948,7 +958,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="User Male "
+                        android:text="User Date of Birth "
                         android:textColor="@color/black_text"
                         android:layout_gravity="center"
                         android:gravity="center"

@@ -55,7 +55,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/saveBtn"
+                android:id="@+id/saveChangesDataBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save"
@@ -88,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@id/menuContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+      android:paddingBottom="@dimen/_60sdp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -116,7 +116,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:src="@drawable/travel1"
-                    android:id="@+id/profileimg"
+                    android:id="@+id/userProfileImg"
                     app:civ_border_color="@color/white_background"
                     app:civ_border_width="@dimen/_2sdp"
                     />
@@ -129,8 +129,8 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:background="@drawable/logein_bg"
-                    app:layout_constraintStart_toStartOf="@id/profileimg"
-                    app:layout_constraintBottom_toBottomOf="@id/profileimg"
+                    app:layout_constraintStart_toStartOf="@id/userProfileImg"
+                    app:layout_constraintBottom_toBottomOf="@id/userProfileImg"
                     android:src="@drawable/ic_baseline_photo_camera_24"
                     android:id="@+id/uploadprofile"
 
@@ -148,6 +148,7 @@
 
 
             <LinearLayout
+                android:id="@+id/linear_layout"
                 app:layout_constraintTop_toBottomOf="@id/leyout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -160,7 +161,7 @@
 
                 <EditText
                     app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/inputFullName"
+                    android:id="@+id/userProfileName"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:paddingStart="@dimen/_5sdp"
@@ -178,7 +179,7 @@
 
                 <EditText
                     app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/inputUserName"
+                    android:id="@+id/userName"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:paddingStart="@dimen/_5sdp"
@@ -195,7 +196,7 @@
 
 
                 <EditText
-                    android:id="@+id/inputmail"
+                    android:id="@+id/userMail"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:paddingStart="@dimen/_5sdp"
@@ -212,6 +213,23 @@
                     />
 
 
+                <EditText
+                    android:id="@+id/userProfileBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/edit_text_bg_login"
+                    android:hint="Bio"
+                    android:textColor="@color/black"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:inputType="textMultiLine"
+                    />
+
+
 
 
 
@@ -222,6 +240,7 @@
                     android:text="Select Your Date of birth"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_14sdp"
+                    android:layout_marginStart="@dimen/_4ssp"
                     android:textStyle="bold" />
 
 
@@ -229,6 +248,8 @@
                     android:id="@+id/age_picker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_3sdp"
                     android:calendarTextColor="@color/black_text"
                     android:calendarViewShown="false"
                     android:datePickerMode="spinner"
@@ -236,7 +257,7 @@
 
 
                 <EditText
-                    android:id="@+id/writerProfession"
+                    android:id="@+id/userProfession"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_marginStart="@dimen/_5sdp"
@@ -250,12 +271,12 @@
                     android:inputType="text"
                     android:paddingStart="@dimen/_5sdp"
                     android:textColor="@color/black"
-                    app:layout_constraintTop_toBottomOf="@id/inputmail" />
+                    />
 
 
 
                 <EditText
-                    android:id="@+id/address"
+                    android:id="@+id/userLiveIn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:paddingStart="@dimen/_5sdp"
@@ -273,15 +294,15 @@
 
 
                 <EditText
-                    app:layout_constraintTop_toBottomOf="@id/address"
-                    android:id="@+id/education"
+                    app:layout_constraintTop_toBottomOf="@id/userLiveIn"
+                    android:id="@+id/userCountry"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_35sdp"
                     android:paddingStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/edit_text_bg_login"
-                    android:hint="Education"
+                    android:hint="country"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
@@ -305,6 +326,8 @@
                     android:textColorHint="@color/black_text"
                     app:boxStrokeColor="@color/black_text"
                     app:boxStrokeWidthFocused="@dimen/_1sdp"
+                    android:layout_marginStart="@dimen/_4ssp"
+                    android:layout_marginEnd="@dimen/_4ssp"
                     app:endIconTint="@color/black_text"
                     app:hintTextColor="@color/black_text"
                     app:passwordToggleEnabled="true"
@@ -335,56 +358,55 @@
 
 
 
-
-
-
-
-
-
-                <androidx.appcompat.widget.AppCompatButton
-                    app:layout_constraintTop_toBottomOf="@id/education"
-                    android:id="@+id/savechangesbtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:text="Save Changes"
-                    android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_15sdp"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/back"
-                    android:layout_marginBottom="@dimen/_100sdp"
-                    />
-                <ProgressBar
-                    app:layout_constraintTop_toBottomOf="@id/education"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/regprogressbar"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:layout_gravity="center"
-                    />
-
             </LinearLayout>
+
+
+
+
+
+
+
+
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                app:layout_constraintTop_toBottomOf="@id/linear_layout"-->
+<!--                android:id="@+id/saveChangesDataBtn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_40sdp"-->
+<!--                android:text="Save Changes"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="@dimen/_15sdp"-->
+<!--                android:layout_marginStart="@dimen/_13sdp"-->
+<!--                android:layout_marginEnd="@dimen/_13sdp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:background="@drawable/back"-->
+<!--                android:layout_marginBottom="@dimen/_100sdp"-->
+<!--                />-->
+<!--            <ProgressBar-->
+<!--                app:layout_constraintTop_toBottomOf="@id/linear_layout"-->
+
+<!--                android:visibility="visible"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/saveChangesDataProgressbar"-->
+<!--                android:layout_marginStart="@dimen/_4sdp"-->
+<!--                android:layout_marginEnd="@dimen/_4sdp"-->
+<!--                android:layout_marginTop="@dimen/_4sdp"-->
+<!--                android:layout_gravity="center"-->
+<!--                />-->
+
+
+
+
+
+
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-
-
-
-
-
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

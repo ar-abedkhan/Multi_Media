@@ -1,15 +1,18 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abedkhan.multimedia.AllViewHolder.PostViewHolder;
+import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
@@ -82,6 +85,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                     Glide.with(context).load(userModelList.get(0).getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
 
                 }
+
+                holder.mainStory.setOnClickListener(view -> {
+
+
+                    AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+                    ReadStoryFragment readStoryFragment=new ReadStoryFragment();
+                    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
+
+
+                });
+
+holder.readMore.setOnClickListener(view -> {
+
+    AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+    ReadStoryFragment readStoryFragment=new ReadStoryFragment();
+    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
+
+});
+
+
+
             }
 
             @Override

@@ -50,6 +50,13 @@ public class ProfileFragment extends Fragment {
         //        user profile clicked
         floatingButtonClicked();
 
+//        binding.settings.setOnClickListener(view -> {
+//            Intent intent = new Intent(requireContext(), ContainerActivity.class);
+//            intent.putExtra("currentUser", currentUser);
+//            startActivity(intent);
+//        });
+
+
 
 
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
@@ -107,7 +114,8 @@ public class ProfileFragment extends Fragment {
 
         binding.settings.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
-            intent.putExtra("isSettingsClicked", true);
+            intent.putExtra("settingsClicked", true);
+            intent.putExtra("currentUser", currentUser);
             startActivity(intent);
         });
 

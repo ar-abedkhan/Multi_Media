@@ -156,18 +156,6 @@ MeowBottomNavigation meowBottomNavigation;
         fragmentTransaction.replace(R.id.frame,fragment);
         fragmentTransaction.commit();
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Fragment PersonFragment=new Fragment();
-//
-//                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.frame,PersonFragment).commit();
-//
-//            }
-//        });
-
 
 
     }

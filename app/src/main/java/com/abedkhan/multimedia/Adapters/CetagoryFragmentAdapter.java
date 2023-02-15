@@ -14,6 +14,7 @@ import com.abedkhan.multimedia.Fragment.HomeSubContainerFragment;
 import com.abedkhan.multimedia.Fragment.NotificationFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
+import com.abedkhan.multimedia.Fragment.ShowPostByCategoryFragment;
 
 //TODO: vai ekhane theke cetagory tolbar kj kore.....niche swich case e fragment set korsi demo egula...
 
@@ -37,9 +38,10 @@ public class CetagoryFragmentAdapter extends FragmentPagerAdapter {
                 Log.i("tag", "position 0: "+0);
                 break;
             case 1:
-                fragment =  new HomeSubContainerFragment();
+//                fragment =  new HomeSubContainerFragment();
                 args.putInt("position", 1);
-                Log.i("tag", "position 1: "+1);
+//                Log.i("tag", "position 1: "+1);
+                fragment = new ShowPostByCategoryFragment();
 
                 break;
             case 2:

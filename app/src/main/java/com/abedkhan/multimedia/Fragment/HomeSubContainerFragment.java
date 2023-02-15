@@ -14,6 +14,7 @@ import com.abedkhan.multimedia.Adapters.PostAdapter;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
+import com.abedkhan.multimedia.SavedData.CategorySavedData;
 import com.abedkhan.multimedia.databinding.FragmentHomeSubContainerBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,26 +55,39 @@ public class HomeSubContainerFragment extends Fragment {
 //            Log.i("TAG", "Position(Home sub container): "+pagePosition);
             String p=String.valueOf(pagePosition);
 //            binding.text.setText(p);
-        }
 
-        if (pagePosition== 0){
+//            --trying to avoid error
+
+            if (pagePosition== 0){
 //            here we will setup the home page
-            getPostDataFromCloud("");
-        }
-        else if (pagePosition== 1) {
-//            category setting
-            getPostDataFromCloud("test");
-        }
-        else if (pagePosition== 2) {
+                getPostDataFromCloud("");
+            }
+//            else if (pagePosition== 1) {
+////            category setting
+////            getPostDataFromCloud("test");
+//                testFunction();
+//            }
+            else if (pagePosition== 2) {
 //            popular post settings
-        }
-        else if (pagePosition== 3) {
+            }
+            else if (pagePosition== 3) {
 //            popular writer setting
-        }
+            }
 
+        }
 
 
         return binding.getRoot();
+    }
+
+    private void testFunction() {
+        Log.i("TAG", "Home extra Fragment");
+        List<String> list = new ArrayList<>();
+        list = CategorySavedData.getCategorySavedData();
+
+        for (int i =0; i< list.size(); i++) {
+            Log.i("TAG", "categoryName: "+list.get(i));
+        }
     }
 
     private void getPostDataFromCloud(String categoryName) {
@@ -83,7 +97,6 @@ public class HomeSubContainerFragment extends Fragment {
         *   - in that case we will send the values to the getDataByCategory function and after that we will show the data
         * */
 
- //TODO: zeshan vai ata comment out korle apps run hoi na hole crash kore...
         databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

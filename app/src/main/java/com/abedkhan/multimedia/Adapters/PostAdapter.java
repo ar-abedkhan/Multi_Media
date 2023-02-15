@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
@@ -34,6 +35,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     public PostAdapter(Context context, List<PostModel> postList) {
         this.context = context;
         this.postList = postList;
+        Collections.reverse(postList);
     }
 
     @NonNull

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/categoryTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_40sdp"
+        android:text="sci-fi"
+        android:textSize="@dimen/_16sdp"
+        android:textAlignment="center"
+        android:textColor="@color/black_text"
+        android:textStyle="bold"
+        android:background="@drawable/edit_text_bg_login"
+        android:padding="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_6sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+<!--    <View-->
+<!--        android:layout_width="@dimen/_4sdp"-->
+<!--        android:layout_height="@dimen/_40sdp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/categoryTxt"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

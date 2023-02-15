@@ -59,7 +59,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //        --Setting post time
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm");
         Date date = new Date(model.getPostTimeMillis());
-//        holder.postingTime.setText(simpleDateFormat.format("MMM dd,yyyy HH:mm"));
+        holder.postingTime.setText(simpleDateFormat.format(date));
+
 
 //        #Getting post Owner id and owner Profile Image
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -67,11 +68,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<UserModel> userModelList= new ArrayList<>();
-//                for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
-//                    UserModel userModel = (UserModel) dataSnapshot.getValue(UserModel.class);
-//                    userModelList.add(userModel);
-//
-//                }
+
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 userModelList.add(userModel);
 

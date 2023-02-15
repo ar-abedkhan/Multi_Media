@@ -83,32 +83,39 @@ public class HomeSubContainerFragment extends Fragment {
         *   - in that case we will send the values to the getDataByCategory function and after that we will show the data
         * */
 
-        databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int num = 0;
 
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    PostModel model = dataSnapshot.getValue(PostModel.class);
 
-                    postList.add(model);
-                    if (categoryName.equals("")) {
-                        setDataToView();
-//                        Log.i("TAG", "getting data in home--: ");
-//                        TODO: setting data to the view
-                    }
-                    else {
-                        getDataByCategory(categoryName, num, postList);
-                        num++;
-//                        Log.i("TAG", "getting data in category ");
-                    }
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+ //TODO: zeshan vai ata comment out korle apps run hoi na hole crash kore...
+//        databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                int num = 0;
+//
+//                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+//                    PostModel model = dataSnapshot.getValue(PostModel.class);
+//
+//                    postList.add(model);
+//                    if (categoryName.equals("")) {
+//                        setDataToView();
+////                        Log.i("TAG", "getting data in home--: ");
+////                        TODO: setting data to the view
+//                    }
+//                    else {
+//                        getDataByCategory(categoryName, num, postList);
+//                        num++;
+////                        Log.i("TAG", "getting data in category ");
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+
+
+
     }
 
     private void setDataToView() {

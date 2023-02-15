@@ -1,6 +1,7 @@
 package com.abedkhan.multimedia.Activities;
 
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,13 @@ import com.abedkhan.multimedia.Fragment.SearchFragment;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.ActivityMainBinding;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+
+import java.util.List;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -45,6 +53,7 @@ MeowBottomNavigation meowBottomNavigation;
 
         Intent intent1 =getIntent();
 
+        runTimePermission();
 //        --Bottom menu meow button
         meowBottomNavigation=findViewById(R.id.meowBottomNavigation);
 
@@ -122,6 +131,19 @@ MeowBottomNavigation meowBottomNavigation;
 
 
     }
+
+    private void runTimePermission() {
+        Dexter.withContext(this)
+                .withPermissions(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                ).withListener(new MultiplePermissionsListener() {
+                    @Override public void onPermissionsChecked(MultiplePermissionsReport report) {/* ... */}
+                    @Override public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {/* ... */}
+                }).check();
+
+    }
+
     private void replace(Fragment fragment, boolean isToolActive) {
         if (isToolActive){
             binding.tool.setVisibility(View.GONE);

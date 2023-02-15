@@ -1,6 +1,7 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,13 +63,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
 //        #Getting post Owner id and owner Profile Image
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("user").child(model.getOwnerID()).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<UserModel> userModelList= new ArrayList<>();
-                for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
-                    UserModel userModel = dataSnapshot.getValue(UserModel.class);
-                    userModelList.add(userModel);
+//                for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
+//                    UserModel userModel = (UserModel) dataSnapshot.getValue(UserModel.class);
+//                    userModelList.add(userModel);
+//
+//                }
+                UserModel userModel = snapshot.getValue(UserModel.class);
+                userModelList.add(userModel);
+
+                if (!userModelList.isEmpty()){
                     holder.profileName.setText(userModelList.get(0).getFullName());
                     Glide.with(context).load(userModelList.get(0).getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
 
@@ -77,6 +84,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.i("TAG", "Error :-> "+ error.toException().getLocalizedMessage());
 
             }
         });

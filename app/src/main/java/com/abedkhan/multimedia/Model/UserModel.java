@@ -2,8 +2,28 @@ package com.abedkhan.multimedia.Model;
 
 public class UserModel {
     String userID, profileImgUrl;
-    String fullName, userName, email, gender, dateOfBirth, password, idCreationTimeMillis;
+    String fullName, userName, email, gender, dateOfBirth, password;
+    long idCreationTimeMillis;
     String userBio, profession, livingCountry, livingCity;
+
+    public UserModel(String userID, String profileImgUrl, String fullName, String userName, String email, String gender, String dateOfBirth, String password, long idCreationTimeMillis, String userBio, String profession, String livingCountry, String livingCity) {
+        this.userID = userID;
+        this.profileImgUrl = profileImgUrl;
+        this.fullName = fullName;
+        this.userName = userName;
+        this.email = email;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.password = password;
+        this.idCreationTimeMillis = idCreationTimeMillis;
+        this.userBio = userBio;
+        this.profession = profession;
+        this.livingCountry = livingCountry;
+        this.livingCity = livingCity;
+    }
+
+    public UserModel() {
+    }
 
     public String getUserID() {
         return userID;
@@ -101,11 +121,11 @@ public class UserModel {
         this.profileImgUrl = profileImgUrl;
     }
 
-    public String getIdCreationTimeMillis() {
+    public long getIdCreationTimeMillis() {
         return idCreationTimeMillis;
     }
 
-    public void setIdCreationTimeMillis(String idCreationTimeMillis) {
+    public void setIdCreationTimeMillis(long idCreationTimeMillis) {
         this.idCreationTimeMillis = idCreationTimeMillis;
     }
 }

@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.abedkhan.multimedia.Adapters.PostAdapter;
 import com.abedkhan.multimedia.Model.PostModel;
+import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentHomeSubContainerBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +36,7 @@ public class HomeSubContainerFragment extends Fragment {
     FragmentHomeSubContainerBinding binding;
 
     int pagePosition=0;
-    static List<PostModel> postList;
+    List<PostModel> postList;
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
 
@@ -51,7 +53,7 @@ public class HomeSubContainerFragment extends Fragment {
             pagePosition = getArguments().getInt("position");
 //            Log.i("TAG", "Position(Home sub container): "+pagePosition);
             String p=String.valueOf(pagePosition);
-            binding.text.setText(p);
+//            binding.text.setText(p);
         }
 
         if (pagePosition== 0){
@@ -68,6 +70,8 @@ public class HomeSubContainerFragment extends Fragment {
         else if (pagePosition== 3) {
 //            popular writer setting
         }
+
+
 
         return binding.getRoot();
     }
@@ -89,7 +93,7 @@ public class HomeSubContainerFragment extends Fragment {
 
                     postList.add(model);
                     if (categoryName.equals("")) {
-
+                        setDataToView();
 //                        Log.i("TAG", "getting data in home--: ");
 //                        TODO: setting data to the view
                     }
@@ -107,8 +111,12 @@ public class HomeSubContainerFragment extends Fragment {
         });
     }
 
+    private void setDataToView() {
+        PostAdapter adapter = new PostAdapter(getContext(), postList);
+        binding.postRecycler.setAdapter(adapter);
+    }
+
     private void getDataByCategory(String categoryName, int postNumber, List<PostModel> postList) {
-//        Log.i("TAG", "Post title (in category): "+ postList.get(postNumber).getTitle());
         List<PostModel> postModelList = new ArrayList<>();
         databaseReference.child("Category").child(postList.get(postNumber).getPostID()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -150,6 +158,7 @@ public class HomeSubContainerFragment extends Fragment {
                         if (categoryValue.equals(categoryName)){
                             postModelList.add(postList.get(postNumber));
                             Log.i("TAG", "Category===: "+ postModelList.get(0).getPostID());
+//                            TODO: place adapter
 
                         }
                     }

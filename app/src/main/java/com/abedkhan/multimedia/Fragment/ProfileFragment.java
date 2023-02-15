@@ -70,13 +70,14 @@ public class ProfileFragment extends Fragment {
                  if (userModel!=null){
 
                      binding.userProfileName.setText(userModel.getFullName().trim());
-                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
+//                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
                   binding.userProfession.setText(userModel.getProfession().trim());
                   binding.userCountry.setText(userModel.getLivingCountry().trim());
                   binding.userLiveIn.setText(userModel.getLivingCity().trim());
                   binding.userGender.setText(userModel.getGender().trim());
                   binding.userName.setText(userModel.getUserName().trim());
                   binding.userMail.setText(userModel.getEmail().trim());
+                  binding.userProfileBio.setText(userModel.getUserBio().trim());
                   binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
                   Glide.with(requireContext()).load(userModel.getProfileImgUrl()).into(binding.userProfileImg);

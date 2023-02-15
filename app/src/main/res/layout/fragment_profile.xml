@@ -360,7 +360,7 @@
 
 
                 <TextView
-                    android:id="@+id/UserProfileBio"
+                    android:id="@+id/userProfileBio"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="@dimen/_6sdp"

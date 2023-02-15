@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_10sdp"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:padding="@dimen/_5sdp"
+    android:background="@drawable/background"
+    android:layout_marginTop="@dimen/_8sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_4sdp"
+            android:paddingTop="@dimen/_4sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/travel1"
+            android:id="@+id/profileImg"
+            app:civ_border_width="@dimen/_1sdp"
+            app:civ_border_color="@color/white"
+            />
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/followTheWriter"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_10sdp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="@dimen/_3sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/sky_lite"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_3sdp">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:src="@drawable/person_add"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                    app:layout_constraintTop_toBottomOf="@id/UserProfileName" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:includeFontPadding="false"
+                    android:text="Follow"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple_700"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                    app:layout_constraintTop_toBottomOf="@id/UserProfileName" />
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/youAreFollowingTheWriter"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_10sdp"
+            android:visibility="gone"
+
+            android:layout_marginTop="@dimen/_5sdp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:background="@color/view_color"
+                >
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pattaya"
+                    android:textAlignment="center"
+                    android:src="@drawable/ic_baseline_person_24"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                    app:layout_constraintTop_toBottomOf="@id/UserProfileName"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Following"
+                    android:includeFontPadding="false"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                    app:layout_constraintTop_toBottomOf="@id/UserProfileName"
+                    />
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/profileImg"
+            android:id="@+id/profilename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Abed khan"
+            android:textAlignment="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/c1"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/userProfession"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:maxLines="1"
+            android:paddingTop="@dimen/_5sdp"
+            android:includeFontPadding="false"
+            android:text="Devoloper"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="#97000000"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/profileImg"
+            app:layout_constraintTop_toBottomOf="@id/profilename"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</LinearLayout>

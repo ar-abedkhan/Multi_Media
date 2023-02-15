@@ -110,9 +110,8 @@
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/meowBottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:mbn_backgroundBottomColor="@color/bottommenu_background"
         app:mbn_circleColor="@color/bottomMenu_icon_Back"

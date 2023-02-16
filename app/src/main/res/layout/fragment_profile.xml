@@ -72,7 +72,7 @@
                     android:id="@+id/userProfileName"
                     android:layout_width="@dimen/_160sdp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/abril_fatface"
+                    android:fontFamily="@font/poppins_medium"
                     android:includeFontPadding="false"
                     android:inputType="textMultiLine"
                     android:textStyle="bold"
@@ -81,7 +81,7 @@
                     android:paddingTop="@dimen/_10sdp"
                     android:text="Abed khan"
                     android:textColor="@color/black_text"
-                    android:textSize="@dimen/_22sdp"
+                    android:textSize="@dimen/_20sdp"
                     app:layout_constraintStart_toEndOf="@id/profileimgcard"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,6 +113,7 @@
                         >
 
                         <LinearLayout
+                            android:id="@+id/followOptionContainer"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/sky_lite"
@@ -882,7 +883,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="User Name "
+                        android:text="Username "
                         android:textColor="@color/black_text"
                         android:layout_gravity="center"
                         android:gravity="center"
@@ -922,7 +923,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="User Male "
+                        android:text="Mail "
                         android:textColor="@color/black_text"
                         android:layout_gravity="center"
                         android:gravity="center"
@@ -958,7 +959,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="User Date of Birth "
+                        android:text="Date of Birth "
                         android:textColor="@color/black_text"
                         android:layout_gravity="center"
                         android:gravity="center"

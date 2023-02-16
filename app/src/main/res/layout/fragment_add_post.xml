@@ -257,6 +257,8 @@
                 android:layout_marginEnd="@dimen/_1sdp"
                 android:layout_marginBottom="@dimen/_3sdp"
 
+                android:completionThreshold="1"
+
                 android:paddingStart="@dimen/_6sdp"
                 android:paddingEnd="@dimen/_6sdp"
                 android:paddingTop="@dimen/_6sdp"

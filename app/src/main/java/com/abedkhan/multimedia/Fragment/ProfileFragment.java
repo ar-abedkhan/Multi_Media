@@ -40,6 +40,7 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     List<UserModel>userModelList;
     String currentUser;
+    String visitedUserID, visitedUserProfileImg, visitedUserName;
 
 
     @Override
@@ -62,21 +63,21 @@ public class ProfileFragment extends Fragment {
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser!=null){
             currentUser=firebaseUser.getUid();
-            databaseReference=FirebaseDatabase.getInstance().getReference("User").child(currentUser);
+            databaseReference=FirebaseDatabase.getInstance().getReference();
 
-            Log.i("tag", "onCreate: "+currentUser);
+            Log.i("tag", "current user: "+currentUser);
 
         }
 
-         databaseReference.addValueEventListener(new ValueEventListener() {
+//        *getting user data
+         databaseReference.child("User").child(currentUser).addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                  UserModel userModel=snapshot.getValue(UserModel.class);
 
                  if (userModel!=null){
-
-                     binding.userProfileName.setText(userModel.getFullName().trim());
+                  binding.userProfileName.setText(userModel.getFullName().trim());
 //                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
                   binding.userProfession.setText(userModel.getProfession().trim());
                   binding.userCountry.setText(userModel.getLivingCountry().trim());
@@ -84,13 +85,22 @@ public class ProfileFragment extends Fragment {
                   binding.userGender.setText(userModel.getGender().trim());
                   binding.userName.setText(userModel.getUserName().trim());
                   binding.userMail.setText(userModel.getEmail().trim());
-                  binding.userProfileBio.setText(userModel.getUserBio().trim());
+
+                  if (userModel.getUserBio().isEmpty()){
+                      binding.userProfileBio.setVisibility(View.GONE);
+                  }else {
+                      binding.userProfileBio.setText(userModel.getUserBio().trim());
+                  }
                   binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
                   Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
                      Log.i("tag", "onCreate: "+userModel.getFullName());
+                     Log.i("tag", "onCreate: "+userModel.getUserID());
 
+                     visitedUserID = userModel.getUserID();
+                     visitedUserName = userModel.getUserName();
+                     visitedUserProfileImg = userModel.getProfileImgUrl();
 
                  }
 
@@ -103,8 +113,12 @@ public class ProfileFragment extends Fragment {
          });
 
 
+//        Handling follow button clicked
+        binding.followOptionContainer.setOnClickListener(view -> {
+            Log.i("tag", "follow pressed "+visitedUserID);
+            //TODO: after clicking follow option the user will be able to follow this user
 
-
+        });
 
 
         return binding.getRoot();

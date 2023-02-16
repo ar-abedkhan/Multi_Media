@@ -15,10 +15,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.abedkhan.multimedia.Activities.MainActivity;
 import com.abedkhan.multimedia.R;
+import com.abedkhan.multimedia.SavedData.CategorySavedData;
 import com.abedkhan.multimedia.databinding.FragmentAddPostBinding;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,8 +35,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AddPostFragment extends Fragment {
@@ -64,6 +68,14 @@ public class AddPostFragment extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference("PostImg");
+
+//        *Setting data to the auto complete text view
+        CategorySavedData.loadCategory();
+        List<String> categoryDataList = CategorySavedData.getCategorySavedData();
+
+        ArrayAdapter<String> catAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, categoryDataList);
+
+        binding.category.setAdapter(catAdapter);
 
 
 //        Handling on click button

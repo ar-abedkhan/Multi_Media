@@ -32,10 +32,9 @@ import kotlin.jvm.functions.Function1;
 
 /*
 * Starting date: 08 February 2023
-* This application is created by "Abed", "Osama" and "Ahsan"
+* This application is created by "Abed" and "Osama"
 * @AbedKhan
 * @OsamaBinHashim
-* @AhsanHabib
 * */
 
 public class MainActivity extends AppCompatActivity {

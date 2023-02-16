@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -62,8 +63,14 @@ public class profileEditFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding=FragmentProfileEditBinding.inflate(getLayoutInflater(),container,false);
 
+//        handling back button
         binding.backBtn.setOnClickListener(view -> {
-            startActivity(new Intent(requireContext(),ProfileFragment.class));
+            Fragment fragment = new ProfileFragment();
+
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerFrame, fragment);
+            transaction.commit();
         });
 
 
@@ -178,9 +185,17 @@ binding.saveChangesDataBtn.setEnabled(false);
                        Log.i("tag", "hasmap " + userMap);
 
 
-                       databaseReference.child("User").child(currentUserId).setValue(userMap).addOnCompleteListener(task -> {
+                       databaseReference.updateChildren(userMap).addOnCompleteListener(task -> {
                            if (task.isSuccessful()){
                                Toast.makeText(getContext(), "Profile Information saved successfully❤", Toast.LENGTH_LONG).show();
+                               dialog.dismiss();
+
+                               Fragment fragment = new ProfileFragment();
+
+                               FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                                       .beginTransaction()
+                                       .replace(R.id.containerFrame, fragment);
+                               transaction.commit();
 
                            }
                            else {
@@ -192,6 +207,7 @@ binding.saveChangesDataBtn.setEnabled(false);
                            binding.saveChangesDataBtn.setEnabled(true);
 
                        });
+
                    }
 
                }else {

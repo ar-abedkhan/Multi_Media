@@ -22,6 +22,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
     public CategoryAdapter(Context context, List<String> categoryList, CategoryListener listener) {
         this.context = context;
         this.categoryList = categoryList;
+        this.listener = listener;
     }
 
     @NonNull

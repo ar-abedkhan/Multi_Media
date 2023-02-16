@@ -110,7 +110,7 @@ public class AddPostFragment extends Fragment {
 
 //        Handling save button
         binding.saveBtn.setOnClickListener(view -> {
-            Log.i("TAG", "saveBtnClicked ");
+//            Log.i("TAG", "saveBtnClicked ");
 
             binding.saveBtn.setEnabled(false);
             binding.publishBtn.setEnabled(false);
@@ -126,7 +126,7 @@ public class AddPostFragment extends Fragment {
 
 //                Handling publish button
         binding.publishBtn.setOnClickListener(view -> {
-            Log.i("TAG", "publishBtn clicked ");
+//            Log.i("TAG", "publishBtn clicked ");
             binding.saveBtn.setEnabled(false);
             binding.publishBtn.setEnabled(false);
             binding.backBtn.setEnabled(false);

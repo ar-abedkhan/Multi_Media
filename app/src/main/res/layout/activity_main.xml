@@ -85,24 +85,7 @@
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tool">
-
-
-
-<!--            <Button-->
-
-<!--                android:layout_gravity="center"-->
-<!--                android:id="@+id/signup_login_button"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="@dimen/_10sdp"-->
-<!--                android:elevation="@dimen/_3ssp"-->
-<!--                android:fontFamily="@font/abril_fatface"-->
-<!--                android:text="Logein"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:transitionName="transition_login_btn" />-->
-
-        </FrameLayout>
+            app:layout_constraintTop_toBottomOf="@id/tool" />
 
 
 

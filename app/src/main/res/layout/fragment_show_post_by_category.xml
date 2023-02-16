@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/horizontalRecycler"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/post_recycler_design"
-        android:paddingBottom="@dimen/_130sdp"
+        android:paddingBottom="@dimen/_230sdp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

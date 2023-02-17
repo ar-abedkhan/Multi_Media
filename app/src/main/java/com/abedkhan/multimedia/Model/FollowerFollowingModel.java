@@ -1,19 +1,19 @@
 package com.abedkhan.multimedia.Model;
 
-public class FollowerModel {
+public class FollowerFollowingModel {
 //    this same class will be used for the follower and following
     String OwnProfileID;
     String followerID;
     String followProfileImg, followerName;
 
-    public FollowerModel(String ownProfileID, String followerID, String followProfileImg, String followerName) {
+    public FollowerFollowingModel(String ownProfileID, String followerID, String followProfileImg, String followerName) {
         OwnProfileID = ownProfileID;
         this.followerID = followerID;
         this.followProfileImg = followProfileImg;
         this.followerName = followerName;
     }
 
-    public FollowerModel() {
+    public FollowerFollowingModel() {
     }
 
     public String getOwnProfileID() {

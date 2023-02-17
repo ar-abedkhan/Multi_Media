@@ -10,16 +10,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.abedkhan.multimedia.Activities.ContainerActivity;
 import com.abedkhan.multimedia.Activities.MainActivity;
-import com.abedkhan.multimedia.Activities.ShoppingMainActivity;
+import com.abedkhan.multimedia.Model.FollowerFollowingModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentProfileBinding;
 import com.bumptech.glide.Glide;
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +31,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProfileFragment extends Fragment {
     public ProfileFragment() {
@@ -39,7 +44,7 @@ public class ProfileFragment extends Fragment {
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     List<UserModel>userModelList;
-    String currentUser;
+    String currentUserID, currentUserName, currentUserImg;
     String visitedUserID, visitedUserProfileImg, visitedUserName;
 
 
@@ -57,66 +62,173 @@ public class ProfileFragment extends Fragment {
 //            startActivity(intent);
 //        });
 
+//        Log.i("TAG", "Profile fragment 1 ");
 
-
-
+        databaseReference=FirebaseDatabase.getInstance().getReference();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser!=null){
-            currentUser=firebaseUser.getUid();
-            databaseReference=FirebaseDatabase.getInstance().getReference();
+            currentUserID =firebaseUser.getUid();
+        }
 
-            Log.i("tag", "current user: "+currentUser);
+//        ##Getting current user data
+        databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Log.i("TAG", "Profile fragment 2 ");
+                UserModel userModel=snapshot.getValue(UserModel.class);
+
+                if (userModel!=null){
+                    currentUserName = userModel.getFullName();
+                    currentUserImg = userModel.getProfileImgUrl();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+//        #Checking if the request is coming from the Profile fragment or any other fragment and if there are any arguments
+        try {
+            visitedUserID  = getArguments().getString("VisitedUserID");
+//            Log.i("TAG", "Profile fragment -- "+visitedUserID);
+            databaseReference.child("User").child(visitedUserID).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    UserModel userModel=snapshot.getValue(UserModel.class);
+
+                    if (userModel!=null){
+                        binding.userProfileName.setText(userModel.getFullName().trim());
+//                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
+                        binding.userProfession.setText(userModel.getProfession().trim());
+                        binding.userCountry.setText(userModel.getLivingCountry().trim());
+                        binding.userLiveIn.setText(userModel.getLivingCity().trim());
+                        binding.userGender.setText(userModel.getGender().trim());
+                        binding.userName.setText(userModel.getUserName().trim());
+                        binding.userMail.setText(userModel.getEmail().trim());
+
+                        if (userModel.getUserBio().isEmpty()){
+                            binding.userProfileBio.setVisibility(View.GONE);
+                        }else {
+                            binding.userProfileBio.setText(userModel.getUserBio().trim());
+                        }
+                        binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
+
+                        Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+
+                        Log.i("tag", "onCreate: "+userModel.getFullName());
+                        Log.i("tag", "onCreate: "+userModel.getUserID());
+
+//                        visitedUserID = userModel.getUserID();
+                        visitedUserName = userModel.getUserName();
+                        visitedUserProfileImg = userModel.getProfileImgUrl();
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getActivity(), "User visiting failed!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }catch (Exception e){
+//        *setting the current user data if getting argument fails
+            databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    UserModel userModel=snapshot.getValue(UserModel.class);
+
+                    if (userModel!=null){
+                        binding.userProfileName.setText(userModel.getFullName().trim());
+//                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
+                        binding.userProfession.setText(userModel.getProfession().trim());
+                        binding.userCountry.setText(userModel.getLivingCountry().trim());
+                        binding.userLiveIn.setText(userModel.getLivingCity().trim());
+                        binding.userGender.setText(userModel.getGender().trim());
+                        binding.userName.setText(userModel.getUserName().trim());
+                        binding.userMail.setText(userModel.getEmail().trim());
+
+                        if (userModel.getUserBio().isEmpty()){
+                            binding.userProfileBio.setVisibility(View.GONE);
+                        }else {
+                            binding.userProfileBio.setText(userModel.getUserBio().trim());
+                        }
+                        binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
+
+                        Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+
+                        Log.i("tag", "onCreate: "+userModel.getFullName());
+                        Log.i("tag", "onCreate: "+userModel.getUserID());
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            //        Hiding follow button for own profile
+                binding.followOptionContainer.setVisibility(View.GONE);
 
         }
 
-//        *getting user data
-         databaseReference.child("User").child(currentUser).addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                 UserModel userModel=snapshot.getValue(UserModel.class);
-
-                 if (userModel!=null){
-                  binding.userProfileName.setText(userModel.getFullName().trim());
-//                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
-                  binding.userProfession.setText(userModel.getProfession().trim());
-                  binding.userCountry.setText(userModel.getLivingCountry().trim());
-                  binding.userLiveIn.setText(userModel.getLivingCity().trim());
-                  binding.userGender.setText(userModel.getGender().trim());
-                  binding.userName.setText(userModel.getUserName().trim());
-                  binding.userMail.setText(userModel.getEmail().trim());
-
-                  if (userModel.getUserBio().isEmpty()){
-                      binding.userProfileBio.setVisibility(View.GONE);
-                  }else {
-                      binding.userProfileBio.setText(userModel.getUserBio().trim());
-                  }
-                  binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
-
-                  Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
-
-                     Log.i("tag", "onCreate: "+userModel.getFullName());
-                     Log.i("tag", "onCreate: "+userModel.getUserID());
-
-                     visitedUserID = userModel.getUserID();
-                     visitedUserName = userModel.getUserName();
-                     visitedUserProfileImg = userModel.getProfileImgUrl();
-
-                 }
-
-             }
-
-             @Override
-             public void onCancelled(@NonNull DatabaseError error) {
-
-             }
-         });
 
 
 //        Handling follow button clicked
+//        TODO: unfollow
         binding.followOptionContainer.setOnClickListener(view -> {
-            Log.i("tag", "follow pressed "+visitedUserID);
-            //TODO: after clicking follow option the user will be able to follow this user
+            boolean isFollowing = isFollowing(visitedUserID);
+            if(!currentUserID.equals(visitedUserID) && !isFollowing){
+                Map<String, Object> map = new HashMap<>();
+                map.put("OwnProfileID", currentUserID);
+                map.put("followerID", visitedUserID);
+                map.put("followerName", visitedUserName);
+                map.put("followProfileImg", visitedUserProfileImg);
+
+//                Including the visited user to the following list
+                databaseReference.child("Following").child(currentUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        binding.followText.setText("following");
+
+                        /*
+                        * This process will be completed in two steps
+                        * 1. Firstly will check if the visiting user following the current user or not
+                        * 2. If the visitor is following the user then isFollowing method will return false and the whole process will be cancelled else the process will continue
+                        * 3. Lastly the user will be stored in the followed user's followers table
+                        * */
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("OwnProfileID", visitedUserID);
+                        map.put("followerID", currentUserID);
+                        map.put("followerName", currentUserName);
+                        map.put("followProfileImg", currentUserImg);
+                        databaseReference.child("Followers").child(visitedUserID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(getContext(), "Following the user", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Log.i("TAG", "Follower upload failed: "+ task.getException().getLocalizedMessage());
+                                }
+                            }
+                        });
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+            }
 
         });
 
@@ -124,12 +236,39 @@ public class ProfileFragment extends Fragment {
         return binding.getRoot();
     }
 
+    boolean isFollowing = false;
+    private boolean isFollowing(String visitedUserID) {
+        databaseReference.child("Following").child(currentUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    for (DataSnapshot snap: snapshot.getChildren()) {
+                        FollowerFollowingModel model = snap.getValue(FollowerFollowingModel.class);
+                        if (visitedUserID.equals(model.getFollowerID())){
+                            isFollowing = true;
+                        }
+                    }
+                }catch (Exception e){
+                    isFollowing = false;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                isFollowing = false;
+
+            }
+        });
+        return isFollowing;
+    }
+
     private void floatingButtonClicked() {
 
         binding.settings.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("settingsClicked", true);
-            intent.putExtra("currentUser", currentUser);
+            intent.putExtra("currentUser", currentUserID);
             startActivity(intent);
         });
 

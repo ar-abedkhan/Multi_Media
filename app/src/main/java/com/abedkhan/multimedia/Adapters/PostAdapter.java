@@ -9,10 +9,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abedkhan.multimedia.AllViewHolder.PostViewHolder;
+import com.abedkhan.multimedia.Fragment.LoginFragment;
+import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
+import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
@@ -33,11 +38,13 @@ import java.util.List;
 public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     Context context;
     List<PostModel> postList;
+    PostListener listener;
     DatabaseReference databaseReference;
 
-    public PostAdapter(Context context, List<PostModel> postList) {
+    public PostAdapter(Context context, List<PostModel> postList, PostListener listener) {
         this.context = context;
         this.postList = postList;
+        this.listener = listener;
         Collections.reverse(postList);
     }
 
@@ -96,13 +103,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
                 });
 
-holder.readMore.setOnClickListener(view -> {
+    holder.readMore.setOnClickListener(view -> {
 
-    AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
-    ReadStoryFragment readStoryFragment=new ReadStoryFragment();
-    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
+        AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+        ReadStoryFragment readStoryFragment=new ReadStoryFragment();
+        appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
 
-});
+    });
 
 
 
@@ -113,6 +120,18 @@ holder.readMore.setOnClickListener(view -> {
                 Log.i("TAG", "Error :-> "+ error.toException().getLocalizedMessage());
 
             }
+        });
+
+//        #Hanling Profile image clicked
+        holder.profileImg.setOnClickListener(view -> {
+//          parse data to profile adapter
+            listener.gotoFragmentWithValue(new ProfileFragment(), model.getOwnerID());
+        });
+
+//        #Hanling Profile name clicked
+        holder.profileName.setOnClickListener(view -> {
+//           parse data to profile adapter
+            listener.gotoFragmentWithValue(new ProfileFragment(), model.getOwnerID());
         });
 
 

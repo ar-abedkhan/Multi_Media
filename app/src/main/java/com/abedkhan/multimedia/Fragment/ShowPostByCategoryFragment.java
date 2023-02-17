@@ -3,6 +3,7 @@ package com.abedkhan.multimedia.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import com.abedkhan.multimedia.Adapters.CategoryAdapter;
 import com.abedkhan.multimedia.Adapters.PostAdapter;
 import com.abedkhan.multimedia.Listeners.CategoryListener;
+import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.SavedData.CategorySavedData;
@@ -27,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ShowPostByCategoryFragment extends Fragment implements CategoryListener {
+public class ShowPostByCategoryFragment extends Fragment implements CategoryListener, PostListener {
 
     public ShowPostByCategoryFragment() {
         // Required empty public constructor
@@ -102,7 +104,7 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
 
 
     private void setDataToView(List<PostModel> postModelList) {
-        PostAdapter adapter = new PostAdapter(getContext(), postModelList);
+        PostAdapter adapter = new PostAdapter(getContext(), postModelList, this);
         binding.postRecycler.setAdapter(adapter);
     }
 
@@ -149,5 +151,19 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
                 Log.i("TAG", "Category cancel error "+error.toException().getLocalizedMessage());
             }
         });
+    }
+
+//    Going to the Profile fragment
+    @Override
+    public void gotoFragmentWithValue(Fragment fragment, String userID) {
+        Bundle bundle = new Bundle();
+        bundle.putString("VisitedUserID", userID);
+        fragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.abedkhan.multimedia.Adapters.PostAdapter;
+import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class HomeSubContainerFragment extends Fragment {
+public class HomeSubContainerFragment extends Fragment implements PostListener {
 
     public HomeSubContainerFragment() {
         // Required empty public constructor
@@ -132,7 +134,7 @@ public class HomeSubContainerFragment extends Fragment {
     }
 
     private void setDataToView() {
-        PostAdapter adapter = new PostAdapter(getContext(), postList);
+        PostAdapter adapter = new PostAdapter(getContext(), postList, this);
         binding.postRecycler.setAdapter(adapter);
     }
 
@@ -194,4 +196,19 @@ public class HomeSubContainerFragment extends Fragment {
         });
     }
 
+    //    Going to the Profile fragment
+    @Override
+    public void gotoFragmentWithValue(Fragment fragment, String userID) {
+        Bundle bundle = new Bundle();
+        bundle.putString("VisitedUserID", userID);
+        fragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame, fragment);
+
+//        Log.i("TAG", "Home Sub Container Fragment...");
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

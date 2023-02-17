@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import android.view.KeyEvent;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 
 import com.abedkhan.multimedia.Activities.MainActivity;
 import com.abedkhan.multimedia.Adapters.UserAdapter;
+import com.abedkhan.multimedia.Listeners.PostListener;
+import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentSearchBinding;
@@ -78,8 +81,38 @@ public class SearchFragment extends Fragment {
             }
         });
 
+        if (isClicked){
+            binding.backBtn.setVisibility(View.GONE);
+        }
 
-
+//        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//
+//                List<UserModel> searchList = new ArrayList<>();
+//                List<PostModel> postModelList = new ArrayList<>();
+//
+//                for (UserModel userModel:userModelList){
+//                    if (userModel.getFullName().toLowerCase().contains(newText.toLowerCase())){
+//                        searchList.add(userModel);
+//                    }
+//                }
+//
+//                if (searchList.isEmpty()){
+//
+//            }
+//                else {
+//                userAdapter.setSearchList(searchList);
+//            }
+//                return true;
+//            }
+//        });
+//
 
 
 
@@ -107,4 +140,6 @@ public class SearchFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+
 }

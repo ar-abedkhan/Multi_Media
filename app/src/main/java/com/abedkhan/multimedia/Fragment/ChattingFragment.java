@@ -28,6 +28,9 @@ public class ChattingFragment extends Fragment {
 
 
 
+
+
+
         return binding.getRoot();
     }
 }

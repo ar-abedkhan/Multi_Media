@@ -7,18 +7,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.abedkhan.multimedia.AllViewHolder.PostViewHolder;
 import com.abedkhan.multimedia.AllViewHolder.UserViewHolder;
+import com.abedkhan.multimedia.Fragment.ProfileFragment;
+import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
 import com.bumptech.glide.Glide;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
@@ -29,6 +25,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
         this.context = context;
         this.userModelList = userModelList;
     }
+
+
+
+    public void setSearchList(List<UserModel>searchlist){
+        this.userModelList=searchlist;
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
@@ -48,6 +52,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
         holder.userName.setText(userModel.getUserName());
         holder.userProfession.setText(userModel.getProfession());
+
+
+//        holder.itemView.setOnClickListener(view -> {
+//            listener.gotoFragmentWithValue(new ProfileFragment(), userModel.getUserID());
+//        });
+
+
 
     }
 

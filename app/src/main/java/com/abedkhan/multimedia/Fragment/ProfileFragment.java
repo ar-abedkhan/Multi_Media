@@ -31,6 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +48,7 @@ public class ProfileFragment extends Fragment {
     List<UserModel>userModelList;
     String currentUserID, currentUserName, currentUserImg;
     String visitedUserID, visitedUserProfileImg, visitedUserName;
+    boolean currentUser;
 
 
     @Override
@@ -76,6 +79,7 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 Log.i("TAG", "Profile fragment 2 ");
+
                 UserModel userModel=snapshot.getValue(UserModel.class);
 
                 if (userModel!=null){
@@ -92,7 +96,9 @@ public class ProfileFragment extends Fragment {
         });
 
 //        #Checking if the request is coming from the Profile fragment or any other fragment and if there are any arguments
-        try {
+//        try {
+
+
             visitedUserID  = getArguments().getString("VisitedUserID");
 //            Log.i("TAG", "Profile fragment -- "+visitedUserID);
             databaseReference.child("User").child(visitedUserID).addValueEventListener(new ValueEventListener() {
@@ -101,9 +107,19 @@ public class ProfileFragment extends Fragment {
 
                     UserModel userModel=snapshot.getValue(UserModel.class);
 
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy");
+                    Date date = new Date(userModel.getIdCreationTimeMillis());
+
+//
+//                    if (!userModel.getUserID().equals(currentUserID)){
+//                        binding.logeOutBtn.setVisibility(View.GONE);
+//                        binding.settings.setVisibility(View.GONE);
+//                    }
+//
+
                     if (userModel!=null){
                         binding.userProfileName.setText(userModel.getFullName().trim());
-//                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
+                        binding.userJoinedDate.setText(simpleDateFormat.format(date));
                         binding.userProfession.setText(userModel.getProfession().trim());
                         binding.userCountry.setText(userModel.getLivingCountry().trim());
                         binding.userLiveIn.setText(userModel.getLivingCity().trim());
@@ -136,13 +152,27 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(getActivity(), "User visiting failed!", Toast.LENGTH_SHORT).show();
                 }
             });
-        }catch (Exception e){
+//        }catch (Exception e){
 //        *setting the current user data if getting argument fails
+
+
+
+
+
             databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     UserModel userModel=snapshot.getValue(UserModel.class);
+
+
+                    if (!userModel.getUserID().equals(currentUserID)){
+                        binding.logeOutBtn.setVisibility(View.GONE);
+                        binding.settings.setVisibility(View.GONE);
+                    }
+
+
+
 
                     if (userModel!=null){
                         binding.userProfileName.setText(userModel.getFullName().trim());
@@ -177,8 +207,8 @@ public class ProfileFragment extends Fragment {
 
             //        Hiding follow button for own profile
                 binding.followOptionContainer.setVisibility(View.GONE);
-
-        }
+//
+//        }
 
 
 
@@ -286,7 +316,7 @@ public class ProfileFragment extends Fragment {
 
         binding.logeOutBtn.setOnClickListener(view -> {
             firebaseAuth.signOut();
-            startActivity(new Intent(requireContext(),ContainerActivity.class));
+            startActivity(new Intent(requireContext(),MainActivity.class));
 
         });
 

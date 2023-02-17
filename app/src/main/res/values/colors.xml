@@ -27,6 +27,8 @@
     <color name="bottommenu_background">#F5F5F5</color>
 
     <color name="grayBg">#6D80888C</color>
+    <color name="lightBlack">#7A000000</color>
+
 
     <color name="cWhite">#FFFFFFFF</color>
     <color name="sky_lite">#379DC4FD</color>

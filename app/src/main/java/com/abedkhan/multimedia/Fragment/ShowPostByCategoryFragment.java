@@ -114,7 +114,7 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
 
 
     private void setDataToView(List<PostModel> postModelList) {
-        PostAdapter adapter = new PostAdapter(getContext(), postModelList, this);
+        PostAdapter adapter = new PostAdapter(getContext(), postModelList,this);
         binding.postRecycler.setAdapter(adapter);
     }
 

@@ -4,10 +4,8 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/scqure_back"
-    android:layout_marginBottom="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_8sdp"
     app:cardCornerRadius="@dimen/_8sdp"
-    android:layout_marginStart="@dimen/_3sdp"
-    android:layout_marginEnd="@dimen/_3sdp"
     android:elevation="@dimen/_8sdp"
     android:layout_height="wrap_content">
 
@@ -18,9 +16,10 @@
         android:background="@color/bottommenu_background">
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <View
             android:id="@+id/profileImg"
-            android:layout_width="@dimen/_35sdp"
+            android:background="@color/view_color"
+            android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="@dimen/_4ssp"
             android:paddingTop="@dimen/_2sdp"
@@ -30,27 +29,25 @@
             />
 
 
-        <TextView
+        <View
             android:id="@+id/UserProfileName"
-            android:layout_width="@dimen/_200sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="start"
-            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_3sdp"
             android:layout_marginTop="@dimen/_3sdp"
             android:fontFamily="@font/poppins_medium"
             android:text="Abed khan"
-            android:textAlignment="viewStart"
-            android:singleLine="true"
-            android:ellipsize="marquee"
+            android:background="@color/view_color"
+            android:textAlignment="center"
             android:includeFontPadding="false"
-            android:textColor="@color/black_text"
-            android:textSize="@dimen/_16sdp"
+            android:textColor="@color/c1"
+            android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/profileImg"
             app:layout_constraintTop_toTopOf="parent"
 
             />
-        <TextView
+        <View
             android:id="@+id/followTheWriter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,6 +57,8 @@
             android:fontFamily="@font/poppins_medium"
             android:text="Follow"
             android:textAlignment="center"
+            android:background="@color/view_color"
+
             android:textColor="@color/purple_500"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
@@ -72,7 +71,7 @@
 
 
 
-        <TextView
+        <View
             android:id="@+id/postTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,21 +80,24 @@
             android:text="12 feb 2023"
             android:textAlignment="center"
             android:includeFontPadding="false"
-            android:textColor="@color/lightBlack"
-            android:paddingStart="@dimen/_4ssp"
-            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black_text"
+            android:background="@color/view_color"
+
+            android:paddingStart="@dimen/_8sdp"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintStart_toEndOf="@id/profileImg"
             app:layout_constraintTop_toBottomOf="@id/UserProfileName"
             />
 
-        <TextView
+        <View
             android:id="@+id/postStoryTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:layout_marginEnd="@dimen/_8sdp"
-            android:layout_marginBottom="@dimen/_3sdp"
+            android:background="@color/view_color"
+
             android:includeFontPadding="false"
             android:text="Story title name"
             android:fontFamily="@font/poppins"
@@ -106,36 +108,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileImg" />
 
-<androidx.cardview.widget.CardView
-    android:layout_width="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:id="@+id/imgCard"
-    app:layout_constraintHeight_max="@dimen/_320sdp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_4ssp"
-    android:layout_marginBottom="@dimen/_4ssp"
-    app:layout_constraintTop_toBottomOf="@id/postStoryTitle"
-    >
 
 
-    <ImageView
+        <View
+            android:layout_marginTop="@dimen/_4ssp"
+            android:layout_marginBottom="@dimen/_4ssp"
+            android:id="@+id/postImg"
+            android:layout_width="match_parent"
+            app:layout_constraintHeight_max="@dimen/_300sdp"
+            android:background="@color/view_color"
 
-        android:id="@+id/postImg"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:background="@drawable/image_background"
-
-        />
-
-
-
-
-</androidx.cardview.widget.CardView>
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/postStoryTitle"
+            />
 
 
-
-        <TextView
+        <View
             android:id="@+id/main_story"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -143,6 +131,8 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="@font/poppins_medium"
             android:includeFontPadding="false"
+            android:background="@color/view_color"
+
             android:maxLines="4"
             android:ellipsize="end"
             android:text="Multi MediaMulti MediaMulti MediaMulti MediaMulti MediaMui MediaMulti MediaMulti MediaMui MediaMulti MediaMulti MediaMui MediaMulti MediaMulti MediaMulti MediaMulti MediaMulti MediaMulti Media"
@@ -150,15 +140,16 @@
             android:textColor="@color/black_text"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgCard" />
+            app:layout_constraintTop_toBottomOf="@id/postImg" />
 
 
-        <TextView
+        <View
             android:id="@+id/more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="Read more"
+            android:background="@color/view_color"
             android:fontFamily="@font/poppins"
             android:textAlignment="center"
             android:textColor="@color/black_text"
@@ -175,7 +166,6 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_5sdp"
-            android:paddingStart="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/more"
             app:layout_constraintStart_toStartOf="parent"
 
@@ -198,14 +188,16 @@
                 android:paddingTop="@dimen/_3sdp"
                 android:paddingBottom="@dimen/_3sdp"
                 >
-                <ImageView
+                <View
                     android:paddingTop="@dimen/_2sdp"
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_20sdp"
+                    android:background="@color/view_color"
+
                     android:src="@drawable/favorite"
                     android:id="@+id/postReact"
                     />
-                <TextView
+                <View
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -213,6 +205,7 @@
                     android:gravity="center"
                     android:textSize="@dimen/_12sdp"
                     android:text="17"
+                    android:background="@color/view_color"
                     android:textColor="@color/black_text"
                     android:id="@+id/postReactCount"
                     />
@@ -231,18 +224,20 @@
                 android:paddingBottom="@dimen/_3sdp"
                 android:paddingEnd="@dimen/_6sdp"
                 >
-                <ImageView
+                <View
                     android:paddingTop="@dimen/_2sdp"
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_20sdp"
+                    android:background="@color/view_color"
                     android:src="@drawable/comment"
                     android:id="@+id/postComment"
                     />
-                <TextView
+                <View
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingStart="@dimen/_3sdp"
+                    android:background="@color/view_color"
                     android:gravity="center"
                     android:textSize="@dimen/_12sdp"
                     android:text="10"
@@ -275,11 +270,12 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:orientation="horizontal"
             >
-            <TextView
+            <View
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingEnd="@dimen/_3sdp"
+                android:background="@color/view_color"
                 android:gravity="center"
                 android:textSize="@dimen/_13sdp"
                 android:text="Share"
@@ -289,14 +285,15 @@
                 android:id="@+id/postShear"
                 />
 
-            <ImageView
+            <View
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
+                android:background="@color/view_color"
                 android:src="@drawable/share_icon"
                 android:rotation="-20"
                 />
-<!--            android:src="@drawable/share"-->
-<!--            TODO: SHARE image ekta extra ache, oita delete korte hobe-->
+            <!--            android:src="@drawable/share"-->
+            <!--            TODO: SHARE image ekta extra ache, oita delete korte hobe-->
 
 
         </LinearLayout>

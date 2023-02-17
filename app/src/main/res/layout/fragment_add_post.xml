@@ -125,7 +125,7 @@
                 android:paddingStart="@dimen/_6sdp"
                 android:paddingEnd="@dimen/_6sdp"
                 android:paddingTop="@dimen/_6sdp"
-                android:hint="Enter Story title"
+                android:hint="Enter title"
                 android:fontFamily="@font/poppins"
                 android:textColorHint="@color/black_text"
                 android:background="@drawable/edit_text_bg_login"

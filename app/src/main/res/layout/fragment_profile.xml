@@ -76,7 +76,7 @@
                     android:includeFontPadding="false"
                     android:inputType="textMultiLine"
                     android:textStyle="bold"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingTop="@dimen/_10sdp"
                     android:text="Abed khan"
@@ -109,7 +109,7 @@
                         app:cardElevation="@dimen/_10sdp"
                         android:visibility="visible"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
                         >
 
                         <LinearLayout
@@ -119,7 +119,7 @@
                             android:background="@color/sky_lite"
                             android:orientation="horizontal"
                             android:paddingStart="@dimen/_10sdp"
-                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingTop="@dimen/_3sdp"
                             android:paddingEnd="@dimen/_10sdp"
                             android:paddingBottom="@dimen/_3sdp">
 
@@ -270,84 +270,84 @@
 
                 <!--ata social media connect korar option ekhane sob gula social media icon deya ase-->
 
-                <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    >
+<!--                <LinearLayout-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/profileimgcard"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                    >-->
 
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/facebookId"
-                        android:layout_width="@dimen/_22sdp"
-                        android:layout_height="@dimen/_22sdp"
-                        android:src="@drawable/facebook"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        />
-
-
-
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/instagramId"
-                        android:layout_width="@dimen/_22sdp"
-                        android:layout_height="@dimen/_22sdp"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:src="@drawable/instagram"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        />
+<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                        android:id="@+id/facebookId"-->
+<!--                        android:layout_width="@dimen/_22sdp"-->
+<!--                        android:layout_height="@dimen/_22sdp"-->
+<!--                        android:src="@drawable/facebook"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        />-->
 
 
 
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/tweeterId"
-                        android:layout_width="@dimen/_22sdp"
-                        android:layout_height="@dimen/_22sdp"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:src="@drawable/twitter"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        />
+<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                        android:id="@+id/instagramId"-->
+<!--                        android:layout_width="@dimen/_22sdp"-->
+<!--                        android:layout_height="@dimen/_22sdp"-->
+<!--                        android:layout_marginStart="@dimen/_8sdp"-->
+<!--                        android:src="@drawable/instagram"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        />-->
 
 
 
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/linkedInId"
-                        android:layout_width="@dimen/_22sdp"
-                        android:layout_height="@dimen/_22sdp"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:src="@drawable/linkedin"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        />
+<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                        android:id="@+id/tweeterId"-->
+<!--                        android:layout_width="@dimen/_22sdp"-->
+<!--                        android:layout_height="@dimen/_22sdp"-->
+<!--                        android:layout_marginStart="@dimen/_8sdp"-->
+<!--                        android:src="@drawable/twitter"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        />-->
 
 
 
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/whatsappId"
-                        android:layout_width="@dimen/_22sdp"
-                        android:layout_height="@dimen/_22sdp"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:src="@drawable/whatsapp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        />
+<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                        android:id="@+id/linkedInId"-->
+<!--                        android:layout_width="@dimen/_22sdp"-->
+<!--                        android:layout_height="@dimen/_22sdp"-->
+<!--                        android:layout_marginStart="@dimen/_8sdp"-->
+<!--                        android:src="@drawable/linkedin"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        />-->
+
+
+
+
+<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                        android:id="@+id/whatsappId"-->
+<!--                        android:layout_width="@dimen/_22sdp"-->
+<!--                        android:layout_height="@dimen/_22sdp"-->
+<!--                        android:layout_marginStart="@dimen/_8sdp"-->
+<!--                        android:src="@drawable/whatsapp"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        />-->
 
 
 
 
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
 
 
@@ -1067,6 +1067,7 @@
 
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/floating_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -1135,6 +1136,10 @@
 
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

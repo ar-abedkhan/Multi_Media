@@ -1,4 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,9 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity"
     android:orientation="vertical"
-    android:id="@+id/fullFrame"
+    android:id="@+id/mainActivityFrame"
     android:background="@color/view_color_background"
     >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.MainActivity"
+        android:orientation="vertical"
+        android:id="@+id/fullFrame"
+        android:background="@color/view_color_background"
+        >
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -85,6 +95,7 @@
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/bottommenu_background"
             app:layout_constraintTop_toBottomOf="@id/tool" />
 
 
@@ -108,3 +119,5 @@
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

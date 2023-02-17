@@ -1,7 +1,6 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +8,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abedkhan.multimedia.AllViewHolder.PostViewHolder;
-import com.abedkhan.multimedia.Fragment.LoginFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
 import com.abedkhan.multimedia.Listeners.PostListener;
@@ -22,7 +18,6 @@ import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,8 +33,8 @@ import java.util.List;
 public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     Context context;
     List<PostModel> postList;
-    PostListener listener;
     DatabaseReference databaseReference;
+    PostListener listener;
 
     public PostAdapter(Context context, List<PostModel> postList, PostListener listener) {
         this.context = context;
@@ -47,6 +42,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         this.listener = listener;
         Collections.reverse(postList);
     }
+
+//    public PostAdapter(Context context, List<PostModel> postList) {
+//        this.context = context;
+//        this.postList = postList;
+//        Collections.reverse(postList);
+//    }
+
 
     @NonNull
     @Override
@@ -96,21 +98,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //                Handling in post click
                 holder.mainStory.setOnClickListener(view -> {
 
-
                     AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
                     ReadStoryFragment readStoryFragment=new ReadStoryFragment();
                     appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
 
 
+
                 });
 
-    holder.readMore.setOnClickListener(view -> {
+holder.readMore.setOnClickListener(view -> {
 
-        AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
-        ReadStoryFragment readStoryFragment=new ReadStoryFragment();
-        appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
+//    AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+//    ReadStoryFragment readStoryFragment=new ReadStoryFragment();
+//    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
+    listener.gotoFragmentWithValue(new ReadStoryFragment(), model.getOwnerID());
 
-    });
+});
 
             }
 
@@ -140,6 +143,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 holder.followingOption.setText("Following");
             }
         });
+
+
 
 
     }

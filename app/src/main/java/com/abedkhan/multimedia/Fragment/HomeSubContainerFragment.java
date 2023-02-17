@@ -58,6 +58,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
         binding=FragmentHomeSubContainerBinding.inflate(getLayoutInflater(),container,false);
         postList = new ArrayList<>();
 
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         binding.progressbar.setVisibility(View.VISIBLE);
@@ -171,7 +172,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
     }
 
     private void setDataToView() {
-        PostAdapter adapter = new PostAdapter(getContext(), postList, this);
+        PostAdapter adapter = new PostAdapter(requireContext(),postList,this);
         binding.postRecycler.setAdapter(adapter);
     }
 
@@ -234,6 +235,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
     }
 
     //    Going to the Profile fragment
+
     @Override
     public void gotoFragmentWithValue(Fragment fragment, String userID) {
         Bundle bundle = new Bundle();

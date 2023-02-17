@@ -10,15 +10,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.abedkhan.multimedia.Adapters.CategoryAdapter;
 import com.abedkhan.multimedia.Adapters.PostAdapter;
 import com.abedkhan.multimedia.Listeners.CategoryListener;
 import com.abedkhan.multimedia.Listeners.PostListener;
+import com.abedkhan.multimedia.Model.FollowerFollowingModel;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.R;
-import com.abedkhan.multimedia.SavedData.CategorySavedData;
+import com.abedkhan.multimedia.Extras.CategorySavedData;
 import com.abedkhan.multimedia.databinding.FragmentShowPostByCategoryBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +46,9 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
     List<PostModel> postList;
     DatabaseReference databaseReference;
     List<String> categoryList;
+
+    String currentUserID, currentUserName, currentUserImg;
+    String visitedUserID, visitedUserProfileImg, visitedUserName;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -165,5 +175,86 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
                 .replace(R.id.frame, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    //    Handling follow button
+    boolean finalFollowing = false;
+    @Override
+    public boolean followButtonClickedEvent(String visitedUserID) {
+        this.visitedUserID = visitedUserID;
+        boolean isFollowing = isFollowing(visitedUserID);
+        if(!currentUserID.equals(visitedUserID) && !isFollowing){
+            Map<String, Object> map = new HashMap<>();
+            map.put("OwnProfileID", currentUserID);
+            map.put("followerID", visitedUserID);
+            map.put("followerName", visitedUserName);
+            map.put("followProfileImg", visitedUserProfileImg);
+
+//                Including the visited user to the following list
+            databaseReference.child("Following").child(currentUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+//                    binding.followText.setText("following");
+                    finalFollowing = true;
+
+                    /*
+                     * This process will be completed in two steps
+                     * 1. Firstly will check if the visiting user following the current user or not
+                     * 2. If the visitor is following the user then isFollowing method will return false and the whole process will be cancelled else the process will continue
+                     * 3. Lastly the user will be stored in the followed user's followers table
+                     * */
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("OwnProfileID", visitedUserID);
+                    map.put("followerID", currentUserID);
+                    map.put("followerName", currentUserName);
+                    map.put("followProfileImg", currentUserImg);
+                    databaseReference.child("Followers").child(visitedUserID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@androidx.annotation.NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Toast.makeText(getContext(), "Following the user", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Log.i("TAG", "Follower upload failed: "+ task.getException().getLocalizedMessage());
+                            }
+                        }
+                    });
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@androidx.annotation.NonNull Exception e) {
+
+                }
+            });
+        }
+        return finalFollowing;
+
+    }
+
+    boolean isFollowing = false;
+    private boolean isFollowing(String visitedUserID) {
+        databaseReference.child("Following").child(currentUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@androidx.annotation.NonNull DataSnapshot snapshot) {
+                try {
+                    for (DataSnapshot snap: snapshot.getChildren()) {
+                        FollowerFollowingModel model = snap.getValue(FollowerFollowingModel.class);
+                        if (visitedUserID.equals(model.getFollowerID())){
+                            isFollowing = true;
+                        }
+                    }
+                }catch (Exception e){
+                    isFollowing = false;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@androidx.annotation.NonNull DatabaseError error) {
+                isFollowing = false;
+
+            }
+        });
+        return isFollowing;
     }
 }

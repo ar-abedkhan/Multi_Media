@@ -286,7 +286,7 @@ public class ProfileFragment extends Fragment {
 
         binding.logeOutBtn.setOnClickListener(view -> {
             firebaseAuth.signOut();
-            startActivity(new Intent(requireContext(),MainActivity.class));
+            startActivity(new Intent(requireContext(),ContainerActivity.class));
 
         });
 

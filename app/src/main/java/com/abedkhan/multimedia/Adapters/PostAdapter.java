@@ -93,6 +93,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
                 }
 
+//                Handling in post click
                 holder.mainStory.setOnClickListener(view -> {
 
 
@@ -110,8 +111,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
 
     });
-
-
 
             }
 
@@ -132,6 +131,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         holder.profileName.setOnClickListener(view -> {
 //           parse data to profile adapter
             listener.gotoFragmentWithValue(new ProfileFragment(), model.getOwnerID());
+        });
+
+//        Handling follow option clicked event
+        holder.followingOption.setOnClickListener(view -> {
+            boolean isFollowing = listener.followButtonClickedEvent(model.getOwnerID());
+            if (isFollowing){
+                holder.followingOption.setText("Following");
+            }
         });
 
 

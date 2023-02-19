@@ -1,6 +1,7 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.nio.Buffer;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,6 +38,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     DatabaseReference databaseReference;
     PostListener listener;
 
+//    extra variable
+    String ownerFullName, ownerProfileImg;
     public PostAdapter(Context context, List<PostModel> postList, PostListener listener) {
         this.context = context;
         this.postList = postList;
@@ -90,31 +94,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 userModelList.add(userModel);
 
                 if (!userModelList.isEmpty()){
-                    holder.profileName.setText(userModelList.get(0).getFullName());
-                    Glide.with(context).load(userModelList.get(0).getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
+                    ownerFullName = userModelList.get(0).getFullName();
+                    ownerProfileImg = userModelList.get(0).getProfileImgUrl();
 
+                    holder.profileName.setText(ownerFullName);
+                    Glide.with(context).load(ownerProfileImg).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
                 }
-
-//                Handling in post click
-                holder.mainStory.setOnClickListener(view -> {
-
-                    AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
-                    ReadStoryFragment readStoryFragment=new ReadStoryFragment();
-                    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
-
-
-
-                });
-
-holder.readMore.setOnClickListener(view -> {
-
-//    AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
-//    ReadStoryFragment readStoryFragment=new ReadStoryFragment();
-//    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
-    listener.gotoFragmentWithValue(new ReadStoryFragment(), model.getOwnerID());
-
-});
-
             }
 
             @Override
@@ -123,6 +108,57 @@ holder.readMore.setOnClickListener(view -> {
 
             }
         });
+
+
+//                Handling in post click
+        holder.mainStory.setOnClickListener(view -> {
+
+            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+            ReadStoryFragment readStoryFragment=new ReadStoryFragment();
+
+//            passing post data to the fragment
+            Bundle bundle = new Bundle();
+            bundle.putString("postID", model.getPostID());
+            bundle.putString("ownerFullName", ownerFullName);
+            bundle.putString("ownerProfileImg", ownerProfileImg);
+            readStoryFragment.setArguments(bundle);
+
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
+
+        });
+
+//        handling read more option
+        holder.readMore.setOnClickListener(view -> {
+//            listener.gotoFragmentWithValue(new ReadStoryFragment(), model.getOwnerID());
+            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+            ReadStoryFragment readStoryFragment=new ReadStoryFragment();
+
+//            passing post data to the fragment
+            Bundle bundle = new Bundle();
+            bundle.putString("postID", model.getPostID());
+            bundle.putString("ownerFullName", ownerFullName);
+            bundle.putString("ownerProfileImg", ownerProfileImg);
+            readStoryFragment.setArguments(bundle);
+
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
+
+        });
+
+//        handling blank view click
+        holder.itemView.setOnClickListener(view -> {
+            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+            ReadStoryFragment readStoryFragment=new ReadStoryFragment();
+//            passing post data to the fragment
+            Bundle bundle = new Bundle();
+            bundle.putString("postID", model.getPostID());
+            bundle.putString("ownerFullName", ownerFullName);
+            bundle.putString("ownerProfileImg", ownerProfileImg);
+            readStoryFragment.setArguments(bundle);
+
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
+
+        });
+
 
 //        #Hanling Profile image clicked
         holder.profileImg.setOnClickListener(view -> {

@@ -189,7 +189,7 @@
                                 android:layout_width="@dimen/_22sdp"
                                 android:layout_height="@dimen/_22sdp"
                                 android:src="@drawable/favorite_border"
-                                android:id="@+id/postReactOption"
+                                android:id="@+id/post_non_React"
                                 />
 
                             <ImageView
@@ -211,7 +211,7 @@
                                 android:paddingStart="@dimen/_3sdp"
                                 android:gravity="center"
                                 android:textSize="@dimen/_13sdp"
-                                android:text="17"
+                                android:text="0"
                                 android:textStyle="bold"
                                 android:textColor="@color/black_text"
                                 android:id="@+id/postReactCount"

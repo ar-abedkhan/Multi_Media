@@ -69,6 +69,7 @@ public class ProfileFragment extends Fragment {
 
         databaseReference=FirebaseDatabase.getInstance().getReference();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseUser!=null){
             currentUserID =firebaseUser.getUid();
         }
@@ -96,7 +97,7 @@ public class ProfileFragment extends Fragment {
         });
 
 //        #Checking if the request is coming from the Profile fragment or any other fragment and if there are any arguments
-//        try {
+        try {
 
 
             visitedUserID  = getArguments().getString("VisitedUserID");
@@ -152,7 +153,7 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(getActivity(), "User visiting failed!", Toast.LENGTH_SHORT).show();
                 }
             });
-//        }catch (Exception e){
+        }catch (Exception e){
 //        *setting the current user data if getting argument fails
 
 
@@ -208,7 +209,7 @@ public class ProfileFragment extends Fragment {
             //        Hiding follow button for own profile
                 binding.followOptionContainer.setVisibility(View.GONE);
 //
-//        }
+        }
 
 
 
@@ -316,7 +317,7 @@ public class ProfileFragment extends Fragment {
 
         binding.logeOutBtn.setOnClickListener(view -> {
             firebaseAuth.signOut();
-            startActivity(new Intent(requireContext(),MainActivity.class));
+            startActivity(new Intent(getContext(),ContainerActivity.class));
 
         });
 

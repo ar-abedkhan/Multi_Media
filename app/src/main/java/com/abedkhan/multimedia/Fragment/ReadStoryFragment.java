@@ -41,7 +41,7 @@ public class ReadStoryFragment extends Fragment implements PostListener {
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
     List<PostCommentModel> commentList;
-    int totalLikes;
+    int totalLikes=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -187,6 +187,9 @@ public class ReadStoryFragment extends Fragment implements PostListener {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
+
+                        totalLikes = totalLikes + 1;
+                        binding.postReactCount.setText(totalLikes+"");
 //                        saving data to the notification table
                         Map<String, Object> notiMap = new HashMap<>();
                         long timeMillis = System.currentTimeMillis();
@@ -200,8 +203,8 @@ public class ReadStoryFragment extends Fragment implements PostListener {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    totalLikes += 1;
-                                    binding.postReactCount.setText(totalLikes+"");
+//                                    totalLikes = totalLikes + 1;
+//                                    binding.postReactCount.setText(totalLikes+"");
 
 
                                 }

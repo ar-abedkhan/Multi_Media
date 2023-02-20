@@ -46,32 +46,43 @@ public class NotificationFragment extends Fragment {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         currentUser = firebaseUser.getUid();
 
+//        Getting Notification data from cloud
         databaseReference.child("Notifications").addValueEventListener(new ValueEventListener() {
+           /*
+            * In this program, firstly I retrieved all data from the notification table
+            * after that I have checked that which User is the owner of the post and check it if Current user owns any notification
+            * If Notification matches with the owner then the notification shows up
+            *
+            */
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snap: snapshot.getChildren()) {
-                    String postId = snap.getKey();
+                for (DataSnapshot postSnap: snapshot.getChildren()) {
+                    String postId = postSnap.getKey();
 //                    Log.i("TAG", "Notification post id: "+ postId);
                     databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot snap2: snapshot.getChildren()) {
-                                String performerID = snap2.getKey();
+//                                String postID = snap2.getKey();
                                 PostModel postModel = (PostModel) snap2.getValue(PostModel.class);
                                 if (postModel.getOwnerID().equals(currentUser)){
+                                    String myPostID = postModel.getPostID();
                                     databaseReference.child("Notifications").child(postId).addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             for (DataSnapshot snap3: snapshot.getChildren()) {
                                                 NotificationModel model = snap3.getValue(NotificationModel.class);
-                                                Log.i("TAG", "Notification@:- "+ model.getNotificationTxt());
-                                                notiList.add(model);
+//                                                Log.i("TAG", "Notification@:- "+ model.getNotificationTxt());
+                                                if (model.getPostID().equals(myPostID)) {
+                                                    notiList.add(model);
+                                                }
 
-                                                Log.i("TAG", "Notification@:--- "+ notiList.size());
+//                                                NotificationAdapter adapter = new NotificationAdapter(getActivity(), notiList);
+//                                                binding.notificationRecycler.setAdapter(adapter);
                                             }
 
                                             NotificationAdapter adapter = new NotificationAdapter(getActivity(), notiList);
-                                            Log.i("TAG", "onDataChange: "+notiList.size());
+//                                            Log.i("TAG", "onDataChange: "+notiList.size());
                                             binding.notificationRecycler.setAdapter(adapter);
                                         }
 

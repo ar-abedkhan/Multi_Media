@@ -7,15 +7,17 @@ public class NotificationModel {
     * */
     String postID;
     String performerID; // Here performer means who pressed the love or commented on the post
-    String notificationTxt;
+    String notificationTxt; // Notification txt means is it comment or react
     long notiTimeMillis;
     boolean isClicked, isSeen;
 
-    public NotificationModel(String postID, String performerID, String notificationTxt, long notiTimeMillis) {
+    public NotificationModel(String postID, String performerID, String notificationTxt, long notiTimeMillis, boolean isClicked, boolean isSeen) {
         this.postID = postID;
         this.performerID = performerID;
         this.notificationTxt = notificationTxt;
         this.notiTimeMillis = notiTimeMillis;
+        this.isClicked = isClicked;
+        this.isSeen = isSeen;
     }
 
     public NotificationModel() {
@@ -51,5 +53,21 @@ public class NotificationModel {
 
     public void setNotiTimeMillis(long notiTimeMillis) {
         this.notiTimeMillis = notiTimeMillis;
+    }
+
+    public boolean isClicked() {
+        return isClicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        isClicked = clicked;
+    }
+
+    public boolean isSeen() {
+        return isSeen;
+    }
+
+    public void setSeen(boolean seen) {
+        isSeen = seen;
     }
 }

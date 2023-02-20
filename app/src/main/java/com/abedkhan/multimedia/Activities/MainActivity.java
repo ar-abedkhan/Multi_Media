@@ -84,7 +84,7 @@ MeowBottomNavigation meowBottomNavigation;
                         break;
 
                     case 3:
-                        replace(new NotificationFragment(), false);
+                        replace(new NotificationFragment(), true);
 //                        isToolActive = false;
 
                         break;

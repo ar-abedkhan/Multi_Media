@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/notificationContainer"
+    android:background="#94E1F1F8">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImg"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:padding="@dimen/_6sdp"
+        android:src="@drawable/lightning_tree"/>
+    <TextView
+        android:id="@+id/notiMainTxt"
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/profileImg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/notiTimeMillis"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+
+        android:textSize="@dimen/_14sdp"
+        android:text="Abdur Rahman commented to your post"
+        android:textColor="@color/black_text"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/notiTimeMillis"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/profileImg"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+
+        android:text="21 Feb 2023, 12:43"
+        android:textColor="@color/black_text"
+        android:textSize="@dimen/_12sdp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:background="#9061798C"
+        app:layout_constraintTop_toBottomOf="@id/notiTimeMillis"
+        android:layout_marginTop="@dimen/_3sdp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

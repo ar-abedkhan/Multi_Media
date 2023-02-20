@@ -26,7 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ReadStoryFragment extends Fragment implements PostListener {
@@ -36,6 +38,7 @@ public class ReadStoryFragment extends Fragment implements PostListener {
     String postId, currentUser;
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
+    int totalLikes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,6 +77,40 @@ public class ReadStoryFragment extends Fragment implements PostListener {
             }
         });
 
+//        getting post react count && checking if the user already liked the post
+        databaseReference.child("Reacts").child(postId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                TODO: get total length
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                List<String> likeSize = new ArrayList<>();
+                for (DataSnapshot snap: snapshot.getChildren()) {
+                    String userId = snap.getKey();
+                    likeSize.add(userId);
+
+                    if (userId.equals(currentUser)){
+                        binding.postNonReact.setVisibility(View.GONE);
+                        binding.postReacted.setVisibility(View.VISIBLE);
+                    }
+                }
+
+                try {
+                    totalLikes = likeSize.size();
+                    binding.postReactCount.setText(likeSize.size()+"");
+                }catch (Exception e){
+                    binding.postReactCount.setText("0");
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 //        Handling post reacts
         binding.postNonReact.setOnClickListener(view -> {
 //            TODO: If the post was already reacted, delete the react data
@@ -84,7 +121,7 @@ public class ReadStoryFragment extends Fragment implements PostListener {
             reactMap.put("postID", postId);
             reactMap.put("reactorUserID", currentUser);
 
-            databaseReference.child("Reacts").child(postId).setValue(reactMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            databaseReference.child("Reacts").child(postId).child(currentUser).setValue(reactMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()){
@@ -95,10 +132,15 @@ public class ReadStoryFragment extends Fragment implements PostListener {
                         notiMap.put("performerID", currentUser); // performer means who gave the react!
                         notiMap.put("notificationTxt", "react");
                         notiMap.put("notiTimeMillis", timeMillis);
-                        databaseReference.child("Notifications").child(currentUser).child(String.valueOf(timeMillis)).setValue(notiMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        notiMap.put("isClicked", false);
+                        notiMap.put("isSeen", false);
+                        databaseReference.child("Notifications").child(postId).child(currentUser).setValue(notiMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
+                                    totalLikes += 1;
+                                    binding.postReactCount.setText(totalLikes+"");
+
 
                                 }
                                 else {

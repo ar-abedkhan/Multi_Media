@@ -9,6 +9,7 @@ public class NotificationModel {
     String performerID; // Here performer means who pressed the love or commented on the post
     String notificationTxt;
     long notiTimeMillis;
+    boolean isClicked, isSeen;
 
     public NotificationModel(String postID, String performerID, String notificationTxt, long notiTimeMillis) {
         this.postID = postID;

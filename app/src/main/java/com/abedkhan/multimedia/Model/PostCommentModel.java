@@ -3,14 +3,13 @@ package com.abedkhan.multimedia.Model;
 public class PostCommentModel {
     String postID; //postID will be used for the post React id
 //    commentator details
-    String comName, comProfileName, comProfileImg, mainComment;
+    String commenterName, commenterImg, mainComment;
     long commentTimeMillis;
 
-    public PostCommentModel(String postID, String comName, String comProfileName, String comProfileImg, String mainComment, long commentTimeMillis) {
+    public PostCommentModel(String postID, String comName, String comProfileImg, String mainComment, long commentTimeMillis) {
         this.postID = postID;
-        this.comName = comName;
-        this.comProfileName = comProfileName;
-        this.comProfileImg = comProfileImg;
+        this.commenterName = comName;
+        this.commenterImg = comProfileImg;
         this.mainComment = mainComment;
         this.commentTimeMillis = commentTimeMillis;
     }
@@ -26,28 +25,20 @@ public class PostCommentModel {
         this.postID = postID;
     }
 
-    public String getComName() {
-        return comName;
+    public String getCommenterName() {
+        return commenterName;
     }
 
-    public void setComName(String comName) {
-        this.comName = comName;
+    public void setCommenterName(String commenterName) {
+        this.commenterName = commenterName;
     }
 
-    public String getComProfileName() {
-        return comProfileName;
+    public String getCommenterImg() {
+        return commenterImg;
     }
 
-    public void setComProfileName(String comProfileName) {
-        this.comProfileName = comProfileName;
-    }
-
-    public String getComProfileImg() {
-        return comProfileImg;
-    }
-
-    public void setComProfileImg(String comProfileImg) {
-        this.comProfileImg = comProfileImg;
+    public void setCommenterImg(String commenterImg) {
+        this.commenterImg = commenterImg;
     }
 
     public String getMainComment() {

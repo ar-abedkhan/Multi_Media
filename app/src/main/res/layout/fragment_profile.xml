@@ -1076,6 +1076,7 @@
         app:fab_expandDirection="up"
         app:fab_labelsPosition="left"
         app:fab_addButtonColorNormal="@color/c1"
+        android:tooltipText="More"
         app:fab_addButtonColorPressed="@color/c2"
         android:animateLayoutChanges="true"
         >

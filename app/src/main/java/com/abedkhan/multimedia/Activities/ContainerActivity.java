@@ -46,9 +46,11 @@ public class ContainerActivity extends AppCompatActivity {
 
             }else if (intent.getBooleanExtra("isMessageClicked",false)){
                 replace(new MessageFragment());
+            }else if (intent.getBooleanExtra("uId",false)) {
+                replace(new ProfileFragment());
             }else {
-                replace(new LoginFragment());
-            }
+                    replace(new LoginFragment());
+                }
 
         }catch (Exception e){
             replace(new LoginFragment());

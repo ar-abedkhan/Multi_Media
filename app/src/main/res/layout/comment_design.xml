@@ -13,12 +13,26 @@
             android:layout_width="@dimen/_32sdp"
             android:layout_height="@dimen/_32sdp"
             android:layout_gravity="end"
-            app:civ_border_color="@color/c1"
+            app:civ_border_color="@color/view_color"
             app:civ_border_width="@dimen/_1sdp"
             android:src="@drawable/ic_baseline_person_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:text="9h"
+        android:textStyle="normal"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/commentTime"
+        />
 
 
 
@@ -38,10 +52,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/c1"
-            android:textSize="@dimen/_16sdp"
+            android:textColor="@color/black_text"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/_16sdp"
             android:includeFontPadding="false"
             android:text="Abed khan"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,26 +66,25 @@
             android:id="@+id/comment_profileName"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"
-            android:text="9h"
-            android:textStyle="normal"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:paddingEnd="@dimen/_10sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/commentTime"
-            />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/_12sdp"-->
+<!--            android:text="9h"-->
+<!--            android:textStyle="normal"-->
+<!--            android:layout_marginTop="@dimen/_5sdp"-->
+<!--            android:paddingEnd="@dimen/_10sdp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:id="@+id/commentTime"-->
+<!--            />-->
 
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="@dimen/_14sdp"
             android:text="Abed khan"

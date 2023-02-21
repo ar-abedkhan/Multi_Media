@@ -5,7 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@color/view_color"
     tools:context=".Fragment.ReadStoryFragment"
         >
 
@@ -16,7 +15,6 @@
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/view_color"
             >
 
 
@@ -29,8 +27,9 @@
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_150sdp"
+                android:layout_height="@dimen/_280sdp"
                 android:fitsSystemWindows="true"
+                android:background="@color/white_background"
                 android:id="@+id/appbar"
                 >
                 <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -39,20 +38,23 @@
                     android:fitsSystemWindows="true"
                     app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
                     app:title="Story Name"
-                    app:contentScrim="@color/c2"
-                    android:background="@color/c2"
+                    android:textAlignment="viewStart"
+                    app:collapsedTitleTextColor="@color/black_text"
+                    app:contentScrim="@color/bottommenu_background"
+                     app:expandedTitleTextColor="@color/c1"
+
                     android:id="@+id/storyTitle"
                     >
+<!--                    app:contentScrim="@color/bottommenu_background"-->
 
 
                     <ImageView
                         android:id="@+id/postImg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="center"
                         android:layout_gravity="center"
+                        android:scaleType="center"
                         android:src="@drawable/travel1"
-                        app:layout_collapseMode="parallax"
                         />
 
 
@@ -81,20 +83,22 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/storyback"
 
                     >
+
+<!--                    android:background="@drawable/storyback"-->
+
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/writerProfileImg"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_38sdp"
                         android:layout_gravity="end"
-                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:paddingBottom="@dimen/_2sdp"
-                        app:civ_border_color="@color/c2"
+                        app:civ_border_color="@color/view_color"
                         app:civ_border_width="@dimen/_1sdp"
                         android:src="@drawable/person1"
                         app:layout_constraintStart_toStartOf="parent"
@@ -112,23 +116,41 @@
                         android:singleLine="true"
                         app:layout_constraintStart_toEndOf="@id/writerProfileImg"
                         app:layout_constraintTop_toTopOf="parent"
-
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginStart="@dimen/_8sdp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:includeFontPadding="false"
+                        android:layout_marginStart="@dimen/_6sdp"
                         android:id="@+id/writerName"
                         />
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="@dimen/_10sdp"-->
-<!--                        android:text="Devoloper"-->
-<!--                        app:layout_constraintStart_toEndOf="@id/writerProfileImg"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/writerName"-->
-<!--                        android:layout_marginStart="@dimen/_8sdp"-->
-<!--                        android:id="@+id/writerProfession"-->
-<!--                        />-->
+
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp"
+                        android:text="12 feb 2023"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/writerName"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:id="@+id/postTime"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp"
+                        android:text="Engineer"
+                        app:layout_constraintStart_toEndOf="@id/writerProfileImg"
+                        app:layout_constraintTop_toBottomOf="@id/writerName"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:id="@+id/profession"
+                        />
 
 
 
@@ -337,8 +359,8 @@
                         android:layout_marginTop="4dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintTop_toBottomOf="@id/comment_title"
-                        tools:layout_editor_absoluteX="10dp"
-
+                        tools:layout_editor_absoluteX="0dp"
+                       android:paddingBottom="@dimen/_100sdp"
                         tools:listitem="@layout/comment_design" />
 
 
@@ -347,18 +369,18 @@
             </androidx.core.widget.NestedScrollView>
 
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/shop3"
-                android:baselineAlignBottom="false"
-                android:clickable="true"
-                app:rippleColor="@color/c1"
-                app:layout_anchor="@id/appbar"
-                app:layout_anchorGravity="end|bottom"
-                android:backgroundTint="@color/c2"
-                android:layout_marginEnd="@dimen/_10sdp"
-                />
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/shop3"-->
+<!--                android:baselineAlignBottom="false"-->
+<!--                android:clickable="true"-->
+<!--                app:rippleColor="@color/c1"-->
+<!--                app:layout_anchor="@id/appbar"-->
+<!--                app:layout_anchorGravity="end|bottom"-->
+<!--                android:backgroundTint="@color/c2"-->
+<!--                android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                />-->
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -419,28 +441,7 @@
                 />
 
 
-
-
-
-
-
-
-
-
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

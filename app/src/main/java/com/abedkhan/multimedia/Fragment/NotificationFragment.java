@@ -54,6 +54,7 @@ public class NotificationFragment extends Fragment {
             * If Notification matches with the owner then the notification shows up
             *
             */
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnap: snapshot.getChildren()) {

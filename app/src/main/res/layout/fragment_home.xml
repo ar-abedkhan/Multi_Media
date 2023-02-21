@@ -8,30 +8,37 @@
     android:background="@color/bottommenu_background"
     tools:context=".Fragment.ReadStoryFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/cetagoryTabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_35sdp"
-        app:tabIndicatorAnimationMode="elastic"
-        app:tabIndicator="@color/toolback"
-        app:tabMode="scrollable"
-        android:scrollbarStyle="outsideInset"
-        android:layout_margin="@dimen/_3sdp"
-        android:background="@color/view_color_background"
-        app:tabBackground="@drawable/toolbak"
-        app:tabSelectedTextColor="@color/c1"
-        app:tabTextColor="@color/black_text"
-        />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/cetagoryViewpager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cetagoryTabLayout"
-        />
+
+
+
+            <com.google.android.material.tabs.TabLayout
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/cetagoryTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicator="@color/toolback"
+                app:tabMode="scrollable"
+                android:scrollbarStyle="outsideInset"
+                android:layout_margin="@dimen/_3sdp"
+                android:background="@color/view_color_background"
+                app:tabBackground="@drawable/toolbak"
+                app:tabSelectedTextColor="@color/c1"
+                app:tabTextColor="@color/black_text"
+                />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/cetagoryViewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cetagoryTabLayout"
+                />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

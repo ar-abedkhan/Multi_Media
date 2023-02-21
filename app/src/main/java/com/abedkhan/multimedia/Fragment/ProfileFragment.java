@@ -46,9 +46,8 @@ public class ProfileFragment extends Fragment {
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     List<UserModel>userModelList;
-    String currentUserID, currentUserName, currentUserImg;
+    String currentUserID, currentUserName, currentUserImg,uId;
     String visitedUserID, visitedUserProfileImg, visitedUserName;
-    boolean currentUser;
 
 
     @Override
@@ -73,6 +72,18 @@ public class ProfileFragment extends Fragment {
         if (firebaseUser!=null){
             currentUserID =firebaseUser.getUid();
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
 //        ##Getting current user data
         databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
@@ -111,12 +122,12 @@ public class ProfileFragment extends Fragment {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy");
                     Date date = new Date(userModel.getIdCreationTimeMillis());
 
-//
-//                    if (!userModel.getUserID().equals(currentUserID)){
-//                        binding.logeOutBtn.setVisibility(View.GONE);
-//                        binding.settings.setVisibility(View.GONE);
-//                    }
-//
+
+                    if (!userModel.getUserID().equals(currentUserID)){
+                        binding.logeOutBtn.setVisibility(View.GONE);
+                        binding.settings.setVisibility(View.GONE);
+                    }
+
 
                     if (userModel!=null){
                         binding.userProfileName.setText(userModel.getFullName().trim());

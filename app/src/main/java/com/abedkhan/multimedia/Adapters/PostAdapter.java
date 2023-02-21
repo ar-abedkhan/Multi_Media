@@ -1,6 +1,7 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,6 +41,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
 //    extra variable
     String ownerFullName, ownerProfileImg;
+    int postlike,postcomment;
+
     public PostAdapter(Context context, List<PostModel> postList, PostListener listener) {
         this.context = context;
         this.postList = postList;
@@ -69,6 +72,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         holder.reactCount.setText(""+model.getPostLike());
         holder.commentCount.setText(String.valueOf(model.getPostComment()));
 
+//        int postlike,postcomment;
+//        postcomment=model.getPostComment();
+//        postlike= model.getPostLike();
+//
+//        holder.reactCount.setText(postlike);
+//        holder.commentCount.setText(postcomment);
+
+
 
         if (!model.getPostImgUrl().equals("")){
             Glide.with(context).load(model.getPostImgUrl()).placeholder(R.drawable.lightning_tree).into(holder.postImg);
@@ -93,9 +104,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 userModelList.add(userModel);
 
+
                 if (!userModelList.isEmpty()){
                     ownerFullName = userModelList.get(0).getFullName();
                     ownerProfileImg = userModelList.get(0).getProfileImgUrl();
+
 
                     holder.profileName.setText(ownerFullName);
                     Glide.with(context).load(ownerProfileImg).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
@@ -108,6 +121,71 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
             }
         });
+
+
+
+//post comment count.........
+        databaseReference.child("Comments").child(model.getPostID()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                TODO: get total length
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                List<String> commentsize = new ArrayList<>();
+                for (DataSnapshot snap: snapshot.getChildren()) {
+                    String userId = snap.getKey();
+                    commentsize.add(userId);
+
+
+                }
+
+                try {
+                    postcomment = commentsize.size();
+                    holder.commentCount.setText(commentsize.size()+"");
+                }catch (Exception e){
+                    holder.commentCount.setText("0");
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+//post react count.......
+        databaseReference.child("Reacts").child(model.getPostID()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                TODO: get total length
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                List<String> likes = new ArrayList<>();
+                for (DataSnapshot snap: snapshot.getChildren()) {
+                    String userId = snap.getKey();
+                    likes.add(userId);
+
+
+                }
+
+                try {
+                    postlike = likes.size();
+                    holder.reactCount.setText(likes.size()+"");
+                }catch (Exception e){
+                    holder.reactCount.setText("0");
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
 
 //                Handling in post click
@@ -151,6 +229,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //            passing post data to the fragment
             Bundle bundle = new Bundle();
             bundle.putString("postID", model.getPostID());
+            bundle.putString("ownerId",model.getOwnerID());
             bundle.putString("ownerFullName", ownerFullName);
             bundle.putString("ownerProfileImg", ownerProfileImg);
             readStoryFragment.setArguments(bundle);
@@ -179,6 +258,31 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 holder.followingOption.setText("Following");
             }
         });
+
+
+
+
+
+//        holder.shareOption.setOnClickListener(view -> {
+//
+//            Intent intent=new Intent();
+//            intent.setAction(Intent.ACTION_SEND);
+//            intent.putExtra(Intent.EXTRA_SUBJECT,model.getTitle());
+//            intent.putExtra(Intent.EXTRA_TEXT,model.getMainText());
+//            intent.setType("text/plain");
+//            if (intent.resolveActivity(context.getPackageManager())!=null){
+//                context.startActivity(intent);
+//            }
+//        });
+
+
+
+
+
+
+
+
+
 
 
 

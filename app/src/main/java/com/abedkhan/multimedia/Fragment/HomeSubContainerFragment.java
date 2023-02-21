@@ -50,6 +50,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
     String currentUserID, currentUserName, currentUserImg;
+   int comments,likes;
     String visitedUserID, visitedUserProfileImg, visitedUserName;
 
     @Override
@@ -78,8 +79,9 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
                 if (userModel!=null){
                     currentUserName = userModel.getFullName();
                     currentUserImg = userModel.getProfileImgUrl();
-                }
 
+
+                }
             }
 
             @Override
@@ -138,6 +140,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
         * */
 
 //        Getting post list from cloud
+
         databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -145,6 +148,9 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
 
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     PostModel model = dataSnapshot.getValue(PostModel.class);
+
+                    likes=model.getPostLike();
+                    comments=model.getPostComment();
 
                     postList.add(model);
                     if (categoryName.equals("")) {
@@ -172,7 +178,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
     }
 
     private void setDataToView() {
-        PostAdapter adapter = new PostAdapter(requireContext(),postList,this);
+        PostAdapter adapter = new PostAdapter(getContext(), postList,this);
         binding.postRecycler.setAdapter(adapter);
     }
 
@@ -188,6 +194,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
                     * Here, categoryValue only returning the value of the map
                     * Even though we don't need the if statement, I am using it in case it may be helpful in the future
                     * */
+
                     Object categoryValue = dataSnapshot.getValue();
                     if (categoryValue instanceof Map) {
                         Map<Object, Object> category = (Map<Object, Object>) categoryValue;

@@ -163,6 +163,8 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
                         num++;
 //                        Log.i("TAG", "getting data in category ")
 //                        ;
+
+
                     }
                 }
 //                binding.progressbar.setVisibility(View.GONE);

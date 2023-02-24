@@ -427,11 +427,12 @@
                         android:background="@drawable/post_back"
                         >
                         <TextView
+                            android:id="@+id/publishPostBtn"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="27"
+                            android:text="7"
                             android:textColor="@color/c1"
                             android:includeFontPadding="false"
                             android:textSize="@dimen/_40sdp"
@@ -467,6 +468,7 @@
                         android:background="@drawable/post_back"
                         >
                         <TextView
+                            android:id="@+id/savePostBtn"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_width="wrap_content"
@@ -483,7 +485,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Books Published"
+                            android:text="Save post"
                             android:textSize="@dimen/_15sdp"
                             android:textAlignment="center"
                             android:textStyle="bold"
@@ -507,6 +509,7 @@
                         android:background="@drawable/post_back"
                         >
                         <TextView
+                            android:id="@+id/myFollowersbtn"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_width="wrap_content"
@@ -523,7 +526,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Saved Post"
+                            android:text="Followers"
                             android:textSize="@dimen/_15sdp"
                             android:textAlignment="center"
                             android:textColor="@color/black_text"
@@ -561,51 +564,12 @@
                         android:background="@drawable/post_back"
                         >
                         <TextView
+                            android:id="@+id/iAmFollowingBtn"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="27"
-                            android:textColor="@color/c1"
-                            android:includeFontPadding="false"
-                            android:textSize="@dimen/_40sdp"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Followers"
-                            android:textSize="@dimen/_15sdp"
-                            android:textAlignment="center"
-                            android:textStyle="bold"
-                            android:textColor="@color/black_text"
-                            android:includeFontPadding="false"
-                            />
-
-
-
-
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_100sdp"
-                        android:orientation="vertical"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:background="@drawable/post_back"
-                        >
-                        <TextView
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5"
                             android:textColor="@color/c1"
                             android:includeFontPadding="false"
                             android:textSize="@dimen/_40sdp"
@@ -645,6 +609,46 @@
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="5"
+                            android:textColor="@color/c1"
+                            android:includeFontPadding="false"
+                            android:textSize="@dimen/_40sdp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Review"
+                            android:textSize="@dimen/_15sdp"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/black_text"
+                            android:includeFontPadding="false"
+                            />
+
+
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:background="@drawable/post_back"
+                        >
+                        <TextView
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="2"
                             android:textColor="@color/c1"
                             android:includeFontPadding="false"
@@ -657,7 +661,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Books Buy"
+                            android:text="Books Published"
                             android:textSize="@dimen/_15sdp"
                             android:textAlignment="center"
                             android:textColor="@color/black_text"

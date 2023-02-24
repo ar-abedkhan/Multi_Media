@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/background"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_4ssp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
 
     <TextView
         android:id="@+id/categoryName"
@@ -13,14 +20,14 @@
         android:textAlignment="center"
         android:textColor="@color/black_text"
         android:textStyle="bold"
-        android:background="@drawable/background"
-        android:padding="@dimen/_6sdp"
-        android:layout_marginTop="@dimen/_4ssp"
-        android:paddingBottom="@dimen/_4ssp"
-        android:paddingStart="@dimen/_3sdp"
-        android:paddingEnd="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_6sdp"
+        android:paddingTop="@dimen/_4ssp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:paddingStart="@dimen/_6sdp"
+        android:paddingEnd="@dimen/_6sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

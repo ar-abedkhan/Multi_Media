@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -22,6 +23,7 @@ import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentSearchBinding;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -50,10 +52,9 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSearchBinding.inflate(getLayoutInflater(), container, false);
 
-        userModelList=new ArrayList<>();
         databaseReference= FirebaseDatabase.getInstance().getReference("User");
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-
+        userModelList=new ArrayList<>();
 
 
 
@@ -70,6 +71,7 @@ public class SearchFragment extends Fragment {
                         userModelList.add(userModel);
                     }
                 }
+
                 UserAdapter userAdapter=new UserAdapter(requireContext(),userModelList);
                 binding.postRecycler.setAdapter(userAdapter);
 
@@ -81,38 +83,57 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        if (isClicked){
-            binding.backBtn.setVisibility(View.GONE);
-        }
-
-//        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//        binding.searchView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
 //            @Override
-//            public boolean onQueryTextSubmit(String query) {
+//            public boolean onQueryTextSubmit(String s) {
+//
 //                return false;
 //            }
 //
 //            @Override
-//            public boolean onQueryTextChange(String newText) {
+//            public boolean onQueryTextChange(String s) {
+//                    userAdapter.getFilter().filter(s);
 //
-//                List<UserModel> searchList = new ArrayList<>();
-//                List<PostModel> postModelList = new ArrayList<>();
-//
-//                for (UserModel userModel:userModelList){
-//                    if (userModel.getFullName().toLowerCase().contains(newText.toLowerCase())){
-//                        searchList.add(userModel);
-//                    }
-//                }
-//
-//                if (searchList.isEmpty()){
-//
-//            }
-//                else {
-//                userAdapter.setSearchList(searchList);
-//            }
-//                return true;
+//                    return false;
 //            }
 //        });
-//
+
+
+
+binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+        return false;
+    }
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        userAdapter.getFilter().filter(newText);
+
+
+        return false;
+    }
+});
+
+
+
+
+
+        if (isClicked){
+            binding.backBtn.setVisibility(View.GONE);
+        }
+
+
+
+
+
+
+//        FirebaseRecyclerOptions<UserModel> options =
+//                new FirebaseRecyclerOptions.Builder<UserModel>()
+//                        .setQuery(FirebaseDatabase.getInstance().getReference().child("fullName"),UserModel.class)
+//                        .build();
+
+
 
 
 
@@ -131,6 +152,11 @@ public class SearchFragment extends Fragment {
 //                return false;
 //            }
 //        });
+//
+//
+//
+
+
 
 //        handling back button
         binding.backBtn.setOnClickListener(view -> {
@@ -140,6 +166,8 @@ public class SearchFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+
 
 
 }

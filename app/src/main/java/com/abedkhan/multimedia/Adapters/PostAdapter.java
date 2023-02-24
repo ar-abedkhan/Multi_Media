@@ -252,13 +252,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         });
 
 //        Handling follow option clicked event
-        holder.followingOption.setOnClickListener(view -> {
-            boolean isFollowing = listener.followButtonClickedEvent(model.getOwnerID());
-            if (isFollowing){
-                holder.followingOption.setText("Following");
-            }
-        });
 
+//        holder.followingOption.setOnClickListener(view -> {
+//            boolean isFollowing = listener.followButtonClickedEvent(model.getOwnerID());
+//            if (isFollowing){
+//                holder.followingOption.setText("Following");
+//            }
+//        });
+//
 
 
 

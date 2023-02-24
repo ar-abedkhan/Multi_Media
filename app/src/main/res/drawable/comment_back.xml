@@ -9,7 +9,7 @@
         android:bottomRightRadius="@dimen/_10sdp"
         />
 
-<solid android:color="@color/view_color"
+<solid android:color="@color/lightBlack"
     />
 
 

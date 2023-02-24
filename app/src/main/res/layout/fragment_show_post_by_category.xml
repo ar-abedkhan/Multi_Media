@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/bottommenu_background"
+    android:background="@color/white_background"
 
     tools:context=".Fragment.ShowPostByCategoryFragment">
 
@@ -28,10 +28,10 @@
         android:id="@+id/postRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/horizontalRecycler"
+        android:paddingBottom="@dimen/_120sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/post_recycler_design"
-        android:paddingBottom="@dimen/_230sdp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/horizontalRecycler"
+        tools:layout_editor_absoluteX="0dp"
+        tools:listitem="@layout/post_recycler_design" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

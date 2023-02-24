@@ -4,9 +4,9 @@ public class UserModel {
     String userID, profileImgUrl;
     String fullName, userName, email, gender, dateOfBirth, password;
     long idCreationTimeMillis;
-    String userBio, profession, livingCountry, livingCity;
+    String userBio, profession, livingCountry, livingCity,followerCount,followingCount,publishedPostCount,SavePostCount;
 
-    public UserModel(String userID, String profileImgUrl, String fullName, String userName, String email, String gender, String dateOfBirth, String password, long idCreationTimeMillis, String userBio, String profession, String livingCountry, String livingCity) {
+    public UserModel(String userID, String profileImgUrl, String fullName, String userName, String email, String gender, String dateOfBirth, String password, long idCreationTimeMillis, String userBio, String profession, String livingCountry, String livingCity, String followerCount, String followingCount, String publishedPostCount, String savePostCount) {
         this.userID = userID;
         this.profileImgUrl = profileImgUrl;
         this.fullName = fullName;
@@ -20,6 +20,10 @@ public class UserModel {
         this.profession = profession;
         this.livingCountry = livingCountry;
         this.livingCity = livingCity;
+        this.followerCount = followerCount;
+        this.followingCount = followingCount;
+        this.publishedPostCount = publishedPostCount;
+        SavePostCount = savePostCount;
     }
 
     public UserModel() {
@@ -31,6 +35,14 @@ public class UserModel {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getProfileImgUrl() {
+        return profileImgUrl;
+    }
+
+    public void setProfileImgUrl(String profileImgUrl) {
+        this.profileImgUrl = profileImgUrl;
     }
 
     public String getFullName() {
@@ -81,6 +93,14 @@ public class UserModel {
         this.password = password;
     }
 
+    public long getIdCreationTimeMillis() {
+        return idCreationTimeMillis;
+    }
+
+    public void setIdCreationTimeMillis(long idCreationTimeMillis) {
+        this.idCreationTimeMillis = idCreationTimeMillis;
+    }
+
     public String getUserBio() {
         return userBio;
     }
@@ -113,19 +133,35 @@ public class UserModel {
         this.livingCity = livingCity;
     }
 
-    public String getProfileImgUrl() {
-        return profileImgUrl;
+    public String getFollowerCount() {
+        return followerCount;
     }
 
-    public void setProfileImgUrl(String profileImgUrl) {
-        this.profileImgUrl = profileImgUrl;
+    public void setFollowerCount(String followerCount) {
+        this.followerCount = followerCount;
     }
 
-    public long getIdCreationTimeMillis() {
-        return idCreationTimeMillis;
+    public String getFollowingCount() {
+        return followingCount;
     }
 
-    public void setIdCreationTimeMillis(long idCreationTimeMillis) {
-        this.idCreationTimeMillis = idCreationTimeMillis;
+    public void setFollowingCount(String followingCount) {
+        this.followingCount = followingCount;
+    }
+
+    public String getPublishedPostCount() {
+        return publishedPostCount;
+    }
+
+    public void setPublishedPostCount(String publishedPostCount) {
+        this.publishedPostCount = publishedPostCount;
+    }
+
+    public String getSavePostCount() {
+        return SavePostCount;
+    }
+
+    public void setSavePostCount(String savePostCount) {
+        SavePostCount = savePostCount;
     }
 }

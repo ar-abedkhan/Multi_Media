@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.abedkhan.multimedia.Activities.ContainerActivity;
 import com.abedkhan.multimedia.Activities.MainActivity;
 import com.abedkhan.multimedia.Model.FollowerFollowingModel;
+import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentProfileBinding;
@@ -33,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,9 +48,9 @@ public class ProfileFragment extends Fragment {
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     List<UserModel>userModelList;
-    String currentUserID, currentUserName, currentUserImg,uId;
+    String currentUserID, currentUserName, currentUserImg,postID;
     String visitedUserID, visitedUserProfileImg, visitedUserName;
-
+    int publishedPost,savePost,followers,following;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -187,6 +189,7 @@ public class ProfileFragment extends Fragment {
 
 
                     if (userModel!=null){
+
                         binding.userProfileName.setText(userModel.getFullName().trim());
 //                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
                         binding.userProfession.setText(userModel.getProfession().trim());
@@ -221,6 +224,47 @@ public class ProfileFragment extends Fragment {
                 binding.followOptionContainer.setVisibility(View.GONE);
 //
         }
+
+
+        //handeling post count....
+//        postID = databaseReference.push().getKey();
+//
+//        databaseReference.child("User").child("Post").child(postID).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+////                TODO: get total length
+////                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+//                List<UserModel>postModelList=new ArrayList<>();
+//
+////                List<String> postSize = new ArrayList<>();
+//
+//                for (DataSnapshot snap: snapshot.getChildren()) {
+//                    String userId = snap.getKey();
+//                    postModelList.add(userId);
+//                }
+//
+//                try {
+//                    publishedPost = postModelList.size();
+//                    binding.publishPostBtn.setText(publishedPost);
+//                }catch (Exception e){
+//                    binding.publishPostBtn.setText("0");
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
+
+
+
+
+
+
+
+
+
 
 
 

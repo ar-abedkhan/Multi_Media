@@ -62,8 +62,8 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        binding.progressbar.setVisibility(View.VISIBLE);
-
+//        binding.progressbar.setVisibility(View.VISIBLE);
+    binding.shimmerpostRecycler.startShimmer();
         if (firebaseUser!=null){
             currentUserID =firebaseUser.getUid();
         }
@@ -164,9 +164,9 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
 //                        Log.i("TAG", "getting data in category ");
                     }
                 }
-                binding.progressbar.setVisibility(View.GONE);
-
-            }
+//                binding.progressbar.setVisibility(View.GONE);
+         binding.shimmerpostRecycler.stopShimmer();
+            binding.postRecycler.setVisibility(View.VISIBLE);}
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

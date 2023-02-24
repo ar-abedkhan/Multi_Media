@@ -20,7 +20,9 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public ImageView postImg;
     public LinearLayout shareOption;
     public PostViewHolder(@NonNull View view) {
+
         super(view);
+
         profileName  = view.findViewById(R.id.UserProfileName);
         postingTime  = view.findViewById(R.id.postTime);
         postTitle  = view.findViewById(R.id.postStoryTitle);
@@ -28,7 +30,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         readMore  = view.findViewById(R.id.more);
         reactCount  = view.findViewById(R.id.postReactCount);
         commentCount  = view.findViewById(R.id.postCommentCount);
-        followingOption  = view.findViewById(R.id.followTheWriter);
+//        followingOption  = view.findViewById(R.id.followTheWriter);
         postImg  = view.findViewById(R.id.postImg);
         profileImg  = view.findViewById(R.id.profileImg);
         shareOption  = view.findViewById(R.id.shareOption);

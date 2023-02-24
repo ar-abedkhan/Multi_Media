@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/readStoryFragment"
     tools:context=".Fragment.ReadStoryFragment"
         >
 
@@ -27,11 +28,13 @@
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_280sdp"
+                android:layout_height="@dimen/_220sdp"
                 android:fitsSystemWindows="true"
                 android:background="@color/white_background"
                 android:id="@+id/appbar"
                 >
+
+
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -39,10 +42,10 @@
                     app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
                     app:title="Story Name"
                     android:textAlignment="viewStart"
+                    android:tooltipText="by abed and Zeshan "
                     app:collapsedTitleTextColor="@color/black_text"
                     app:contentScrim="@color/bottommenu_background"
-                     app:expandedTitleTextColor="@color/c1"
-
+                    app:expandedTitleTextColor="@color/c1"
                     android:id="@+id/storyTitle"
                     >
 <!--                    app:contentScrim="@color/bottommenu_background"-->
@@ -110,10 +113,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_16sdp"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/_15sdp"
                         android:text="Abed khan"
                         android:singleLine="true"
+                        android:inputType="textMultiLine"
+                        android:maxLines="2"
                         app:layout_constraintStart_toEndOf="@id/writerProfileImg"
                         app:layout_constraintTop_toTopOf="parent"
                         android:fontFamily="@font/poppins_medium"
@@ -131,7 +136,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="@color/lightBlack"
                         android:textSize="@dimen/_10sdp"
                         android:text="12 feb 2023"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +148,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_13sdp"
                         android:text="Engineer"
                         app:layout_constraintStart_toEndOf="@id/writerProfileImg"
@@ -158,7 +163,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_text"
                         android:textSize="@dimen/_15sdp"
                         android:text="the srtory will herertory will herertoryry will herertoryry will herertoryry will herertoryry will herertoryry will herertoryry will herertoryry will herertory will herertory will herertory will herertory will herertory will herertory will herertory will herertory will herertory will herertory will herertory will herertory will herertory will herertory will here"
                         android:layout_marginTop="@dimen/_20sdp"

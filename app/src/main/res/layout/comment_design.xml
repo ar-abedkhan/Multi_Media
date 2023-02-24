@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/lightBlack"
         android:textSize="@dimen/_12sdp"
         android:text="9h"
         android:textStyle="normal"
@@ -53,16 +53,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black_text"
-            android:singleLine="true"
-            android:ellipsize="marquee"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/_15sdp"
+            android:inputType="textMultiLine"
             android:includeFontPadding="false"
             android:text="Abed khan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_3sdp"
             android:id="@+id/comment_profileName"
             />
 

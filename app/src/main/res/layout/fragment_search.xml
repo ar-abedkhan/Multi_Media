@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/user_recycler_design"
-        android:paddingBottom="@dimen/_130sdp"
+        android:paddingBottom="@dimen/_80sdp"
         />
 
 

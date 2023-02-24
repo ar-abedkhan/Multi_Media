@@ -38,6 +38,9 @@ public class SignUpFragmentTwo extends Fragment {
 
     FragmentSignUpTwoBinding binding;
     String fullName, userName, email, gender, dob, password;
+
+//    followerCount,followingCount,publishedPosCount,savePostCount;
+
     long idCreationTimeMillis;
 
     FirebaseAuth firebaseAuth;
@@ -144,6 +147,10 @@ public class SignUpFragmentTwo extends Fragment {
                 userMap.put("profession", "");
                 userMap.put("livingCountry", "");
                 userMap.put("livingCity", "");
+                userMap.put("followerCount", "");
+                userMap.put("followingCount", "");
+                userMap.put("publishedPostCount", "");
+                userMap.put("SavePostCount", "");
 
                 databaseReference.child("User").child(firebaseUser.getUid()).setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

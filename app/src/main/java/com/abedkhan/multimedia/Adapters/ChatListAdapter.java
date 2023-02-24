@@ -1,15 +1,20 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abedkhan.multimedia.AllViewHolder.ChatListViewHolders;
+import com.abedkhan.multimedia.Fragment.ChattingFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
+import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
 import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.ChatListModel;
 import com.abedkhan.multimedia.Model.UserModel;
@@ -25,13 +30,14 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolders> {
 //    List<ChatListModel> chatListModelList;
     List<UserModel> userModelList;
     Context context;
-//    PostListener listener;
+    PostListener listener;
 
-    public ChatListAdapter(List<UserModel> userModelList, Context context) {
+    public ChatListAdapter(List<UserModel> userModelList, Context context, PostListener listener) {
         this.userModelList = userModelList;
         this.context = context;
-//        this.listener = listener;
+        this.listener = listener;
     }
+
 
     @NonNull
     @Override
@@ -59,7 +65,20 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolders> {
 
         holder.itemView.setOnClickListener(view -> {
 
-
+         listener.gotoFragmentWithValue(new ChattingFragment(), userModel.getUserID());
+         
+////            Log.i("tag", "listener mess: ");
+//
+//
+//
+//            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+//            ChattingFragment chattingFragment=new ChattingFragment();
+////            passing post data to the fragment
+//            Bundle bundle = new Bundle();
+//            bundle.putString("postID", userModel.getUserID());
+//            chattingFragment.setArguments(bundle);
+//
+//            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,chattingFragment).addToBackStack(null).commit();//
 
         });
 

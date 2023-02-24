@@ -53,6 +53,13 @@ public class ReadStoryFragment extends Fragment implements PostListener {
                              Bundle savedInstanceState) {
         binding=FragmentReadStoryBinding.inflate(getLayoutInflater(),container,false);
 
+//        binding.readStoryFragment.setSystemUiVisibility(
+//                                                    View.SYSTEM_UI_FLAG_FULLSCREEN
+//                                                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                                                           | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+//        );
+
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -166,7 +173,7 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
 
 
 
-
+//comment count
         databaseReference.child("Comments").child(postId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -260,7 +267,7 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
 
 
 
-
+//comment setup to adapter
         databaseReference.child("Comments").child(postId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -277,7 +284,7 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
                     }
                 }
 
-CommentAdapter commentAdapter=new CommentAdapter(commentList,getContext());
+                CommentAdapter commentAdapter=new CommentAdapter(commentList,getContext());
                 binding.commentRecycler.setAdapter(commentAdapter);
 
             }

@@ -59,15 +59,15 @@
 
 
 
-            <ImageView
-                android:id="@+id/shopping"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:src="@drawable/shopping"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <ImageView-->
+<!--                android:id="@+id/shopping"-->
+<!--                android:layout_width="@dimen/_30sdp"-->
+<!--                android:layout_height="@dimen/_30sdp"-->
+<!--                android:layout_marginTop="@dimen/_6sdp"-->
+<!--                android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                android:src="@drawable/shopping"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
 
             <ImageView
@@ -77,7 +77,7 @@
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:src="@drawable/search"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/shopping"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 

@@ -26,18 +26,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessageFragment extends Fragment {
+public class MessageFragment extends Fragment implements PostListener{
     public MessageFragment() {
     }
-
-
-
 
       FragmentMessageBinding binding;
     List<ChatListModel> chatListModelList;
     List<UserModel> userModelList;
      DatabaseReference databaseReference;
      FirebaseUser firebaseUser;
+     String currentUserId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +47,7 @@ userModelList=new ArrayList<>();
 
 firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 databaseReference= FirebaseDatabase.getInstance().getReference("User");
+
 
 databaseReference.addValueEventListener(new ValueEventListener() {
     @Override
@@ -62,7 +61,7 @@ databaseReference.addValueEventListener(new ValueEventListener() {
                 userModelList.add(userModel);
             }
         }
-        ChatListAdapter chatListAdapter=new ChatListAdapter(userModelList,requireContext());
+        ChatListAdapter chatListAdapter=new ChatListAdapter(userModelList,requireContext(),MessageFragment.this);
         binding.chatListRecyclerView.setAdapter(chatListAdapter);
     }
 
@@ -83,4 +82,13 @@ databaseReference.addValueEventListener(new ValueEventListener() {
     }
 
 
+    @Override
+    public void gotoFragmentWithValue(Fragment fragment, String userID) {
+
+    }
+
+    @Override
+    public boolean followButtonClickedEvent(String userID) {
+        return false;
+    }
 }

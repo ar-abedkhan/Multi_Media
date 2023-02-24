@@ -117,9 +117,9 @@ MeowBottomNavigation meowBottomNavigation;
     });
 
 
-    binding.shopping.setOnClickListener(view -> {
-        startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
-    });
+//    binding.shopping.setOnClickListener(view -> {
+//        startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
+//    });
 
 
         if (intent1.getBooleanExtra("isAddClicked", false)){

@@ -3,6 +3,8 @@ package com.abedkhan.multimedia.Adapters;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,24 +17,20 @@ import com.abedkhan.multimedia.R;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
+public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> implements Filterable {
     Context context;
     List<UserModel> userModelList;
+    List<UserModel>backup;
 
     public UserAdapter(Context context, List<UserModel> userModelList) {
         this.context = context;
         this.userModelList = userModelList;
+        backup=new ArrayList<>(userModelList);
     }
-
-
-
-    public void setSearchList(List<UserModel>searchlist){
-        this.userModelList=searchlist;
-        notifyDataSetChanged();
-    }
-
 
     @NonNull
     @Override
@@ -66,4 +64,44 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
     public int getItemCount() {
         return userModelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+
+
+        return filter;
+    }
+    Filter filter=new Filter() {
+
+
+
+        //backgroun threat
+        @Override
+        protected FilterResults performFiltering(CharSequence keyword) {
+
+            ArrayList<UserModel>filterdata=new ArrayList<>();
+
+            if (keyword.toString().isEmpty())
+                filterdata.addAll(backup);
+            else {
+                for (UserModel userModel:backup){
+                    if (userModel.getFullName().toString().toLowerCase().contains(keyword.toString().toLowerCase()))
+                        filterdata.add(userModel);
+                }
+            }
+            FilterResults results=new FilterResults();
+            results.values=filterdata;
+            return results;
+        }
+
+        //user interface threat
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+            userModelList.clear();
+            userModelList.addAll((Collection<? extends UserModel>) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
 }

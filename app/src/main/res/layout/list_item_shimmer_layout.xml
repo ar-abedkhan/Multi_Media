@@ -79,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="@color/view_color"
+            android:layout_marginTop="@dimen/_2sdp"
             android:textAlignment="center"
             android:includeFontPadding="false"
             android:textColor="@color/lightBlack"
@@ -108,13 +109,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/postTime" />
 
+
+
+
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/imgCard"
             app:layout_constraintHeight_max="@dimen/_320sdp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_200sdp"
             android:layout_marginTop="@dimen/_4ssp"
             app:cardCornerRadius="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_4ssp"
@@ -124,10 +128,9 @@
 
             <ImageView
 
-                android:id="@+id/postImg"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:background="@drawable/image_background"
+                android:background="@color/view_color"
 
                 />
 
@@ -207,8 +210,8 @@
                     android:id="@+id/postReact"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
                     android:layout_gravity="center"
                     android:paddingStart="@dimen/_3sdp"
                     android:gravity="center"
@@ -240,8 +243,8 @@
                     android:id="@+id/postComment"
                     />
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
                     android:layout_gravity="center"
                     android:paddingStart="@dimen/_3sdp"
                     android:gravity="center"
@@ -278,8 +281,8 @@
             android:orientation="horizontal"
             >
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:layout_gravity="center"
                 android:paddingEnd="@dimen/_3sdp"
                 android:gravity="center"

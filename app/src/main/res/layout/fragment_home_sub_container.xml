@@ -56,16 +56,26 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/post_recycler_design"
-                android:paddingBottom="@dimen/_50sdp"
+                android:paddingBottom="@dimen/_120sdp"
                 />
 
-<LinearLayout
+
+
+
+
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/_80sdp"
-app:layout_constraintTop_toBottomOf="@id/postRecycler"
+    app:layout_constraintTop_toBottomOf="@id/postRecycler"
     />
 
-<!--    <ProgressBar-->
+
+
+
+
+
+    <!--    <ProgressBar-->
 <!--        android:visibility="gone"-->
 <!--        android:background="@drawable/background"-->
 <!--        android:layout_width="match_parent"-->

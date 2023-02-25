@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment {
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
+    Intent intent;
     List<UserModel>userModelList;
     String currentUserID, currentUserName, currentUserImg,postID;
     String visitedUserID, visitedUserProfileImg, visitedUserName;
@@ -59,6 +60,7 @@ public class ProfileFragment extends Fragment {
 
         //        user profile clicked
         floatingButtonClicked();
+        intent=getActivity().getIntent();
 
 //        binding.settings.setOnClickListener(view -> {
 //            Intent intent = new Intent(requireContext(), ContainerActivity.class);
@@ -361,6 +363,7 @@ public class ProfileFragment extends Fragment {
         binding.message.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("isMessageClicked", true);
+            intent.putExtra("visitor",visitedUserID);
             startActivity(intent);
         });
 

@@ -12,6 +12,9 @@ public class ChatListModel {
         this.timeMilis = timeMilis;
     }
 
+    public ChatListModel(String currentTimMilis, String othersUserId, String message, String currentTimMilis1, String chatId) {
+    }
+
 
     public String getSenderId() {
         return senderId;

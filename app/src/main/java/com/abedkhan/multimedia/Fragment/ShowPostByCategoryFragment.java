@@ -56,6 +56,8 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
 //        categoryList = new ArrayList<>();
         postList = new ArrayList<>();
 
+        binding.shimmerpostRecycler.startShimmer();
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         CategorySavedData.loadCategory();
@@ -100,6 +102,9 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
                     }
                 }
 //                binding.progressbar.setVisibility(View.GONE);
+                binding.shimmerpostRecycler.stopShimmer();
+                binding.shimmerpostRecycler.setVisibility(View.GONE);
+                binding.postRecycler.setVisibility(View.VISIBLE);
 
             }
 

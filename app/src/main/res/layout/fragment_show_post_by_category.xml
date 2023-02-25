@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white_background"
-
     tools:context=".Fragment.ShowPostByCategoryFragment">
+
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/horizontalRecycler"
@@ -19,19 +23,53 @@
         android:orientation="horizontal"
         android:padding="@dimen/_6sdp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        app:layout_constraintTop_toBottomOf="@id/horizontalRecycler"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_40sdp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/horizontalRecycler"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postRecycler"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingBottom="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_100sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/horizontalRecycler"
-        tools:layout_editor_absoluteX="0dp"
-        tools:listitem="@layout/post_recycler_design" />
+        tools:listitem="@layout/post_recycler_design"
+        />
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/horizontalRecycler"
+        android:id="@+id/shimmerpostRecycler"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <include layout="@layout/list_item_shimmer_layout"
+                />
+
+            <include layout="@layout/list_item_shimmer_layout"
+                />
+
+            <include layout="@layout/list_item_shimmer_layout"
+                />
+
+            <include layout="@layout/list_item_shimmer_layout"
+                />
+
+
+
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

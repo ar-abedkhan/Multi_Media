@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.abedkhan.multimedia.Fragment.ChattingFragment;
 import com.abedkhan.multimedia.Fragment.LoginFragment;
 import com.abedkhan.multimedia.Fragment.MessageFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
@@ -45,10 +46,16 @@ public class ContainerActivity extends AppCompatActivity {
                 replace(new profileEditFragment());
 
             }else if (intent.getBooleanExtra("isMessageClicked",false)){
-                replace(new MessageFragment());
+                replace(new ChattingFragment());
+
             }else if (intent.getBooleanExtra("uId",false)) {
                 replace(new ProfileFragment());
-            }else {
+
+            }else if (intent.getBooleanExtra("imgClicked", false)) {
+                replace(new ProfileFragment());
+
+            }else
+            {
                     replace(new LoginFragment());
                 }
 

@@ -169,6 +169,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
                 }
 //                binding.progressbar.setVisibility(View.GONE);
          binding.shimmerpostRecycler.stopShimmer();
+                binding.shimmerpostRecycler.setVisibility(View.GONE);
             binding.postRecycler.setVisibility(View.VISIBLE);}
 
             @Override

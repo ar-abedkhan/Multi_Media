@@ -1,5 +1,6 @@
 package com.abedkhan.multimedia.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.abedkhan.multimedia.Activities.ContainerActivity;
 import com.abedkhan.multimedia.Adapters.CommentAdapter;
 import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.PostCommentModel;
@@ -293,6 +295,17 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+
+
+
+
+
+        binding.writerProfileImg.setOnClickListener(view -> {
+            Intent intent = new Intent(getContext(), ContainerActivity.class);
+            intent.putExtra("imgClicked", true);
+            startActivity(intent);
+            //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
         });
 
 

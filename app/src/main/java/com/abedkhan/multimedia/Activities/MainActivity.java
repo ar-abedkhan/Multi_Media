@@ -58,6 +58,50 @@ MeowBottomNavigation meowBottomNavigation;
 
         runTimePermission();
 //        --Bottom menu meow button
+        bottomMeowMenu();
+
+
+
+
+    //        user profile clicked
+    binding.userProfile.setOnClickListener(view -> {
+        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+        intent.putExtra("isProfileCLicked", true);
+        startActivity(intent);
+    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+    });
+
+
+    binding.searchBar.setOnClickListener(view -> {
+        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+        intent.putExtra("isSearchClicked", true);
+        startActivity(intent);
+    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
+    });
+
+
+//    binding.shopping.setOnClickListener(view -> {
+//        startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
+//    });
+
+
+        if (intent1.getBooleanExtra("isAddClicked", false)){
+            replace(new AddPostFragment(),false);
+
+        }
+
+//    binding.signupLoginButton.setOnClickListener(view -> {
+//        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+//        intent.putExtra("log", true);
+//        startActivity(intent);
+//    });
+
+
+    }
+
+    //bottom Menu setup.............
+    private void bottomMeowMenu() {
+
         meowBottomNavigation=findViewById(R.id.meowBottomNavigation);
 
         meowBottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.home3));
@@ -99,42 +143,8 @@ MeowBottomNavigation meowBottomNavigation;
         });
 
 
-
-    //        user profile clicked
-    binding.userProfile.setOnClickListener(view -> {
-        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-        intent.putExtra("isProfileCLicked", true);
-        startActivity(intent);
-    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
-    });
-
-
-    binding.searchBar.setOnClickListener(view -> {
-        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-        intent.putExtra("isSearchClicked", true);
-        startActivity(intent);
-    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
-    });
-
-
-//    binding.shopping.setOnClickListener(view -> {
-//        startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
-//    });
-
-
-        if (intent1.getBooleanExtra("isAddClicked", false)){
-            replace(new AddPostFragment(),false);
-
-        }
-
-//    binding.signupLoginButton.setOnClickListener(view -> {
-//        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-//        intent.putExtra("log", true);
-//        startActivity(intent);
-//    });
-
-
     }
+
 
     private void runTimePermission() {
         Dexter.withContext(this)
@@ -148,6 +158,8 @@ MeowBottomNavigation meowBottomNavigation;
 
     }
 
+
+    //fragment placem,ent ...............
     private void replace(Fragment fragment, boolean isToolActive) {
         if (isToolActive){
             binding.tool.setVisibility(View.GONE);

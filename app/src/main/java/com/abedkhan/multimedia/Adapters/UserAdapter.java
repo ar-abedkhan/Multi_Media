@@ -52,9 +52,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> implements
         holder.userProfession.setText(userModel.getProfession());
 
 
-//        holder.itemView.setOnClickListener(view -> {
+        holder.itemView.setOnClickListener(view -> {
 //            listener.gotoFragmentWithValue(new ProfileFragment(), userModel.getUserID());
-//        });
+
+
+
+        });
 
 
 

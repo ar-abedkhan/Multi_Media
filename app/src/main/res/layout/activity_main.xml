@@ -95,9 +95,26 @@
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/_30sdp"
             android:background="@color/bottommenu_background"
-            app:layout_constraintTop_toBottomOf="@id/tool" />
+            app:layout_constraintTop_toBottomOf="@id/tool"
+            />
+
+
+
+<!--<com.getbase.floatingactionbutton.FloatingActionButton-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    app:layout_constraintBottom_toBottomOf="@id/meowBottomNavigation"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:fab_colorPressed="@color/c2"-->
+<!--    app:fab_colorNormal="@color/c1"-->
+<!--    app:fab_colorDisabled="@color/white_background"-->
+<!--    android:src="@drawable/comment"-->
+<!--    android:layout_marginBottom="@dimen/_40sdp"-->
+<!--    android:id="@+id/messageListBtn"-->
+<!--    />-->
+
+
 
 
 

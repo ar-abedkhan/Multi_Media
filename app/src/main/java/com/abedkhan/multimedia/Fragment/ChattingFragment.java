@@ -65,8 +65,6 @@ public class ChattingFragment extends Fragment implements PostListener {
 
 
 
-
-
 //.............TODO: vai ekhane dekhiyen to others id ki perectly ashce naki.. crash kore child bole others id te pblm...................
 
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,12 +8,126 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ShoppingMainActivity">
 
-    <TextView
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tool"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/bottommenu_background"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+
+
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:src="@drawable/back_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+
+
+
+            <ImageView
+                android:id="@+id/userProfile"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginStart="@dimen/_6sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_baseline_person_24"
+                app:layout_constraintStart_toEndOf="@id/backBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+                        <ImageView
+                            android:id="@+id/shoppingNotification"
+                            android:layout_width="@dimen/_28sdp"
+                            android:layout_height="@dimen/_28sdp"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:src="@drawable/notification"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/search_bar"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:src="@drawable/search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/shoppingNotification"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+<!--            <View-->
+<!--                android:id="@+id/layout2"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_1sdp"-->
+<!--                android:background="@color/view_color"-->
+<!--                />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sliderContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="SHopping"
-        android:textColor="@color/purple_500"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="@dimen/_120sdp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:foregroundGravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tool"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!--            _________Image Slider-->
+
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_120sdp"
+            app:iss_auto_cycle="true"
+            app:iss_period="700"
+            app:iss_delay="0"
+            android:gravity="center"
+            android:textAlignment="center"
+            app:iss_placeholder="@drawable/travel1"
+            app:iss_error_image="@drawable/travel1"
+
+            />
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

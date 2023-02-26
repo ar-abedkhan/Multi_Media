@@ -30,11 +30,14 @@ public class ContainerActivity extends AppCompatActivity {
 
         try {
             intent = getIntent();
+
             /*
             * This try catch checks if this activity has opened for the first time or not
             * if "try" does not work, that means the application has been opened for the first time
             * --for the first timers catch block will lead the users to the login page
             * */
+
+
             Log.i("TAG", "Inside Try");
             if (intent.getBooleanExtra("isProfileCLicked", false)){
                 replace(new ProfileFragment());

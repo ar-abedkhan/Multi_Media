@@ -63,13 +63,7 @@ public class ChattingFragment extends Fragment implements PostListener {
             currentUserId=firebaseUser.getUid();
         }
 
-
-
 //.............TODO: vai ekhane dekhiyen to others id ki perectly ashce naki.. crash kore child bole others id te pblm...................
-
-
-
-
 
 databaseReference.child("User").child(currentUserId).addValueEventListener(new ValueEventListener() {
     @Override
@@ -91,10 +85,7 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
     }
 });
 
-
-
-
-//.................message send and recive.............
+//.................message send and receive.............
 
         databaseReference.child("chat").addValueEventListener(new ValueEventListener() {
             @Override
@@ -135,60 +126,25 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
 
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return binding.getRoot();
     }
 
-
-
-
-
-
-
     private void messageSend() {
 
-        String currentTimMilis = String.valueOf(System.currentTimeMillis());
+        long currentTimMillis = System.currentTimeMillis();
 
         String message =binding.sendmessage.getText().toString().trim();
         String chatId =databaseReference.push().getKey();
 
 
-        ChatListModel chatModel =new ChatListModel(currentTimMilis,othersUserId,message,currentTimMilis,chatId);
+        ChatListModel chatModel =new ChatListModel(currentUserId ,othersUserId,message,chatId, currentTimMillis);
 
         databaseReference.child("chat").child(chatId).setValue(chatModel).addOnSuccessListener(unused -> {
             binding.sendmessage.setText("");
             Toast.makeText(requireContext(), "message send", Toast.LENGTH_SHORT).show();
 
         });
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
 
     private void setChattoUi(List<ChatListModel> chatModelList) {
 

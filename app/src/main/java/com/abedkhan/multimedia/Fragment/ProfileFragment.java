@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.abedkhan.multimedia.Activities.ContainerActivity;
 import com.abedkhan.multimedia.Activities.MainActivity;
+import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.FollowerFollowingModel;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
@@ -39,7 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment{
     public ProfileFragment() {
     }
 
@@ -52,6 +53,7 @@ public class ProfileFragment extends Fragment {
     String currentUserID, currentUserName, currentUserImg,postID;
     String visitedUserID, visitedUserProfileImg, visitedUserName;
     int publishedPost,savePost,followers,following;
+    PostListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -208,7 +210,8 @@ public class ProfileFragment extends Fragment {
                         }
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
-                        Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+                        Glide.with(getActivity().getApplicationContext()).load(userModel.getProfileImgUrl())
+                                .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
                         Log.i("tag", "onCreate: "+userModel.getFullName());
                         Log.i("tag", "onCreate: "+userModel.getUserID());
@@ -364,8 +367,14 @@ public class ProfileFragment extends Fragment {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("isMessageClicked", true);
             intent.putExtra("visitor",visitedUserID);
+            Log.i("visitorID", "onCreateView: "+intent);
+
             startActivity(intent);
+
+
         });
+
+
 
         binding.addPost.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), MainActivity.class);
@@ -380,4 +389,5 @@ public class ProfileFragment extends Fragment {
         });
 
     }
+
 }

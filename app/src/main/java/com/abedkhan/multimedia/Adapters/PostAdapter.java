@@ -199,7 +199,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
             bundle.putString("ownerFullName", ownerFullName);
             bundle.putString("ownerProfileImg", ownerProfileImg);
             readStoryFragment.setArguments(bundle);
-            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame,readStoryFragment).addToBackStack(null).commit();
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
 
         });
 

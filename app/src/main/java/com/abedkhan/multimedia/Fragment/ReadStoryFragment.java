@@ -65,6 +65,7 @@ public class ReadStoryFragment extends Fragment implements PostListener {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+
         currentUser = firebaseUser.getUid();
         try {
             postId = getArguments().getString("postID");

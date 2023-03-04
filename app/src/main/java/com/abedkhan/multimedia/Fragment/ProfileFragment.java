@@ -375,7 +375,6 @@ public class ProfileFragment extends Fragment{
         });
 
 
-
         binding.addPost.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), MainActivity.class);
             intent.putExtra("isAddClicked", true);

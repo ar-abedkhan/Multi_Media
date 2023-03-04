@@ -57,6 +57,7 @@
             android:textSize="@dimen/_15sdp"
             android:inputType="textMultiLine"
             android:includeFontPadding="false"
+            android:textStyle="bold"
             android:text="Abed khan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

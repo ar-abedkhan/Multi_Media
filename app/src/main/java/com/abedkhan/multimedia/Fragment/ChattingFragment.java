@@ -161,13 +161,13 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
 
     private void messageSend() {
 
-        String currentTimMilis = String.valueOf(System.currentTimeMillis());
+        long currentTimMilis = System.currentTimeMillis();
 
         String message =binding.sendmessage.getText().toString().trim();
         String chatId =databaseReference.push().getKey();
 
 
-        ChatListModel chatModel =new ChatListModel(currentTimMilis,othersUserId,message,currentTimMilis,chatId);
+        ChatListModel chatModel =new ChatListModel(othersUserId,currentUserId,message,chatId,currentTimMilis);
 
         databaseReference.child("chat").child(chatId).setValue(chatModel).addOnSuccessListener(unused -> {
             binding.sendmessage.setText("");

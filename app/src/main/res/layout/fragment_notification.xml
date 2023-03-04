@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bottommenu_background"
     tools:context=".Fragment.ReadStoryFragment"
+    android:paddingBottom="@dimen/_50sdp"
     >
 
     <ImageView

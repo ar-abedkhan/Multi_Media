@@ -144,8 +144,13 @@ public class AddPostFragment extends Fragment {
 
             if (binding.mainText.getText().toString().isEmpty()){
                 binding.mainText.setError("Field cannot be empty!");
+                binding.progressbar.setVisibility(View.GONE);
+
             }else {
                 saveOrPublish("publish");
+                binding.progressbar.setVisibility(View.VISIBLE);
+
+
             }
         });
 

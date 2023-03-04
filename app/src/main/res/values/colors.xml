@@ -22,6 +22,7 @@
     <color name="toolback">#FF000000</color>
     <color name="white_background">#FFFFFFFF</color>
     <color name="view_color">#1E000000</color>
+    <color name="commentBack">#1E000000</color>
     <color name="bottomMenu_icon_Back">#3B000000</color>
     <color name="view_color_background">#FAFAFA</color>
     <color name="bottommenu_background">#F5F5F5</color>

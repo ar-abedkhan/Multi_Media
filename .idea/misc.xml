@@ -36,6 +36,7 @@
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/background.xml" value="0.1825" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/chat_list_back.xml" value="0.1825" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/chatrecyclerback.xml" value="0.1825" />
+        <entry key="..\:/Multi_Media/app/src/main/res/drawable/color_scquew_back.xml" value="0.2065" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/comment.xml" value="0.187" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/comment_back.xml" value="0.187" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/country.xml" value="0.187" />
@@ -61,6 +62,7 @@
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/more_3dot.xml" value="0.187" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/person_add.xml" value="0.187" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/reciver_mess_back.xml" value="0.2005" />
+        <entry key="..\:/Multi_Media/app/src/main/res/drawable/scqure_back.xml" value="0.2065" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/search.xml" value="0.187" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/senderMessback.xml" value="0.1825" />
         <entry key="..\:/Multi_Media/app/src/main/res/drawable/sender_mess_back.xml" value="0.2005" />

@@ -6,20 +6,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/sky_lite"
-    android:paddingTop="@dimen/_10sdp"
     tools:context=".Fragment.SearchFragment"
     >
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -35,7 +23,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/_8sdp"
+            android:layout_margin="@dimen/_6sdp"
             >
 
 
@@ -49,7 +37,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:id="@+id/card1"
-                android:layout_height="@dimen/_160sdp"
+                android:layout_height="wrap_content"
+                android:maxHeight="@dimen/_160sdp"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:background="@drawable/post_back"
@@ -1083,12 +1072,13 @@
 
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_marginBottom="@dimen/_50sdp"
+        android:layout_marginEnd="@dimen/_13sdp"
         android:id="@+id/floating_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/_13sdp"
         app:fab_expandDirection="up"
         app:fab_labelsPosition="left"
         app:fab_addButtonColorNormal="@color/c1"

@@ -2,14 +2,14 @@ package com.abedkhan.multimedia.Model;
 
 public class ChatListModel {
     public String senderId,receiverId,message,chatId;
-    public long timeMilis;
+    public long timeMillis;
 
-    public ChatListModel(String senderId, String receiverId, String message, String chatId, long timeMilis) {
+    public ChatListModel(String senderId, String receiverId, String message, String chatId, long timeMillis) {
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.message = message;
         this.chatId = chatId;
-        this.timeMilis = timeMilis;
+        this.timeMillis = timeMillis;
     }
 
     public ChatListModel() {
@@ -48,11 +48,11 @@ public class ChatListModel {
         this.chatId = chatId;
     }
 
-    public long getTimeMilis() {
-        return timeMilis;
+    public long getTimeMillis() {
+        return timeMillis;
     }
 
-    public void setTimeMilis(long timeMilis) {
-        this.timeMilis = timeMilis;
+    public void setTimeMillis(long timeMillis) {
+        this.timeMillis = timeMillis;
     }
 }

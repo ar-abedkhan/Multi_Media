@@ -59,8 +59,6 @@ public class ChattingFragment extends Fragment implements PostListener {
         intent=getActivity().getIntent();
         othersUserId=intent.getStringExtra("visitor");
 
-        Log.i("visitorID", "onCreateView: "+othersUserId);
-
         if (firebaseUser!=null){
             currentUserId=firebaseUser.getUid();
         }
@@ -109,8 +107,8 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
                     assert chatModel != null;
                     if (
                             chatModel.getReceiverId().equals(currentUserId) && chatModel.getSenderId().equals(othersUserId)
-                                                                  ||
-                            chatModel.getReceiverId().equals(othersUserId) && chatModel.getSenderId().equals(currentUserId)
+                                    ||
+                                    chatModel.getReceiverId().equals(othersUserId) && chatModel.getSenderId().equals(currentUserId)
                     ) {
                         chatListModelList.add(chatModel);
                     }
@@ -145,22 +143,31 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
 
 
 
+
+
+
+
+
+
+
         return binding.getRoot();
     }
 
 
+
+
+
+
+
     private void messageSend() {
 
-//        long currentTimMilis = String.valueOf(System.currentTimeMillis());
-
-        long messTime=System.currentTimeMillis();
+        String currentTimMilis = String.valueOf(System.currentTimeMillis());
 
         String message =binding.sendmessage.getText().toString().trim();
         String chatId =databaseReference.push().getKey();
 
 
-
-        ChatListModel chatModel =new ChatListModel(othersUserId,currentUserId,message,chatId,messTime);
+        ChatListModel chatModel =new ChatListModel(currentTimMilis,othersUserId,message,currentTimMilis,chatId);
 
         databaseReference.child("chat").child(chatId).setValue(chatModel).addOnSuccessListener(unused -> {
             binding.sendmessage.setText("");

@@ -101,6 +101,8 @@
         <!--            _________Image Slider-->
 
 
+
+
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/image_slider"
             android:layout_width="wrap_content"

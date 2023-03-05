@@ -7,6 +7,7 @@
     android:transitionName="transition_signup"
     android:background="@color/bottommenu_background">
 
+
     <ProgressBar
         android:id="@+id/progressbar"
         android:visibility="gone"
@@ -16,6 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menuContainer"
@@ -70,7 +72,10 @@
             android:textColor="@color/black_text"
             android:includeFontPadding="false"
             android:fontFamily="@font/poppins_medium"
-            android:padding="@dimen/_4sdp"
+            android:paddingStart="@dimen/_4ssp"
+            android:paddingEnd="@dimen/_3sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_2sdp"
             android:textSize="@dimen/_18sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:background="@drawable/scqure_back"
@@ -86,7 +91,10 @@
             android:textColor="@color/black_text"
             android:background="@drawable/scqure_back"
             android:fontFamily="@font/poppins_medium"
-            android:padding="@dimen/_4sdp"
+            android:paddingStart="@dimen/_4ssp"
+            android:paddingEnd="@dimen/_3sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_2sdp"
             android:textSize="@dimen/_18sdp"
             android:textAllCaps="false"
             />

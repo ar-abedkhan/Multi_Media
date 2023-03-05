@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -364,12 +365,29 @@ public class ProfileFragment extends Fragment{
         });
 
         binding.message.setOnClickListener(view -> {
+
+
+
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("isMessageClicked", true);
             intent.putExtra("visitor",visitedUserID);
             Log.i("visitorID", "onCreateView: "+intent);
-
             startActivity(intent);
+
+
+
+
+//            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+////            passing post data to the fragment
+//
+//           ChattingFragment chattingFragment=new ChattingFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("VisitedUserID",visitedUserID);
+//            chattingFragment.setArguments(bundle);
+//            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame, chattingFragment).addToBackStack(null).commit();
+//
+
+
 
 
         });

@@ -100,22 +100,6 @@ public class SearchFragment extends Fragment {
 
 
 
-binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-
-        return false;
-    }
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        userAdapter.getFilter().filter(newText);
-
-
-        return false;
-    }
-});
-
-
 
 
 

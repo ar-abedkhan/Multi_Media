@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_100sdp"
         >
 
 
@@ -58,10 +58,9 @@
                     >
                     <ImageView
                         android:layout_width="@dimen/_115sdp"
-                        android:background="@drawable/post_back"
                         android:layout_height="@dimen/_150sdp"
                         android:id="@+id/userProfileImg"
-                        android:src="@drawable/travel1"
+                        android:src="@drawable/ic_baseline_person_24"
                         />
 
                 </androidx.cardview.widget.CardView>
@@ -1072,7 +1071,7 @@
 
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:layout_marginBottom="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_80sdp"
         android:layout_marginEnd="@dimen/_13sdp"
         android:id="@+id/floating_menu"
         android:layout_width="wrap_content"

@@ -33,10 +33,12 @@
 
 
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userProfile"
                 android:layout_width="@dimen/_28sdp"
                 android:layout_height="@dimen/_28sdp"
+                app:civ_border_width="@dimen/_1sdp"
+                app:civ_border_color="@color/c1"
                 android:layout_marginStart="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:src="@drawable/ic_baseline_person_24"

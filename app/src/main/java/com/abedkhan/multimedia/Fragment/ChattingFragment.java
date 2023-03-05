@@ -55,9 +55,11 @@ public class ChattingFragment extends Fragment implements PostListener {
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
 //        postId = getArguments().getString("postID"
+//
+//        intent=getActivity().getIntent();
+//        othersUserId=intent.getStringExtra("VisitedUserID");
 
-        intent=getActivity().getIntent();
-        othersUserId=intent.getStringExtra("visitor");
+        othersUserId= getArguments().getString("VisitedUserID");
 
         if (firebaseUser!=null){
             currentUserId=firebaseUser.getUid();

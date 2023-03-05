@@ -219,7 +219,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
             bundle.putString("ownerProfileImg", ownerProfileImg);
             readStoryFragment.setArguments(bundle);
 
-            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame, readStoryFragment).addToBackStack(null).commit();
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame, readStoryFragment).addToBackStack(null).commit();
 
         });
 
@@ -244,6 +244,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         holder.profileImg.setOnClickListener(view -> {
 //          parse data to profile adapter
             listener.gotoFragmentWithValue(new ProfileFragment(), model.getOwnerID());
+
+
         });
 
 //        #Hanling Profile name clicked
@@ -263,17 +265,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //
 
 
-//        holder.shareOption.setOnClickListener(view -> {
-//
-//            Intent intent=new Intent();
-//            intent.setAction(Intent.ACTION_SEND);
+        holder.shareOption.setOnClickListener(view -> {
+
+            Intent intent=new Intent();
+            intent.setAction(Intent.ACTION_SEND);
 //            intent.putExtra(Intent.EXTRA_SUBJECT,model.getTitle());
-//            intent.putExtra(Intent.EXTRA_TEXT,model.getMainText());
-//            intent.setType("text/plain");
-//            if (intent.resolveActivity(context.getPackageManager())!=null){
-//                context.startActivity(intent);
-//            }
-//        });
+            intent.putExtra(Intent.EXTRA_TEXT,model.getMainText());
+            intent.setType("text/plain");
+            if (intent.resolveActivity(context.getPackageManager())!=null){
+                context.startActivity(intent);
+            }
+
+        });
+
+
 
 
     }

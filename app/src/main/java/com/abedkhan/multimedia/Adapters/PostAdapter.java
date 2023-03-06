@@ -1,7 +1,6 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.nio.Buffer;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,7 +39,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
 //    extra variable
     String ownerFullName, ownerProfileImg;
-    int postlike,postcomment;
+    int postLike, postComment;
 
     public PostAdapter(Context context, List<PostModel> postList, PostListener listener) {
         this.context = context;
@@ -139,7 +137,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 }
 
                 try {
-                    postcomment = commentsize.size();
+                    postComment = commentsize.size();
                     holder.commentCount.setText(commentsize.size()+"");
                 }catch (Exception e){
                     holder.commentCount.setText("0");
@@ -170,7 +168,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 }
 
                 try {
-                    postlike = likes.size();
+                    postLike = likes.size();
                     holder.reactCount.setText(likes.size()+"");
                 }catch (Exception e){
                     holder.reactCount.setText("0");

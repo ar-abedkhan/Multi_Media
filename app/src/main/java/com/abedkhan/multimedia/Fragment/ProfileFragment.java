@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,12 +49,12 @@ public class ProfileFragment extends Fragment{
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
-    Intent intent;
-    List<UserModel>userModelList;
+//    Intent intent;
+//    List<UserModel>userModelList;
     String currentUserID, currentUserName, currentUserImg,postID;
     String visitedUserID, visitedUserProfileImg, visitedUserName;
-    int publishedPost,savePost,followers,following;
-    PostListener listener;
+//    int publishedPost,savePost,followers,following;
+//    PostListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,7 +63,7 @@ public class ProfileFragment extends Fragment{
 
         //        user profile clicked
         floatingButtonClicked();
-        intent=getActivity().getIntent();
+//        intent=getActivity().getIntent();
 
 //        binding.settings.setOnClickListener(view -> {
 //            Intent intent = new Intent(requireContext(), ContainerActivity.class);
@@ -79,24 +80,12 @@ public class ProfileFragment extends Fragment{
             currentUserID =firebaseUser.getUid();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
 //        ##Getting current user data
         databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                Log.i("TAG", "Profile fragment 2 ");
+//                Log.i("TAG", "Profile fragment 2 ");
 
                 UserModel userModel=snapshot.getValue(UserModel.class);
 
@@ -157,7 +146,7 @@ public class ProfileFragment extends Fragment{
                         Log.i("tag", "onCreate: "+userModel.getFullName());
                         Log.i("tag", "onCreate: "+userModel.getUserID());
 
-                        visitedUserID = userModel.getUserID();
+//                        visitedUserID = userModel.getUserID();
                         visitedUserName = userModel.getUserName();
                         visitedUserProfileImg = userModel.getProfileImgUrl();
 
@@ -364,12 +353,24 @@ public class ProfileFragment extends Fragment{
         });
 
         binding.message.setOnClickListener(view -> {
-            Intent intent = new Intent(requireContext(), ContainerActivity.class);
-            intent.putExtra("isMessageClicked", true);
-            intent.putExtra("visitor",visitedUserID);
-            Log.i("visitorID", "onCreateView: "+intent);
+//            Intent intent = new Intent(requireContext(), ContainerActivity.class);
+//            intent.putExtra("isMessageClicked", true);
+//            intent.putExtra("visitor",visitedUserID);
+//            Log.i("visitorID", "onCreateView: "+intent);
 
-            startActivity(intent);
+//            startActivity(intent);
+
+            Fragment fragment = new ChattingFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("visitor", visitedUserID);
+            fragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.containerFrame, fragment);
+
+            transaction.addToBackStack(null);
+            transaction.commit();
 
 
         });

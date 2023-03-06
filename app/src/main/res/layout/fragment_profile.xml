@@ -1099,17 +1099,6 @@
             app:fab_title="Message Me"
             />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorDisabled="@color/white"
-            app:fab_size="mini"
-            app:fab_colorNormal="@color/c1"
-            app:fab_colorPressed="@color/c2"
-            app:fab_icon="@drawable/ic_baseline_settings_24"
-            android:id="@+id/settings"
-            app:fab_title="Settings"
-            />
 
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -1123,6 +1112,21 @@
             android:id="@+id/addPost"
             app:fab_title="Add Post"
             />
+
+
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorDisabled="@color/white"
+            app:fab_size="mini"
+            app:fab_colorNormal="@color/c1"
+            app:fab_colorPressed="@color/c2"
+            app:fab_icon="@drawable/ic_baseline_settings_24"
+            android:id="@+id/settings"
+            app:fab_title="Settings"
+            />
+
 
 
         <com.getbase.floatingactionbutton.FloatingActionButton

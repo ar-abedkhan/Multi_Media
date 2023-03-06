@@ -67,8 +67,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         PostModel model = postList.get(position);
 
+        holder.postTitle.setText(model.getTitle());
         holder.mainStory.setText(model.getMainText());
-        holder.reactCount.setText("" + model.getPostLike());
+        holder.reactCount.setText(""+model.getPostLike());
         holder.commentCount.setText(String.valueOf(model.getPostComment()));
 
 //        int postlike,postcomment;
@@ -78,21 +79,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //        holder.reactCount.setText(postlike);
 //        holder.commentCount.setText(postcomment);
 
-        if (model.getTitle().equals("")) {
-            holder.postTitle.setVisibility(View.GONE);
-        } else {
-            holder.postTitle.setText(model.getTitle());
-        }
 
 
-        if (!model.getPostImgUrl().equals("")) {
+        if (!model.getPostImgUrl().equals("")){
             Glide.with(context).load(model.getPostImgUrl()).placeholder(R.drawable.lightning_tree).into(holder.postImg);
-        } else {
+        }
+        else {
             holder.postImg.setVisibility(View.GONE);
         }
-
-
-
 
 //        --Setting post time
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm");
@@ -105,13 +99,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<UserModel> userModelList = new ArrayList<>();
+                List<UserModel> userModelList= new ArrayList<>();
 
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 userModelList.add(userModel);
 
 
-                if (!userModelList.isEmpty()) {
+                if (!userModelList.isEmpty()){
                     ownerFullName = userModelList.get(0).getFullName();
                     ownerProfileImg = userModelList.get(0).getProfileImgUrl();
 
@@ -123,10 +117,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.i("TAG", "Error :-> " + error.toException().getLocalizedMessage());
+                Log.i("TAG", "Error :-> "+ error.toException().getLocalizedMessage());
 
             }
         });
+
 
 
 //post comment count.........
@@ -136,7 +131,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //                TODO: get total length
 //                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
                 List<String> commentsize = new ArrayList<>();
-                for (DataSnapshot snap : snapshot.getChildren()) {
+                for (DataSnapshot snap: snapshot.getChildren()) {
                     String userId = snap.getKey();
                     commentsize.add(userId);
 
@@ -145,8 +140,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
                 try {
                     postcomment = commentsize.size();
-                    holder.commentCount.setText(commentsize.size() + "");
-                } catch (Exception e) {
+                    holder.commentCount.setText(commentsize.size()+"");
+                }catch (Exception e){
                     holder.commentCount.setText("0");
                 }
 
@@ -167,7 +162,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //                TODO: get total length
 //                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
                 List<String> likes = new ArrayList<>();
-                for (DataSnapshot snap : snapshot.getChildren()) {
+                for (DataSnapshot snap: snapshot.getChildren()) {
                     String userId = snap.getKey();
                     likes.add(userId);
 
@@ -176,8 +171,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
                 try {
                     postlike = likes.size();
-                    holder.reactCount.setText(likes.size() + "");
-                } catch (Exception e) {
+                    holder.reactCount.setText(likes.size()+"");
+                }catch (Exception e){
                     holder.reactCount.setText("0");
                 }
 
@@ -191,26 +186,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         });
 
 
+
+
 //                Handling in post click
         holder.mainStory.setOnClickListener(view -> {
 
-            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-            ReadStoryFragment readStoryFragment = new ReadStoryFragment();
+            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+            ReadStoryFragment readStoryFragment=new ReadStoryFragment();
 //            passing post data to the fragment
             Bundle bundle = new Bundle();
             bundle.putString("postID", model.getPostID());
             bundle.putString("ownerFullName", ownerFullName);
             bundle.putString("ownerProfileImg", ownerProfileImg);
             readStoryFragment.setArguments(bundle);
-            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame1, readStoryFragment).addToBackStack(null).commit();
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
 
         });
 
 //        handling read more option
         holder.readMore.setOnClickListener(view -> {
 //            listener.gotoFragmentWithValue(new ReadStoryFragment(), model.getOwnerID());
-            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-            ReadStoryFragment readStoryFragment = new ReadStoryFragment();
+            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+            ReadStoryFragment readStoryFragment=new ReadStoryFragment();
 
 //            passing post data to the fragment
             Bundle bundle = new Bundle();
@@ -219,23 +216,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
             bundle.putString("ownerProfileImg", ownerProfileImg);
             readStoryFragment.setArguments(bundle);
 
-            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame1, readStoryFragment).addToBackStack(null).commit();
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
 
         });
 
 //        handling blank view click
         holder.itemView.setOnClickListener(view -> {
-            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-            ReadStoryFragment readStoryFragment = new ReadStoryFragment();
+            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+            ReadStoryFragment readStoryFragment=new ReadStoryFragment();
 //            passing post data to the fragment
             Bundle bundle = new Bundle();
             bundle.putString("postID", model.getPostID());
-            bundle.putString("ownerId", model.getOwnerID());
+            bundle.putString("ownerId",model.getOwnerID());
             bundle.putString("ownerFullName", ownerFullName);
             bundle.putString("ownerProfileImg", ownerProfileImg);
             readStoryFragment.setArguments(bundle);
 
-            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame1, readStoryFragment).addToBackStack(null).commit();
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
 
         });
 
@@ -244,8 +241,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         holder.profileImg.setOnClickListener(view -> {
 //          parse data to profile adapter
             listener.gotoFragmentWithValue(new ProfileFragment(), model.getOwnerID());
-
-
         });
 
 //        #Hanling Profile name clicked
@@ -265,18 +260,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //
 
 
-        holder.shareOption.setOnClickListener(view -> {
 
-            Intent intent=new Intent();
-            intent.setAction(Intent.ACTION_SEND);
+
+//        holder.shareOption.setOnClickListener(view -> {
+//
+//            Intent intent=new Intent();
+//            intent.setAction(Intent.ACTION_SEND);
 //            intent.putExtra(Intent.EXTRA_SUBJECT,model.getTitle());
-            intent.putExtra(Intent.EXTRA_TEXT,model.getMainText());
-            intent.setType("text/plain");
-            if (intent.resolveActivity(context.getPackageManager())!=null){
-                context.startActivity(intent);
-            }
+//            intent.putExtra(Intent.EXTRA_TEXT,model.getMainText());
+//            intent.setType("text/plain");
+//            if (intent.resolveActivity(context.getPackageManager())!=null){
+//                context.startActivity(intent);
+//            }
+//        });
 
-        });
+
+
+
+
+
+
+
+
 
 
 

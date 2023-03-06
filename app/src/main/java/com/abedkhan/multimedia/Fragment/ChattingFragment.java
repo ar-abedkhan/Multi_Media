@@ -31,61 +31,67 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChattingFragment extends Fragment {
+public class ChattingFragment extends Fragment implements PostListener {
     public ChattingFragment() {
     }
-
     private FragmentChattingBinding binding;
-    String currentUserId, othersUserId;
+    String currentUserId,othersUserId;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    List<ChatListModel> chatListModelList;
+    List<ChatListModel>chatListModelList;
     Intent intent;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentChattingBinding.inflate(getLayoutInflater(), container, false);
+        binding=FragmentChattingBinding.inflate(getLayoutInflater(),container,false);
 
-        chatListModelList = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        chatListModelList=new ArrayList<>();
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
 //        postId = getArguments().getString("postID"
 
-        intent = getActivity().getIntent();
-        othersUserId = intent.getStringExtra("visitor");
+        intent=getActivity().getIntent();
+        othersUserId=intent.getStringExtra("visitor");
 
-        if (firebaseUser != null) {
-            currentUserId = firebaseUser.getUid();
+        if (firebaseUser!=null){
+            currentUserId=firebaseUser.getUid();
         }
+
 
 
 //.............TODO: vai ekhane dekhiyen to others id ki perectly ashce naki.. crash kore child bole others id te pblm...................
 
 
-        databaseReference.child("User").child(currentUserId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                UserModel userModel = snapshot.getValue(UserModel.class);
-                if (userModel != null) {
-                    binding.profilename.setText(userModel.getFullName());
+
+
+databaseReference.child("User").child(currentUserId).addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+        UserModel userModel=snapshot.getValue(UserModel.class);
+        if (userModel !=null) {
+            binding.profilename.setText(userModel.getFullName());
 //            binding.chattimeTv.setText();
-                    Glide.with(requireContext()).load(userModel.getProfileImgUrl())
-                            .placeholder(R.drawable.ic_baseline_person_24).into(binding.profileimg);
+            Glide.with(requireContext()).load(userModel.getProfileImgUrl())
+                    .placeholder(R.drawable.ic_baseline_person_24).into(binding.profileimg);
 
-                }
-            }
+              }
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+    }
+});
+
+
 
 
 //.................message send and receive.............
@@ -97,7 +103,7 @@ public class ChattingFragment extends Fragment {
                 List<ChatListModel> tempoChatList = new ArrayList<>();
 //                int numCounter = 0;
 
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
 
                     ChatListModel chatModel = dataSnapshot.getValue(ChatListModel.class);
                     tempoChatList.add(chatModel);
@@ -112,11 +118,12 @@ public class ChattingFragment extends Fragment {
                         ) {
                             chatListModelList.add(chatModel);
                         }
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e){
                         if (
                                 currentUserId.equals(tempoChatList.get(0).getReceiverId())
                                         ||
-                                        currentUserId.equals(tempoChatList.get(0).getSenderId())
+                                        currentUserId.equals( tempoChatList.get(0).getSenderId())
                         ) {
                             chatListModelList.add(chatModel);
                         }
@@ -140,28 +147,47 @@ public class ChattingFragment extends Fragment {
 //...............on message send button clicked.......................
         binding.messagesendbtn.setOnClickListener(view -> {
 
-            if (binding.sendmessage.equals("")) {
+            if (binding.sendmessage.equals("")){
                 Toast.makeText(requireContext(), "Write a message", Toast.LENGTH_SHORT).show();
-            } else {
+            }else {
                 messageSend();
             }
 
         });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return binding.getRoot();
     }
+
+
+
+
+
 
 
     private void messageSend() {
 
         long currentTimMillis = System.currentTimeMillis();
 
-        String message = binding.sendmessage.getText().toString().trim();
-        String chatId = databaseReference.push().getKey();
+        String message =binding.sendmessage.getText().toString().trim();
+        String chatId =databaseReference.push().getKey();
 
 
-        ChatListModel chatModel = new ChatListModel(currentUserId, othersUserId, message, chatId, currentTimMillis);
+        ChatListModel chatModel =new ChatListModel(currentUserId,othersUserId,message,chatId, currentTimMillis);
 
         databaseReference.child("chat").child(chatId).setValue(chatModel).addOnSuccessListener(unused -> {
             binding.sendmessage.setText("");
@@ -170,13 +196,24 @@ public class ChattingFragment extends Fragment {
         });
 
 
+
+
+
     }
+
+
+
+
+
+
+
+
 
 
     private void setChattoUi(List<ChatListModel> chatModelList) {
 
-        ChatAdapter chatAdapter = new ChatAdapter(chatModelList, getContext(), currentUserId);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
+        ChatAdapter chatAdapter=new ChatAdapter(chatModelList,getContext(),currentUserId);
+        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(requireContext());
         linearLayoutManager.setStackFromEnd(true);
         binding.chatRecycler.setLayoutManager(linearLayoutManager);
 //        linearLayoutManager.setReverseLayout(true);
@@ -184,5 +221,16 @@ public class ChattingFragment extends Fragment {
 //        linearLayoutManager.scrollToPosition(0);
         binding.chatRecycler.setAdapter(chatAdapter);
 
+    }
+
+
+    @Override
+    public void gotoFragmentWithValue(Fragment fragment, String userID) {
+
+    }
+
+    @Override
+    public boolean followButtonClickedEvent(String userID) {
+        return false;
     }
 }

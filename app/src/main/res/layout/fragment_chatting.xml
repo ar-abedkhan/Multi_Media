@@ -167,7 +167,6 @@
             android:src="@android:drawable/ic_menu_send"
             android:paddingEnd="@dimen/_8sdp"
             android:paddingBottom="@dimen/_6sdp"
-            android:visibility="gone"
             android:paddingTop="@dimen/_6sdp"
             android:layout_margin="@dimen/_5sdp"
             android:paddingStart="@dimen/_8sdp"

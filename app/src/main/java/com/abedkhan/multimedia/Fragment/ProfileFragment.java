@@ -145,8 +145,9 @@ public class ProfileFragment extends Fragment{
                         binding.userName.setText(userModel.getUserName().trim());
                         binding.userMail.setText(userModel.getEmail().trim());
 
-                        if (userModel.getUserBio().isEmpty()){
+                        if (userModel.getUserBio().isEmpty()) {
                             binding.userProfileBio.setVisibility(View.GONE);
+
                         }else {
                             binding.userProfileBio.setText(userModel.getUserBio().trim());
                         }
@@ -209,17 +210,29 @@ public class ProfileFragment extends Fragment{
 
                         binding.userProfileName.setText(userModel.getFullName().trim());
 //                  binding.userJoinedDate.setText((int) userModel.getIdCreationTimeMillis());
-                        binding.userProfession.setText(userModel.getProfession().trim());
-                        binding.userCountry.setText(userModel.getLivingCountry().trim());
-                        binding.userLiveIn.setText(userModel.getLivingCity().trim());
                         binding.userGender.setText(userModel.getGender().trim());
                         binding.userName.setText(userModel.getUserName().trim());
                         binding.userMail.setText(userModel.getEmail().trim());
 
-                        if (userModel.getUserBio().isEmpty()){
+                        if (userModel.getUserBio().isEmpty()) {
                             binding.userProfileBio.setVisibility(View.GONE);
+
+                        }else if (userModel.getProfession().isEmpty()){
+                            binding.userProfession.setVisibility(View.GONE);
+
+                        }else if (userModel.getLivingCountry().isEmpty()){
+                            binding.userCountry.setVisibility(View.GONE);
+
+                        }else if (userModel.getLivingCity().isEmpty()){
+                            binding.userLiveIn.setVisibility(View.GONE);
+
+
                         }else {
                             binding.userProfileBio.setText(userModel.getUserBio().trim());
+                            binding.userProfession.setText(userModel.getProfession().trim());
+                            binding.userLiveIn.setText(userModel.getLivingCity().trim());
+                            binding.userCountry.setText(userModel.getLivingCountry().trim());
+
                         }
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 

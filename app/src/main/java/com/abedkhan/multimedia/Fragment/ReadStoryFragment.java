@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.NonUiContext;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -300,13 +301,31 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
 
 
 
-
+PostModel postModel=new PostModel();
 
         binding.writerProfileImg.setOnClickListener(view -> {
-            Intent intent = new Intent(getContext(), ContainerActivity.class);
-            intent.putExtra("imgClicked", true);
-            startActivity(intent);
+//            Intent intent = new Intent(getContext(), ContainerActivity.class);
+//            intent.putExtra("imgClicked", true);
+//            startActivity(intent);
             //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+
+
+
+
+
+            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+            ProfileFragment profileFragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("VisitedUserID", postModel.getOwnerID());
+            profileFragment.setArguments(bundle);
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).addToBackStack(null).commit();
+
+
+
+
+
+
+
         });
 
 

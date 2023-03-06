@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -13,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.abedkhan.multimedia.Activities.ContainerActivity;
+import com.abedkhan.multimedia.Activities.MainActivity;
 import com.abedkhan.multimedia.Adapters.ChatAdapter;
 import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.ChatListModel;
@@ -91,25 +94,27 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
 
 //...............on message send button clicked.......................
 
-        if (!binding.sendmessage.equals("")){
+
 //            binding.messagesendbtn.setEnabled(false);
             binding.messagesendbtn.setVisibility(View.VISIBLE);
+
+
+
             binding.messagesendbtn.setOnClickListener(view -> {
 
-                if (binding.sendmessage.equals("")) {
-                    Toast.makeText(requireContext(), "Write a message", Toast.LENGTH_SHORT).show();
-                } else {
+                String mess = binding.sendmessage.getText().toString().trim();
+
+
+                if (!mess.equals("")) {
+
                     messageSend();
+                    Toast.makeText(requireContext(), "Write a message", Toast.LENGTH_SHORT).show();
+
+                } else {
+
                 }
 
             });
-
-        }else {
-
-            binding.messagesendbtn.setVisibility(View.GONE);
-
-
-        }
 
 
 
@@ -189,6 +194,42 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
 
             }
         });
+
+
+
+
+//
+//        binding.backbtn.setOnClickListener(view -> {
+//            intent.putExtra("isMessage", true);
+//
+////            intent.putExtra("visitor",userModel.getUserID());
+//            Log.i("visitorID", "onCreateView: "+intent);
+//
+//            startActivity(intent);
+//       getChildFragmentManager().beginTransaction().replace(R.id.containerFrame,new MessageFragment()).addToBackStack(null).commit();//
+//
+//        });
+
+
+        //chat fragment to profile
+binding.profileimg.setOnClickListener(view -> {
+
+    AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+    ProfileFragment profileFragment = new ProfileFragment();
+    Bundle bundle = new Bundle();
+    bundle.putString("VisitedUserID", othersUserId);
+    profileFragment.setArguments(bundle);
+    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame, profileFragment).addToBackStack(null).commit();
+});
+binding.profilename.setOnClickListener(view -> {
+
+    AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+    ProfileFragment profileFragment = new ProfileFragment();
+    Bundle bundle = new Bundle();
+    bundle.putString("VisitedUserID", othersUserId);
+    profileFragment.setArguments(bundle);
+    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame, profileFragment).addToBackStack(null).commit();
+});
 
 
 

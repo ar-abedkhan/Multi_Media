@@ -17,10 +17,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:text="send message "
-        android:layout_margin="@dimen/_4sdp"
-        android:fontFamily="@font/poppins"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:fontFamily="@font/poppins_medium"
         android:includeFontPadding="false"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_14sdp"
         android:textColor="@color/black_text"
         android:id="@+id/messTv"
         />
@@ -32,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/messTv"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="@dimen/_12sdp"
+        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
         android:textColor="@color/black_text"
         android:fontFamily="@font/muli_semibold"
         android:includeFontPadding="false"
@@ -40,7 +43,6 @@
         android:paddingEnd="@dimen/_7sdp"
         android:paddingStart="@dimen/_5sdp"
         android:paddingTop="@dimen/_1sdp"
-
         android:text="3:30"
         android:id="@+id/timeTv"
         />

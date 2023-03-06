@@ -76,17 +76,21 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolders> {
             AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
             ChattingFragment chattingFragment=new ChattingFragment();
 //            passing post data to the fragment
-//            Bundle bundle = new Bundle();
-//            bundle.putString("visitor", userModel.getUserID());
-//            chattingFragment.setArguments(bundle);
-            Intent intent = new Intent(context, ContainerActivity.class);
-//            intent.putExtra("isMessage", true);
-            intent.putExtra("isMessageClicked", true);
+            Bundle bundle = new Bundle();
+            bundle.putString("visitor", userModel.getUserID());
+            chattingFragment.setArguments(bundle);
 
-            intent.putExtra("visitor",userModel.getUserID());
-            Log.i("visitorID", "onCreateView: "+intent);
 
-            context.startActivity(intent);
+
+
+//            Intent intent = new Intent(context, ContainerActivity.class);
+////            intent.putExtra("isMessage", true);
+//            intent.putExtra("isMessageClicked", true);
+//
+//            intent.putExtra("visitor",userModel.getUserID());
+//            Log.i("visitorID", "onCreateView: "+intent);
+//
+//            context.startActivity(intent);
             appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame,chattingFragment).addToBackStack(null).commit();//
 
         });

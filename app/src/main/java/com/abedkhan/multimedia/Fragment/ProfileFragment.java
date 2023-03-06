@@ -176,6 +176,19 @@ public class ProfileFragment extends Fragment{
 
 
 
+ //for current user on message option clicked intent to mess list...........
+            binding.message.setOnClickListener(view -> {
+                Intent intent = new Intent(requireContext(), ContainerActivity.class);
+                intent.putExtra("isMessage", true);
+                intent.putExtra("visitor",visitedUserID);
+                Log.i("visitorID", "onCreateView: "+intent);
+
+                startActivity(intent);
+
+            });
+
+
+
 
             databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -210,7 +223,7 @@ public class ProfileFragment extends Fragment{
                         }
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
-                        Glide.with(getActivity().getApplicationContext()).load(userModel.getProfileImgUrl())
+                        Glide.with(getContext()).load(userModel.getProfileImgUrl())
                                 .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
                         Log.i("tag", "onCreate: "+userModel.getFullName());

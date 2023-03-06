@@ -1,6 +1,7 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abedkhan.multimedia.Activities.ContainerActivity;
 import com.abedkhan.multimedia.AllViewHolder.ChatListViewHolders;
 import com.abedkhan.multimedia.Fragment.ChattingFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
@@ -65,20 +67,27 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolders> {
 
         holder.itemView.setOnClickListener(view -> {
 
-         listener.gotoFragmentWithValue(new ChattingFragment(), userModel.getUserID());
+//         listener.gotoFragmentWithValue(new ChattingFragment(), userModel.getUserID());
          
 ////            Log.i("tag", "listener mess: ");
 //
 //
 //
-//            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
-//            ChattingFragment chattingFragment=new ChattingFragment();
-////            passing post data to the fragment
+            AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();
+            ChattingFragment chattingFragment=new ChattingFragment();
+//            passing post data to the fragment
 //            Bundle bundle = new Bundle();
-//            bundle.putString("postID", userModel.getUserID());
+//            bundle.putString("visitor", userModel.getUserID());
 //            chattingFragment.setArguments(bundle);
-//
-//            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,chattingFragment).addToBackStack(null).commit();//
+            Intent intent = new Intent(context, ContainerActivity.class);
+//            intent.putExtra("isMessage", true);
+            intent.putExtra("isMessageClicked", true);
+
+            intent.putExtra("visitor",userModel.getUserID());
+            Log.i("visitorID", "onCreateView: "+intent);
+
+            context.startActivity(intent);
+            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame,chattingFragment).addToBackStack(null).commit();//
 
         });
 

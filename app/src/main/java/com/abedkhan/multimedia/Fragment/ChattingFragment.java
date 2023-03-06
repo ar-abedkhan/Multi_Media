@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChattingFragment extends Fragment implements PostListener {
+public class ChattingFragment extends Fragment {
     public ChattingFragment() {
     }
     private FragmentChattingBinding binding;
@@ -54,7 +54,7 @@ public class ChattingFragment extends Fragment implements PostListener {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
-//        postId = getArguments().getString("postID"
+//        othersUserId = getArguments().getString("visitor");
 
         intent=getActivity().getIntent();
         othersUserId=intent.getStringExtra("visitor");
@@ -64,14 +64,8 @@ public class ChattingFragment extends Fragment implements PostListener {
         }
 
 
-
-//.............TODO: vai ekhane dekhiyen to others id ki perectly ashce naki.. crash kore child bole others id te pblm...................
-
-
-
-
-
-databaseReference.child("User").child(currentUserId).addValueEventListener(new ValueEventListener() {
+//setting user data to chat ui...........
+databaseReference.child("User").child(othersUserId).addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -79,7 +73,7 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
         if (userModel !=null) {
             binding.profilename.setText(userModel.getFullName());
 //            binding.chattimeTv.setText();
-            Glide.with(requireContext()).load(userModel.getProfileImgUrl())
+            Glide.with(getActivity().getApplicationContext()).load(userModel.getProfileImgUrl())
                     .placeholder(R.drawable.ic_baseline_person_24).into(binding.profileimg);
 
               }
@@ -94,7 +88,60 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
 
 
 
-//.................message send and receive.............
+
+//...............on message send button clicked.......................
+
+        if (!binding.sendmessage.equals("")){
+//            binding.messagesendbtn.setEnabled(false);
+            binding.messagesendbtn.setVisibility(View.VISIBLE);
+            binding.messagesendbtn.setOnClickListener(view -> {
+
+                if (binding.sendmessage.equals("")) {
+                    Toast.makeText(requireContext(), "Write a message", Toast.LENGTH_SHORT).show();
+                } else {
+                    messageSend();
+                }
+
+            });
+
+        }else {
+
+            binding.messagesendbtn.setVisibility(View.GONE);
+
+
+        }
+
+
+
+
+
+
+//try {
+//    binding.sendmessage.equals(null);
+//    binding.messagesendbtn.setVisibility(View.GONE);
+//
+//
+//}catch (Exception e){
+//    binding.messagesendbtn.setVisibility(View.VISIBLE);
+//
+//    binding.messagesendbtn.setOnClickListener(view -> {
+//
+//        if (binding.sendmessage.equals("")) {
+//            Toast.makeText(requireContext(), "Write a message", Toast.LENGTH_SHORT).show();
+//        } else {
+//            messageSend();
+//        }
+//
+//    });
+//}
+
+
+
+
+
+
+
+        //.................message send and receive.............
 
         databaseReference.child("chat").addValueEventListener(new ValueEventListener() {
             @Override
@@ -144,25 +191,6 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
         });
 
 
-//...............on message send button clicked.......................
-        binding.messagesendbtn.setOnClickListener(view -> {
-
-            if (binding.sendmessage.equals("")){
-                Toast.makeText(requireContext(), "Write a message", Toast.LENGTH_SHORT).show();
-            }else {
-                messageSend();
-            }
-
-        });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -203,17 +231,11 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
 
 
 
-
-
-
-
-
-
-
+//set message adapter...........
     private void setChattoUi(List<ChatListModel> chatModelList) {
 
         ChatAdapter chatAdapter=new ChatAdapter(chatModelList,getContext(),currentUserId);
-        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(requireContext());
+        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getContext());
         linearLayoutManager.setStackFromEnd(true);
         binding.chatRecycler.setLayoutManager(linearLayoutManager);
 //        linearLayoutManager.setReverseLayout(true);
@@ -223,14 +245,4 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
 
     }
 
-
-    @Override
-    public void gotoFragmentWithValue(Fragment fragment, String userID) {
-
-    }
-
-    @Override
-    public boolean followButtonClickedEvent(String userID) {
-        return false;
-    }
 }

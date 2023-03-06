@@ -48,8 +48,11 @@ public class ContainerActivity extends AppCompatActivity {
             }else if (intent.getBooleanExtra("settingsClicked",false)) {
                 replace(new profileEditFragment());
 
-            }else if (intent.getBooleanExtra("isMessageClicked",false)){
+            }else if (intent.getBooleanExtra("isMessageClicked",false)) {
                 replace(new ChattingFragment());
+
+            }else if (intent.getBooleanExtra("isMessage",false)) {
+                replace(new MessageFragment());
 
             }else if (intent.getBooleanExtra("uId",false)) {
                 replace(new ProfileFragment());

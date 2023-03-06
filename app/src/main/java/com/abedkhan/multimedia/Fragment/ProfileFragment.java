@@ -131,8 +131,8 @@ public class ProfileFragment extends Fragment{
 
 
                     if (!userModel.getUserID().equals(currentUserID)){
-                        binding.logeOutBtn.setVisibility(View.GONE);
-                        binding.settings.setVisibility(View.GONE);
+                        binding.logeOutBtn.setVisibility(View.INVISIBLE);
+                        binding.settings.setVisibility(View.INVISIBLE);
                     }
 
 
@@ -158,7 +158,7 @@ public class ProfileFragment extends Fragment{
                         Log.i("tag", "onCreate: "+userModel.getFullName());
                         Log.i("tag", "onCreate: "+userModel.getUserID());
 
-//                        visitedUserID = userModel.getUserID();
+                        visitedUserID = userModel.getUserID();
                         visitedUserName = userModel.getUserName();
                         visitedUserProfileImg = userModel.getProfileImgUrl();
 
@@ -186,8 +186,8 @@ public class ProfileFragment extends Fragment{
 
 
                     if (!userModel.getUserID().equals(currentUserID)){
-                        binding.logeOutBtn.setVisibility(View.GONE);
-                        binding.settings.setVisibility(View.GONE);
+                        binding.logeOutBtn.setVisibility(View.INVISIBLE);
+                        binding.settings.setVisibility(View.INVISIBLE);
                     }
 
 
@@ -232,7 +232,7 @@ public class ProfileFragment extends Fragment{
         }
 
 
-        //handeling post count....
+        //handling post count....
 //        postID = databaseReference.push().getKey();
 //
 //        databaseReference.child("User").child("Post").child(postID).addValueEventListener(new ValueEventListener() {
@@ -240,7 +240,7 @@ public class ProfileFragment extends Fragment{
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
 ////                TODO: get total length
 ////                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
-//                List<UserModel>postModelList=new ArrayList<>();
+//                List<String>postModelList=new ArrayList<>();
 //
 ////                List<String> postSize = new ArrayList<>();
 //

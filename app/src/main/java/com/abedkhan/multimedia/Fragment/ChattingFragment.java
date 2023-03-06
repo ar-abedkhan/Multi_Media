@@ -55,11 +55,9 @@ public class ChattingFragment extends Fragment implements PostListener {
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
 //        postId = getArguments().getString("postID"
-//
-//        intent=getActivity().getIntent();
-//        othersUserId=intent.getStringExtra("VisitedUserID");
 
-        othersUserId= getArguments().getString("VisitedUserID");
+        intent=getActivity().getIntent();
+        othersUserId=intent.getStringExtra("visitor");
 
         if (firebaseUser!=null){
             currentUserId=firebaseUser.getUid();
@@ -96,24 +94,44 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
 
 
 
-//.................message send and recive.............
+//.................message send and receive.............
 
         databaseReference.child("chat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chatListModelList.clear();
+                List<ChatListModel> tempoChatList = new ArrayList<>();
+//                int numCounter = 0;
+
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
 
                     ChatListModel chatModel = dataSnapshot.getValue(ChatListModel.class);
+                    tempoChatList.add(chatModel);
 
                     assert chatModel != null;
-                    if (
-                            chatModel.getReceiverId().equals(currentUserId) && chatModel.getSenderId().equals(othersUserId)
-                                    ||
-                                    chatModel.getReceiverId().equals(othersUserId) && chatModel.getSenderId().equals(currentUserId)
-                    ) {
-                        chatListModelList.add(chatModel);
+//                    Log.i("TAG", "Chatting Fragment others ID: "+ othersUserId);
+                    try {
+                        if (
+                                chatModel.getReceiverId().equals(currentUserId) && chatModel.getSenderId().equals(othersUserId)
+                                        ||
+                                        chatModel.getReceiverId().equals(othersUserId) && chatModel.getSenderId().equals(currentUserId)
+                        ) {
+                            chatListModelList.add(chatModel);
+                        }
                     }
+                    catch (Exception e){
+                        if (
+                                currentUserId.equals(tempoChatList.get(0).getReceiverId())
+                                        ||
+                                        currentUserId.equals( tempoChatList.get(0).getSenderId())
+                        ) {
+                            chatListModelList.add(chatModel);
+                        }
+                    }
+
+//                    numCounter += 1;
+
+
                 }
                 setChattoUi(chatListModelList);
             }
@@ -163,13 +181,13 @@ databaseReference.child("User").child(currentUserId).addValueEventListener(new V
 
     private void messageSend() {
 
-        long currentTimMilis = System.currentTimeMillis();
+        long currentTimMillis = System.currentTimeMillis();
 
         String message =binding.sendmessage.getText().toString().trim();
         String chatId =databaseReference.push().getKey();
 
 
-        ChatListModel chatModel =new ChatListModel(othersUserId,currentUserId,message,chatId,currentTimMilis);
+        ChatListModel chatModel =new ChatListModel(currentUserId,othersUserId,message,chatId, currentTimMillis);
 
         databaseReference.child("chat").child(chatId).setValue(chatModel).addOnSuccessListener(unused -> {
             binding.sendmessage.setText("");

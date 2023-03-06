@@ -49,7 +49,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewholder> {
     public void onBindViewHolder(@NonNull ChatViewholder holder, int position) {
        ChatListModel chatModel=chatModelList.get(position);
 
-       long time= Long.parseLong(String.valueOf(chatModel.getTimeMilis()));
+       long time= Long.parseLong(String.valueOf(chatModel.getTimeMillis()));
        holder.message.setText(chatModel.getMessage());
 
         Date date =new Date(time);

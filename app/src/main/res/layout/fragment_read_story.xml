@@ -78,7 +78,6 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="60sp"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                 >
 
@@ -372,13 +371,13 @@
 
 
 
-
+<!--comment layout......-->
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@id/comment_recycler"
-                        android:id="@+id/messagelayout"
+                        android:id="@+id/commentLayout"
                         android:background="#D7595C60"
                         android:padding="@dimen/_4sdp"
                         android:paddingBottom="@dimen/_15sdp"
@@ -417,7 +416,6 @@
                             android:src="@android:drawable/ic_menu_send"
                             android:paddingEnd="@dimen/_8sdp"
                             android:paddingBottom="@dimen/_6sdp"
-
                             android:paddingTop="@dimen/_6sdp"
                             android:layout_margin="@dimen/_5sdp"
                             android:paddingStart="@dimen/_8sdp"
@@ -429,15 +427,24 @@
 
 
 
+
+                 <View
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/_60sdp"
+                     app:layout_constraintTop_toBottomOf="@id/commentLayout"
+                     android:background="@color/bottommenu_background"
+                     />
+
+
+
+
+
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.core.widget.NestedScrollView>
 
-
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>

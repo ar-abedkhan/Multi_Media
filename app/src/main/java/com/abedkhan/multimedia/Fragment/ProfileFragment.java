@@ -51,7 +51,8 @@ public class ProfileFragment extends Fragment{
     Intent intent;
     List<UserModel>userModelList;
     String currentUserID, currentUserName, currentUserImg,postID;
-    String visitedUserID, visitedUserProfileImg, visitedUserName;
+    String visitedUserID;
+    String visitedUserProfileImg, visitedUserName;
     int publishedPost,savePost,followers,following;
     PostListener listener;
 
@@ -78,17 +79,6 @@ public class ProfileFragment extends Fragment{
         if (firebaseUser!=null){
             currentUserID =firebaseUser.getUid();
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
 //        ##Getting current user data
@@ -145,10 +135,10 @@ public class ProfileFragment extends Fragment{
                         binding.userName.setText(userModel.getUserName().trim());
                         binding.userMail.setText(userModel.getEmail().trim());
 
-                        if (userModel.getUserBio().isEmpty()) {
+                        if (userModel.getUserBio().isEmpty()){
                             binding.userProfileBio.setVisibility(View.GONE);
 
-                        }else {
+                        }else{
                             binding.userProfileBio.setText(userModel.getUserBio().trim());
                         }
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
@@ -197,14 +187,10 @@ public class ProfileFragment extends Fragment{
 
                     UserModel userModel=snapshot.getValue(UserModel.class);
 
-
                     if (!userModel.getUserID().equals(currentUserID)){
                         binding.logeOutBtn.setVisibility(View.INVISIBLE);
                         binding.settings.setVisibility(View.INVISIBLE);
                     }
-
-
-
 
                     if (userModel!=null){
 
@@ -216,24 +202,28 @@ public class ProfileFragment extends Fragment{
 
                         if (userModel.getUserBio().isEmpty()) {
                             binding.userProfileBio.setVisibility(View.GONE);
-
-                        }else if (userModel.getProfession().isEmpty()){
-                            binding.userProfession.setVisibility(View.GONE);
-
-                        }else if (userModel.getLivingCountry().isEmpty()){
-                            binding.userCountry.setVisibility(View.GONE);
-
-                        }else if (userModel.getLivingCity().isEmpty()){
-                            binding.userLiveIn.setVisibility(View.GONE);
-
-
-                        }else {
+                        } else {
                             binding.userProfileBio.setText(userModel.getUserBio().trim());
-                            binding.userProfession.setText(userModel.getProfession().trim());
-                            binding.userLiveIn.setText(userModel.getLivingCity().trim());
-                            binding.userCountry.setText(userModel.getLivingCountry().trim());
-
                         }
+
+                        if (userModel.getProfession().isEmpty()){
+                            binding.userProfession.setVisibility(View.GONE);
+                        }
+                        else {
+                            binding.userProfession.setText(userModel.getProfession().trim());
+                        }
+                        if (userModel.getLivingCountry().isEmpty()){
+                            binding.userCountry.setVisibility(View.GONE);
+                        }else {
+                            binding.userCountry.setText(userModel.getLivingCountry().trim());
+                        }
+
+                        if (userModel.getLivingCity().isEmpty()){
+                            binding.userLiveIn.setVisibility(View.GONE);
+                        }else {
+                            binding.userLiveIn.setText(userModel.getLivingCity().trim());
+                        }
+
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
                         Glide.with(getContext()).load(userModel.getProfileImgUrl())
@@ -289,16 +279,6 @@ public class ProfileFragment extends Fragment{
 //
 
 
-
-
-
-
-
-
-
-
-
-
 //        Handling follow button clicked
 //        TODO: unfollow
         binding.followOptionContainer.setOnClickListener(view -> {
@@ -337,19 +317,14 @@ public class ProfileFragment extends Fragment{
                                 }
                             }
                         });
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
                     }
                 });
             }
-
         });
-
-
         return binding.getRoot();
     }
 
@@ -368,7 +343,6 @@ public class ProfileFragment extends Fragment{
                 }catch (Exception e){
                     isFollowing = false;
                 }
-
             }
 
             @Override
@@ -394,10 +368,7 @@ public class ProfileFragment extends Fragment{
             intent.putExtra("isMessageClicked", true);
             intent.putExtra("visitor",visitedUserID);
             Log.i("visitorID", "onCreateView: "+intent);
-
             startActivity(intent);
-
-
         });
 
         binding.addPost.setOnClickListener(view -> {

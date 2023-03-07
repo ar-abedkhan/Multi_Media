@@ -381,10 +381,11 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:inputType="textMultiLine"
-                    android:text=" 👋 Hi, I’m @ar-abedkhan \n 👀I’m interested in Software devolopment\n🌱  I’m currently learning Andriod with Java"
+                    android:text=""
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_12sdp"
                     />
+<!--                👋 Hi, I’m @ar-abedkhan \n 👀I’m interested in Software devolopment\n🌱  I’m currently learning Andriod with Java-->
 
 
 

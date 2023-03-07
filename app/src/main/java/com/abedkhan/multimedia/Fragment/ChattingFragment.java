@@ -62,7 +62,7 @@ public class ChattingFragment extends Fragment {
         }
         else {
             intent=getActivity().getIntent();
-            othersUserId=intent.getStringExtra("connectedUser");
+            othersUserId=intent.getStringExtra("visitor");
         }
 
         if (firebaseUser!=null){

@@ -77,7 +77,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolders> {
             ChattingFragment chattingFragment=new ChattingFragment();
 //            passing post data to the fragment
             Bundle bundle = new Bundle();
-            bundle.putString("visitor", userModel.getUserID());
+            bundle.putString("connectedUser", userModel.getUserID());
             chattingFragment.setArguments(bundle);
 
 

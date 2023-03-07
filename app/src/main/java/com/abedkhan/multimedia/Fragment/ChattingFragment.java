@@ -57,10 +57,13 @@ public class ChattingFragment extends Fragment {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
-//        othersUserId = getArguments().getString("visitor");
-
-        intent=getActivity().getIntent();
-        othersUserId=intent.getStringExtra("visitor");
+        if (!getArguments().getString("connectedUser").equals("")) {
+            othersUserId = getArguments().getString("connectedUser");
+        }
+        else {
+            intent=getActivity().getIntent();
+            othersUserId=intent.getStringExtra("connectedUser");
+        }
 
         if (firebaseUser!=null){
             currentUserId=firebaseUser.getUid();

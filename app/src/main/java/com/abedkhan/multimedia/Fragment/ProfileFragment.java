@@ -367,7 +367,7 @@ public class ProfileFragment extends Fragment{
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("isMessageClicked", true);
             intent.putExtra("visitor",visitedUserID);
-            Log.i("visitorID", "onCreateView: "+intent);
+//            Log.i("visitorID", "onCreateView: "+intent);
             startActivity(intent);
         });
 

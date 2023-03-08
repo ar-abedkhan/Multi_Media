@@ -37,9 +37,9 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_20sdp"
+        android:paddingEnd="@dimen/_10sdp"
         android:background="@drawable/comment_back"
         android:padding="@dimen/_2sdp"
         app:layout_constraintStart_toEndOf="@id/comment_ProfileImg"
@@ -54,14 +54,16 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black_text"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_14sdp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:inputType="textMultiLine"
             android:includeFontPadding="false"
             android:textStyle="bold"
             android:text="Abed khan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_4sdp"
             android:layout_marginTop="@dimen/_3sdp"
             android:id="@+id/comment_profileName"
             />

@@ -22,12 +22,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tool"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
+            android:layout_height="@dimen/_40sdp"
             android:background="@color/bottommenu_background"
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userProfile"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:fontFamily="@font/pattaya"
-                android:text="Multi Media"
+                android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="@color/c1"
                 android:textSize="@dimen/_24sdp"
@@ -57,25 +57,25 @@
 
 
 
-<!--            <ImageView-->
-<!--                android:id="@+id/shopping"-->
-<!--                android:layout_width="@dimen/_30sdp"-->
-<!--                android:layout_height="@dimen/_30sdp"-->
-<!--                android:layout_marginTop="@dimen/_6sdp"-->
-<!--                android:layout_marginEnd="@dimen/_10sdp"-->
-<!--                android:src="@drawable/shopping"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
+            <ImageView
+                android:id="@+id/shopping"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:src="@drawable/shopping"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView
                 android:id="@+id/search_bar"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
                 android:src="@drawable/search"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/shopping"
                 app:layout_constraintTop_toTopOf="parent" />
 
 

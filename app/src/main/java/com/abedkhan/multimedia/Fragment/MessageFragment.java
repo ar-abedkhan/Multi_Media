@@ -1,5 +1,6 @@
 package com.abedkhan.multimedia.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.abedkhan.multimedia.Activities.ContainerActivity;
+import com.abedkhan.multimedia.Activities.MainActivity;
 import com.abedkhan.multimedia.Adapters.ChatListAdapter;
 import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.ChatListModel;
@@ -72,7 +75,16 @@ databaseReference.addValueEventListener(new ValueEventListener() {
 });
 
 
+binding.home.setOnClickListener(view -> {
+    startActivity(new Intent(requireContext(), MainActivity.class));
+});
 
+
+
+binding.backBtn.setOnClickListener(view -> {
+    startActivity(new Intent(requireContext(), ContainerActivity.class));
+
+});
 
 
 

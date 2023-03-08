@@ -125,6 +125,23 @@ public class ProfileFragment extends Fragment{
                     }
 
 
+
+//
+//                    binding.message.setOnClickListener(view -> {
+//                        Intent intent = new Intent(requireContext(), ContainerActivity.class);
+//                        intent.putExtra("isMessageClicked", true);
+//                        intent.putExtra("visitor",visitedUserID);
+//                        Log.i("visitorID", "onCreateView: "+intent);
+//
+//                        startActivity(intent);
+//
+//                    });
+//
+
+
+
+
+
                     if (userModel!=null){
                         binding.userProfileName.setText(userModel.getFullName().trim());
                         binding.userJoinedDate.setText(simpleDateFormat.format(date));
@@ -171,7 +188,7 @@ public class ProfileFragment extends Fragment{
             binding.message.setOnClickListener(view -> {
                 Intent intent = new Intent(requireContext(), ContainerActivity.class);
                 intent.putExtra("isMessage", true);
-                intent.putExtra("visitor",visitedUserID);
+                intent.putExtra("visitor",currentUserID);
                 Log.i("visitorID", "onCreateView: "+intent);
 
                 startActivity(intent);

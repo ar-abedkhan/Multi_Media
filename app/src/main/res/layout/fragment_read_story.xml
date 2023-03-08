@@ -7,6 +7,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/readStoryFragment"
     tools:context=".Fragment.ReadStoryFragment"
+    android:layout_marginBottom="@dimen/_60sdp"
         >
 
 
@@ -361,6 +362,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/_8ssp"
                         android:paddingBottom="@dimen/_100sdp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintTop_toBottomOf="@id/comment_title"

@@ -54,7 +54,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/post_recycler_design"
-                android:paddingBottom="@dimen/_130sdp"
+                android:paddingBottom="@dimen/_110sdp"
                 />
 
 

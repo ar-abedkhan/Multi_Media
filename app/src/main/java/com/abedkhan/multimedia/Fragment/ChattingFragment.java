@@ -44,6 +44,7 @@ public class ChattingFragment extends Fragment {
     FirebaseUser firebaseUser;
     List<ChatListModel>chatListModelList;
     Intent intent;
+    public String lastMess;
 
 
 
@@ -57,13 +58,32 @@ public class ChattingFragment extends Fragment {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
-        if (!getArguments().getString("connectedUser").equals("")) {
-            othersUserId = getArguments().getString("connectedUser");
-        }
-        else {
+//        if (!getArguments().getString("connectedUser").equals("")) {
+//            othersUserId = getArguments().getString("connectedUser");
+//        }
+//        else {
+//            intent=getActivity().getIntent();
+//            othersUserId=intent.getStringExtra("visitor");
+//        }
+
+        try {
+//            !getArguments().getString("connectedUser").equals("")
+                othersUserId = getArguments().getString("connectedUser");
+
+        }catch (Exception e){
             intent=getActivity().getIntent();
             othersUserId=intent.getStringExtra("visitor");
+
         }
+
+
+
+
+
+
+
+
+
 
         if (firebaseUser!=null){
             currentUserId=firebaseUser.getUid();
@@ -111,7 +131,7 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
                 if (!mess.equals("")) {
 
                     messageSend();
-                    Toast.makeText(requireContext(), "Write a message", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(requireContext(), "Write a message", Toast.LENGTH_SHORT).show();
 
                 } else {
 
@@ -146,10 +166,9 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
 
 
 
-
-
-
         //.................message send and receive.............
+
+        lastMess="default";
 
         databaseReference.child("chat").addValueEventListener(new ValueEventListener() {
             @Override
@@ -157,6 +176,7 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
                 chatListModelList.clear();
                 List<ChatListModel> tempoChatList = new ArrayList<>();
 //                int numCounter = 0;
+
 
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
 
@@ -172,6 +192,8 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
                                         chatModel.getReceiverId().equals(othersUserId) && chatModel.getSenderId().equals(currentUserId)
                         ) {
                             chatListModelList.add(chatModel);
+                            lastMess=chatModel.getMessage();
+
                         }
                     }
                     catch (Exception e){
@@ -181,6 +203,8 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
                                         currentUserId.equals( tempoChatList.get(0).getSenderId())
                         ) {
                             chatListModelList.add(chatModel);
+                            lastMess=chatModel.getMessage();
+
                         }
                     }
 
@@ -188,6 +212,7 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
 
 
                 }
+
                 setChattoUi(chatListModelList);
             }
 
@@ -288,5 +313,4 @@ binding.profilename.setOnClickListener(view -> {
         binding.chatRecycler.setAdapter(chatAdapter);
 
     }
-
 }

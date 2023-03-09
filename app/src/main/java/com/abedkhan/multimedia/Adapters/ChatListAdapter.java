@@ -42,17 +42,19 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolders> {
     List<UserModel> userModelList;
     Context context;
     PostListener listener;
+    boolean ischat;
 
 
     List<ChatListModel>chatListModelList=new ArrayList<>();
     String lastMess;
 
-    public ChatListAdapter(List<UserModel> userModelList, Context context, PostListener listener) {
+
+    public ChatListAdapter(List<UserModel> userModelList, Context context, PostListener listener, boolean ischat) {
         this.userModelList = userModelList;
         this.context = context;
         this.listener = listener;
+        this.ischat = ischat;
     }
-
 
     @NonNull
     @Override
@@ -105,6 +107,26 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolders> {
 
 
 
+        try {
+            if (userModel.getStatus().equals("online")){
+                holder.sOnline.setVisibility(View.VISIBLE);
+                holder.sOffline.setVisibility(View.GONE);
+            }else {
+                holder.sOnline.setVisibility(View.GONE);
+                holder.sOffline.setVisibility(View.VISIBLE);
+            }
+
+            Log.i("tag", "onBindViewHolder: ");
+
+        }catch (Exception e){
+
+            holder.sOnline.setVisibility(View.GONE);
+            holder.sOffline.setVisibility(View.VISIBLE);
+
+            Log.i("tag", "onBindViewHolder: ");
+
+
+        }
 
 
 

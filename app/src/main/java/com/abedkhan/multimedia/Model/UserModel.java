@@ -2,11 +2,12 @@ package com.abedkhan.multimedia.Model;
 
 public class UserModel {
     String userID, profileImgUrl;
-    String fullName, userName, email, gender, dateOfBirth, password;
+    String fullName, userName, email, gender, dateOfBirth, password,status;
     long idCreationTimeMillis;
     String userBio, profession, livingCountry, livingCity,followerCount,followingCount,publishedPostCount,SavePostCount;
 
-    public UserModel(String userID, String profileImgUrl, String fullName, String userName, String email, String gender, String dateOfBirth, String password, long idCreationTimeMillis, String userBio, String profession, String livingCountry, String livingCity, String followerCount, String followingCount, String publishedPostCount, String savePostCount) {
+
+    public UserModel(String userID, String profileImgUrl, String fullName, String userName, String email, String gender, String dateOfBirth, String password, String status, long idCreationTimeMillis, String userBio, String profession, String livingCountry, String livingCity, String followerCount, String followingCount, String publishedPostCount, String savePostCount) {
         this.userID = userID;
         this.profileImgUrl = profileImgUrl;
         this.fullName = fullName;
@@ -15,6 +16,7 @@ public class UserModel {
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
+        this.status = status;
         this.idCreationTimeMillis = idCreationTimeMillis;
         this.userBio = userBio;
         this.profession = profession;
@@ -163,5 +165,13 @@ public class UserModel {
 
     public void setSavePostCount(String savePostCount) {
         SavePostCount = savePostCount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

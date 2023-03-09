@@ -151,6 +151,7 @@ public class SignUpFragmentTwo extends Fragment {
                 userMap.put("followingCount", "");
                 userMap.put("publishedPostCount", "");
                 userMap.put("SavePostCount", "");
+                userMap.put("status", "offline");
 
                 databaseReference.child("User").child(firebaseUser.getUid()).setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

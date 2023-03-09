@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MessageFragment extends Fragment implements PostListener{
@@ -64,7 +65,7 @@ databaseReference.addValueEventListener(new ValueEventListener() {
                 userModelList.add(userModel);
             }
         }
-        ChatListAdapter chatListAdapter=new ChatListAdapter(userModelList,requireContext(),MessageFragment.this);
+        ChatListAdapter chatListAdapter=new ChatListAdapter(userModelList,getContext(),MessageFragment.this,true);
         binding.chatListRecyclerView.setAdapter(chatListAdapter);
     }
 
@@ -103,4 +104,27 @@ binding.backBtn.setOnClickListener(view -> {
     public boolean followButtonClickedEvent(String userID) {
         return false;
     }
+
+    private void status(String status){
+        databaseReference=FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
+
+        HashMap<String , Object> hashMap=new HashMap<>();
+        hashMap.put("status",status);
+        databaseReference.updateChildren(hashMap);
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        status("offline");
+    }
+
 }

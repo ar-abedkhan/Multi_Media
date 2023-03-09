@@ -243,7 +243,7 @@ public class ProfileFragment extends Fragment{
 
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
-                        Glide.with(getContext()).load(userModel.getProfileImgUrl())
+                        Glide.with(requireContext()).load(userModel.getProfileImgUrl())
                                 .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
                         Log.i("tag", "onCreate: "+userModel.getFullName());

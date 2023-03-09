@@ -12,7 +12,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatListViewHolders extends RecyclerView.ViewHolder {
     public TextView name,lastmessage,lastSeen;
-    public CircleImageView profileImg;
+    public CircleImageView profileImg,sOnline,sOffline;
 
     public ChatListViewHolders(@NonNull View itemView) {
         super(itemView);
@@ -21,6 +21,8 @@ public class ChatListViewHolders extends RecyclerView.ViewHolder {
         lastmessage=itemView.findViewById(R.id.lastMessageTV);
         lastSeen=itemView.findViewById(R.id.chattimeTv);
         profileImg=itemView.findViewById(R.id.chatUserimgTV);
+        sOnline=itemView.findViewById(R.id.statusOnline);
+        sOffline=itemView.findViewById(R.id.statusOffline);
 
 
     }

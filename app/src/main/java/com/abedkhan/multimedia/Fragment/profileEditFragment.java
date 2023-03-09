@@ -126,7 +126,8 @@ binding.userProfileImg.setOnClickListener(view -> {
                            binding.userMail.setText(userModel.getEmail().trim());
                            binding.password.setText(userModel.getPassword().trim());
 
-           Glide.with(requireContext()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.userProfileImg);
+                           //requercontex cilo get contex e baloi kj kore.....
+           Glide.with(getActivity().getApplicationContext()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.userProfileImg);
 
                            Log.i("tag", "onCreate: "+userModel.getFullName());
                        }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_80sdp"
+    android:layout_marginStart="@dimen/_10sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="@dimen/_100sdp"
+    >
+<androidx.cardview.widget.CardView
+    android:id="@+id/imgCrad"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_width="@dimen/_65sdp"
+    app:cardCornerRadius="@dimen/_20sdp"
+    android:background="@color/white_background"
+    android:layout_height="@dimen/_65sdp"
+
+    >
+
+    <ImageView
+        android:id="@+id/cetagory_Img"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/travel1"
+        android:layout_gravity="center"
+        />
+
+
+
+</androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imgCrad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="cetagory"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@color/black_text"
+        android:id="@+id/cetagory_Name"
+        />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

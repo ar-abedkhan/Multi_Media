@@ -126,22 +126,6 @@ public class ProfileFragment extends Fragment{
 
 
 
-//
-//                    binding.message.setOnClickListener(view -> {
-//                        Intent intent = new Intent(requireContext(), ContainerActivity.class);
-//                        intent.putExtra("isMessageClicked", true);
-//                        intent.putExtra("visitor",visitedUserID);
-//                        Log.i("visitorID", "onCreateView: "+intent);
-//
-//                        startActivity(intent);
-//
-//                    });
-//
-
-
-
-
-
                     if (userModel!=null){
                         binding.userProfileName.setText(userModel.getFullName().trim());
                         binding.userJoinedDate.setText(simpleDateFormat.format(date));
@@ -400,6 +384,27 @@ public class ProfileFragment extends Fragment{
 
         });
 
+    }
+    private void status(String status){
+        databaseReference= FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
+
+        HashMap<String , Object> hashMap=new HashMap<>();
+        hashMap.put("status",status);
+        databaseReference.updateChildren(hashMap);
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        status("offline");
     }
 
 }

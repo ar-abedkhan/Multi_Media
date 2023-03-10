@@ -16,17 +16,35 @@ import com.abedkhan.multimedia.Fragment.SignUpFragmentOne;
 import com.abedkhan.multimedia.Fragment.profileEditFragment;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.ActivityContainerBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class ContainerActivity extends AppCompatActivity {
 
     ActivityContainerBinding binding;
     Intent intent;
 
+    DatabaseReference databaseReference;
+    FirebaseUser firebaseUser;
+    FirebaseAuth firebaseAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityContainerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        databaseReference=FirebaseDatabase.getInstance().getReference();
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+
+
 
         try {
             intent = getIntent();
@@ -75,5 +93,28 @@ public class ContainerActivity extends AppCompatActivity {
     private void replace(Fragment fragment) {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame, fragment).commit();
+    }
+
+
+    private void status(String status){
+        databaseReference= FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
+
+        HashMap<String , Object> hashMap=new HashMap<>();
+        hashMap.put("status",status);
+        databaseReference.updateChildren(hashMap);
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        status("offline");
     }
 }

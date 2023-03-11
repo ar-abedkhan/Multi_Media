@@ -45,6 +45,7 @@ public class ChattingFragment extends Fragment {
     List<ChatListModel>chatListModelList;
     Intent intent;
     public String lastMess;
+    boolean ischat;
 
 
 
@@ -79,6 +80,9 @@ public class ChattingFragment extends Fragment {
 
 
 
+//setting online/offline to chat..
+        userStatus();
+
 
 
 
@@ -99,7 +103,7 @@ databaseReference.child("User").child(othersUserId).addValueEventListener(new Va
         if (userModel !=null) {
             binding.profilename.setText(userModel.getFullName());
 //            binding.chattimeTv.setText();
-            Glide.with(getActivity().getApplicationContext()).load(userModel.getProfileImgUrl())
+            Glide.with(requireContext()).load(userModel.getProfileImgUrl())
                     .placeholder(R.drawable.ic_baseline_person_24).into(binding.profileimg);
 
               }
@@ -270,9 +274,34 @@ binding.profilename.setOnClickListener(view -> {
         return binding.getRoot();
     }
 
+    //user ststus...................
+    private void userStatus() {
 
 
+        UserModel userModel=new UserModel();
 
+        try {
+            if (userModel.getStatus().equals("online")){
+                binding.userOnline.setVisibility(View.VISIBLE);
+                binding.userOffline.setVisibility(View.GONE);
+            }else {
+                binding.userOnline.setVisibility(View.GONE);
+                binding.userOffline.setVisibility(View.VISIBLE);
+            }
+
+            Log.i("tag", "onBindViewHolder: ");
+
+        }catch (Exception e){
+
+            binding.userOnline.setVisibility(View.GONE);
+            binding.userOffline.setVisibility(View.VISIBLE);
+
+            Log.i("tag", "onBindViewHolder: ");
+
+
+        }
+
+    }
 
 
 

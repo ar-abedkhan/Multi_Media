@@ -53,7 +53,7 @@ public class ProfileFragment extends Fragment{
     String currentUserID, currentUserName, currentUserImg,postID;
     String visitedUserID;
     String visitedUserProfileImg, visitedUserName;
-    int publishedPost,savePost,followers,following;
+    int publishedPostCount,savePostCount,followersCount,followingCount;
     PostListener listener;
 
     @Override
@@ -182,6 +182,56 @@ public class ProfileFragment extends Fragment{
 
 
 
+
+
+//setting published post count..................................................................
+  databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
+      @Override
+      public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+          for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+              PostModel model = dataSnapshot.getValue(PostModel.class);
+
+//
+//              List<PostModel>postModelList=new ArrayList<>();
+//              binding.publishPostBtn.setText(postModelList.size());
+
+
+
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                      List<String> postSize = new ArrayList<>();
+                      for (DataSnapshot snap: snapshot.getChildren()) {
+                          String userId = snap.getKey();
+                          postSize.add(userId);
+
+
+                      }
+
+                      try {
+                          publishedPostCount = postSize.size();
+                          binding.publishPostBtn.setText(postSize.size()+"");
+                      }catch (Exception e){
+                          binding.publishPostBtn.setText("0");
+                      }
+
+                  }
+
+      }
+
+      @Override
+      public void onCancelled(@NonNull DatabaseError error) {
+
+      }
+  });
+
+
+
+
+
+
+
+
+
             databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -227,7 +277,7 @@ public class ProfileFragment extends Fragment{
 
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
-                        Glide.with(requireContext()).load(userModel.getProfileImgUrl())
+                        Glide.with(getContext()).load(userModel.getProfileImgUrl())
                                 .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
                         Log.i("tag", "onCreate: "+userModel.getFullName());

@@ -95,26 +95,4 @@ public class ContainerActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame, fragment).commit();
     }
 
-
-    private void status(String status){
-        databaseReference= FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
-
-        HashMap<String , Object> hashMap=new HashMap<>();
-        hashMap.put("status",status);
-        databaseReference.updateChildren(hashMap);
-
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        status("offline");
-    }
 }

@@ -109,8 +109,8 @@
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="@dimen/_120sdp"
-                    android:layout_height="@dimen/_110sdp"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_130sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -16,17 +16,35 @@ import com.abedkhan.multimedia.Fragment.SignUpFragmentOne;
 import com.abedkhan.multimedia.Fragment.profileEditFragment;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.ActivityContainerBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class ContainerActivity extends AppCompatActivity {
 
     ActivityContainerBinding binding;
     Intent intent;
 
+    DatabaseReference databaseReference;
+    FirebaseUser firebaseUser;
+    FirebaseAuth firebaseAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityContainerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        databaseReference=FirebaseDatabase.getInstance().getReference();
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+
+
 
         try {
             intent = getIntent();
@@ -76,4 +94,5 @@ public class ContainerActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.containerFrame, fragment).commit();
     }
+
 }

@@ -41,12 +41,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
 //    extra variable
     String ownerFullName, ownerProfileImg;
+    String currentUserID;
     int postlike,postcomment;
 
-    public PostAdapter(Context context, List<PostModel> postList, PostListener listener) {
+    public PostAdapter(Context context, List<PostModel> postList, PostListener listener, String currentUserID) {
         this.context = context;
         this.postList = postList;
         this.listener = listener;
+        this.currentUserID = currentUserID;
         Collections.reverse(postList);
     }
 
@@ -185,6 +187,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
             }
         });
 
+//        Setting Following User Text
+//        try {
+//            databaseReference.child("Following").child(currentUserID).child(model.getOwnerID()).addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    if (snapshot.exists()){
+//                        holder.followingOption.setText("Following");
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+//
+//        }catch (Exception e){}
+
 
 
 
@@ -250,9 +270,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         });
 
 //        Handling follow option clicked event
-
 //        holder.followingOption.setOnClickListener(view -> {
-//            boolean isFollowing = listener.followButtonClickedEvent(model.getOwnerID());
+//            boolean isFollowing;
+//            try {
+//                isFollowing = listener.followButtonClickedEvent(model.getOwnerID());
+//            }catch (Exception e){
+//                isFollowing = false;
+//            }
+//
 //            if (isFollowing){
 //                holder.followingOption.setText("Following");
 //            }
@@ -273,17 +298,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 //                context.startActivity(intent);
 //            }
 //        });
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

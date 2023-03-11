@@ -76,15 +76,6 @@ public class ChattingFragment extends Fragment {
 
         }
 
-
-
-
-
-
-
-
-
-
         if (firebaseUser!=null){
             currentUserId=firebaseUser.getUid();
         }
@@ -288,7 +279,7 @@ binding.profilename.setOnClickListener(view -> {
 
         databaseReference.child("chat").child(chatId).setValue(chatModel).addOnSuccessListener(unused -> {
             binding.sendmessage.setText("");
-            Toast.makeText(requireContext(), "message send", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(requireContext(), "message send", Toast.LENGTH_SHORT).show();
 
         });
 

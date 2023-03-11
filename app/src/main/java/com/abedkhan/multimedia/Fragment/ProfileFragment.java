@@ -246,8 +246,8 @@ public class ProfileFragment extends Fragment{
                         Glide.with(requireContext()).load(userModel.getProfileImgUrl())
                                 .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
-                        Log.i("tag", "onCreate: "+userModel.getFullName());
-                        Log.i("tag", "onCreate: "+userModel.getUserID());
+//                        Log.i("tag", "onCreate: "+userModel.getFullName());
+//                        Log.i("tag", "onCreate: "+userModel.getUserID());
                     }
 
                 }
@@ -295,6 +295,20 @@ public class ProfileFragment extends Fragment{
 //        });
 //
 
+//        Checking if the current user following the visited ID
+        databaseReference.child("Following").child(currentUserID).child(visitedUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    binding.followText.setText("Following");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 //        Handling follow button clicked
 //        TODO: unfollow
@@ -308,7 +322,7 @@ public class ProfileFragment extends Fragment{
                 map.put("followProfileImg", visitedUserProfileImg);
 
 //                Including the visited user to the following list
-                databaseReference.child("Following").child(currentUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                databaseReference.child("Following").child(currentUserID).child(visitedUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         binding.followText.setText("following");
@@ -324,11 +338,11 @@ public class ProfileFragment extends Fragment{
                         map.put("followerID", currentUserID);
                         map.put("followerName", currentUserName);
                         map.put("followProfileImg", currentUserImg);
-                        databaseReference.child("Followers").child(visitedUserID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        databaseReference.child("Followers").child(visitedUserID).child(currentUserID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(getContext(), "Following the user", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Following the user", Toast.LENGTH_SHORT).show();
                                 }else{
                                     Log.i("TAG", "Follower upload failed: "+ task.getException().getLocalizedMessage());
                                 }
@@ -342,12 +356,14 @@ public class ProfileFragment extends Fragment{
                 });
             }
         });
+
+
         return binding.getRoot();
     }
 
     boolean isFollowing = false;
     private boolean isFollowing(String visitedUserID) {
-        databaseReference.child("Following").child(currentUserID).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Following").child(currentUserID).child(visitedUserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {

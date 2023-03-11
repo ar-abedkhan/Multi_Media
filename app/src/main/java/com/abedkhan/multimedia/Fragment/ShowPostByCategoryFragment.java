@@ -119,7 +119,7 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
 
 
     private void setDataToView(List<PostModel> postModelList) {
-        PostAdapter adapter = new PostAdapter(getContext(), postModelList,this);
+        PostAdapter adapter = new PostAdapter(getContext(), postModelList,this, currentUserID);
         binding.postRecycler.setAdapter(adapter);
     }
 
@@ -196,7 +196,7 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
             map.put("followProfileImg", visitedUserProfileImg);
 
 //                Including the visited user to the following list
-            databaseReference.child("Following").child(currentUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            databaseReference.child("Following").child(currentUserID).child(visitedUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
 //                    binding.followText.setText("following");
@@ -213,7 +213,7 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
                     map.put("followerID", currentUserID);
                     map.put("followerName", currentUserName);
                     map.put("followProfileImg", currentUserImg);
-                    databaseReference.child("Followers").child(visitedUserID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    databaseReference.child("Followers").child(visitedUserID).child(visitedUserID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@androidx.annotation.NonNull Task<Void> task) {
                             if (task.isSuccessful()){
@@ -238,7 +238,7 @@ public class ShowPostByCategoryFragment extends Fragment implements CategoryList
 
     boolean isFollowing = false;
     private boolean isFollowing(String visitedUserID) {
-        databaseReference.child("Following").child(currentUserID).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Following").child(currentUserID).child(visitedUserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@androidx.annotation.NonNull DataSnapshot snapshot) {
                 try {

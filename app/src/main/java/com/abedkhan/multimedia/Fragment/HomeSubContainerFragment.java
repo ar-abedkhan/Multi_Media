@@ -182,7 +182,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
     }
 
     private void setDataToView() {
-        PostAdapter adapter = new PostAdapter(getContext(), postList,this);
+        PostAdapter adapter = new PostAdapter(getContext(), postList,this, currentUserID);
         binding.postRecycler.setAdapter(adapter);
     }
 
@@ -276,7 +276,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
             map.put("followProfileImg", visitedUserProfileImg);
 
 //                Including the visited user to the following list
-            databaseReference.child("Following").child(currentUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            databaseReference.child("Following").child(currentUserID).child(visitedUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
 //                    binding.followText.setText("following");
@@ -293,7 +293,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
                     map.put("followerID", currentUserID);
                     map.put("followerName", currentUserName);
                     map.put("followProfileImg", currentUserImg);
-                    databaseReference.child("Followers").child(visitedUserID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    databaseReference.child("Followers").child(visitedUserID).child(visitedUserID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
@@ -318,7 +318,7 @@ public class HomeSubContainerFragment extends Fragment implements PostListener {
 
     boolean isFollowing = false;
     private boolean isFollowing(String visitedUserID) {
-        databaseReference.child("Following").child(currentUserID).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Following").child(currentUserID).child(visitedUserID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {

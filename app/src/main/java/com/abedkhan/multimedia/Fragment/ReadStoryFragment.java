@@ -112,8 +112,10 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
         binding.writerName.setText(userModel.getFullName());
         binding.profession.setText(userModel.getProfession());
         if (!userModel.getProfileImgUrl().equals("")) {
-            Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.writerProfileImg);
-        }
+            try {
+                Glide.with(requireActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.writerProfileImg);
+            }catch (Exception exception){}
+            }
     }
 
     @Override

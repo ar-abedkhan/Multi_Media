@@ -29,7 +29,7 @@ binding=FragmentHomeBinding.inflate(getLayoutInflater(),container,false);
 
 
 
-//TODO: vai home page er toolbar cetagory ekhane set kora hoise...
+// home page er toolbar category ekhane set kora hoise...
 
         fragmentManager=getChildFragmentManager();
         CetagoryFragmentAdapter categoryAdapter = new CetagoryFragmentAdapter(fragmentManager,100);

@@ -72,7 +72,7 @@ public class SearchFragment extends Fragment {
                     }
                 }
 
-//                TODO: Maybe we need to create a new adapter
+//                ,,,,,,Maybe we need to create a new adapter
                 UserAdapter userAdapter=new UserAdapter(requireContext(),userModelList);
                 binding.postRecycler.setAdapter(userAdapter);
 

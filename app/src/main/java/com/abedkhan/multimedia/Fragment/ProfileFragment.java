@@ -106,7 +106,12 @@ public class ProfileFragment extends Fragment{
 //        #Checking if the request is coming from the Profile fragment or any other fragment and if there are any arguments
         try {
 
-
+//try {
+//    visitedUserID=intent.getStringExtra("VisitedUserID");
+//
+//}catch (Exception e){
+//
+//}
             visitedUserID  = getArguments().getString("VisitedUserID");
 //            Log.i("TAG", "Profile fragment -- "+visitedUserID);
             databaseReference.child("User").child(visitedUserID).addValueEventListener(new ValueEventListener() {
@@ -144,7 +149,10 @@ public class ProfileFragment extends Fragment{
                         }
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
-                        Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+                        try {
+                            Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+
+                        }catch (Exception exception){}
 
                         Log.i("tag", "onCreate: "+userModel.getFullName());
                         Log.i("tag", "onCreate: "+userModel.getUserID());

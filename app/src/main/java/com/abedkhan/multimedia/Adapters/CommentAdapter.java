@@ -102,6 +102,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
         });
 
 
+
+        holder.img.setOnClickListener(view -> {
+
+
+        });
+
+
+
+
+
+
     }
 
     @Override

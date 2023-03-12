@@ -311,26 +311,18 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
 PostModel postModel=new PostModel();
 
         binding.writerProfileImg.setOnClickListener(view -> {
-//            Intent intent = new Intent(getContext(), ContainerActivity.class);
-//            intent.putExtra("imgClicked", true);
-//            startActivity(intent);
+            Intent intent = new Intent(getContext(), ContainerActivity.class);
+            intent.putExtra("isProfileCLicked", true);
+            intent.putExtra("VisitedUserID",postModel.getOwnerID()) ;
+            startActivity(intent);
             //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
 
 
-
-
-
-            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-            ProfileFragment profileFragment = new ProfileFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("VisitedUserID", postModel.getOwnerID());
-            profileFragment.setArguments(bundle);
-            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).addToBackStack(null).commit();
-
-
-
-
-
+//            ProfileFragment profileFragment = new ProfileFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("VisitedUserID", postModel.getOwnerID());
+//            profileFragment.setArguments(bundle);
+//            getChildFragmentManager().beginTransaction().replace(R.id.fullFrame, profileFragment).addToBackStack(null).commit();
 
 
         });
@@ -343,8 +335,8 @@ PostModel postModel=new PostModel();
 //        Handling post reacts
         binding.postNonReact.setOnClickListener(view -> {
 //            TODO: If the post was already reacted, delete the react data
-            binding.postNonReact.setVisibility(View.GONE);
-            binding.postReacted.setVisibility(View.VISIBLE);
+            binding.postNonReact.setVisibility(View.VISIBLE);
+            binding.postReacted.setVisibility(View.GONE);
 
             Map<String, Object> reactMap = new HashMap<>();
             reactMap.put("postID", postId);

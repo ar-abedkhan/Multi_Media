@@ -116,7 +116,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
 
                     holder.profileName.setText(ownerFullName);
-                    Glide.with(context).load(ownerProfileImg).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
+
+                    try {
+                        Glide.with(context).load(ownerProfileImg).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
+                    }catch (Exception exception){}
                 }
             }
 

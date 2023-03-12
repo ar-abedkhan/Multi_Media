@@ -144,10 +144,7 @@ public class ProfileFragment extends Fragment{
                         }
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
-                        try {
-                            Glide.with(requireActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
-                        }catch (Exception exception){}
-
+                        Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
                         Log.i("tag", "onCreate: "+userModel.getFullName());
                         Log.i("tag", "onCreate: "+userModel.getUserID());
@@ -165,8 +162,7 @@ public class ProfileFragment extends Fragment{
                     Toast.makeText(getActivity(), "User visiting failed!", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
-        catch (Exception e){
+        }catch (Exception e){
 //        *setting the current user data if getting argument fails
 
 
@@ -189,17 +185,11 @@ public class ProfileFragment extends Fragment{
 
 
 //setting published post count..................................................................
-  databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
+  databaseReference.child("User").child("Post").addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(@NonNull DataSnapshot snapshot) {
 
           for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-              PostModel model = dataSnapshot.getValue(PostModel.class);
-
-//
-//              List<PostModel>postModelList=new ArrayList<>();
-//              binding.publishPostBtn.setText(postModelList.size());
-
 
 
 //                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
@@ -207,7 +197,6 @@ public class ProfileFragment extends Fragment{
                       for (DataSnapshot snap: snapshot.getChildren()) {
                           String userId = snap.getKey();
                           postSize.add(userId);
-
 
                       }
 
@@ -281,9 +270,14 @@ public class ProfileFragment extends Fragment{
 
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
-                        Glide.with(getContext()).load(userModel.getProfileImgUrl())
-                                .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+                        try {
 
+                            Glide.with(getContext()).load(userModel.getProfileImgUrl())
+                                    .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+
+                        }catch (Exception exception){
+
+                        }
 //                        Log.i("tag", "onCreate: "+userModel.getFullName());
 //                        Log.i("tag", "onCreate: "+userModel.getUserID());
                     }

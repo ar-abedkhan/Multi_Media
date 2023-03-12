@@ -112,10 +112,14 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
         binding.writerName.setText(userModel.getFullName());
         binding.profession.setText(userModel.getProfession());
         if (!userModel.getProfileImgUrl().equals("")) {
-            try {
-                Glide.with(requireActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.writerProfileImg);
-            }catch (Exception exception){}
-            }
+//            Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.writerProfileImg);
+        }
+        try {
+            Glide.with(requireActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.writerProfileImg);
+        }catch (Exception exception){
+
+        }
+
     }
 
     @Override
@@ -129,7 +133,8 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
 
 //                setting values in the view
                 binding.mainStory.setText(model.getMainText());
-                binding.storyTitle.setTitle(model.getTitle());
+//                binding.storyTitle.setTitle(model.getTitle());
+                binding.storyTitle.setText(model.getTitle());
                 binding.postReactCount.setText(""+model.getPostLike());
                 binding.postTime.setText(simpleDateFormat.format(date));
                 if (!model.getPostImgUrl().equals("")) {

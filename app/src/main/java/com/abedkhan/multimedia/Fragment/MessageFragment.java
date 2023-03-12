@@ -50,6 +50,17 @@ chatListModelList=new ArrayList<>();
 userModelList=new ArrayList<>();
 
 firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+
+
+
+
+
+
+
+
+
+
+
 databaseReference= FirebaseDatabase.getInstance().getReference("User");
 
 
@@ -76,11 +87,11 @@ databaseReference.addValueEventListener(new ValueEventListener() {
 });
 
 
+
+
 binding.home.setOnClickListener(view -> {
     startActivity(new Intent(requireContext(), MainActivity.class));
 });
-
-
 
 binding.backBtn.setOnClickListener(view -> {
     startActivity(new Intent(requireContext(), ContainerActivity.class));
@@ -105,6 +116,14 @@ binding.backBtn.setOnClickListener(view -> {
         return false;
     }
 
+
+
+
+
+
+
+
+ //showing ststus............
     private void status(String status){
         databaseReference=FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
 
@@ -112,9 +131,7 @@ binding.backBtn.setOnClickListener(view -> {
         hashMap.put("status",status);
         databaseReference.updateChildren(hashMap);
 
-
     }
-
     @Override
     public void onResume() {
         super.onResume();

@@ -119,6 +119,7 @@ binding.userProfileImg.setOnClickListener(view -> {
                            profileUrl=userModel.getProfileImgUrl();
                            binding.userProfileName.setText(userModel.getFullName().trim());
                            binding.userProfession.setText(userModel.getProfession().trim());
+
                            binding.userProfileBio.setText(userModel.getUserBio().trim());
                            binding.userCountry.setText(userModel.getLivingCountry().trim());
                            binding.userLiveIn.setText(userModel.getLivingCity().trim());
@@ -127,7 +128,13 @@ binding.userProfileImg.setOnClickListener(view -> {
                            binding.password.setText(userModel.getPassword().trim());
 
                            //requercontex cilo get contex e baloi kj kore.....
-           Glide.with(getActivity().getApplicationContext()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.userProfileImg);
+                           try {
+
+                               Glide.with(getActivity().getApplicationContext()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.userProfileImg);
+
+                           }catch (Exception exception){
+
+                           }
 
                            Log.i("tag", "onCreate: "+userModel.getFullName());
                        }
@@ -330,26 +337,28 @@ binding.saveChangesDataBtn.setEnabled(false);
         int year = binding.agePicker.getYear();
         return  date+"/"+month+"/"+year;
     }
-    private void status(String status){
-        databaseReference= FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
-
-        HashMap<String , Object> hashMap=new HashMap<>();
-        hashMap.put("status",status);
-        databaseReference.updateChildren(hashMap);
 
 
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        status("offline");
-    }
+//    private void status(String status){
+//        databaseReference= FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
+//
+//        HashMap<String , Object> hashMap=new HashMap<>();
+//        hashMap.put("status",status);
+//        databaseReference.updateChildren(hashMap);
+//
+//
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        status("online");
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        status("offline");
+//    }
 
 }

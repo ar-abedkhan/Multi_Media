@@ -7,7 +7,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/readStoryFragment"
     tools:context=".Fragment.ReadStoryFragment"
-    android:layout_marginBottom="@dimen/_60sdp"
         >
 
 
@@ -19,17 +18,9 @@
             android:layout_height="match_parent"
             >
 
-
-            <!--    -->
-            <!--    zeshan vai ata hocche story porar j page oita -->
-            <!--    mane post ba recycler theke j page ta open hobe oita.........-->
-            <!--    -->
-            <!--    -->
-
-
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_220sdp"
+                android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
                 android:background="@color/white_background"
                 android:id="@+id/appbar"
@@ -47,7 +38,6 @@
                     app:collapsedTitleTextColor="@color/black_text"
                     app:contentScrim="@color/bottommenu_background"
                     app:expandedTitleTextColor="@color/c1"
-                    android:id="@+id/storyTitle"
                     >
 <!--                    app:contentScrim="@color/bottommenu_background"-->
 
@@ -55,23 +45,46 @@
                     <ImageView
                         android:id="@+id/postImg"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_250sdp"
                         android:layout_gravity="center"
                         android:scaleType="center"
                         android:src="@drawable/travel1"
                         />
 
 
-                    <androidx.appcompat.widget.Toolbar
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:id="@+id/toolbar"
-                        />
+<!--                    <androidx.appcompat.widget.Toolbar-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/_45sdp"-->
+<!--                        android:id="@+id/toolbar"-->
+<!--                        />-->
 
 
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+
+                <TextView
+                    android:id="@+id/storyTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:minHeight="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:layout_marginEnd="@dimen/_6sdp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:includeFontPadding="false"
+                    android:gravity="center"
+                    android:inputType="textMultiLine"
+                    android:maxLines="2"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:text="Writers link post title"
+                    android:textColor="@color/black_text"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold"
+
+                    />
 
 
             </com.google.android.material.appbar.AppBarLayout>
@@ -112,10 +125,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
                         android:textColor="@color/black_text"
                         android:textSize="@dimen/_15sdp"
-                        android:text="Abed khan"
+                        android:text="Writers name"
                         android:singleLine="true"
                         android:inputType="textMultiLine"
                         android:maxLines="2"
@@ -182,7 +194,7 @@
                         android:id="@+id/layout"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_25sdp"
                         android:paddingBottom="@dimen/_8sdp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/mainStory"
@@ -378,11 +390,10 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="@id/comment_recycler"
+                        app:layout_constraintTop_toBottomOf="@id/comment_recycler"
                         android:id="@+id/commentLayout"
                         android:background="#D7595C60"
                         android:padding="@dimen/_4sdp"
-                        android:paddingBottom="@dimen/_15sdp"
                         >
 
                         <EditText
@@ -394,18 +405,21 @@
                             android:hint="Share your feedback"
                             android:paddingTop="@dimen/_8sdp"
                             android:paddingStart="@dimen/_10sdp"
+                            android:textCursorDrawable="@drawable/write"
                             android:maxHeight="@dimen/_100sdp"
                             android:maxLines="5"
                             android:paddingBottom="@dimen/_8sdp"
                             android:textColorHint="@color/black_text"
                             android:paddingEnd="@dimen/_5sdp"
                             android:layout_marginEnd="@dimen/_8sdp"
-                            android:background="@drawable/toolbak"
+                            android:background="@drawable/background"
                             android:layout_marginStart="@dimen/_8sdp"
                             app:layout_constraintEnd_toStartOf="@id/commentSubmitBtn"
                             android:inputType="textMultiLine"
                             android:id="@+id/commentBox"
                             />
+
+
 
 
                         <ImageView
@@ -430,18 +444,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
                  <View
                      android:layout_width="match_parent"
                      android:layout_height="@dimen/_60sdp"
                      app:layout_constraintTop_toBottomOf="@id/commentLayout"
                      android:background="@color/bottommenu_background"
                      />
-
-
-
-
-
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -22,9 +22,28 @@
             android:id="@+id/backBtn"
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_8ssp"
             android:src="@drawable/back_icon"
             android:layout_margin="@dimen/_6sdp"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+
+
+
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_8ssp"
+            android:src="@drawable/search"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             />
@@ -71,15 +90,25 @@
 
 <!--        </LinearLayout>-->
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingEnd="@dimen/_5sdp"
-            android:gravity="end"
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/search_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:hint="Search.............."
+            android:paddingStart="@dimen/_10sdp"
+            app:queryBackground="@drawable/back"
+            android:id="@+id/searchView"
+            app:queryHint="Search User..........."
             />
 
 
@@ -90,13 +119,29 @@
 
     <androidx.recyclerview.widget.RecyclerView
         app:layout_constraintTop_toBottomOf="@id/searchTool"
-        android:id="@+id/postRecycler"
+        android:id="@+id/userSearchRecycler"
         android:layout_width="match_parent"
+        android:visibility="visible"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/user_recycler_design"
         android:paddingBottom="@dimen/_80sdp"
         />
+
+
+
+
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        app:layout_constraintTop_toBottomOf="@id/searchTool"-->
+<!--        android:id="@+id/postRecycler"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="visible"-->
+<!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--        tools:listitem="@layout/post_recycler_design"-->
+<!--        android:paddingBottom="@dimen/_80sdp"-->
+<!--        />-->
 
 
 

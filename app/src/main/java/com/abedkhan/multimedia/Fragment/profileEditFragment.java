@@ -302,8 +302,10 @@ binding.saveChangesDataBtn.setEnabled(false);
 
                         if (task.isSuccessful()) {
 
-                            Log.i("tag", "data update ");
-                            Toast.makeText(requireContext(), "Profile& cover change", Toast.LENGTH_SHORT).show();
+//                            Log.i("tag", "data update ");
+                            try {
+                                Toast.makeText(requireContext(), "Profile image saved", Toast.LENGTH_SHORT).show();
+                            }catch (Exception exception){}
 
                             dialog.dismiss();
                             binding.saveChangesDataBtn.setEnabled(true);

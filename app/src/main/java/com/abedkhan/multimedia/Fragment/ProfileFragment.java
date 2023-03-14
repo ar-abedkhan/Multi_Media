@@ -45,7 +45,7 @@ public class ProfileFragment extends Fragment{
     }
 
     private FragmentProfileBinding binding;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, userStatusReference;
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     Intent intent;
@@ -54,7 +54,7 @@ public class ProfileFragment extends Fragment{
     String visitedUserID;
     String visitedUserProfileImg, visitedUserName;
     int publishedPostCount,savePostCount,followersCount,followingCount;
-    PostListener listener;
+//    PostListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -150,9 +150,13 @@ public class ProfileFragment extends Fragment{
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
                         try {
-                            Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
-                        }catch (Exception exception){}
+                            Glide.with(getContext()).load(userModel.getProfileImgUrl())
+                                    .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+
+                        }catch (Exception exception){
+
+                        }
 
                         Log.i("tag", "onCreate: "+userModel.getFullName());
                         Log.i("tag", "onCreate: "+userModel.getUserID());
@@ -286,8 +290,6 @@ public class ProfileFragment extends Fragment{
                         }catch (Exception exception){
 
                         }
-//                        Log.i("tag", "onCreate: "+userModel.getFullName());
-//                        Log.i("tag", "onCreate: "+userModel.getUserID());
                     }
 
                 }
@@ -461,11 +463,11 @@ public class ProfileFragment extends Fragment{
 
     }
     private void status(String status){
-        databaseReference= FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
+        userStatusReference = FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
 
         HashMap<String , Object> hashMap=new HashMap<>();
         hashMap.put("status",status);
-        databaseReference.updateChildren(hashMap);
+        userStatusReference.updateChildren(hashMap);
 
 
     }

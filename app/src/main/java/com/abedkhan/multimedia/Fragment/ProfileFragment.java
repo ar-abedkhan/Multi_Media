@@ -45,7 +45,7 @@ public class ProfileFragment extends Fragment{
     }
 
     private FragmentProfileBinding binding;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, userStatusReference;
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     Intent intent;
@@ -54,7 +54,8 @@ public class ProfileFragment extends Fragment{
     String visitedUserID;
     String visitedUserProfileImg, visitedUserName;
     int publishedPostCount,savePostCount,followersCount,followingCount;
-    PostListener listener;
+    int totalPostSize = 0;
+//    PostListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -207,16 +208,18 @@ public class ProfileFragment extends Fragment{
                       for (DataSnapshot snap: snapshot.getChildren()) {
                           String userId = snap.getKey();
                           postSize.add(userId);
-
+//                          Log.i("TAG", "SIZe: "+ postSize.size());
+                          totalPostSize = postSize.size();
 
                       }
 
-                      try {
-                          publishedPostCount = postSize.size();
-                          binding.publishPostBtn.setText(postSize.size()+"");
-                      }catch (Exception e){
-                          binding.publishPostBtn.setText("0");
-                      }
+                      binding.publishPostBtn.setText(totalPostSize+"");
+//                      try {
+//                          publishedPostCount = postSize.size();
+//                          binding.publishPostBtn.setText(postSize.size()+"");
+//                      }catch (Exception e){
+//                          binding.publishPostBtn.setText("0");
+//                      }
 
                   }
 
@@ -281,8 +284,10 @@ public class ProfileFragment extends Fragment{
 
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
-                        Glide.with(getContext()).load(userModel.getProfileImgUrl())
-                                .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+                        try {
+                            Glide.with(getContext()).load(userModel.getProfileImgUrl())
+                                    .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
+                        }catch (Exception exception){}
 
 //                        Log.i("tag", "onCreate: "+userModel.getFullName());
 //                        Log.i("tag", "onCreate: "+userModel.getUserID());
@@ -366,7 +371,7 @@ public class ProfileFragment extends Fragment{
                 databaseReference.child("Following").child(currentUserID).child(visitedUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        binding.followText.setText("following");
+                        binding.followText.setText("Following");
 
                         /*
                         * This process will be completed in two steps
@@ -459,11 +464,11 @@ public class ProfileFragment extends Fragment{
 
     }
     private void status(String status){
-        databaseReference= FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
+        userStatusReference = FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
 
         HashMap<String , Object> hashMap=new HashMap<>();
         hashMap.put("status",status);
-        databaseReference.updateChildren(hashMap);
+        userStatusReference.updateChildren(hashMap);
 
 
     }

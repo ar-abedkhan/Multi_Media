@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,12 +19,14 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import com.abedkhan.multimedia.Activities.MainActivity;
+import com.abedkhan.multimedia.Adapters.PostAdapter;
 import com.abedkhan.multimedia.Adapters.UserAdapter;
 import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.Model.UserModel;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentSearchBinding;
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +34,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -41,6 +46,7 @@ public class SearchFragment extends Fragment {
 
     FragmentSearchBinding binding;
     List<UserModel>userModelList;
+    List<PostModel>postModelList;
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
     UserAdapter userAdapter;
@@ -54,7 +60,9 @@ public class SearchFragment extends Fragment {
 
         databaseReference= FirebaseDatabase.getInstance().getReference("User");
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+
         userModelList=new ArrayList<>();
+        postModelList=new ArrayList<>();
 
 
 
@@ -73,8 +81,15 @@ public class SearchFragment extends Fragment {
                 }
 
 //                ,,,,,,Maybe we need to create a new adapter
-                UserAdapter userAdapter=new UserAdapter(requireContext(),userModelList);
-                binding.postRecycler.setAdapter(userAdapter);
+
+                try {
+
+                    UserAdapter userAdapter=new UserAdapter(requireContext(),userModelList);
+                    binding.userSearchRecycler.setAdapter(userAdapter);
+
+                }catch (Exception exception){
+
+                }
 
             }
 
@@ -84,46 +99,42 @@ public class SearchFragment extends Fragment {
             }
         });
 
-//        binding.searchView.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                    userAdapter.getFilter().filter(s);
-//
-//                    return false;
-//            }
-//        });
 
 
 
 
+        binding.search.setOnClickListener(view -> {
 
-
-        if (isClicked){
             binding.backBtn.setVisibility(View.GONE);
-        }
+            binding.search.setVisibility(View.GONE);
+            binding.searchView.setVisibility(View.VISIBLE);
+
+
+
+        });
 
 
 
 
 
+        binding.searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-//        FirebaseRecyclerOptions<UserModel> options =
-//                new FirebaseRecyclerOptions.Builder<UserModel>()
-//                        .setQuery(FirebaseDatabase.getInstance().getReference().child("fullName"),UserModel.class)
-//                        .build();
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                searchUser(charSequence.toString());
 
+            }
 
+            @Override
+            public void afterTextChanged(Editable editable) {
 
-
-
+            }
+        });
 
 
 //        AutoCompleteTextView searchBox = findViewById(R.id.searchBox);
@@ -154,5 +165,103 @@ public class SearchFragment extends Fragment {
 
 
 
+//for post search.............
+    //TODO: post search dekhiyen parle...........
+//    private void searchPost(String s) {
+//
+//            firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+//            Query query=FirebaseDatabase.getInstance().getReference("User").child("Post").orderByChild("title")
+//                    .startAt(s)
+//                    .endAt(s+"\uf8ff");
+//
+//            query.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                    postModelList.clear();
+//
+//                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                        PostModel postModel=dataSnapshot.getValue(PostModel.class);
+//
+//                        assert postModel != null;
+//                        assert firebaseUser != null;
+//                        if (!postModel.getPostID().equals("")) {
+//                            postModelList.add(postModel);
+//                        }
+//                    }
+//                    try {
+//
+//                        PostAdapter postAdapter=new PostAdapter(requireActivity(),postModelList,this,firebaseUser.getUid());
+//                        binding.postRecycler.setAdapter(postAdapter);
+//
+//                    }catch (Exception exception){
+//
+//                    }
+////        }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+//
+//
+//        }
+
+
+
+
+
+
+
+
+
+
+    //search handeling.........
+    private void searchUser(String s) {
+        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        Query query=FirebaseDatabase.getInstance().getReference("User").orderByChild("fullName")
+                .startAt(s)
+
+                .endAt(s+"\uf8ff");
+
+query.addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+//        if (binding.searchView.getText().toString().equals("")) {
+
+
+            userModelList.clear();
+
+            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                UserModel userModel = dataSnapshot.getValue(UserModel.class);
+
+                assert userModel != null;
+                assert firebaseUser != null;
+                if (!userModel.getUserID().equals(firebaseUser.getUid())) {
+                    userModelList.add(userModel);
+                }
+            }
+            try {
+
+                UserAdapter userAdapter=new UserAdapter(requireContext(),userModelList);
+                binding.userSearchRecycler.setAdapter(userAdapter);
+
+            }catch (Exception exception){
+
+            }
+//        }
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+
+    }
+});
+
+
+    }
 
 }

@@ -112,10 +112,14 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
         binding.writerName.setText(userModel.getFullName());
         binding.profession.setText(userModel.getProfession());
         if (!userModel.getProfileImgUrl().equals("")) {
-            try {
-                Glide.with(requireActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.writerProfileImg);
-            }catch (Exception exception){}
-            }
+//            Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.writerProfileImg);
+        }
+        try {
+            Glide.with(requireActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.ic_baseline_person_24).into(binding.writerProfileImg);
+        }catch (Exception exception){
+
+        }
+
     }
 
     @Override
@@ -129,7 +133,8 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
 
 //                setting values in the view
                 binding.mainStory.setText(model.getMainText());
-                binding.storyTitle.setTitle(model.getTitle());
+//                binding.storyTitle.setTitle(model.getTitle());
+                binding.storyTitle.setText(model.getTitle());
                 binding.postReactCount.setText(""+model.getPostLike());
                 binding.postTime.setText(simpleDateFormat.format(date));
                 if (!model.getPostImgUrl().equals("")) {
@@ -306,26 +311,18 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
 PostModel postModel=new PostModel();
 
         binding.writerProfileImg.setOnClickListener(view -> {
-//            Intent intent = new Intent(getContext(), ContainerActivity.class);
-//            intent.putExtra("imgClicked", true);
-//            startActivity(intent);
+            Intent intent = new Intent(getContext(), ContainerActivity.class);
+            intent.putExtra("isProfileCLicked", true);
+            intent.putExtra("VisitedUserID",postModel.getOwnerID()) ;
+            startActivity(intent);
             //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
 
 
-
-
-
-            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-            ProfileFragment profileFragment = new ProfileFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("VisitedUserID", postModel.getOwnerID());
-            profileFragment.setArguments(bundle);
-            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).addToBackStack(null).commit();
-
-
-
-
-
+//            ProfileFragment profileFragment = new ProfileFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("VisitedUserID", postModel.getOwnerID());
+//            profileFragment.setArguments(bundle);
+//            getChildFragmentManager().beginTransaction().replace(R.id.fullFrame, profileFragment).addToBackStack(null).commit();
 
 
         });
@@ -338,8 +335,8 @@ PostModel postModel=new PostModel();
 //        Handling post reacts
         binding.postNonReact.setOnClickListener(view -> {
 //            TODO: If the post was already reacted, delete the react data
-            binding.postNonReact.setVisibility(View.GONE);
-            binding.postReacted.setVisibility(View.VISIBLE);
+            binding.postNonReact.setVisibility(View.VISIBLE);
+            binding.postReacted.setVisibility(View.GONE);
 
             Map<String, Object> reactMap = new HashMap<>();
             reactMap.put("postID", postId);

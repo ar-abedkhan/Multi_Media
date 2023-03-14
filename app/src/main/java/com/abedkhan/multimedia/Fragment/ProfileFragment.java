@@ -45,7 +45,7 @@ public class ProfileFragment extends Fragment{
     }
 
     private FragmentProfileBinding binding;
-    DatabaseReference databaseReference, userStatusReference;
+    DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     Intent intent;
@@ -54,8 +54,7 @@ public class ProfileFragment extends Fragment{
     String visitedUserID;
     String visitedUserProfileImg, visitedUserName;
     int publishedPostCount,savePostCount,followersCount,followingCount;
-    int totalPostSize = 0;
-//    PostListener listener;
+    PostListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -107,7 +106,12 @@ public class ProfileFragment extends Fragment{
 //        #Checking if the request is coming from the Profile fragment or any other fragment and if there are any arguments
         try {
 
-
+//try {
+//    visitedUserID=intent.getStringExtra("VisitedUserID");
+//
+//}catch (Exception e){
+//
+//}
             visitedUserID  = getArguments().getString("VisitedUserID");
 //            Log.i("TAG", "Profile fragment -- "+visitedUserID);
             databaseReference.child("User").child(visitedUserID).addValueEventListener(new ValueEventListener() {
@@ -146,9 +150,9 @@ public class ProfileFragment extends Fragment{
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
                         try {
-                            Glide.with(requireActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
-                        }catch (Exception exception){}
+                            Glide.with(getActivity()).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
 
+                        }catch (Exception exception){}
 
                         Log.i("tag", "onCreate: "+userModel.getFullName());
                         Log.i("tag", "onCreate: "+userModel.getUserID());
@@ -166,8 +170,7 @@ public class ProfileFragment extends Fragment{
                     Toast.makeText(getActivity(), "User visiting failed!", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
-        catch (Exception e){
+        }catch (Exception e){
 //        *setting the current user data if getting argument fails
 
 
@@ -190,17 +193,11 @@ public class ProfileFragment extends Fragment{
 
 
 //setting published post count..................................................................
-  databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
+  databaseReference.child("User").child("Post").addValueEventListener(new ValueEventListener() {
       @Override
       public void onDataChange(@NonNull DataSnapshot snapshot) {
 
           for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-              PostModel model = dataSnapshot.getValue(PostModel.class);
-
-//
-//              List<PostModel>postModelList=new ArrayList<>();
-//              binding.publishPostBtn.setText(postModelList.size());
-
 
 
 //                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
@@ -208,18 +205,15 @@ public class ProfileFragment extends Fragment{
                       for (DataSnapshot snap: snapshot.getChildren()) {
                           String userId = snap.getKey();
                           postSize.add(userId);
-//                          Log.i("TAG", "SIZe: "+ postSize.size());
-                          totalPostSize = postSize.size();
 
                       }
 
-                      binding.publishPostBtn.setText(totalPostSize+"");
-//                      try {
-//                          publishedPostCount = postSize.size();
-//                          binding.publishPostBtn.setText(postSize.size()+"");
-//                      }catch (Exception e){
-//                          binding.publishPostBtn.setText("0");
-//                      }
+                      try {
+                          publishedPostCount = postSize.size();
+                          binding.publishPostBtn.setText(postSize.size()+"");
+                      }catch (Exception e){
+                          binding.publishPostBtn.setText("0");
+                      }
 
                   }
 
@@ -285,10 +279,13 @@ public class ProfileFragment extends Fragment{
                         binding.userDateofBirth.setText(userModel.getDateOfBirth().trim());
 
                         try {
+
                             Glide.with(getContext()).load(userModel.getProfileImgUrl())
                                     .placeholder(R.drawable.lightning_tree).into(binding.userProfileImg);
-                        }catch (Exception exception){}
 
+                        }catch (Exception exception){
+
+                        }
 //                        Log.i("tag", "onCreate: "+userModel.getFullName());
 //                        Log.i("tag", "onCreate: "+userModel.getUserID());
                     }
@@ -371,7 +368,7 @@ public class ProfileFragment extends Fragment{
                 databaseReference.child("Following").child(currentUserID).child(visitedUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        binding.followText.setText("Following");
+                        binding.followText.setText("following");
 
                         /*
                         * This process will be completed in two steps
@@ -464,11 +461,11 @@ public class ProfileFragment extends Fragment{
 
     }
     private void status(String status){
-        userStatusReference = FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
+        databaseReference= FirebaseDatabase.getInstance().getReference("User").child(firebaseUser.getUid());
 
         HashMap<String , Object> hashMap=new HashMap<>();
         hashMap.put("status",status);
-        userStatusReference.updateChildren(hashMap);
+        databaseReference.updateChildren(hashMap);
 
 
     }

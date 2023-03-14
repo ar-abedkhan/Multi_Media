@@ -114,6 +114,7 @@
                     android:layout_height="wrap_content"
                     android:calendarTextColor="@color/black_text"
                     android:calendarViewShown="false"
+                    android:background="@drawable/logein_bg"
                     android:datePickerMode="spinner"
                     android:spinnersShown="true" />
 
@@ -144,6 +145,7 @@
                         app:boxStrokeColor="@color/black_text"
                         app:boxStrokeWidthFocused="@dimen/_1sdp"
                         app:endIconTint="@color/black_text"
+
                         app:hintTextColor="@color/black_text"
                         app:passwordToggleEnabled="true"
                         app:passwordToggleTint="@color/black_text"

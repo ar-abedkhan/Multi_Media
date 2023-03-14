@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abedkhan.multimedia.AllViewHolder.PostViewHolder;
@@ -51,6 +52,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         this.currentUserID = currentUserID;
         Collections.reverse(postList);
     }
+
+
 
 //    public PostAdapter(Context context, List<PostModel> postList) {
 //        this.context = context;
@@ -113,7 +116,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
 
                     holder.profileName.setText(ownerFullName);
-                    Glide.with(context).load(ownerProfileImg).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
+
+                    try {
+                        Glide.with(context).load(ownerProfileImg).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
+                    }catch (Exception exception){}
                 }
             }
 
@@ -209,6 +215,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
 
 //                Handling in post click
+
         holder.mainStory.setOnClickListener(view -> {
 
             AppCompatActivity appCompatActivity= (AppCompatActivity) view.getContext();

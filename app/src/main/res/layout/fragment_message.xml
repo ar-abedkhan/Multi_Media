@@ -40,13 +40,15 @@
 
 
 
-        <androidx.appcompat.widget.SearchView
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:layout_width="@dimen/_240sdp"
             android:maxWidth="@dimen/_240sdp"
-            android:layout_height="@dimen/_40sdp"
-            app:searchIcon="@drawable/search"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/search_back"
             app:layout_constraintEnd_toStartOf="@id/home"
             android:layout_marginEnd="@dimen/_5sdp"
+            android:hint="Search.............."
+            android:paddingStart="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:queryBackground="@drawable/back"
             app:layout_constraintTop_toTopOf="parent"

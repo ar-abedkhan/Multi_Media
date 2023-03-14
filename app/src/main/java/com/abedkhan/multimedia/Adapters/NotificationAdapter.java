@@ -64,7 +64,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHo
                 }else {
                     holder.notiMainTxt.setText(userModel.getFullName()+" has reacted on your post.");
                 }
-                Glide.with(context).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
+                try {
+                    Glide.with(context).load(userModel.getProfileImgUrl()).placeholder(R.drawable.lightning_tree).into(holder.profileImg);
+                }catch (Exception exception){
+
+                }
             }
 
             @Override

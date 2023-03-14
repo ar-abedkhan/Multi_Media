@@ -78,48 +78,60 @@ MeowBottomNavigation meowBottomNavigation;
         runTimePermission();
 //        --Bottom menu meow button
         bottomMeowMenu();
-
-        databaseReference.child("User").child(currentUser).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserModel userModel=snapshot.getValue(UserModel.class);
-
-                if (userModel!=null){
-
-                    Glide.with(getApplicationContext()).load(userModel.getProfileImgUrl())
-                              .placeholder(R.drawable.lightning_tree).into(binding.userProfile);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-
-
-    //        user profile clicked
-    binding.userProfile.setOnClickListener(view -> {
-        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-        intent.putExtra("isProfileCLicked", true);
-        startActivity(intent);
-    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
-    });
+//
+//        databaseReference.child("User").child(currentUser).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                UserModel userModel=snapshot.getValue(UserModel.class);
+//
+//                if (userModel!=null){
+//
+//                    Glide.with(getApplicationContext()).load(userModel.getProfileImgUrl())
+//                              .placeholder(R.drawable.lightning_tree).into(binding.userProfile);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
 
 
-    binding.searchBar.setOnClickListener(view -> {
-        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
-        intent.putExtra("isSearchClicked", true);
-        startActivity(intent);
-    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
-    });
 
 
-    binding.shopping.setOnClickListener(view -> {
-        startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
-    });
+
+
+
+
+
+
+
+
+
+//
+//
+//    //        user profile clicked
+//    binding.userProfile.setOnClickListener(view -> {
+//        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+//        intent.putExtra("isProfileCLicked", true);
+//        startActivity(intent);
+//    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
+//    });
+//
+//
+//    binding.searchBar.setOnClickListener(view -> {
+//        Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+//        intent.putExtra("isSearchClicked", true);
+//        startActivity(intent);
+//    //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new SearchFragment()).commit();
+//    });
+//
+//
+//    binding.shopping.setOnClickListener(view -> {
+//        startActivity(new Intent(MainActivity.this,ShoppingMainActivity.class));
+//    });
 
 
         if (intent1.getBooleanExtra("isAddClicked", false)){
@@ -198,12 +210,12 @@ MeowBottomNavigation meowBottomNavigation;
 
     //fragment placem,ent ...............
     private void replace(Fragment fragment, boolean isToolActive) {
-        if (isToolActive){
-            binding.tool.setVisibility(View.GONE);
-        }
-        else {
-            binding.tool.setVisibility(View.VISIBLE);
-        }
+//        if (isToolActive){
+//            binding.tool.setVisibility(View.GONE);
+//        }
+//        else {
+//            binding.tool.setVisibility(View.VISIBLE);
+//        }
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame,fragment);

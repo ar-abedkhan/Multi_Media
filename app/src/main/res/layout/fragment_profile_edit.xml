@@ -253,15 +253,14 @@
                     android:id="@+id/age_picker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_3sdp"
                     android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_3sdp"
                     android:layout_marginEnd="@dimen/_3sdp"
                     android:background="@drawable/logein_bg"
                     android:calendarTextColor="@color/black_text"
                     android:calendarViewShown="false"
                     android:datePickerMode="spinner"
                     android:spinnersShown="true" />
-
 
                 <EditText
                     android:id="@+id/userProfession"

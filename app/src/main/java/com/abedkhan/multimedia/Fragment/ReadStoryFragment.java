@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.abedkhan.multimedia.Activities.ContainerActivity;
+import com.abedkhan.multimedia.Activities.MainActivity;
 import com.abedkhan.multimedia.Adapters.CommentAdapter;
 import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.PostCommentModel;
@@ -311,8 +312,12 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
 PostModel postModel=new PostModel();
 
         binding.writerProfileImg.setOnClickListener(view -> {
-            Intent intent = new Intent(getContext(), ContainerActivity.class);
-            intent.putExtra("isProfileCLicked", true);
+
+
+
+
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            intent.putExtra("imgClicked", true);
             intent.putExtra("VisitedUserID",postModel.getOwnerID()) ;
             startActivity(intent);
             //    getSupportFragmentManager().beginTransaction().replace(R.id.frame,new ProfileFragment()).commit();
@@ -323,7 +328,6 @@ PostModel postModel=new PostModel();
 //            bundle.putString("VisitedUserID", postModel.getOwnerID());
 //            profileFragment.setArguments(bundle);
 //            getChildFragmentManager().beginTransaction().replace(R.id.fullFrame, profileFragment).addToBackStack(null).commit();
-
 
         });
 

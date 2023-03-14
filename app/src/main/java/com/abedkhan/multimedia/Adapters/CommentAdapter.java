@@ -1,14 +1,17 @@
 package com.abedkhan.multimedia.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abedkhan.multimedia.AllViewHolder.CommentViewHolder;
+import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Model.PostCommentModel;
 import com.abedkhan.multimedia.Model.PostReactModel;
 import com.abedkhan.multimedia.Model.UserModel;
@@ -103,11 +106,20 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
 
 
 
-        holder.img.setOnClickListener(view -> {
-
-
-        });
-
+//        holder.img.setOnClickListener(view -> {
+//
+//
+//            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+//            ProfileFragment profileFragment = new ProfileFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("VisitedUserID", postCommentModel.getCommenterName());
+//            profileFragment.setArguments(bundle);
+//
+//            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame, profileFragment).addToBackStack(null).commit();
+//
+//
+//        });
+//
 
 
 

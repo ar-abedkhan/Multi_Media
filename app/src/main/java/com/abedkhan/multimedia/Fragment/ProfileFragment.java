@@ -119,9 +119,9 @@ public class ProfileFragment extends Fragment{
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     UserModel userModel=snapshot.getValue(UserModel.class);
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy");
+    Date date = new Date(userModel.getIdCreationTimeMillis());
 
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy");
-                    Date date = new Date(userModel.getIdCreationTimeMillis());
 
 
                     if (!userModel.getUserID().equals(currentUserID)){
@@ -169,6 +169,7 @@ public class ProfileFragment extends Fragment{
 
                 }
 
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(getActivity(), "User visiting failed!", Toast.LENGTH_SHORT).show();
@@ -196,44 +197,6 @@ public class ProfileFragment extends Fragment{
 
 
 
-//setting published post count..................................................................
-  databaseReference.child("User").child("Post").addValueEventListener(new ValueEventListener() {
-      @Override
-      public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-          for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-
-
-//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
-                      List<String> postSize = new ArrayList<>();
-                      for (DataSnapshot snap: snapshot.getChildren()) {
-                          String userId = snap.getKey();
-                          postSize.add(userId);
-
-                      }
-
-                      try {
-                          publishedPostCount = postSize.size();
-                          binding.publishPostBtn.setText(postSize.size()+"");
-                      }catch (Exception e){
-                          binding.publishPostBtn.setText("0");
-                      }
-
-                  }
-
-      }
-
-      @Override
-      public void onCancelled(@NonNull DatabaseError error) {
-
-      }
-  });
-
-
-
-
-
-
 
 
 
@@ -243,10 +206,10 @@ public class ProfileFragment extends Fragment{
 
                     UserModel userModel=snapshot.getValue(UserModel.class);
 
-                    if (!userModel.getUserID().equals(currentUserID)){
-                        binding.logeOutBtn.setVisibility(View.INVISIBLE);
-                        binding.settings.setVisibility(View.INVISIBLE);
-                    }
+//                    if (!userModel.getUserID().equals(currentUserID)){
+//                        binding.logeOutBtn.setVisibility(View.INVISIBLE);
+//                        binding.settings.setVisibility(View.INVISIBLE);
+//                    }
 
                     if (userModel!=null){
 
@@ -302,8 +265,105 @@ public class ProfileFragment extends Fragment{
 
             //        Hiding follow button for own profile
                 binding.followOptionContainer.setVisibility(View.GONE);
-//
+                    binding.followTheWriter.setVisibility(View.GONE);
         }
+
+
+
+
+//setting published post count..................................................................
+
+
+        databaseReference.child("User").child("Post").child(currentUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+
+
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                    List<String> postSize = new ArrayList<>();
+                    for (DataSnapshot snap: snapshot.getChildren()) {
+                        String userId = snap.getKey();
+                        postSize.add(userId);
+
+                    }
+
+                    try {
+                        publishedPostCount = postSize.size();
+                        binding.publishPostBtn.setText(postSize.size()+"");
+                    }catch (Exception e){
+                        binding.publishPostBtn.setText("0");
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+//follow count................
+            databaseReference.child("User").child(currentUserID).child("Following").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+
+
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                        List<String> postSize = new ArrayList<>();
+                        for (DataSnapshot snap: snapshot.getChildren()) {
+                            String userId = snap.getKey();
+                            postSize.add(userId);
+
+                        }
+
+                        try {
+                            followingCount = postSize.size();
+                            binding.iAmFollowingBtn.setText(postSize.size()+"");
+                        }catch (Exception e){
+                            binding.iAmFollowingBtn.setText("0");
+                        }
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //handling post count....
@@ -358,6 +418,8 @@ public class ProfileFragment extends Fragment{
 //        Handling follow button clicked
 //        TODO: unfollow
         binding.followOptionContainer.setOnClickListener(view -> {
+
+
             boolean isFollowing = isFollowing(visitedUserID);
             if(!currentUserID.equals(visitedUserID) && !isFollowing){
                 Map<String, Object> map = new HashMap<>();
@@ -370,7 +432,7 @@ public class ProfileFragment extends Fragment{
                 databaseReference.child("Following").child(currentUserID).child(visitedUserID).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        binding.followText.setText("following");
+                        binding.followText.setText("Following");
 
                         /*
                         * This process will be completed in two steps
@@ -387,7 +449,12 @@ public class ProfileFragment extends Fragment{
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()){
-                                    Toast.makeText(getActivity(), "Following the user", Toast.LENGTH_SHORT).show();
+                                    try {
+                                        Toast.makeText(getActivity(), "Following the user", Toast.LENGTH_SHORT).show();
+
+                                    }catch (Exception e){
+
+                                    }
                                 }else{
                                     Log.i("TAG", "Follower upload failed: "+ task.getException().getLocalizedMessage());
                                 }

@@ -75,6 +75,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:includeFontPadding="false"
                     android:text="Follow"
+                    android:id="@+id/followText"
                     android:textAlignment="center"
                     android:textColor="@color/purple_700"
                     android:textSize="@dimen/_15sdp"

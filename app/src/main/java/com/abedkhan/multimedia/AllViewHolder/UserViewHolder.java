@@ -12,7 +12,7 @@ import com.abedkhan.multimedia.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserViewHolder extends RecyclerView.ViewHolder {
-    public TextView userName,userProfession;
+    public TextView userName,userProfession,follow;
     public CardView followCard,followingCrad;
     public CircleImageView userProfileImg;
 
@@ -25,6 +25,7 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
         followingCrad=itemView.findViewById(R.id.youAreFollowingTheWriter);
         userProfession=itemView.findViewById(R.id.userProfession);
         userName=itemView.findViewById(R.id.profilename);
+        follow=itemView.findViewById(R.id.followText);
 
 
     }

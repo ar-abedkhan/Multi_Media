@@ -137,6 +137,9 @@ MeowBottomNavigation meowBottomNavigation;
         if (intent1.getBooleanExtra("isAddClicked", false)){
             replace(new AddPostFragment(),false);
 
+        }else if (intent1.getBooleanExtra("imgClicked", false)){
+            replace(new ProfileFragment(),false);
+
         }
 
 //    binding.signupLoginButton.setOnClickListener(view -> {

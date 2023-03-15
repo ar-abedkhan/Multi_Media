@@ -485,13 +485,21 @@ public class ProfileFragment extends Fragment{
 
 
 
-
-binding.myuplodedPost.setOnClickListener(view -> {
-
-    getChildFragmentManager().beginTransaction().replace(R.id.frame,new PostListFragment()).addToBackStack(null).commit();
-
-});
-
+//
+//binding.myuplodedPost.setOnClickListener(view -> {
+//
+//    getChildFragmentManager().beginTransaction().replace(R.id.frame,new PostListFragment()).addToBackStack(null).commit();
+//
+//});
+//
+//
+//
+//binding.myFollowingList.setOnClickListener(view -> {
+//
+//    getChildFragmentManager().beginTransaction().replace(R.id.frame,new PostListFragment()).addToBackStack(null).commit();
+//
+//});
+//
 
 
 
@@ -615,6 +623,32 @@ binding.myuplodedPost.setOnClickListener(view -> {
     }
 
     private void floatingButtonClicked() {
+
+
+
+        binding.myFollowersList.setOnClickListener(view -> {
+            Intent intent = new Intent(requireContext(), ContainerActivity.class);
+            intent.putExtra("follower", true);
+            startActivity(intent);
+        });
+
+
+
+        binding.myFollowingList.setOnClickListener(view -> {
+            Intent intent = new Intent(requireContext(), ContainerActivity.class);
+            intent.putExtra("following", true);
+            startActivity(intent);
+        });
+
+
+        binding.myuplodedPostList.setOnClickListener(view -> {
+            Intent intent = new Intent(requireContext(), ContainerActivity.class);
+            intent.putExtra("postlist", true);
+            startActivity(intent);
+        });
+
+
+
 
         binding.settings.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);

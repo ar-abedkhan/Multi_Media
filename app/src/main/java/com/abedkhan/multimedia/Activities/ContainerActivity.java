@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.abedkhan.multimedia.Fragment.ChattingFragment;
+import com.abedkhan.multimedia.Fragment.FollowerListFragment;
+import com.abedkhan.multimedia.Fragment.FollowinglistFragment;
 import com.abedkhan.multimedia.Fragment.LoginFragment;
 import com.abedkhan.multimedia.Fragment.MessageFragment;
+import com.abedkhan.multimedia.Fragment.PostListFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
 import com.abedkhan.multimedia.Fragment.SignUpFragmentOne;
@@ -78,7 +81,16 @@ public class ContainerActivity extends AppCompatActivity {
             }else if (intent.getBooleanExtra("imgClicked", false)) {
                 replace(new ProfileFragment());
 
-            }else
+            }else if (intent.getBooleanExtra("follower", false)) {
+                replace(new FollowerListFragment());
+
+            }else if (intent.getBooleanExtra("following", false)) {
+                replace(new FollowinglistFragment());
+
+            }else if (intent.getBooleanExtra("postlist", false)) {
+                replace(new PostListFragment());
+
+            } else
             {
                     replace(new LoginFragment());
                 }

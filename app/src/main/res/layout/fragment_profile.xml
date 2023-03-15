@@ -420,6 +420,7 @@
                     android:gravity="center"
                     >
                     <LinearLayout
+                        android:id="@+id/myuplodedPost"
                         android:layout_weight="1"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_width="@dimen/_80sdp"
@@ -447,7 +448,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Uploded Story"
+                            android:text="Uploded Post"
                             android:textSize="@dimen/_15sdp"
                             android:textAlignment="center"
                             android:textStyle="bold"
@@ -502,6 +503,7 @@
 
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/myFollowersList"
                         android:layout_weight="1"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_width="@dimen/_80sdp"
@@ -557,6 +559,7 @@
                     android:gravity="center"
                     >
                     <LinearLayout
+                        android:id="@+id/myFollowingList"
                         android:layout_weight="1"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_width="@dimen/_80sdp"

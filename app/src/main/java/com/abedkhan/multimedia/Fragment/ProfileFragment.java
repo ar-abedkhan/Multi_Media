@@ -118,19 +118,13 @@ public class ProfileFragment extends Fragment{
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    UserModel userModel=snapshot.getValue(UserModel.class);
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy");
-    Date date = new Date(userModel.getIdCreationTimeMillis());
+               UserModel userModel=snapshot.getValue(UserModel.class);
+
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy");
+                    Date date = new Date(userModel.getIdCreationTimeMillis());
 
 
-
-                    if (!userModel.getUserID().equals(currentUserID)){
-                        binding.logeOutBtn.setVisibility(View.INVISIBLE);
-                        binding.settings.setVisibility(View.INVISIBLE);
-                    }
-
-
-
+                   // setting profile data to others user........
                     if (userModel!=null){
                         binding.userProfileName.setText(userModel.getFullName().trim());
                         binding.userJoinedDate.setText(simpleDateFormat.format(date));
@@ -167,6 +161,123 @@ public class ProfileFragment extends Fragment{
 
                     }
 
+//others all setup to others user profile here.......................................................................................
+
+                    //setting following to others user profile............
+                    databaseReference.child("Following").child(visitedUserID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+
+
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                                List<String> postSize = new ArrayList<>();
+                                for (DataSnapshot snap: snapshot.getChildren()) {
+                                    String userId = snap.getKey();
+                                    postSize.add(userId);
+
+                                }
+
+                                try {
+                                    followingCount = postSize.size();
+                                    binding.iAmFollowingBtn.setText(postSize.size()+"");
+                                }catch (Exception e){
+                                    binding.iAmFollowingBtn.setText("0");
+                                }
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+                    //setting followers to others user profile............
+                    databaseReference.child("Followers").child(visitedUserID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+
+
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                                List<String> postSize = new ArrayList<>();
+                                for (DataSnapshot snap: snapshot.getChildren()) {
+                                    String userId = snap.getKey();
+                                    postSize.add(userId);
+
+                                }
+
+                                try {
+                                    followingCount = postSize.size();
+                                    binding.myFollowersbtn.setText(postSize.size()+"");
+                                }catch (Exception e){
+                                    binding.myFollowersbtn.setText("0");
+                                }
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+
+                    //hiode logeout and settings butto from others user..............
+                    if (!userModel.getUserID().equals(currentUserID)){
+                        binding.logeOutBtn.setVisibility(View.INVISIBLE);
+                        binding.settings.setVisibility(View.INVISIBLE);
+                    }
+
+
+
+
+                     //setting published post count..................................................................
+
+
+                        databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                                    List<String> postSize = new ArrayList<>();
+                                    for (DataSnapshot snap : snapshot.getChildren()) {
+                                        String userId = snap.getKey();
+                                        postSize.add(userId);
+
+                                    }
+
+                                    try {
+                                        publishedPostCount = postSize.size();
+                                        binding.publishPostBtn.setText(postSize.size() + "");
+                                    } catch (Exception e) {
+                                        binding.publishPostBtn.setText("0");
+                                    }
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+
                 }
 
 
@@ -176,28 +287,7 @@ public class ProfileFragment extends Fragment{
                 }
             });
         }catch (Exception e){
-//        *setting the current user data if getting argument fails
-
-
-
-
- //for current user on message option clicked intent to mess list...........
-            binding.message.setOnClickListener(view -> {
-                Intent intent = new Intent(requireContext(), ContainerActivity.class);
-                intent.putExtra("isMessage", true);
-                intent.putExtra("visitor",currentUserID);
-                Log.i("visitorID", "onCreateView: "+intent);
-
-                startActivity(intent);
-
-            });
-
-
-
-
-
-
-
+//        *setting the current user data if getting argument fails..........................................
 
 
             databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
@@ -206,10 +296,6 @@ public class ProfileFragment extends Fragment{
 
                     UserModel userModel=snapshot.getValue(UserModel.class);
 
-//                    if (!userModel.getUserID().equals(currentUserID)){
-//                        binding.logeOutBtn.setVisibility(View.INVISIBLE);
-//                        binding.settings.setVisibility(View.INVISIBLE);
-//                    }
 
                     if (userModel!=null){
 
@@ -266,50 +352,23 @@ public class ProfileFragment extends Fragment{
             //        Hiding follow button for own profile
                 binding.followOptionContainer.setVisibility(View.GONE);
                     binding.followTheWriter.setVisibility(View.GONE);
-        }
 
 
 
 
-//setting published post count..................................................................
+            //for current user on message option clicked intent to mess list...........
+            binding.message.setOnClickListener(view -> {
+                Intent intent = new Intent(requireContext(), ContainerActivity.class);
+                intent.putExtra("isMessage", true);
+                intent.putExtra("visitor",currentUserID);
+                Log.i("visitorID", "onCreateView: "+intent);
 
+                startActivity(intent);
 
-        databaseReference.child("User").child("Post").child(currentUserID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            });
 
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-
-
-//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
-                    List<String> postSize = new ArrayList<>();
-                    for (DataSnapshot snap: snapshot.getChildren()) {
-                        String userId = snap.getKey();
-                        postSize.add(userId);
-
-                    }
-
-                    try {
-                        publishedPostCount = postSize.size();
-                        binding.publishPostBtn.setText(postSize.size()+"");
-                    }catch (Exception e){
-                        binding.publishPostBtn.setText("0");
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-
-//follow count................
-            databaseReference.child("User").child(currentUserID).child("Following").addValueEventListener(new ValueEventListener() {
+            // setting following to current user profile..............
+            databaseReference.child("Following").child(currentUserID).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -340,7 +399,98 @@ public class ProfileFragment extends Fragment{
 
                 }
             });
-//
+
+
+
+
+
+
+
+//           //setting published post count..................................................................
+
+            //TODO: vai post count tadekhen jst.............
+
+            databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+
+
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                        List<String> postSize = new ArrayList<>();
+                        for (DataSnapshot snap: snapshot.getChildren()) {
+                            String userId = snap.getKey();
+                            postSize.add(userId);
+
+                        }
+
+                        try {
+                            publishedPostCount = postSize.size();
+                            binding.publishPostBtn.setText(postSize.size()+"");
+                        }catch (Exception e){
+                            binding.publishPostBtn.setText("0");
+                        }
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+
+
+            //setting followers to current user profile............
+            databaseReference.child("Followers").child(currentUserID).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+
+
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+                        List<String> postSize = new ArrayList<>();
+                        for (DataSnapshot snap: snapshot.getChildren()) {
+                            String userId = snap.getKey();
+                            postSize.add(userId);
+
+                        }
+
+                        try {
+                            followingCount = postSize.size();
+                            binding.myFollowersbtn.setText(postSize.size()+"");
+                        }catch (Exception e){
+                            binding.myFollowersbtn.setText("0");
+                        }
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+
+
+
+
+        }
+
+
+
+
+binding.myuplodedPost.setOnClickListener(view -> {
+
+    getChildFragmentManager().beginTransaction().replace(R.id.frame,new PostListFragment()).addToBackStack(null).commit();
+
+});
 
 
 
@@ -361,41 +511,6 @@ public class ProfileFragment extends Fragment{
 
 
 
-
-
-
-
-
-        //handling post count....
-//        postID = databaseReference.push().getKey();
-//
-//        databaseReference.child("User").child("Post").child(postID).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-////                TODO: get total length
-////                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
-//                List<String>postModelList=new ArrayList<>();
-//
-////                List<String> postSize = new ArrayList<>();
-//
-//                for (DataSnapshot snap: snapshot.getChildren()) {
-//                    String userId = snap.getKey();
-//                    postModelList.add(userId);
-//                }
-//
-//                try {
-//                    publishedPost = postModelList.size();
-//                    binding.publishPostBtn.setText(publishedPost);
-//                }catch (Exception e){
-//                    binding.publishPostBtn.setText("0");
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//
 
 //        Checking if the current user following the visited ID
         try {

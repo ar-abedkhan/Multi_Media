@@ -25,6 +25,9 @@
             app:civ_border_color="@color/white"
             android:id="@+id/chatUserimgTV"
             />
+
+
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="@dimen/_10sdp"
         android:layout_height="@dimen/_10sdp"

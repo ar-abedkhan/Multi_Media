@@ -5,12 +5,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.abedkhan.multimedia.Adapters.PostAdapter;
 import com.abedkhan.multimedia.Adapters.UserAdapter;
+import com.abedkhan.multimedia.Listeners.PostListener;
 import com.abedkhan.multimedia.Model.PostModel;
 import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentPostListBinding;
@@ -25,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostListFragment extends Fragment {
+public class PostListFragment extends Fragment implements PostListener {
 
     public PostListFragment() {
     }
@@ -50,26 +52,55 @@ public class PostListFragment extends Fragment {
 
 
 
-       databaseReference.child("post").addValueEventListener(new ValueEventListener() {
+       databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
 
-                   PostModel postModel=dataSnapshot.getValue(PostModel.class);
+                   String postId = dataSnapshot.getKey();
 
-                   if (postModel.getPostID().equals(currentUser)){
-                       postModelList.add(postModel);
+                   databaseReference.child("Post").child(postId).addValueEventListener(new ValueEventListener() {
+                       @Override
+                       public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                           for (DataSnapshot snap: snapshot.getChildren()){
+//                           Log.i("TAG", "snapshot size: "+ snapshot);
+                               PostModel postModel= snapshot.getValue(PostModel.class);
+
+//                           Log.i("TAG", "snapshot ----------ID-------: "+ postModel.getOwnerID());
+
+                               if (postModel.getOwnerID().equals(currentUser)){
+//                                   Log.i("TAG", "TRUE ");
+                                   postModelList.add(postModel);
+                                   try {
+
+//                                       Log.i("TAG", "Post model List (PLF)--1: "+postModelList.size());
+                                       setDataToView(postModelList);
+
+                                   }catch (Exception exception){
+
+                                   }
+//                               }
+                           }
+
+                       }
+
+                       @Override
+                       public void onCancelled(@NonNull DatabaseError error) {
+
+                       }
+                   });
+
+                   try {
+
+                       Log.i("TAG", "Post model List (PLF): "+postModelList.size());
+                       setDataToView(postModelList);
+
+                   }catch (Exception exception){
+
                    }
                }
-               try {
 
-//                   PostAdapter adapter = new PostAdapter(getContext(), postModelList,this, currentUser);
-//                   binding.postRecycler.setAdapter(adapter);
-
-               }catch (Exception exception){
-
-               }
            }
 
            @Override
@@ -88,5 +119,20 @@ public class PostListFragment extends Fragment {
 
 
         return binding.getRoot();
+    }
+
+    private void setDataToView(List<PostModel> postModelList) {
+        PostAdapter adapter = new PostAdapter(getContext(), postModelList, this, currentUser);
+        binding.postRecycler.setAdapter(adapter);
+    }
+
+    @Override
+    public void gotoFragmentWithValue(Fragment fragment, String userID) {
+
+    }
+
+    @Override
+    public boolean followButtonClickedEvent(String userID) {
+        return false;
     }
 }

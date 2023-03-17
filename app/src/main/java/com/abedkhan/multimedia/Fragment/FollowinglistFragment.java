@@ -29,9 +29,9 @@ import java.util.List;
 public class FollowinglistFragment extends Fragment {
 
     public FollowinglistFragment() {
-        // Required empty public constructor
     }
- FragmentFollowinglistBinding binding;
+
+    FragmentFollowinglistBinding binding;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;

@@ -63,11 +63,8 @@ public class PostListFragment extends Fragment implements PostListener {
                    databaseReference.child("Post").child(postId).addValueEventListener(new ValueEventListener() {
                        @Override
                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                           for (DataSnapshot snap: snapshot.getChildren()){
-//                           Log.i("TAG", "snapshot size: "+ snapshot);
-                               PostModel postModel= snapshot.getValue(PostModel.class);
 
-//                           Log.i("TAG", "snapshot ----------ID-------: "+ postModel.getOwnerID());
+                               PostModel postModel= snapshot.getValue(PostModel.class);
 
                                if (postModel.getOwnerID().equals(currentUser)){
 //                                   Log.i("TAG", "TRUE ");

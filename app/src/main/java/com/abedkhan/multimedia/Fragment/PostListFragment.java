@@ -1,5 +1,7 @@
 package com.abedkhan.multimedia.Fragment;
 
+import static com.abedkhan.multimedia.Activities.ContainerActivity.requestedIdForPost;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -36,6 +38,7 @@ public class PostListFragment extends Fragment implements PostListener {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     String currentUser;
+    String postOwnerID;
     List<PostModel>postModelList;
 
 
@@ -46,10 +49,19 @@ public class PostListFragment extends Fragment implements PostListener {
        binding=FragmentPostListBinding.inflate(getLayoutInflater(),container,false);
 
        databaseReference= FirebaseDatabase.getInstance().getReference();
-       firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-       currentUser=firebaseUser.getUid();
+
        postModelList=new ArrayList<>();
 
+        try {
+            if (!requestedIdForPost.isEmpty()){
+                postOwnerID = requestedIdForPost;
+
+            }
+        }catch (Exception exception){
+            firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+            currentUser=firebaseUser.getUid();
+            postOwnerID = currentUser;
+        }
 
 
        databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
@@ -66,7 +78,7 @@ public class PostListFragment extends Fragment implements PostListener {
 
                                PostModel postModel= snapshot.getValue(PostModel.class);
 
-                               if (postModel.getOwnerID().equals(currentUser)){
+                               if (postModel.getOwnerID().equals(postOwnerID)){
 //                                   Log.i("TAG", "TRUE ");
                                    postModelList.add(postModel);
                                    try {

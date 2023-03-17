@@ -34,6 +34,7 @@ public class ContainerActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
+    public static String requestedIdForPost;
 
 
     @Override
@@ -82,12 +83,18 @@ public class ContainerActivity extends AppCompatActivity {
                 replace(new ProfileFragment());
 
             }else if (intent.getBooleanExtra("following", false)) {
+//                requestedIdForPost = getIntent().getStringExtra("requestedIdForPost");
                 replace(new FollowinglistFragment());
 
             }else if (intent.getBooleanExtra("follower", false)) {
                 replace(new FollowerListFragment());
 
-            }else if (intent.getBooleanExtra("postlist", false)) {
+            }
+            else if (intent.getBooleanExtra("postlist", false)) {
+                                try {
+                    requestedIdForPost = getIntent().getStringExtra("requestedIdForPost");
+                    Log.i("TAG", "post owner ID: "+ requestedIdForPost);
+                }catch (Exception exception){}
                 replace(new PostListFragment());
 
             } else

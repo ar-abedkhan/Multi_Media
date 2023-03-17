@@ -51,7 +51,7 @@ public class ProfileFragment extends Fragment{
     Intent intent;
     List<UserModel>userModelList;
     String currentUserID, currentUserName, currentUserImg,postID;
-    String presentProfileID; // This variable contains currently visited profile ID
+    String requestedIdForPost; // This variable contains currently visited profile ID
     String visitedUserID;
     String visitedUserProfileImg, visitedUserName;
     int publishedPostCount,savePostCount,followersCount,followingCount;
@@ -114,6 +114,7 @@ public class ProfileFragment extends Fragment{
 //
 //}
             visitedUserID  = getArguments().getString("VisitedUserID");
+            requestedIdForPost = visitedUserID;
 //            Log.i("TAG", "Profile fragment -- "+visitedUserID);
             databaseReference.child("User").child(visitedUserID).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -306,7 +307,7 @@ public class ProfileFragment extends Fragment{
         }catch (Exception e){
 //        *setting the current user data if getting argument fails..........................................
 
-
+            requestedIdForPost = currentUserID;
             databaseReference.child("User").child(currentUserID).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -526,6 +527,8 @@ public class ProfileFragment extends Fragment{
         binding.myuplodedPostList.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("postlist", true);
+//            intent.putExtra("requestedIdForPost", requestedIdForPost);
+            intent.putExtra("requestedIdForPost", visitedUserID);
             startActivity(intent);
         });
 

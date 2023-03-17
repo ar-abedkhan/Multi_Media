@@ -51,6 +51,7 @@ public class ProfileFragment extends Fragment{
     Intent intent;
     List<UserModel>userModelList;
     String currentUserID, currentUserName, currentUserImg,postID;
+    String presentProfileID; // This variable contains currently visited profile ID
     String visitedUserID;
     String visitedUserProfileImg, visitedUserName;
     int publishedPostCount,savePostCount,followersCount,followingCount;
@@ -250,24 +251,38 @@ public class ProfileFragment extends Fragment{
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                                List<String> postSize = new ArrayList<>();
                                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                    PostModel postModel = dataSnapshot.getValue(PostModel.class);
+                                    if (postModel.getOwnerID().equals(visitedUserID)) {
 
-
-//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
-                                    List<String> postSize = new ArrayList<>();
-                                    for (DataSnapshot snap : snapshot.getChildren()) {
-                                        String userId = snap.getKey();
+                                        String userId = dataSnapshot.getKey();
                                         postSize.add(userId);
 
+//                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
+//                                        List<String> postSize = new ArrayList<>();
+//                                        for (DataSnapshot snap : snapshot.getChildren()) {
+//                                            String userId = snap.getKey();
+//                                            postSize.add(userId);
+//
+//                                        }
                                     }
 
-                                    try {
-                                        publishedPostCount = postSize.size();
-                                        binding.publishPostBtn.setText(postSize.size() + "");
-                                    } catch (Exception e) {
-                                        binding.publishPostBtn.setText("0");
-                                    }
+//                                    try {
+//                                        publishedPostCount = postSize.size();
+//                                        Log.i("tt", "size: "+ postSize.size());
+//                                        binding.publishPostBtn.setText(postSize.size() + "");
+//                                    } catch (Exception e) {
+//                                        binding.publishPostBtn.setText("0");
+//                                    }
 
+                                }
+                                try {
+                                    publishedPostCount = postSize.size();
+                                    Log.i("tt", "size: "+ postSize.size());
+                                    binding.publishPostBtn.setText(postSize.size() + "");
+                                } catch (Exception e) {
+                                    binding.publishPostBtn.setText("0");
                                 }
 
                             }
@@ -420,11 +435,11 @@ public class ProfileFragment extends Fragment{
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                    List<String> postSize = new ArrayList<>();
+                    postSize.clear();
                     for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-
-
 //                Log.i("TAG", "Notification snapshot: "+ snapshot.getChildren().toString());
-                        List<String> postSize = new ArrayList<>();
+
                         for (DataSnapshot snap: snapshot.getChildren()) {
                             String userId = snap.getKey();
                             postSize.add(userId);

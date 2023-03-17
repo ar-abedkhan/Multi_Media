@@ -439,7 +439,7 @@
                             android:text="0"
                             android:textColor="@color/c1"
                             android:includeFontPadding="false"
-                            android:textSize="@dimen/_40sdp"
+                            android:textSize="@dimen/_30sdp"
                             android:textStyle="bold"
                             android:layout_gravity="center"
                             />

@@ -79,11 +79,8 @@ public class PostListFragment extends Fragment implements PostListener {
                                PostModel postModel= snapshot.getValue(PostModel.class);
 
                                if (postModel.getOwnerID().equals(postOwnerID)){
-//                                   Log.i("TAG", "TRUE ");
                                    postModelList.add(postModel);
                                    try {
-
-//                                       Log.i("TAG", "Post model List (PLF)--1: "+postModelList.size());
                                        setDataToView(postModelList);
 
                                    }catch (Exception exception){
@@ -102,7 +99,7 @@ public class PostListFragment extends Fragment implements PostListener {
 
                    try {
 
-                       Log.i("TAG", "Post model List (PLF): "+postModelList.size());
+//                       Log.i("TAG", "Post model List (PLF): "+postModelList.size());
                        setDataToView(postModelList);
 
                    }catch (Exception exception){

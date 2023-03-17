@@ -81,11 +81,11 @@ public class ContainerActivity extends AppCompatActivity {
             }else if (intent.getBooleanExtra("imgClicked", false)) {
                 replace(new ProfileFragment());
 
-            }else if (intent.getBooleanExtra("follower", false)) {
-                replace(new FollowerListFragment());
-
             }else if (intent.getBooleanExtra("following", false)) {
                 replace(new FollowinglistFragment());
+
+            }else if (intent.getBooleanExtra("follower", false)) {
+                replace(new FollowerListFragment());
 
             }else if (intent.getBooleanExtra("postlist", false)) {
                 replace(new PostListFragment());

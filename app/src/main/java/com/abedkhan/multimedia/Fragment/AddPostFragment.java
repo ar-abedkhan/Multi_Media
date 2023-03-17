@@ -122,32 +122,47 @@ public class AddPostFragment extends Fragment {
         binding.saveBtn.setOnClickListener(view -> {
 //            Log.i("TAG", "saveBtnClicked ");
 
-            binding.saveBtn.setEnabled(false);
-            binding.publishBtn.setEnabled(false);
-            binding.backBtn.setEnabled(false);
-            binding.progressbar.setVisibility(View.VISIBLE);
+
 
             if (binding.mainText.getText().toString().isEmpty()){
                 binding.mainText.setError("Field cannot be empty!");
+
+                binding.saveBtn.setEnabled(true);
+                binding.publishBtn.setEnabled(true);
+                binding.backBtn.setEnabled(true);
+                binding.progressbar.setVisibility(View.GONE);
+
             }else {
                 saveOrPublish("save");
+
+                binding.saveBtn.setEnabled(false);
+                binding.publishBtn.setEnabled(false);
+                binding.backBtn.setEnabled(false);
+                binding.progressbar.setVisibility(View.VISIBLE);
             }
         });
 
 //                Handling publish button
         binding.publishBtn.setOnClickListener(view -> {
 //            Log.i("TAG", "publishBtn clicked ");
-            binding.saveBtn.setEnabled(false);
-            binding.publishBtn.setEnabled(false);
-            binding.backBtn.setEnabled(false);
-            binding.progressbar.setVisibility(View.VISIBLE);
+//            binding.saveBtn.setEnabled(false);
+//            binding.publishBtn.setEnabled(false);
+//            binding.backBtn.setEnabled(false);
+//            binding.progressbar.setVisibility(View.VISIBLE);
 
             if (binding.mainText.getText().toString().isEmpty()){
                 binding.mainText.setError("Field cannot be empty!");
+
+                binding.saveBtn.setEnabled(true);
+                binding.publishBtn.setEnabled(true);
+                binding.backBtn.setEnabled(true);
                 binding.progressbar.setVisibility(View.GONE);
 
             }else {
                 saveOrPublish("publish");
+                binding.saveBtn.setEnabled(false);
+                binding.publishBtn.setEnabled(false);
+                binding.backBtn.setEnabled(false);
                 binding.progressbar.setVisibility(View.VISIBLE);
 
 

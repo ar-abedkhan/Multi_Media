@@ -47,14 +47,14 @@ public class FollowinglistFragment extends Fragment {
                              Bundle savedInstanceState) {
 binding=FragmentFollowinglistBinding.inflate(getLayoutInflater(),container,false);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("User");
+        databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         currentUser=firebaseUser.getUid();
         followingModels=new ArrayList<>();
 
 
 
-        databaseReference.child("Following").child(currentUser).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Following").child("User").child(currentUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 

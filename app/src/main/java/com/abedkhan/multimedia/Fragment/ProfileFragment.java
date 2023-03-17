@@ -236,6 +236,8 @@ public class ProfileFragment extends Fragment{
                     if (!userModel.getUserID().equals(currentUserID)){
                         binding.logeOutBtn.setVisibility(View.INVISIBLE);
                         binding.settings.setVisibility(View.INVISIBLE);
+                        binding.message.setVisibility(View.VISIBLE);
+                        binding.addPost.setVisibility(View.VISIBLE);
                     }
 
 
@@ -350,11 +352,15 @@ public class ProfileFragment extends Fragment{
             });
 
             //        Hiding follow button for own profile
-                binding.followOptionContainer.setVisibility(View.GONE);
-                    binding.followTheWriter.setVisibility(View.GONE);
+                binding.followTheWriter.setVisibility(View.GONE);
+                    binding.youAreFollowingTheWriter.setVisibility(View.GONE);
 
 
-
+                    //visible menu buttons.........
+            binding.logeOutBtn.setVisibility(View.VISIBLE);
+            binding.settings.setVisibility(View.VISIBLE);
+            binding.message.setVisibility(View.VISIBLE);
+            binding.addPost.setVisibility(View.VISIBLE);
 
             //for current user on message option clicked intent to mess list...........
             binding.message.setOnClickListener(view -> {
@@ -485,25 +491,28 @@ public class ProfileFragment extends Fragment{
 
 
 
-//
-//binding.myuplodedPost.setOnClickListener(view -> {
-//
-//    getChildFragmentManager().beginTransaction().replace(R.id.frame,new PostListFragment()).addToBackStack(null).commit();
-//
-//});
-//
-//
-//
-//binding.myFollowingList.setOnClickListener(view -> {
-//
-//    getChildFragmentManager().beginTransaction().replace(R.id.frame,new PostListFragment()).addToBackStack(null).commit();
-//
-//});
-//
+
+
+        binding.myFollowersList.setOnClickListener(view -> {
+            Intent intent = new Intent(requireContext(), ContainerActivity.class);
+            intent.putExtra("follower", true);
+            startActivity(intent);
+        });
 
 
 
+        binding.myFollowingList.setOnClickListener(view -> {
+            Intent intent = new Intent(requireContext(), ContainerActivity.class);
+            intent.putExtra("following", true);
+            startActivity(intent);
+        });
 
+
+        binding.myuplodedPostList.setOnClickListener(view -> {
+            Intent intent = new Intent(requireContext(), ContainerActivity.class);
+            intent.putExtra("postlist", true);
+            startActivity(intent);
+        });
 
 
 
@@ -625,27 +634,6 @@ public class ProfileFragment extends Fragment{
     private void floatingButtonClicked() {
 
 
-
-        binding.myFollowersList.setOnClickListener(view -> {
-            Intent intent = new Intent(requireContext(), ContainerActivity.class);
-            intent.putExtra("follower", true);
-            startActivity(intent);
-        });
-
-
-
-        binding.myFollowingList.setOnClickListener(view -> {
-            Intent intent = new Intent(requireContext(), ContainerActivity.class);
-            intent.putExtra("following", true);
-            startActivity(intent);
-        });
-
-
-        binding.myuplodedPostList.setOnClickListener(view -> {
-            Intent intent = new Intent(requireContext(), ContainerActivity.class);
-            intent.putExtra("postlist", true);
-            startActivity(intent);
-        });
 
 
 

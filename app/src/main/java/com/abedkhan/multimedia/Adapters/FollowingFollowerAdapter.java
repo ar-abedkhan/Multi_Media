@@ -25,13 +25,6 @@ public class FollowingFollowerAdapter extends RecyclerView.Adapter<UserViewHolde
     Context context;
     List<FollowerFollowingModel> followerFollowingModelList;
 
-    DatabaseReference databaseReference;
-    FirebaseUser firebaseUser;
-    FirebaseAuth firebaseAuth;
-
-    String currentUserID;
-    String visitedUserID;
-
     public FollowingFollowerAdapter(Context context, List<FollowerFollowingModel> followerFollowingModelList) {
         this.context = context;
         this.followerFollowingModelList = followerFollowingModelList;
@@ -47,11 +40,14 @@ public class FollowingFollowerAdapter extends RecyclerView.Adapter<UserViewHolde
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
 
-        FollowerFollowingModel userModel = followerFollowingModelList.get(position);
+        FollowerFollowingModel followingModel = followerFollowingModelList.get(position);
 
 
-        Glide.with(context).load(userModel.getFollowProfileImg()).placeholder(R.drawable.ic_baseline_person_24).into(holder.userProfileImg);
-        holder.userName.setText(userModel.getFollowerName());
+        Glide.with(context).load(followingModel.getFollowProfileImg()).placeholder(R.drawable.ic_baseline_person_24).into(holder.userProfileImg);
+        holder.userName.setText(followingModel.getFollowerName());
+
+
+
 //        holder.userProfession.setText(userModel.getProfession());
 
 

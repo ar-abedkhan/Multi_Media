@@ -460,6 +460,7 @@ public class ProfileFragment extends Fragment{
 //                                        binding.publishPostBtn.setText("0");
 //                                    }
 
+
                     }
                     try {
                         publishedPostCount = postSize.size();

@@ -35,7 +35,7 @@ public class PostListFragment extends Fragment implements PostListener {
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    String currentUser;
+    String currentUser,visitedUserID;
     List<PostModel>postModelList;
 
 
@@ -51,61 +51,62 @@ public class PostListFragment extends Fragment implements PostListener {
        postModelList=new ArrayList<>();
 
 
+    visitedUserID  = getArguments().getString("VisitedUserID");
 
-       databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(@NonNull DataSnapshot snapshot) {
+    databaseReference.child("Post").addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-               for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+            for (DataSnapshot dataSnapshot:snapshot.getChildren()){
 
-                   String postId = dataSnapshot.getKey();
+                String postId = dataSnapshot.getKey();
 
-                   databaseReference.child("Post").child(postId).addValueEventListener(new ValueEventListener() {
-                       @Override
-                       public void onDataChange(@NonNull DataSnapshot snapshot) {
+                databaseReference.child("Post").child(postId).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                               PostModel postModel= snapshot.getValue(PostModel.class);
+                        PostModel postModel= snapshot.getValue(PostModel.class);
 
-                               if (postModel.getOwnerID().equals(currentUser)){
+
+                            if (postModel.getOwnerID().equals(currentUser)) {
 //                                   Log.i("TAG", "TRUE ");
-                                   postModelList.add(postModel);
-                                   try {
+                                postModelList.add(postModel);
+                                try {
 
 //                                       Log.i("TAG", "Post model List (PLF)--1: "+postModelList.size());
-                                       setDataToView(postModelList);
+                                    setDataToView(postModelList);
 
-                                   }catch (Exception exception){
+                                } catch (Exception exception) {
 
-                                   }
+                                }
 //                               }
-                           }
+                            }
 
-                       }
+                    }
 
-                       @Override
-                       public void onCancelled(@NonNull DatabaseError error) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                       }
-                   });
+                    }
+                });
 
-                   try {
+                try {
 
-                       Log.i("TAG", "Post model List (PLF): "+postModelList.size());
-                       setDataToView(postModelList);
+                    Log.i("TAG", "Post model List (PLF): "+postModelList.size());
+                    setDataToView(postModelList);
 
-                   }catch (Exception exception){
+                }catch (Exception exception){
 
-                   }
-               }
+                }
+            }
 
-           }
+        }
 
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
 
-           }
-       });
-
+        }
+    });
 
 
 

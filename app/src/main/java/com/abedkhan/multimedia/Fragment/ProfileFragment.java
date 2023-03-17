@@ -541,6 +541,7 @@ public class ProfileFragment extends Fragment{
         binding.myuplodedPostList.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("postlist", true);
+            intent.putExtra("VisitedUserID", visitedUserID);
             startActivity(intent);
         });
 

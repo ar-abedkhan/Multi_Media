@@ -98,7 +98,6 @@ public class PostListFragment extends Fragment implements PostListener {
                    });
 
                    try {
-
 //                       Log.i("TAG", "Post model List (PLF): "+postModelList.size());
                        setDataToView(postModelList);
 
@@ -114,14 +113,6 @@ public class PostListFragment extends Fragment implements PostListener {
 
            }
        });
-
-
-
-
-
-
-
-
 
 
         return binding.getRoot();

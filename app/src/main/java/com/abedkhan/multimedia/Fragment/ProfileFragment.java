@@ -512,6 +512,7 @@ public class ProfileFragment extends Fragment{
         binding.myFollowersList.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("follower", true);
+            intent.putExtra("requestedIdForPost", visitedUserID);
             startActivity(intent);
         });
 
@@ -520,6 +521,7 @@ public class ProfileFragment extends Fragment{
         binding.myFollowingList.setOnClickListener(view -> {
             Intent intent = new Intent(requireContext(), ContainerActivity.class);
             intent.putExtra("following", true);
+            intent.putExtra("requestedIdForPost", visitedUserID);
             startActivity(intent);
         });
 

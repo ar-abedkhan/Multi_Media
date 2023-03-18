@@ -84,9 +84,17 @@ public class ContainerActivity extends AppCompatActivity {
 
             }else if (intent.getBooleanExtra("following", false)) {
 //                requestedIdForPost = getIntent().getStringExtra("requestedIdForPost");
+                try {
+                    requestedIdForPost = getIntent().getStringExtra("requestedIdForPost");
+                    Log.i("TAG", "post owner ID: "+ requestedIdForPost);
+                }catch (Exception exception){}
                 replace(new FollowinglistFragment());
 
             }else if (intent.getBooleanExtra("follower", false)) {
+                try {
+                    requestedIdForPost = getIntent().getStringExtra("requestedIdForPost");
+                    Log.i("TAG", "post owner ID: "+ requestedIdForPost);
+                }catch (Exception exception){}
                 replace(new FollowerListFragment());
 
             }

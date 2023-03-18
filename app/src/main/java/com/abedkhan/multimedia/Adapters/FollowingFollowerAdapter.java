@@ -43,9 +43,13 @@ public class FollowingFollowerAdapter extends RecyclerView.Adapter<UserViewHolde
         FollowerFollowingModel followingModel = followerFollowingModelList.get(position);
 
 
-        Glide.with(context).load(followingModel.getFollowProfileImg()).placeholder(R.drawable.ic_baseline_person_24).into(holder.userProfileImg);
-        holder.userName.setText(followingModel.getFollowerName());
+        try {
+            Glide.with(context).load(followingModel.getFollowProfileImg()).placeholder(R.drawable.ic_baseline_person_24).into(holder.userProfileImg);
+        }catch (Exception exception){}
 
+        try {
+            holder.userName.setText(followingModel.getFollowerName());
+        }catch (Exception e){}
 
 
 //        holder.userProfession.setText(userModel.getProfession());

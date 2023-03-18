@@ -1,17 +1,19 @@
 package com.abedkhan.multimedia.Fragment;
 
+import static com.abedkhan.multimedia.Activities.ContainerActivity.requestedIdForPost;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.abedkhan.multimedia.Adapters.FollowingFollowerAdapter;
 import com.abedkhan.multimedia.Model.FollowerFollowingModel;
-import com.abedkhan.multimedia.R;
 import com.abedkhan.multimedia.databinding.FragmentFollowerListBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +37,8 @@ public class FollowerListFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     String currentUser;
-    List<FollowerFollowingModel> followingModels;
+    String presentVisitedID;
+    List<FollowerFollowingModel> followerModels;
 
 
 
@@ -47,13 +50,23 @@ public class FollowerListFragment extends Fragment {
 binding=FragmentFollowerListBinding.inflate(getLayoutInflater(),container,false);
 
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("User");
-        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-        currentUser=firebaseUser.getUid();
-        followingModels=new ArrayList<>();
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+//        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+//        currentUser=firebaseUser.getUid();
+        followerModels =new ArrayList<>();
 
 
 
+        try {
+            if (!requestedIdForPost.isEmpty()){
+                presentVisitedID = requestedIdForPost;
+
+            }
+        }catch (Exception exception){
+            firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+            currentUser=firebaseUser.getUid();
+            presentVisitedID = currentUser;
+        }
 
 
 
@@ -62,19 +75,34 @@ binding=FragmentFollowerListBinding.inflate(getLayoutInflater(),container,false)
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    String key = dataSnapshot.getKey();
 
-                    FollowerFollowingModel followingModel=dataSnapshot.getValue(FollowerFollowingModel.class);
+                    databaseReference.child("Followers").child(key).child(presentVisitedID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    if (!followingModel.getOwnProfileID().equals(currentUser)){
-                        followingModels.add(followingModel);
-                    }
-                }
-                try {
 
-                    FollowingFollowerAdapter adapter=new FollowingFollowerAdapter(requireContext(),followingModels);
-                    binding.followerRecycler.setAdapter(adapter);
+                            FollowerFollowingModel model= snapshot.getValue(FollowerFollowingModel.class);
+                            if (!followerModels.contains(model)) {
+                                followerModels.add(model);
+                            }
 
-                }catch (Exception exception){
+                            try {
+
+//                                Log.i("TAG", "Following models size: "+ followerModels.size());
+                                FollowingFollowerAdapter adapter=new FollowingFollowerAdapter(requireContext(), followerModels);
+                                binding.followerRecycler.setAdapter(adapter);
+
+                            }catch (Exception exception){
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
 
                 }
             }

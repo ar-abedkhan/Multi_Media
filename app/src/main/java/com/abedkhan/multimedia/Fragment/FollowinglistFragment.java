@@ -1,5 +1,7 @@
 package com.abedkhan.multimedia.Fragment;
 
+import static com.abedkhan.multimedia.Activities.ContainerActivity.requestedIdForPost;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -36,6 +38,7 @@ public class FollowinglistFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     String currentUser;
+    String presentVisitedID;
     List<FollowerFollowingModel> followingModels;
 
 
@@ -48,30 +51,56 @@ public class FollowinglistFragment extends Fragment {
 binding=FragmentFollowinglistBinding.inflate(getLayoutInflater(),container,false);
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
-        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-        currentUser=firebaseUser.getUid();
+//        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+//        currentUser=firebaseUser.getUid();
         followingModels=new ArrayList<>();
 
 
 
-        databaseReference.child("Following").child("User").child(currentUser).addValueEventListener(new ValueEventListener() {
+        try {
+            if (!requestedIdForPost.isEmpty()){
+                presentVisitedID = requestedIdForPost;
+
+            }
+        }catch (Exception exception){
+            firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+            currentUser=firebaseUser.getUid();
+            presentVisitedID = currentUser;
+        }
+
+        databaseReference.child("Following").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    String key = dataSnapshot.getKey();
 
-                    FollowerFollowingModel followingModel=dataSnapshot.getValue(FollowerFollowingModel.class);
+                    databaseReference.child("Following").child(key).child(presentVisitedID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    if (!followingModel.getOwnProfileID().equals(currentUser)){
-                        followingModels.add(followingModel);
-                    }
-                }
-                try {
 
-                    FollowingFollowerAdapter adapter=new FollowingFollowerAdapter(requireContext(),followingModels);
-                   binding.followingRecycler.setAdapter(adapter);
+                            FollowerFollowingModel model= snapshot.getValue(FollowerFollowingModel.class);
+                            if (!followingModels.contains(model)) {
+                                followingModels.add(model);
+                            }
 
-                }catch (Exception exception){
+                            try {
+
+//                                Log.i("TAG", "Following models size: "+ followerModels.size());
+                                FollowingFollowerAdapter adapter=new FollowingFollowerAdapter(requireContext(), followingModels);
+                                binding.followingRecycler.setAdapter(adapter);
+
+                            }catch (Exception exception){
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
 
                 }
             }

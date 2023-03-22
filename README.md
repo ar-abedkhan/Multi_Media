@@ -95,3 +95,23 @@
 
 
 
+
+
+
+<h2> Shopping </h2>
+<p align="center">
+
+<img src="https://user-images.githubusercontent.com/118797428/226823551-9bc40101-b80d-434d-9e03-dd7066993a20.png" width="220" height = "500" >
+
+
+</p>
+
+
+
+
+
+
+
+
+
+

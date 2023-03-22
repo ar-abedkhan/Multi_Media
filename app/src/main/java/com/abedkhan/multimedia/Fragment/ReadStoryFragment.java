@@ -140,6 +140,8 @@ databaseReference.child("User").child(model.getOwnerID()).addValueEventListener(
                 binding.postTime.setText(simpleDateFormat.format(date));
                 if (!model.getPostImgUrl().equals("")) {
                     Glide.with(getActivity()).load(model.getPostImgUrl()).placeholder(R.drawable.lightning_tree).into(binding.postImg);
+                }else {
+                    binding.postImg.setVisibility(View.GONE);
                 }
             }
 

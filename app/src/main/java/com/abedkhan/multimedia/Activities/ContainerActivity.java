@@ -14,6 +14,7 @@ import com.abedkhan.multimedia.Fragment.LoginFragment;
 import com.abedkhan.multimedia.Fragment.MessageFragment;
 import com.abedkhan.multimedia.Fragment.PostListFragment;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
+import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
 import com.abedkhan.multimedia.Fragment.SearchFragment;
 import com.abedkhan.multimedia.Fragment.SignUpFragmentOne;
 import com.abedkhan.multimedia.Fragment.profileEditFragment;
@@ -81,6 +82,16 @@ public class ContainerActivity extends AppCompatActivity {
 
             }else if (intent.getBooleanExtra("imgClicked", false)) {
                 replace(new ProfileFragment());
+
+//
+//            }else if (intent.getBooleanExtra("postClicked", false)) {
+//                replace(new ReadStoryFragment());
+//
+//
+//
+
+
+
 
             }else if (intent.getBooleanExtra("following", false)) {
 //                requestedIdForPost = getIntent().getStringExtra("requestedIdForPost");

@@ -41,7 +41,7 @@
 
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-            android:layout_width="@dimen/_240sdp"
+            android:layout_width="@dimen/_220sdp"
             android:maxWidth="@dimen/_240sdp"
             android:layout_height="@dimen/_35sdp"
             android:background="@drawable/search_back"

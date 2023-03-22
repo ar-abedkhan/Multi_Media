@@ -70,17 +70,16 @@
 
                 <TextView
                     android:id="@+id/userProfileName"
-                    android:layout_width="@dimen/_170sdp"
+                    android:layout_width="@dimen/_162sdp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:includeFontPadding="false"
                     android:inputType="textMultiLine"
                     android:textStyle="bold"
                     android:maxLines="3"
-
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Abed khan"
+                    android:text="Writer's Link User"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/_20sdp"
                     app:layout_constraintStart_toEndOf="@id/profileimgcard"
@@ -272,84 +271,83 @@
 
                 <!--ata social media connect korar option ekhane sob gula social media icon deya ase-->
 
-<!--                <LinearLayout-->
-<!--                    android:gravity="center"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    app:layout_constraintStart_toEndOf="@id/profileimgcard"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    android:layout_marginBottom="@dimen/_10sdp"-->
-<!--                    >-->
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/profileimgcard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    >
 
 
-<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                        android:id="@+id/facebookId"-->
-<!--                        android:layout_width="@dimen/_22sdp"-->
-<!--                        android:layout_height="@dimen/_22sdp"-->
-<!--                        android:src="@drawable/facebook"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        />-->
-
-
-
-
-<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                        android:id="@+id/instagramId"-->
-<!--                        android:layout_width="@dimen/_22sdp"-->
-<!--                        android:layout_height="@dimen/_22sdp"-->
-<!--                        android:layout_marginStart="@dimen/_8sdp"-->
-<!--                        android:src="@drawable/instagram"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        />-->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/facebookId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:src="@drawable/facebook"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
 
 
-<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                        android:id="@+id/tweeterId"-->
-<!--                        android:layout_width="@dimen/_22sdp"-->
-<!--                        android:layout_height="@dimen/_22sdp"-->
-<!--                        android:layout_marginStart="@dimen/_8sdp"-->
-<!--                        android:src="@drawable/twitter"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        />-->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/instagramId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/instagram"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
 
 
-<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                        android:id="@+id/linkedInId"-->
-<!--                        android:layout_width="@dimen/_22sdp"-->
-<!--                        android:layout_height="@dimen/_22sdp"-->
-<!--                        android:layout_marginStart="@dimen/_8sdp"-->
-<!--                        android:src="@drawable/linkedin"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        />-->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/tweeterId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/twitter"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
 
 
-<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                        android:id="@+id/whatsappId"-->
-<!--                        android:layout_width="@dimen/_22sdp"-->
-<!--                        android:layout_height="@dimen/_22sdp"-->
-<!--                        android:layout_marginStart="@dimen/_8sdp"-->
-<!--                        android:src="@drawable/whatsapp"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        />-->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/linkedInId"
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/linkedin"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/_22sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:src="@drawable/whatsapp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
 
 
 
 
 
-<!--                </LinearLayout>-->
+                </LinearLayout>
 
 
 
@@ -752,7 +750,7 @@
                         android:id="@+id/userProfession"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Andriod app devolover"
+                        android:text="Writer's Link"
                         android:textColor="@color/black_text"
                         android:fontFamily="@font/poppins_medium"
                         android:includeFontPadding="false"
@@ -832,7 +830,7 @@
                         android:id="@+id/userLiveIn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Feni"
+                        android:text="Dhaka"
                         android:textColor="@color/black_text"
                         android:textStyle="bold"
                         android:fontFamily="@font/poppins_medium"
@@ -917,7 +915,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:text="abed7484"
+                        android:text="writerlinkuser"
                         android:textColor="@color/black_text"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -957,7 +955,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:text="dss@gmail.com"
+                        android:text="writerlinkuser@gmail.com"
                         android:textColor="@color/black_text"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -993,7 +991,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:text="dss@gmail.com"
+                        android:text="08-04-2023"
                         android:textColor="@color/black_text"
                         android:textSize="16dp"
                         android:textStyle="bold" />

@@ -69,21 +69,21 @@
             android:id="@+id/profilename"
             />
 
-                <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="online"
-            android:paddingStart="@dimen/_5sdp"
-            app:layout_constraintTop_toBottomOf="@id/profilename"
-            app:layout_constraintStart_toEndOf="@id/profileimg"
-            android:textSize="@dimen/_12sdp"
-                    android:visibility="gone"
-                    android:includeFontPadding="false"
-            android:textColor="#1BCF22"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:fontFamily="@font/poppins_medium"
-            android:id="@+id/userOnline"
-            />
+<!--                <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="online"-->
+<!--            android:paddingStart="@dimen/_5sdp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/profilename"-->
+<!--            app:layout_constraintStart_toEndOf="@id/profileimg"-->
+<!--            android:textSize="@dimen/_12sdp"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:includeFontPadding="false"-->
+<!--            android:textColor="#1BCF22"-->
+<!--            android:layout_marginStart="@dimen/_5sdp"-->
+<!--            android:fontFamily="@font/poppins_medium"-->
+<!--            android:id="@+id/userOnline"-->
+<!--            />-->
 
 
                 <TextView

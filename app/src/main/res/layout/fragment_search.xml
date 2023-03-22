@@ -15,6 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchTool"
+        android:paddingTop="@dimen/_8ssp"
+        android:paddingBottom="@dimen/_8ssp"
         android:background="@color/view_color_background"
         app:layout_constraintTop_toTopOf="parent"
         >
@@ -24,7 +26,7 @@
             android:layout_height="@dimen/_25sdp"
             android:layout_marginEnd="@dimen/_8ssp"
             android:src="@drawable/back_icon"
-            android:layout_margin="@dimen/_6sdp"
+            android:layout_marginStart="@dimen/_6sdp"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

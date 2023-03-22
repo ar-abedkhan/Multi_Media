@@ -2,19 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/_80sdp"
-    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginStart="@dimen/_8ssp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="@dimen/_100sdp"
+    android:layout_height="@dimen/_90sdp"
     >
 <androidx.cardview.widget.CardView
     android:id="@+id/imgCrad"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    android:layout_width="@dimen/_65sdp"
+    android:layout_width="@dimen/_60sdp"
     app:cardCornerRadius="@dimen/_20sdp"
     android:background="@color/white_background"
-    android:layout_height="@dimen/_65sdp"
+    android:layout_height="@dimen/_60sdp"
 
     >
 

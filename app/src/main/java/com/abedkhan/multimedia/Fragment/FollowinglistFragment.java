@@ -79,11 +79,13 @@ binding=FragmentFollowinglistBinding.inflate(getLayoutInflater(),container,false
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-
                             FollowerFollowingModel model= snapshot.getValue(FollowerFollowingModel.class);
-                            if (!followingModels.contains(model)) {
-                                followingModels.add(model);
+                            if (!followingModels.equals(currentUser)){
+                                if (!followingModels.contains(model)) {
+                                    followingModels.add(model);
+                                }
                             }
+
 
                             try {
 

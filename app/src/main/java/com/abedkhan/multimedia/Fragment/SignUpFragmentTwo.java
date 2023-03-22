@@ -157,7 +157,8 @@ public class SignUpFragmentTwo extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(getContext(), "Data saved successfully❤", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), fullName+" You are register successfully❤", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), fullName+" Welcome to Writer's Link❤", Toast.LENGTH_LONG).show();
 
                             //                            TODO: Go to login fragment...
                         }

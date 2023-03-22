@@ -36,7 +36,7 @@
         android:src="@drawable/travel1"
         android:visibility="gone"
         android:layout_marginBottom="@dimen/_5sdp"
-        app:civ_border_width="@dimen/_3sdp"
+        app:civ_border_width="@dimen/_5sdp"
         app:civ_border_color="#13FA1C"
         android:id="@+id/statusOnline"
         />
@@ -50,7 +50,7 @@
         android:src="@drawable/travel1"
         android:visibility="gone"
         android:layout_marginBottom="@dimen/_5sdp"
-        app:civ_border_width="@dimen/_3sdp"
+        app:civ_border_width="@dimen/_5sdp"
         app:civ_border_color="#BFBFBF"
         android:id="@+id/statusOffline"
         />

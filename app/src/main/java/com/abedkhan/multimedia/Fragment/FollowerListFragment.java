@@ -30,11 +30,8 @@ public class FollowerListFragment extends Fragment {
 
     public FollowerListFragment() {
     }
-
-
     FragmentFollowerListBinding binding;
     DatabaseReference databaseReference;
-    FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     String currentUser;
     String presentVisitedID;
@@ -80,7 +77,6 @@ binding=FragmentFollowerListBinding.inflate(getLayoutInflater(),container,false)
                     databaseReference.child("Followers").child(key).child(presentVisitedID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-
 
                             FollowerFollowingModel model= snapshot.getValue(FollowerFollowingModel.class);
                             if (!followerModels.contains(model)) {

@@ -280,26 +280,26 @@ binding.profilename.setOnClickListener(view -> {
 
         UserModel userModel=new UserModel();
 
-        try {
-            if (userModel.getStatus().equals("online")){
-                binding.userOnline.setVisibility(View.VISIBLE);
-                binding.userOffline.setVisibility(View.GONE);
-            }else {
-                binding.userOnline.setVisibility(View.GONE);
-                binding.userOffline.setVisibility(View.VISIBLE);
-            }
-
-            Log.i("tag", "onBindViewHolder: ");
-
-        }catch (Exception e){
-
-            binding.userOnline.setVisibility(View.GONE);
-            binding.userOffline.setVisibility(View.VISIBLE);
-
-            Log.i("tag", "onBindViewHolder: ");
-
-
-        }
+//        try {
+//            if (userModel.getStatus().equals("online")){
+//                binding.userOnline.setVisibility(View.VISIBLE);
+//                binding.userOffline.setVisibility(View.GONE);
+//            }else {
+//                binding.userOnline.setVisibility(View.GONE);
+//                binding.userOffline.setVisibility(View.VISIBLE);
+//            }
+//
+//            Log.i("tag", "onBindViewHolder: ");
+//
+//        }catch (Exception e){
+//
+//            binding.userOnline.setVisibility(View.GONE);
+//            binding.userOffline.setVisibility(View.VISIBLE);
+//
+//            Log.i("tag", "onBindViewHolder: ");
+//
+//
+//        }
 
     }
 

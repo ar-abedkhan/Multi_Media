@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abedkhan.multimedia.Activities.ContainerActivity;
 import com.abedkhan.multimedia.AllViewHolder.PostViewHolder;
 import com.abedkhan.multimedia.Fragment.ProfileFragment;
 import com.abedkhan.multimedia.Fragment.ReadStoryFragment;
@@ -226,6 +227,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
             bundle.putString("ownerFullName", ownerFullName);
             bundle.putString("ownerProfileImg", ownerProfileImg);
             readStoryFragment.setArguments(bundle);
+
+
+//            Intent intent=new Intent(context, ContainerActivity.class);
+//            intent.putExtra("postClicked", true);
+//            context.startActivity(intent);
+
+
+
+
             appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.frame,readStoryFragment).addToBackStack(null).commit();
 
         });
